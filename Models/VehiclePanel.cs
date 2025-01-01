@@ -1,4 +1,5 @@
 ﻿using System.Collections.Generic;
+using UnityEngine;
 
 namespace StationVisuals.Models;
 
@@ -8,7 +9,10 @@ public class VehiclePanel(
     string trainMessage,
     string occupancyTitle,
     List<string> occupancyImages,
-    string trainName
+    string trainName,
+    string wheelchairIcon,
+    string bikeIcon,
+    Color backgroundColor
 )
 {
     public readonly string Title = title;
@@ -17,4 +21,7 @@ public class VehiclePanel(
     public string OccupancyTitle = occupancyTitle;
     public List<string> OccupancyImages = occupancyImages;
     public string TrainName = trainName;
+    public string WheelchairIcon = wheelchairIcon;
+    public string BikeIcon = bikeIcon;
+    public Color BackgroundColor = backgroundColor;
 }

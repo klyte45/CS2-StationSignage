@@ -12,7 +12,9 @@ public class TransportLineModel(
     UnityEngine.Color color,
     List<RouteWaypoint> waypoints,
     List<RouteVehicle> vehicles,
-    Entity platform
+    Entity platform,
+    int entityNumber,
+    string operatorLogo
 )
 {
     public string Type = type;
@@ -21,4 +23,6 @@ public class TransportLineModel(
     public List<RouteWaypoint> Waypoints = waypoints;
     public readonly List<RouteVehicle> Vehicles = vehicles;
     public Entity Platform = platform;
+    public int EntityNumber = entityNumber;
+    public string OperatorLogo = operatorLogo;
 }

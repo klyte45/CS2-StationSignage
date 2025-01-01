@@ -1,3 +1,18 @@
 ﻿{
-  "StationEntranceVisuals.Entrance": "Entrance"
+  "StationVisuals.NotOperating": "Not operating",
+  "StationVisuals.OperationStopped": "Operation Stopped",
+  "StationVisuals.ReducedSpeed": "Reduced Speed",
+  "StationVisuals.NoUsage": "No Usage",
+  "StationVisuals.NormalOperation": "Normal Operation",
+  "StationVisuals.TrainOnPlatform": "Train on Platform",
+  "StationVisuals.PrepareForBoarding": "Prepare For Boarding",
+  "StationVisuals.NextTrain": "Next Train",
+  "StationVisuals.DistanceToStation": "Distance to Station",
+  "StationVisuals.MetersAway": " meters away",
+  "StationVisuals.BoardingNow": "Boarding Now",
+  "StationVisuals.LevelOfOccupancy": "Level of Occupancy",
+  "StationVisuals.AverageWaitTime": "Average Wait Time:",
+  "StationVisuals.Seconds": " seconds",
+  "StationVisuals.LineStatus": "Line Status",
+  "StationVisuals.Time": "Time: "
 }
