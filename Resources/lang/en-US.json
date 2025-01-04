@@ -14,5 +14,8 @@
   "StationVisuals.AverageWaitTime": "Average Wait Time:",
   "StationVisuals.Seconds": " seconds",
   "StationVisuals.LineStatus": "Line Status",
-  "StationVisuals.Time": "Time: "
+  "StationVisuals.Time": "Time: ",
+  "StationVisuals.Exit": "Exit",
+  "StationVisuals.Platform": "Platform ",
+  "StationVisuals.Boarding": "Boarding "
 }

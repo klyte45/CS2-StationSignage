@@ -12,7 +12,8 @@ public class VehiclePanel(
     string trainName,
     string wheelchairIcon,
     string bikeIcon,
-    Color backgroundColor
+    Color backgroundColor,
+    string footer
 )
 {
     public readonly string Title = title;
@@ -24,4 +25,5 @@ public class VehiclePanel(
     public string WheelchairIcon = wheelchairIcon;
     public string BikeIcon = bikeIcon;
     public Color BackgroundColor = backgroundColor;
+    public string Footer = footer;
 }
