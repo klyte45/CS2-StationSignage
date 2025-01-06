@@ -3,6 +3,7 @@ using System.Drawing;
 using Game.Routes;
 using Game.Vehicles;
 using Unity.Entities;
+using Unity.Mathematics;
 
 namespace StationVisuals.Models;
 
@@ -16,7 +17,9 @@ public class TransportLineModel(
     List<RouteVehicle> vehicles,
     Entity platform,
     int index,
-    string operatorName
+    string operatorName,
+    string destination,
+    float3 position
 )
 {
     public string Type = type;
@@ -29,4 +32,8 @@ public class TransportLineModel(
     public int Index = index;
     public string OperatorName = operatorName;
     public UnityEngine.Color OnPrimaryColor = onPrimaryColor;
+    public string Destination = destination;
+    public string OperatorIcon = operatorName + "Icon";
+    public string OperatorImage = operatorName;
+    public float3 Position = position;
 }

@@ -1,6 +1,8 @@
 ﻿using System;
 using Colossal.Entities;
+using Game.Buildings;
 using Game.Common;
+using Game.Net;
 using Game.SceneFlow;
 using Game.UI;
 using StationVisuals.Utils;
@@ -45,6 +47,16 @@ public class NamesFormulas
         _entityManager = World.DefaultGameObjectInjectionWorld.EntityManager;
         return _nameSystem.GetRenderedLabelName(buildingRef);
     };
+    
+    private static readonly Func<Entity, string> GetBuildingRoadNameBinding = (buildingRef) =>
+    {
+        _linesSystem ??= World.DefaultGameObjectInjectionWorld.GetExistingSystemManaged<LinesSystem>();
+        _nameSystem ??= World.DefaultGameObjectInjectionWorld.GetOrCreateSystemManaged<NameSystem>();
+        _entityManager = World.DefaultGameObjectInjectionWorld.EntityManager;
+        _entityManager.TryGetComponent<Building>(buildingRef, out var building);
+        _entityManager.TryGetComponent<Aggregated>(building.m_RoadEdge, out var aggregated);
+        return _nameSystem.GetRenderedLabelName(aggregated.m_Aggregate);
+    };
 
     private static readonly Func<Entity, string> GetExitNameBinding = _ => GetName("StationVisuals.Exit");
     
@@ -57,6 +69,8 @@ public class NamesFormulas
     public static string GetExitName(Entity buildingRef) => GetExitNameBinding(buildingRef);
     
     public static string GetBoardingName(Entity buildingRef) => GetBoardingNameBinding(buildingRef);
+    
+    public static string GetBuildingRoadName(Entity buildingRef) => GetBuildingRoadNameBinding(buildingRef);
     
     public static string GetPlatform1Name(Entity buildingRef) => GetName("StationVisuals.Platform") + "1";
     
