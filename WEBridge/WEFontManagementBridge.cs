@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Reflection;
 
-namespace StationVisuals.WEBridge
+namespace StationSignage.WEBridge
 {
     internal static class WEFontManagementBridge
     {

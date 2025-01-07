@@ -8,14 +8,14 @@ using Game;
 using Game.Modding;
 using Game.SceneFlow;
 using HarmonyLib;
-using StationVisuals.Utils;
-using StationVisuals.WEBridge;
+using StationSignage.Utils;
+using StationSignage.WEBridge;
 
-namespace StationVisuals
+namespace StationSignage
 {
     public class Mod : IMod
     {
-        public static ILog log = LogManager.GetLogger($"{nameof(StationVisuals)}.{nameof(Mod)}").SetShowsErrorsInUI(false);
+        public static ILog log = LogManager.GetLogger($"{nameof(StationSignage)}.{nameof(Mod)}").SetShowsErrorsInUI(false);
         private static readonly BindingFlags allFlags = BindingFlags.Public | BindingFlags.NonPublic | BindingFlags.Instance | BindingFlags.Static | BindingFlags.DeclaredOnly | BindingFlags.GetField | BindingFlags.GetProperty;
 
         public void OnLoad(UpdateSystem updateSystem)

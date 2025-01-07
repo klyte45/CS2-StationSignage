@@ -1,7 +1,7 @@
 ﻿using System.Collections.Generic;
 using UnityEngine;
 
-namespace StationVisuals.Models;
+namespace StationSignage.Models;
 
 public class VehiclePanel(
     string title, 
@@ -13,7 +13,10 @@ public class VehiclePanel(
     string wheelchairIcon,
     string bikeIcon,
     Color backgroundColor,
-    string footer
+    string footer,
+    Color trainMessageTextColor,
+    Color trainNameTextColor,
+    Color occupancyTitleTextColor
 )
 {
     public readonly string Title = title;
@@ -26,6 +29,9 @@ public class VehiclePanel(
     public string BikeIcon = bikeIcon;
     public Color BackgroundColor = backgroundColor;
     public string Footer = footer;
+    public Color TrainNameTextColor = trainNameTextColor;
+    public Color TrainMessageTextColor = trainMessageTextColor;
+    public Color OccupancyTitleTextColor = occupancyTitleTextColor;
     
     public string GetCarImage1()
     {

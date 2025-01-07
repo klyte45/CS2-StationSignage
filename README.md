@@ -1,2 +1,2 @@
-# StationVisuals
-Station Visuals Mod for Cities Skylines 2
+# Station Signage
+Station Signage Mod for Cities Skylines 2

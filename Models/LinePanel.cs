@@ -1,4 +1,4 @@
-﻿namespace StationVisuals.Models;
+﻿namespace StationSignage.Models;
 
 public class LinePanel(
     string status,

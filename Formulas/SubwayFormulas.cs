@@ -13,8 +13,8 @@ using Game.SceneFlow;
 using Game.UI;
 using Game.UI.InGame;
 using Game.Vehicles;
-using StationVisuals.Models;
-using StationVisuals.Utils;
+using StationSignage.Models;
+using StationSignage.Utils;
 using Unity.Entities;
 using Unity.Mathematics;
 using UnityEngine;
@@ -25,7 +25,7 @@ using TrainFlags = Game.Vehicles.TrainFlags;
 using Transform = Game.Objects.Transform;
 using TransportStop = Game.Routes.TransportStop;
 
-namespace StationVisuals.Formulas
+namespace StationSignage.Formulas
 {
     public class SubwayFormulas
     {
@@ -40,7 +40,7 @@ namespace StationVisuals.Formulas
         
         private const string Transparent = "Transparent";
 
-        private const string Empty = " ";
+        private const string Empty = "----";
 
         public SubwayFormulas()
         {
@@ -89,17 +89,17 @@ namespace StationVisuals.Formulas
             {
                 Mod.log.Info(e);
                 return new TransportLineModel(
-                    "",
-                    "",
-                    "",
-                    Color.clear,
-                    Color.clear,
+                    "---",
+                    "---",
+                    "---",
+                    Color.black,
+                    Color.white,
                     [],
                     [],
                     Entity.Null,
                     0,
                     Transparent,
-                    "",
+                    "---",
                     new float3()
                 );
             }
@@ -115,21 +115,24 @@ namespace StationVisuals.Formulas
             {
                 Mod.log.Info(e);
                 return new VehiclePanel(
-                    "",
-                    "",
-                    "",
-                    "",
+                    "---",
+                    "---",
+                    "---",
+                    "---",
                     [Transparent, Transparent, Transparent, Transparent, Transparent, Transparent, Transparent, Transparent],
-                    "",
+                    "---",
                     Transparent,
                     Transparent,
+                    Color.black,
+                    GetWelcomeMessage(Entity.Null),
                     Color.clear,
-                    ""
+                    Color.clear,
+                    Color.clear
                 );
             }
         };
         
-        private static readonly Func<string> TimeNameBinding = () => GetName("StationVisuals.Time") + DateTime.Now.ToString("HH:mm tt");
+        private static readonly Func<string> TimeNameBinding = () => GetName("StationSignage.Time") + DateTime.Now.ToString("HH:mm tt");
 
         private static LinePanel GetLine(int index)
         {
@@ -233,7 +236,40 @@ namespace StationVisuals.Formulas
                     waypoints.Add(buffer[index]);
                 }
             }
-            return waypoints.Take((waypoints.Count / 2) + 1).ToList();
+            
+            var singleStops = new Dictionary<Entity, List<RouteWaypoint>>();
+
+            for (var i = 0; i < waypoints.Count; ++i)
+            {
+                if (_entityManager.TryGetComponent<Connected>(waypoints[i].m_Waypoint, out var connected))
+                {
+                    var owner = GetOwnerRecursive(connected.m_Connected);
+                    if (singleStops.ContainsKey(owner))
+                    {
+                        singleStops[owner].Add(waypoints[i]);
+                    }
+                    else
+                    {
+                        singleStops[owner] = [waypoints[i]];
+                    }
+                }
+            }
+            return singleStops
+                .Where(x => x.Value.Count == 1)
+                .Select(x => x.Value.FirstOrDefault())
+                .ToList();
+        }
+
+        private static Entity GetOwnerRecursive(Entity entity)
+        {
+            if (_entityManager.TryGetComponent<Owner>(entity, out var owner))
+            {
+                return GetOwnerRecursive(owner.m_Owner);
+            }
+            else
+            {
+                return entity;
+            }
         }
         
         private static List<RouteVehicle> GetVehicles(Entity entity)
@@ -254,10 +290,11 @@ namespace StationVisuals.Formulas
             _entityManager.TryGetComponent<Position>(line.Platform, out var platformPosition);
             _entityManager.TryGetComponent<WaitingPassengers>(line.Platform, out var waitingPassengers);
             var platformDebugName = _nameSystem.GetDebugName(line.Platform);
-            var title = GetName("StationVisuals.NextTrain");
-            var subtitle = GetName("StationVisuals.AverageWaitTime");
-            var message = waitingPassengers.m_AverageWaitingTime + GetName("StationVisuals.Seconds");
-            var occupancyTitle = Empty;
+            var title = GetName("StationSignage.NextTrain");
+            var subtitle = GetName("StationSignage.AverageWaitTime");
+            var message = waitingPassengers.m_AverageWaitingTime + GetName("StationSignage.Seconds");
+            var messageColor = Color.white;
+            var occupancyTitle = GetName("StationSignage.LevelOfOccupancy");
             var bikeIcon = Transparent;
             var wheelchairIcon = Transparent;
             var occupancyImagesList = new List<string>();
@@ -274,16 +311,15 @@ namespace StationVisuals.Formulas
                 var closestDistance = math.distance(platformPosition.m_Position, vehiclePosition.m_Front.m_Position);
                 if (line.Platform == pathInformation.m_Destination)
                 {
-                    occupancyTitle = GetName("StationVisuals.LevelOfOccupancy");
                     bikeIcon = "BikeRoundIcon";
                     wheelchairIcon = "WheelchairRoundIcon";
                     _entityManager.TryGetComponent<Controller>(vehicle.m_Vehicle, out var controller);
                     _entityManager.TryGetComponent<PublicTransport>(controller.m_Controller, out var publicTransport);
                     _entityManager.TryGetBuffer<LayoutElement>(vehicle.m_Vehicle, true, out var layoutElements);
-                    footer = GetDestinationBinding(pathInformation, line.Waypoints);
+                    footer = GetDestinationBinding(vehicle.m_Vehicle, line.Waypoints);
                     if (publicTransport.m_State.HasFlag(PublicTransportFlags.Arriving))
                     {
-                        _destinationsDictionary[platformDebugName] = GetDestinationBinding(pathInformation, line.Waypoints);
+                        _destinationsDictionary[platformDebugName] = GetDestinationBinding(vehicle.m_Vehicle, line.Waypoints);
                     }
                     for (var index = 0; index < layoutElements.Length; ++index)
                     {
@@ -319,23 +355,24 @@ namespace StationVisuals.Formulas
                     closestTrain = vehicle;
                     if (publicTransport.m_State.HasFlag(PublicTransportFlags.Boarding))
                     {
-                        title = GetName("StationVisuals.TrainOnPlatform");
-                        subtitle = GetName("StationVisuals.BoardingNow");
-                        message = Empty;
+                        title = GetName("StationSignage.TrainOnPlatform");
+                        subtitle = GetName("StationSignage.BoardingNow");
+                        messageColor = Color.clear;
                     }
                     else
                     {
                         switch (closestDistance)
                         {
                             case <= 100 and > 0:
-                                title = GetName("StationVisuals.TrainOnPlatform");
-                                subtitle = GetName("StationVisuals.PrepareForBoarding");
-                                message = Empty;
+                                title = GetName("StationSignage.TrainOnPlatform");
+                                subtitle = GetName("StationSignage.PrepareForBoarding");
+                                messageColor = Color.clear;
                                 break;
                             case > 0:
-                                title = GetName("StationVisuals.NextTrain");
-                                subtitle = GetName("StationVisuals.DistanceToStation");
-                                message = ((int)closestDistance) + GetName("StationVisuals.MetersAway");
+                                title = GetName("StationSignage.NextTrain");
+                                subtitle = GetName("StationSignage.DistanceToStation");
+                                message = ((int)closestDistance) + GetName("StationSignage.MetersAway");
+                                messageColor = Color.yellow;
                                 break;
                         }
                     }
@@ -343,14 +380,18 @@ namespace StationVisuals.Formulas
                 }
             }
 
-            var closestTrainName = Empty;
+            var closestTrainName = "Train Model";
+            var trainNameColor = Color.clear;
             if (closestTrain != null)
             {
                 closestTrainName = GetTrainNameBinding(closestTrain.Value.m_Vehicle);
+                trainNameColor = Color.yellow;
             }
 
+            var levelOccupancyColor = Color.white;
             if (occupancyImagesList.Count == 0)
             {
+                levelOccupancyColor = Color.clear;
                 wheelchairIcon = Transparent;
                 bikeIcon = Transparent;
                 for (var i = 0; i < 8; i++)
@@ -369,7 +410,10 @@ namespace StationVisuals.Formulas
                 wheelchairIcon,
                 bikeIcon,
                 Color.black,
-                footer
+                footer,
+                messageColor,
+                trainNameColor,
+                levelOccupancyColor
             );
         }
         
@@ -432,22 +476,32 @@ namespace StationVisuals.Formulas
             return _nameSystem.GetName(owner.m_Owner).Translate();
         }
         
-        private static string GetDestinationBinding(PathInformation path, List<RouteWaypoint> stops)
+        private static string GetDestinationBinding(Entity vehicle, List<RouteWaypoint> stops)
         {
             try
             {
                 _entityManager = World.DefaultGameObjectInjectionWorld.EntityManager;
                 _nameSystem ??= World.DefaultGameObjectInjectionWorld.GetOrCreateSystemManaged<NameSystem>();
-                
-                var originIndex = stops.FindIndex(x => x.m_Waypoint == path.m_Origin);
-                var destinationIndex = stops.FindIndex(x => x.m_Waypoint == path.m_Destination);
+
+                _entityManager.TryGetComponent<Controller>(vehicle, out var controller);
+                _entityManager.TryGetBuffer<LayoutElement>(controller.m_Controller, true, out var layoutElements);
             
-                if (originIndex < destinationIndex)
+            
+                _entityManager.TryGetComponent<TrainNavigation>(controller.m_Controller, out var trainNavigation);
+                var closestDistance = float3.zero;
+                if (_entityManager.TryGetComponent<Position>(stops.FirstOrDefault().m_Waypoint, out var firstStationPosition))
                 {
-                    return GetRouteBuildingName(stops[stops.Count - 1]);
+                    closestDistance = firstStationPosition.m_Position;
+                }
+                var distanceFront = math.distance(closestDistance, trainNavigation.m_Front.m_Position);
+                var distanceBack = math.distance(closestDistance, trainNavigation.m_Rear.m_Position);
+            
+                if (distanceFront < distanceBack)
+                {
+                    return GetRouteBuildingName(stops[0]);
                 }
 
-                return GetRouteBuildingName(stops[0]);
+                return GetRouteBuildingName(stops[stops.Count - 1]);
             }
             catch (Exception e)
             {
@@ -496,19 +550,6 @@ namespace StationVisuals.Formulas
             }
         }
         
-        private static Color GetLineColor(UITransportLineData? transportLineData)
-        {
-            try
-            {
-                return transportLineData?.color ?? Color.clear;
-            }
-            catch (Exception e)
-            {
-                Mod.log.Info(e);
-                return Color.clear;
-            }
-        }
-        
         private static string GetLineStatusText(UITransportLineData? transportLineData)
         {
             try
@@ -517,25 +558,25 @@ namespace StationVisuals.Formulas
 
                 if (!transportLineData.Value.active)
                 {
-                    return GetName("StationVisuals.NotOperating");
+                    return GetName("StationSignage.NotOperating");
                 }
 
                 if (transportLineData.Value.vehicles == 0)
                 {
-                    return GetName("StationVisuals.OperationStopped");
+                    return GetName("StationSignage.OperationStopped");
                 }
                 
                 if (transportLineData.Value.vehicles == 1)
                 {
-                    return GetName("StationVisuals.ReducedSpeed");
+                    return GetName("StationSignage.ReducedSpeed");
                 }
                 
                 if (transportLineData.Value.usage == 0.0)
                 {
-                    return GetName("StationVisuals.NoUsage");
+                    return GetName("StationSignage.NoUsage");
                 }
 
-                return GetName("StationVisuals.NormalOperation");
+                return GetName("StationSignage.NormalOperation");
             }
             catch (Exception e)
             {
@@ -593,7 +634,7 @@ namespace StationVisuals.Formulas
             TimeNameBinding.Invoke() ?? Empty;
         
         public static string GetLinesStatusMessage(Entity buildingRef) => 
-            GetName("StationVisuals.LineStatus");
+            GetName("StationSignage.LineStatus");
 
         public static string GetWelcomeMessage(Entity buildingRef) => 
             "Welcome to Moema's Subway";

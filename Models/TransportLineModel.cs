@@ -5,7 +5,7 @@ using Game.Vehicles;
 using Unity.Entities;
 using Unity.Mathematics;
 
-namespace StationVisuals.Models;
+namespace StationSignage.Models;
 
 public class TransportLineModel(
     string type, 

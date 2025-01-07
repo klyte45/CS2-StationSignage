@@ -5,10 +5,10 @@ using Game.Common;
 using Game.Net;
 using Game.SceneFlow;
 using Game.UI;
-using StationVisuals.Utils;
+using StationSignage.Utils;
 using Unity.Entities;
 
-namespace StationVisuals.Formulas;
+namespace StationSignage.Formulas;
 
 public class NamesFormulas
 {
@@ -57,22 +57,22 @@ public class NamesFormulas
         _entityManager.TryGetComponent<Aggregated>(building.m_RoadEdge, out var aggregated);
         return _nameSystem.GetRenderedLabelName(aggregated.m_Aggregate);
     };
-
-    private static readonly Func<Entity, string> GetExitNameBinding = _ => GetName("StationVisuals.Exit");
-    
-    private static readonly Func<Entity, string> GetBoardingNameBinding = _ => GetName("StationVisuals.Boarding");
     
     public static string GetMainBuildingName(Entity buildingRef) => GetMainBuildingNameBinding(buildingRef);
     
     public static string GetBuildingName(Entity buildingRef) => GetBuildingNameBinding(buildingRef);
     
-    public static string GetExitName(Entity buildingRef) => GetExitNameBinding(buildingRef);
-    
-    public static string GetBoardingName(Entity buildingRef) => GetBoardingNameBinding(buildingRef);
+    public static string GetExitName(Entity buildingRef) => GetName("StationSignage.Exit");
     
     public static string GetBuildingRoadName(Entity buildingRef) => GetBuildingRoadNameBinding(buildingRef);
     
-    public static string GetPlatform1Name(Entity buildingRef) => GetName("StationVisuals.Platform") + "1";
+    public static string GetPlatformName(Entity buildingRef) => GetName("StationSignage.Platform");
     
-    public static string GetPlatform2Name(Entity buildingRef) => GetName("StationVisuals.Platform") + "2";
+    public static string GetTrainsToName(Entity buildingRef) => GetName("StationSignage.TrainsTo");
+    
+    public static string GetConnectionsName(Entity buildingRef) => GetName("StationSignage.Connections");
+    
+    public static string GetTransferName(Entity buildingRef) => GetName("StationSignage.Transfer");
+    
+    public static string GetBoardingName(Entity buildingRef) => GetName("StationSignage.Boarding");
 }

@@ -9,7 +9,7 @@ using Game.UI;
 using Game.UI.InGame;
 using Unity.Entities;
 
-namespace StationVisuals.Utils
+namespace StationSignage.Utils
 {
     public partial class LinesSystem : SystemBase
     {

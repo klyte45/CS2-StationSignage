@@ -5,7 +5,7 @@ using Game.SceneFlow;
 using Game.UI;
 using HarmonyLib;
 
-namespace StationVisuals.Utils;
+namespace StationSignage.Utils;
 
 public static class NameSystemExtensions
 {
