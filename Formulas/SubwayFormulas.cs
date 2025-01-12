@@ -4,6 +4,7 @@ using System.Collections.Specialized;
 using System.Linq;
 using System.Text.RegularExpressions;
 using Colossal.Entities;
+using Game.Buildings;
 using Game.Common;
 using Game.Objects;
 using Game.Pathfind;
@@ -13,6 +14,7 @@ using Game.SceneFlow;
 using Game.UI;
 using Game.UI.InGame;
 using Game.Vehicles;
+using JetBrains.Annotations;
 using StationSignage.Models;
 using StationSignage.Utils;
 using Unity.Entities;
@@ -20,6 +22,7 @@ using Unity.Mathematics;
 using UnityEngine;
 using Color = UnityEngine.Color;
 using PublicTransport = Game.Vehicles.PublicTransport;
+using ServiceUpgrade = Game.Buildings.ServiceUpgrade;
 using SubObject = Game.Objects.SubObject;
 using TrainFlags = Game.Vehicles.TrainFlags;
 using Transform = Game.Objects.Transform;
@@ -59,7 +62,7 @@ namespace StationSignage.Formulas
             { "NA_TrainPassengerEngine01", "C" },
         };
         
-        private static StringDictionary  _destinationsDictionary = new();
+        private static Dictionary<Entity, RouteWaypoint?> _destinationsDictionary = new();
         
         private static string GetName(string id)
         {
@@ -100,16 +103,19 @@ namespace StationSignage.Formulas
                     0,
                     Transparent,
                     "---",
-                    new float3()
+                    new float3(),
+                    "---",
+                    "---",
+                    []
                 );
             }
         };
         
-        private static readonly Func<TransportLineModel, VehiclePanel> VehiclePanelBinding = (transportLineModel) =>
+        private static readonly Func<TransportLineModel, int, VehiclePanel> VehiclePanelBinding = (transportLineModel, platformNumber) =>
         {
             try
             {
-                return GetVehiclePanel(transportLineModel);
+                return GetVehiclePanel(transportLineModel, platformNumber);
             }
             catch (Exception e)
             {
@@ -176,6 +182,15 @@ namespace StationSignage.Formulas
                         }
 
                         var stops = GetStops(owner.m_Owner);
+                        var singleStops = GetSingleStops(stops);
+                        var connections = GetConnections(route.m_Waypoint, stops, singleStops);
+                        var connectionsTitle = NamesFormulas.GetConnectionsName(Entity.Null);
+                        var connectionsLineName = "";
+                        if (connections.Count == 0)
+                        {
+                            connectionsTitle = "---";
+                            connectionsLineName = fullLineName;
+                        }
                         lineNumberList.Add(
                             new TransportLineModel(
                                 "Subway",
@@ -183,18 +198,22 @@ namespace StationSignage.Formulas
                                 routeString,
                                 routeColor.m_Color,
                                 GetOnPrimaryColor(routeColor.m_Color),
-                                GetStops(owner.m_Owner),
+                                singleStops,
                                 GetVehicles(owner.m_Owner),
                                 route.m_Waypoint,
                                 index,
                                 operatorLogo,
-                                GetDestinationBinding(route.m_Waypoint, stops, index),
-                                transform.m_Position
+                                GetDestinationBinding(route.m_Waypoint, stops, index)?.Item2,
+                                transform.m_Position,
+                                connectionsTitle,
+                                connectionsLineName,
+                                connections
                             )
                         );
                     }
                 }
             }
+            
         
             if (entityManager.TryGetBuffer(selectedEntity, true, out DynamicBuffer<SubObject> subObjects))
             {
@@ -203,6 +222,38 @@ namespace StationSignage.Formulas
                     GetLines(entityManager, subObjects[i].m_SubObject, i, ref lineNumberList);
                 }
             }
+        }
+        
+        private static List<LineConnection> GetConnectionLines(Entity waypoint)
+        {
+            var connections = new List<LineConnection>();
+            if (_entityManager.TryGetBuffer(waypoint, true, out DynamicBuffer<ConnectedRoute> routes))
+            {
+                foreach (var route in routes) {
+                    if (_entityManager.TryGetComponent<Owner>(route.m_Waypoint, out var owner))
+                    {
+                        _entityManager.TryGetComponent<RouteNumber>(owner.m_Owner, out var routeNumber);
+                        _entityManager.TryGetComponent<Game.Routes.Color>(owner.m_Owner, out var routeColor);
+
+                        var fullLineName = _nameSystem.GetName(owner.m_Owner).Translate();
+
+                        var lineName = fullLineName.Split(' ').LastOrDefault();
+                        var routeString = lineName is { Length: >= 1 and <= 2 } ? lineName : routeNumber.m_Number.ToString();
+
+                       
+                        connections.Add(
+                            new LineConnection(
+                                routeString,
+                                routeColor.m_Color,
+                                GetOnPrimaryColor(routeColor.m_Color),
+                                Color.white,
+                                "Subway"
+                            )
+                        );
+                    }
+                }
+            }
+            return connections;
         }
         
         private static Color GetOnPrimaryColor(Color color)
@@ -217,7 +268,17 @@ namespace StationSignage.Formulas
             _entityManager = World.DefaultGameObjectInjectionWorld.EntityManager;
             var lineNumberList = new List<TransportLineModel>();
             GetLines(_entityManager, buildingRef, 0, ref lineNumberList);
-            _entityManager.TryGetComponent<Transform>(buildingRef, out var transform);
+            var buildingOwner = GetOwnerRecursive(buildingRef);
+            var selectedBuilding = buildingRef;
+            if (lineNumberList.Count == 0 && _entityManager.TryGetBuffer(buildingOwner, true, out DynamicBuffer<InstalledUpgrade> upgrades))
+            {
+                selectedBuilding = buildingOwner;
+                for (var i = 0; i < upgrades.Length; ++i)
+                {
+                    GetLines(_entityManager, upgrades[i].m_Upgrade, i, ref lineNumberList);
+                }
+            }
+            _entityManager.TryGetComponent<Transform>(selectedBuilding, out var transform);
 
             return lineNumberList.OrderBy(x => math.distance(transform.m_Position, x.Position)).ToList();
         }
@@ -236,6 +297,12 @@ namespace StationSignage.Formulas
                     waypoints.Add(buffer[index]);
                 }
             }
+            return waypoints;
+        }
+        
+        private static List<RouteWaypoint> GetSingleStops(List<RouteWaypoint> waypoints)
+        {
+            _entityManager = World.DefaultGameObjectInjectionWorld.EntityManager;
             
             var singleStops = new Dictionary<Entity, List<RouteWaypoint>>();
 
@@ -257,6 +324,58 @@ namespace StationSignage.Formulas
             return singleStops
                 .Where(x => x.Value.Count == 1)
                 .Select(x => x.Value.FirstOrDefault())
+                .ToList();
+        }
+        
+        private static List<LineConnection> GetConnections(
+            Entity platform,
+            List<RouteWaypoint> routeWaypoints,
+            List<RouteWaypoint> singleStops
+        )
+        {
+            _entityManager = World.DefaultGameObjectInjectionWorld.EntityManager;
+            var stopIndex = 0;
+            var lastStopIndex = 0;
+            RouteWaypoint? lastStopWaypoint = null;
+            if (_destinationsDictionary.TryGetValue(platform, out var value))
+            {
+                lastStopWaypoint = value;
+            }
+            
+            for (var index = 0; index < routeWaypoints.Count; ++index)
+            {
+                if (platform == routeWaypoints[index].m_Waypoint)
+                {
+                    stopIndex = index;
+                }
+
+                if (lastStopWaypoint != null && lastStopWaypoint.Value.m_Waypoint == routeWaypoints[index].m_Waypoint)
+                {
+                    lastStopIndex = index;
+                }
+            }
+
+            int startIndex;
+            int endIndex;
+            if (stopIndex > lastStopIndex)
+            {
+                startIndex = lastStopIndex;
+                endIndex = stopIndex;
+            }
+            else
+            {
+                startIndex = stopIndex;
+                endIndex = lastStopIndex;
+            }
+            var lines = new List<LineConnection>();
+            for (var index = startIndex; index < endIndex; ++index)
+            {
+                lines.AddRange(GetConnectionLines(routeWaypoints[index].m_Waypoint));
+            }
+            
+            return lines
+                .GroupBy(x => x.Number + x.Type)
+                .Select(d => d.First())
                 .ToList();
         }
 
@@ -284,12 +403,11 @@ namespace StationSignage.Formulas
             return vehiclesList;
         }
 
-        private static VehiclePanel GetVehiclePanel(TransportLineModel line)
+        private static VehiclePanel GetVehiclePanel(TransportLineModel line, int platformNumber)
         {
             _entityManager = World.DefaultGameObjectInjectionWorld.EntityManager;
             _entityManager.TryGetComponent<Position>(line.Platform, out var platformPosition);
             _entityManager.TryGetComponent<WaitingPassengers>(line.Platform, out var waitingPassengers);
-            var platformDebugName = _nameSystem.GetDebugName(line.Platform);
             var title = GetName("StationSignage.NextTrain");
             var subtitle = GetName("StationSignage.AverageWaitTime");
             var message = waitingPassengers.m_AverageWaitingTime + GetName("StationSignage.Seconds");
@@ -299,11 +417,12 @@ namespace StationSignage.Formulas
             var wheelchairIcon = Transparent;
             var occupancyImagesList = new List<string>();
             var footer = GetWelcomeMessage(Entity.Null);
-            if (_destinationsDictionary.ContainsKey(platformDebugName))
+            if (_destinationsDictionary.ContainsKey(line.Platform))
             {
-                footer = _destinationsDictionary[platformDebugName];
+                footer = GetRouteBuildingName(_destinationsDictionary[line.Platform]);
             }
             RouteVehicle? closestTrain = null;
+            
             foreach (var vehicle in line.Vehicles)
             {
                 _entityManager.TryGetComponent<TrainNavigation>(vehicle.m_Vehicle, out var vehiclePosition);
@@ -316,11 +435,13 @@ namespace StationSignage.Formulas
                     _entityManager.TryGetComponent<Controller>(vehicle.m_Vehicle, out var controller);
                     _entityManager.TryGetComponent<PublicTransport>(controller.m_Controller, out var publicTransport);
                     _entityManager.TryGetBuffer<LayoutElement>(vehicle.m_Vehicle, true, out var layoutElements);
-                    footer = GetDestinationBinding(vehicle.m_Vehicle, line.Waypoints);
-                    if (publicTransport.m_State.HasFlag(PublicTransportFlags.Arriving))
+                    var destinationName =
+                        GetRouteBuildingName(GetDestinationBinding(vehicle.m_Vehicle, line.Waypoints));
+                    if (destinationName is { Length: > 1 })
                     {
-                        _destinationsDictionary[platformDebugName] = GetDestinationBinding(vehicle.m_Vehicle, line.Waypoints);
+                        footer = destinationName;
                     }
+                    _destinationsDictionary[line.Platform] = GetDestinationBinding(vehicle.m_Vehicle, line.Waypoints);
                     for (var index = 0; index < layoutElements.Length; ++index)
                     {
                         var layoutElement = layoutElements[index];
@@ -464,10 +585,11 @@ namespace StationSignage.Formulas
             return letter + index;
         }
         
-        private static string GetRouteBuildingName(RouteWaypoint routeWaypoint)
+        private static string GetRouteBuildingName(RouteWaypoint? routeWaypoint)
         {
+            if (routeWaypoint == null) return "";
             _entityManager = World.DefaultGameObjectInjectionWorld.EntityManager;
-            _entityManager.TryGetComponent<Connected>(routeWaypoint.m_Waypoint, out var connected);
+            _entityManager.TryGetComponent<Connected>(routeWaypoint.Value.m_Waypoint, out var connected);
             _entityManager.TryGetComponent<Owner>(connected.m_Connected, out var owner);
             if (_entityManager.TryGetComponent<Owner>(owner.m_Owner, out var buildingOwner))
             {
@@ -476,7 +598,7 @@ namespace StationSignage.Formulas
             return _nameSystem.GetName(owner.m_Owner).Translate();
         }
         
-        private static string GetDestinationBinding(Entity vehicle, List<RouteWaypoint> stops)
+        private static RouteWaypoint? GetDestinationBinding(Entity vehicle, List<RouteWaypoint> stops)
         {
             try
             {
@@ -498,38 +620,38 @@ namespace StationSignage.Formulas
             
                 if (distanceFront < distanceBack)
                 {
-                    return GetRouteBuildingName(stops[0]);
+                    return stops[0];
                 }
 
-                return GetRouteBuildingName(stops[stops.Count - 1]);
+                return stops[stops.Count - 1];
             }
             catch (Exception e)
             {
-                return "";
+                return null;
             }
         }
         
-        private static string GetDestinationBinding(Entity platform, List<RouteWaypoint> stops, int platformNumber)
+        [CanBeNull]
+        private static Tuple<RouteWaypoint?, string> GetDestinationBinding(Entity platform, List<RouteWaypoint> stops, int platformNumber)
         {
             try
             {
-                var platformName = _nameSystem.GetDebugName(platform);
-                if (_destinationsDictionary.ContainsKey(platformName))
+                if (_destinationsDictionary.ContainsKey(platform))
                 {
-                    return _destinationsDictionary[platformName];
+                    return Tuple.Create(_destinationsDictionary[platform], GetRouteBuildingName(_destinationsDictionary[platform]));
                 }
 
                 var index = platformNumber switch
                 {
-                    0 => stops.Count - 1,
-                    _ => 0
+                    0 => 0,
+                    _ => stops.Count - 1
                 };
 
-                return GetRouteBuildingName(stops[index]);
+                return Tuple.Create<RouteWaypoint?, string>(stops[index], GetRouteBuildingName(stops[index]));
             }
             catch (Exception e)
             {
-                return "";
+                return null;
             }
         }
 
@@ -643,24 +765,24 @@ namespace StationSignage.Formulas
             PlatformLineBinding.Invoke(buildingRef, 0);
         
         public static VehiclePanel GetFirstPlatformVehiclePanel(Entity buildingRef) =>
-            VehiclePanelBinding.Invoke(PlatformLineBinding.Invoke(buildingRef, 0));
+            VehiclePanelBinding.Invoke(PlatformLineBinding.Invoke(buildingRef, 0), 0);
         
         public static TransportLineModel GetSecondPlatformLine(Entity buildingRef) => 
             PlatformLineBinding.Invoke(buildingRef, 1);
         
         public static VehiclePanel GetSecondPlatformVehiclePanel(Entity buildingRef) =>
-            VehiclePanelBinding.Invoke(PlatformLineBinding.Invoke(buildingRef, 1));
+            VehiclePanelBinding.Invoke(PlatformLineBinding.Invoke(buildingRef, 1), 1);
         
         public static TransportLineModel GetThirdPlatformLine(Entity buildingRef) => 
             PlatformLineBinding.Invoke(buildingRef, 2);
         
         public static VehiclePanel GetThirdPlatformVehiclePanel(Entity buildingRef) =>
-            VehiclePanelBinding.Invoke(PlatformLineBinding.Invoke(buildingRef, 2));
+            VehiclePanelBinding.Invoke(PlatformLineBinding.Invoke(buildingRef, 2), 2);
         
         public static TransportLineModel GetFourthPlatformLine(Entity buildingRef) => 
             PlatformLineBinding.Invoke(buildingRef, 3);
         
         public static VehiclePanel GetFourthPlatformVehiclePanel(Entity buildingRef) =>
-            VehiclePanelBinding.Invoke(PlatformLineBinding.Invoke(buildingRef, 3));
+            VehiclePanelBinding.Invoke(PlatformLineBinding.Invoke(buildingRef, 3), 3);
     }
 }
