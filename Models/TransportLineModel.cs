@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using Game.Routes;
+using StationSignage.Utils;
 using Unity.Entities;
 using Unity.Mathematics;
 
@@ -42,9 +43,9 @@ public class TransportLineModel(
     public string ConnectionsTitle = connectionsTitle;
     public string ConnectionsLineName = connectionsLineName;
     
-    public string GetSubwayConnectionOperatorIcon() => OperatorIcon + "Icon";
+    public string GetSubwayConnectionOperatorIcon() => GetFirstSubwayConnection().OperatorIcon;
     
-    public string GetTrainConnectionOperatorIcon() => OperatorIcon + "Icon";
+    public string GetTrainConnectionOperatorIcon() => GetFirstTrainConnection().OperatorIcon;
 
     public LineConnection GetFirstSubwayConnection() => GetConnectionOrEmpty(0);
     
@@ -71,11 +72,12 @@ public class TransportLineModel(
         catch (Exception)
         {
             return new LineConnection(
-                "1",
-                UnityEngine.Color.yellow,
-                UnityEngine.Color.black,
-                UnityEngine.Color.white,
-                ""
+                LineUtils.Empty,
+                UnityEngine.Color.clear,
+                UnityEngine.Color.clear,
+                UnityEngine.Color.clear,
+                "",
+                LineUtils.Transparent
             );
         }
     }

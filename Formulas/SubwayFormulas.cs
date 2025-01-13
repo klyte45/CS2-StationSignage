@@ -35,15 +35,6 @@ namespace StationSignage.Formulas
         private static LinesSystem _linesSystem;
         private static NameSystem _nameSystem;
         private static EntityManager _entityManager;
-        
-        private static readonly string[] ViaMobilidadeLines = ["5", "8", "9", "17"];
-        private const string LinhaUni = "6";
-
-        private const string ViaQuatro = "4";
-        
-        private const string Transparent = "Transparent";
-
-        private const string Empty = "----";
 
         public SubwayFormulas()
         {
@@ -51,16 +42,6 @@ namespace StationSignage.Formulas
             _nameSystem ??= World.DefaultGameObjectInjectionWorld.GetOrCreateSystemManaged<NameSystem>();
             _entityManager = World.DefaultGameObjectInjectionWorld.EntityManager;
         }
-
-        private static readonly StringDictionary  ModelsDictionary = new()
-        {
-            { "SubwayCar01", "A" },
-            { "SubwayEngine01", "A" },
-            { "EU_TrainPassengerCar01", "B" },
-            { "EU_TrainPassengerEngine01", "B" },
-            { "NA_TrainPassengerCar01", "C" },
-            { "NA_TrainPassengerEngine01", "C" },
-        };
         
         private static Dictionary<Entity, RouteWaypoint?> _destinationsDictionary = new();
         
@@ -92,20 +73,20 @@ namespace StationSignage.Formulas
             {
                 Mod.log.Info(e);
                 return new TransportLineModel(
-                    "---",
-                    "---",
-                    "---",
+                    LineUtils.Empty,
+                    LineUtils.Empty,
+                    LineUtils.Empty,
                     Color.black,
                     Color.white,
                     [],
                     [],
                     Entity.Null,
                     0,
-                    Transparent,
-                    "---",
+                    LineUtils.Transparent,
+                    LineUtils.Empty,
                     new float3(),
-                    "---",
-                    "---",
+                    LineUtils.Empty,
+                    LineUtils.Empty,
                     []
                 );
             }
@@ -121,12 +102,12 @@ namespace StationSignage.Formulas
             {
                 Mod.log.Info(e);
                 return new VehiclePanel(
-                    "---",
-                    "---",
-                    "---",
-                    "---",
+                    LineUtils.Empty,
+                    LineUtils.Empty,
+                    LineUtils.Empty,
+                    LineUtils.Empty,
                     [Transparent, Transparent, Transparent, Transparent, Transparent, Transparent, Transparent, Transparent],
-                    "---",
+                    LineUtils.Empty,
                     Transparent,
                     Transparent,
                     Color.black,
@@ -137,7 +118,9 @@ namespace StationSignage.Formulas
                 );
             }
         };
-        
+
+        private const string Transparent = LineUtils.Transparent;
+
         private static readonly Func<string> TimeNameBinding = () => GetName("StationSignage.Time") + DateTime.Now.ToString("HH:mm tt");
 
         private static LinePanel GetLine(int index)
@@ -161,26 +144,10 @@ namespace StationSignage.Formulas
                 foreach (var route in routes) {
                     if (entityManager.TryGetComponent<Owner>(route.m_Waypoint, out var owner))
                     {
-                        entityManager.TryGetComponent<RouteNumber>(owner.m_Owner, out var routeNumber);
                         entityManager.TryGetComponent<Game.Routes.Color>(owner.m_Owner, out var routeColor);
                         entityManager.TryGetComponent<Transform>(selectedEntity, out var transform);
-                        var operatorLogo = "Operator01";
-
-                        var fullLineName = _nameSystem.GetName(owner.m_Owner).Translate();
-
-                        var lineName = fullLineName.Split(' ').LastOrDefault();
-                        var routeString = lineName is { Length: >= 1 and <= 2 } ? lineName : routeNumber.m_Number.ToString();
-                        if (ViaMobilidadeLines.Contains(routeString))
-                        {
-                            operatorLogo = "Operator02";
-                        } else if (ViaQuatro == routeString)
-                        {
-                            operatorLogo = "Operator03";
-                        } else if (LinhaUni == routeString)
-                        {
-                            operatorLogo = "Operator04";
-                        }
-
+                        var routeName = LineUtils.GetRouteName(owner.m_Owner);
+                        
                         var stops = GetStops(owner.m_Owner);
                         var singleStops = GetSingleStops(stops);
                         var connections = GetConnections(route.m_Waypoint, stops, singleStops);
@@ -188,21 +155,21 @@ namespace StationSignage.Formulas
                         var connectionsLineName = "";
                         if (connections.Count == 0)
                         {
-                            connectionsTitle = "---";
-                            connectionsLineName = fullLineName;
+                            connectionsTitle = LineUtils.Empty;
+                            connectionsLineName = routeName.Item1;
                         }
                         lineNumberList.Add(
                             new TransportLineModel(
                                 "Subway",
-                                fullLineName,
-                                routeString,
+                                routeName.Item1,
+                                routeName.Item2,
                                 routeColor.m_Color,
                                 GetOnPrimaryColor(routeColor.m_Color),
                                 singleStops,
                                 GetVehicles(owner.m_Owner),
                                 route.m_Waypoint,
                                 index,
-                                operatorLogo,
+                                LineUtils.GetSubwayOperator(routeName.Item2),
                                 GetDestinationBinding(route.m_Waypoint, stops, index)?.Item2,
                                 transform.m_Position,
                                 connectionsTitle,
@@ -232,22 +199,18 @@ namespace StationSignage.Formulas
                 foreach (var route in routes) {
                     if (_entityManager.TryGetComponent<Owner>(route.m_Waypoint, out var owner))
                     {
-                        _entityManager.TryGetComponent<RouteNumber>(owner.m_Owner, out var routeNumber);
                         _entityManager.TryGetComponent<Game.Routes.Color>(owner.m_Owner, out var routeColor);
 
-                        var fullLineName = _nameSystem.GetName(owner.m_Owner).Translate();
-
-                        var lineName = fullLineName.Split(' ').LastOrDefault();
-                        var routeString = lineName is { Length: >= 1 and <= 2 } ? lineName : routeNumber.m_Number.ToString();
-
+                        var routeName = LineUtils.GetRouteName(owner.m_Owner);
                        
                         connections.Add(
                             new LineConnection(
-                                routeString,
+                                routeName.Item2,
                                 routeColor.m_Color,
                                 GetOnPrimaryColor(routeColor.m_Color),
                                 Color.white,
-                                "Subway"
+                                "Subway",
+                                LineUtils.GetSubwayOperator(routeName.Item2) + LineUtils.Icon
                             )
                         );
                     }
@@ -505,7 +468,7 @@ namespace StationSignage.Formulas
             var trainNameColor = Color.clear;
             if (closestTrain != null)
             {
-                closestTrainName = GetTrainNameBinding(closestTrain.Value.m_Vehicle);
+                closestTrainName = LineUtils.GetTrainName(closestTrain.Value.m_Vehicle);
                 trainNameColor = Color.yellow;
             }
 
@@ -536,53 +499,6 @@ namespace StationSignage.Formulas
                 trainNameColor,
                 levelOccupancyColor
             );
-        }
-        
-        private static string GetTrainNameBinding(Entity entityRef)
-        {
-            _entityManager = World.DefaultGameObjectInjectionWorld.EntityManager;
-            _nameSystem ??= World.DefaultGameObjectInjectionWorld.GetOrCreateSystemManaged<NameSystem>();
-            _entityManager.TryGetComponent<Controller>(entityRef, out var controller);
-            _entityManager.TryGetComponent<Owner>(controller.m_Controller, out var owner);
-            _entityManager.TryGetBuffer<LayoutElement>(controller.m_Controller, true, out var layoutElements);
-            _entityManager.TryGetBuffer<OwnedVehicle>(owner.m_Owner, true, out var ownerVehicles);
-            var index = 0;
-    
-            for (var i = 0; i < ownerVehicles.Length; ++i)
-            {
-                if (ownerVehicles[i].m_Vehicle == controller.m_Controller)
-                {
-                    index = i;
-                }
-            }
-
-            index++;
-            var entityDebugName = _nameSystem.GetDebugName(entityRef);
-            var entityName = entityDebugName.TrimEnd(' ').Remove(entityDebugName.LastIndexOf(' ') + 1);
-            var letter = "F";
-            if (ModelsDictionary.ContainsKey(entityName))
-            {
-                letter = ModelsDictionary[entityName];
-            }
-
-            if (entityName.Contains("Subway"))
-            {
-                letter = "A";
-            }
-            if (entityName.Contains("EU_Train"))
-            {
-                letter = "B";
-            }
-            if (entityName.Contains("NA_Train"))
-            {
-                letter = "C";
-            }
-            if (index < 10)
-            {
-                return letter + "0" + index;
-            }
-
-            return letter + index;
         }
         
         private static string GetRouteBuildingName(RouteWaypoint? routeWaypoint)
@@ -660,7 +576,7 @@ namespace StationSignage.Formulas
             _entityManager = World.DefaultGameObjectInjectionWorld.EntityManager;
             try
             {
-                if (transportLineData == null) return Empty;
+                if (transportLineData == null) return LineUtils.Empty;
                 _entityManager.TryGetComponent<RouteNumber>(transportLineData.Value.entity, out var routeNumber);
                 var lineName = _nameSystem.GetName(transportLineData.Value.entity).Translate().Split(' ').LastOrDefault();
                 return lineName is { Length: >= 1 and <= 2 } ? lineName : routeNumber.m_Number.ToString();
@@ -668,7 +584,7 @@ namespace StationSignage.Formulas
             catch (Exception e)
             {
                 Mod.log.Info(e);
-                return Empty;
+                return LineUtils.Empty;
             }
         }
         
@@ -676,7 +592,7 @@ namespace StationSignage.Formulas
         {
             try
             {
-                if (transportLineData == null) return Empty;
+                if (transportLineData == null) return LineUtils.Empty;
 
                 if (!transportLineData.Value.active)
                 {
@@ -703,7 +619,7 @@ namespace StationSignage.Formulas
             catch (Exception e)
             {
                 Mod.log.Info(e);
-                return Empty;
+                return LineUtils.Empty;
             }
         }
         
@@ -753,7 +669,7 @@ namespace StationSignage.Formulas
         public static LinePanel? GetFifthLine(Entity buildingRef) => LineBinding.Invoke(4);
         
         public static string GetTimeString(Entity buildingRef) => 
-            TimeNameBinding.Invoke() ?? Empty;
+            TimeNameBinding.Invoke() ?? LineUtils.Empty;
         
         public static string GetLinesStatusMessage(Entity buildingRef) => 
             GetName("StationSignage.LineStatus");

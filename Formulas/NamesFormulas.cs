@@ -5,6 +5,7 @@ using Game.Common;
 using Game.Net;
 using Game.SceneFlow;
 using Game.UI;
+using StationSignage.Models;
 using StationSignage.Utils;
 using Unity.Entities;
 
@@ -58,6 +59,11 @@ public class NamesFormulas
         return _nameSystem.GetRenderedLabelName(aggregated.m_Aggregate);
     };
     
+    private static readonly Func<TransportLineModel, TransportLineModel, string> GetSubwayBoardingNameBinding = (firstLine, secondLine) =>
+    {
+        return firstLine.Number == secondLine.Number ? GetBoardingName(Entity.Null) : GetTransferName(Entity.Null);
+    };
+    
     public static string GetMainBuildingName(Entity buildingRef) => GetMainBuildingNameBinding(buildingRef);
     
     public static string GetBuildingName(Entity buildingRef) => GetBuildingNameBinding(buildingRef);
@@ -75,4 +81,7 @@ public class NamesFormulas
     public static string GetTransferName(Entity buildingRef) => GetName("StationSignage.Transfer");
     
     public static string GetBoardingName(Entity buildingRef) => GetName("StationSignage.Boarding");
+    
+    public static string GetSubwayFirstSecondPlatformBoardingName(Entity buildingRef) => 
+        GetSubwayBoardingNameBinding.Invoke(SubwayFormulas.GetFirstPlatformLine(buildingRef), SubwayFormulas.GetSecondPlatformLine(buildingRef));
 }

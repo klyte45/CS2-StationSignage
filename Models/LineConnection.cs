@@ -7,7 +7,8 @@ public class LineConnection(
     Color color,
     Color onPrimaryColor,
     Color backgroundColor,
-    string type
+    string type,
+    string operatorIcon
 )
 {
     public string Number => number;
@@ -15,4 +16,6 @@ public class LineConnection(
     public Color OnPrimaryColor => onPrimaryColor;
     public Color BackgroundColor => backgroundColor;
     public string Type => type;
+    
+    public string OperatorIcon => operatorIcon;
 }
