@@ -205,7 +205,7 @@
                 <scale x="0.08" y="0.08" z="1" />
               </transform>
               <textMesh fontName="">
-                <text formulae="&amp;StationSignage.Formulas.SubwayFormulas;GetTimeString">Hora: 17:40</text>
+                <text formulae="&amp;StationSignage.Formulas.NamesFormulas;GetTimeString">Hora: 17:40</text>
               </textMesh>
               <defaultStyle>
                 <color formulae="&amp;StationSignage.Formulas.SubwayFormulas;GetFirstPlatformLine.OnPrimaryColor">FFFFFFFF</color>
@@ -787,7 +787,7 @@
                 <scale x="0.08" y="0.08" z="1" />
               </transform>
               <textMesh fontName="">
-                <text formulae="&amp;StationSignage.Formulas.SubwayFormulas;GetTimeString">Hora: 17:40</text>
+                <text formulae="&amp;StationSignage.Formulas.NamesFormulas;GetTimeString">Hora: 17:40</text>
               </textMesh>
               <defaultStyle>
                 <color formulae="&amp;StationSignage.Formulas.SubwayFormulas;GetFirstPlatformLine.OnPrimaryColor">FFFFFFFF</color>
@@ -1545,7 +1545,7 @@
                 <scale x="0.08" y="0.08" z="1" />
               </transform>
               <textMesh fontName="">
-                <text formulae="&amp;StationSignage.Formulas.SubwayFormulas;GetTimeString">Hora: 17:40</text>
+                <text formulae="&amp;StationSignage.Formulas.NamesFormulas;GetTimeString">Hora: 17:40</text>
               </textMesh>
               <defaultStyle>
                 <color formulae="&amp;StationSignage.Formulas.SubwayFormulas;GetFirstPlatformLine.OnPrimaryColor">FFFFFFFF</color>
@@ -2127,7 +2127,7 @@
                 <scale x="0.08" y="0.08" z="1" />
               </transform>
               <textMesh fontName="">
-                <text formulae="&amp;StationSignage.Formulas.SubwayFormulas;GetTimeString">Hora: 17:40</text>
+                <text formulae="&amp;StationSignage.Formulas.NamesFormulas;GetTimeString">Hora: 17:40</text>
               </textMesh>
               <defaultStyle>
                 <color formulae="&amp;StationSignage.Formulas.SubwayFormulas;GetFirstPlatformLine.OnPrimaryColor">FFFFFFFF</color>
@@ -5799,7 +5799,7 @@
                     <scale x="0.1" y="0.1" z="1" />
                   </transform>
                   <imageMesh atlas="StationSignage:main">
-                    <image formulae="&amp;StationSignage.Formulas.SubwayFormulas;GetFirstPlatformLine.GetSubwayConnectionOperatorImage">Operator01Icon</image>
+                    <image formulae="&amp;StationSignage.Formulas.SubwayFormulas;GetFirstPlatformLine.GetSubwayConnectionOperatorIcon">Operator01Icon</image>
                   </imageMesh>
                   <defaultStyle>
                     <color formulae="&amp;StationSignage.Formulas.SubwayFormulas;GetFirstPlatformLine.OnPrimaryColor">FFFFFFFF</color>
@@ -6623,7 +6623,7 @@
                     <scale x="0.1" y="0.1" z="1" />
                   </transform>
                   <imageMesh atlas="StationSignage:main">
-                    <image formulae="&amp;StationSignage.Formulas.SubwayFormulas;GetFirstPlatformLine.GetSubwayConnectionOperatorImage">Operator01Icon</image>
+                    <image formulae="&amp;StationSignage.Formulas.SubwayFormulas;GetFirstPlatformLine.GetSubwayConnectionOperatorIcon">Operator01Icon</image>
                   </imageMesh>
                   <defaultStyle>
                     <color formulae="&amp;StationSignage.Formulas.SubwayFormulas;GetFirstPlatformLine.OnPrimaryColor">FFFFFFFF</color>
@@ -7425,7 +7425,7 @@
                     <scale x="0.1" y="0.1" z="1" />
                   </transform>
                   <imageMesh atlas="StationSignage:main">
-                    <image formulae="&amp;StationSignage.Formulas.SubwayFormulas;GetFirstPlatformLine.GetSubwayConnectionOperatorImage">Operator01Icon</image>
+                    <image formulae="&amp;StationSignage.Formulas.SubwayFormulas;GetFirstPlatformLine.GetSubwayConnectionOperatorIcon">Operator01Icon</image>
                   </imageMesh>
                   <defaultStyle>
                     <color formulae="&amp;StationSignage.Formulas.SubwayFormulas;GetFirstPlatformLine.OnPrimaryColor">FFFFFFFF</color>
@@ -8249,7 +8249,7 @@
                     <scale x="0.1" y="0.1" z="1" />
                   </transform>
                   <imageMesh atlas="StationSignage:main">
-                    <image formulae="&amp;StationSignage.Formulas.SubwayFormulas;GetFirstPlatformLine.GetSubwayConnectionOperatorImage">Operator01Icon</image>
+                    <image formulae="&amp;StationSignage.Formulas.SubwayFormulas;GetFirstPlatformLine.GetSubwayConnectionOperatorIcon">Operator01Icon</image>
                   </imageMesh>
                   <defaultStyle>
                     <color formulae="&amp;StationSignage.Formulas.SubwayFormulas;GetFirstPlatformLine.OnPrimaryColor">FFFFFFFF</color>
@@ -9021,7 +9021,7 @@
                 <scale x="0.07" y="0.07" z="1" />
               </transform>
               <textMesh fontName="">
-                <text formulae="&amp;StationSignage.Formulas.SubwayFormulas;GetTimeString">Hora: 17:40</text>
+                <text formulae="&amp;StationSignage.Formulas.NamesFormulas;GetTimeString">Hora: 17:40</text>
               </textMesh>
               <defaultStyle>
                 <color formulae="&amp;StationSignage.Formulas.SubwayFormulas;GetFirstPlatformLine.OnPrimaryColor">FFFFFFFF</color>
@@ -9917,7 +9917,7 @@
                 <scale x="0.07" y="0.07" z="1" />
               </transform>
               <textMesh fontName="">
-                <text formulae="&amp;StationSignage.Formulas.SubwayFormulas;GetTimeString">Hora: 17:40</text>
+                <text formulae="&amp;StationSignage.Formulas.NamesFormulas;GetTimeString">Hora: 17:40</text>
               </textMesh>
               <defaultStyle>
                 <color formulae="&amp;StationSignage.Formulas.SubwayFormulas;GetFirstPlatformLine.OnPrimaryColor">FFFFFFFF</color>
@@ -10859,7 +10859,7 @@
                 <scale x="0.08" y="0.08" z="1" />
               </transform>
               <textMesh fontName="">
-                <text formulae="&amp;StationSignage.Formulas.SubwayFormulas;GetTimeString">Hora: 17:40</text>
+                <text formulae="&amp;StationSignage.Formulas.NamesFormulas;GetTimeString">Hora: 17:40</text>
               </textMesh>
               <defaultStyle>
                 <color formulae="&amp;StationSignage.Formulas.SubwayFormulas;GetSecondPlatformLine.OnPrimaryColor">FFFFFFFF</color>
@@ -11441,7 +11441,7 @@
                 <scale x="0.08" y="0.08" z="1" />
               </transform>
               <textMesh fontName="">
-                <text formulae="&amp;StationSignage.Formulas.SubwayFormulas;GetTimeString">Hora: 17:40</text>
+                <text formulae="&amp;StationSignage.Formulas.NamesFormulas;GetTimeString">Hora: 17:40</text>
               </textMesh>
               <defaultStyle>
                 <color formulae="&amp;StationSignage.Formulas.SubwayFormulas;GetSecondPlatformLine.OnPrimaryColor">FFFFFFFF</color>
@@ -12199,7 +12199,7 @@
                 <scale x="0.08" y="0.08" z="1" />
               </transform>
               <textMesh fontName="">
-                <text formulae="&amp;StationSignage.Formulas.SubwayFormulas;GetTimeString">Hora: 17:40</text>
+                <text formulae="&amp;StationSignage.Formulas.NamesFormulas;GetTimeString">Hora: 17:40</text>
               </textMesh>
               <defaultStyle>
                 <color formulae="&amp;StationSignage.Formulas.SubwayFormulas;GetSecondPlatformLine.OnPrimaryColor">FFFFFFFF</color>
@@ -12781,7 +12781,7 @@
                 <scale x="0.08" y="0.08" z="1" />
               </transform>
               <textMesh fontName="">
-                <text formulae="&amp;StationSignage.Formulas.SubwayFormulas;GetTimeString">Hora: 17:40</text>
+                <text formulae="&amp;StationSignage.Formulas.NamesFormulas;GetTimeString">Hora: 17:40</text>
               </textMesh>
               <defaultStyle>
                 <color formulae="&amp;StationSignage.Formulas.SubwayFormulas;GetSecondPlatformLine.OnPrimaryColor">FFFFFFFF</color>
@@ -16453,7 +16453,7 @@
                     <scale x="0.1" y="0.1" z="1" />
                   </transform>
                   <imageMesh atlas="StationSignage:main">
-                    <image formulae="&amp;StationSignage.Formulas.SubwayFormulas;GetSecondPlatformLine.GetSubwayConnectionOperatorImage">Operator01Icon</image>
+                    <image formulae="&amp;StationSignage.Formulas.SubwayFormulas;GetSecondPlatformLine.GetSubwayConnectionOperatorIcon">Operator01Icon</image>
                   </imageMesh>
                   <defaultStyle>
                     <color formulae="&amp;StationSignage.Formulas.SubwayFormulas;GetSecondPlatformLine.OnPrimaryColor">FFFFFFFF</color>
@@ -17277,7 +17277,7 @@
                     <scale x="0.1" y="0.1" z="1" />
                   </transform>
                   <imageMesh atlas="StationSignage:main">
-                    <image formulae="&amp;StationSignage.Formulas.SubwayFormulas;GetSecondPlatformLine.GetSubwayConnectionOperatorImage">Operator01Icon</image>
+                    <image formulae="&amp;StationSignage.Formulas.SubwayFormulas;GetSecondPlatformLine.GetSubwayConnectionOperatorIcon">Operator01Icon</image>
                   </imageMesh>
                   <defaultStyle>
                     <color formulae="&amp;StationSignage.Formulas.SubwayFormulas;GetSecondPlatformLine.OnPrimaryColor">FFFFFFFF</color>
@@ -18079,7 +18079,7 @@
                     <scale x="0.1" y="0.1" z="1" />
                   </transform>
                   <imageMesh atlas="StationSignage:main">
-                    <image formulae="&amp;StationSignage.Formulas.SubwayFormulas;GetSecondPlatformLine.GetSubwayConnectionOperatorImage">Operator01Icon</image>
+                    <image formulae="&amp;StationSignage.Formulas.SubwayFormulas;GetSecondPlatformLine.GetSubwayConnectionOperatorIcon">Operator01Icon</image>
                   </imageMesh>
                   <defaultStyle>
                     <color formulae="&amp;StationSignage.Formulas.SubwayFormulas;GetSecondPlatformLine.OnPrimaryColor">FFFFFFFF</color>
@@ -18903,7 +18903,7 @@
                     <scale x="0.1" y="0.1" z="1" />
                   </transform>
                   <imageMesh atlas="StationSignage:main">
-                    <image formulae="&amp;StationSignage.Formulas.SubwayFormulas;GetSecondPlatformLine.GetSubwayConnectionOperatorImage">Operator01Icon</image>
+                    <image formulae="&amp;StationSignage.Formulas.SubwayFormulas;GetSecondPlatformLine.GetSubwayConnectionOperatorIcon">Operator01Icon</image>
                   </imageMesh>
                   <defaultStyle>
                     <color formulae="&amp;StationSignage.Formulas.SubwayFormulas;GetSecondPlatformLine.OnPrimaryColor">FFFFFFFF</color>
@@ -19675,7 +19675,7 @@
                 <scale x="0.07" y="0.07" z="1" />
               </transform>
               <textMesh fontName="">
-                <text formulae="&amp;StationSignage.Formulas.SubwayFormulas;GetTimeString">Hora: 17:40</text>
+                <text formulae="&amp;StationSignage.Formulas.NamesFormulas;GetTimeString">Hora: 17:40</text>
               </textMesh>
               <defaultStyle>
                 <color formulae="&amp;StationSignage.Formulas.SubwayFormulas;GetSecondPlatformLine.OnPrimaryColor">FFFFFFFF</color>
@@ -20571,7 +20571,7 @@
                 <scale x="0.07" y="0.07" z="1" />
               </transform>
               <textMesh fontName="">
-                <text formulae="&amp;StationSignage.Formulas.SubwayFormulas;GetTimeString">Hora: 17:40</text>
+                <text formulae="&amp;StationSignage.Formulas.NamesFormulas;GetTimeString">Hora: 17:40</text>
               </textMesh>
               <defaultStyle>
                 <color formulae="&amp;StationSignage.Formulas.SubwayFormulas;GetSecondPlatformLine.OnPrimaryColor">FFFFFFFF</color>

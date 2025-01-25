@@ -29,6 +29,10 @@ public class NamesFormulas
           _linesSystem ??= World.DefaultGameObjectInjectionWorld.GetExistingSystemManaged<LinesSystem>();
         _nameSystem ??= World.DefaultGameObjectInjectionWorld.GetOrCreateSystemManaged<NameSystem>();
         _entityManager = World.DefaultGameObjectInjectionWorld.EntityManager;
+        if (id is null || id.Length == 0)
+        {
+            return "";
+        }
         return GameManager.instance.localizationManager.activeDictionary.TryGetValue(id, out var name) ? name : "";
     }
     
@@ -37,8 +41,7 @@ public class NamesFormulas
         _linesSystem ??= World.DefaultGameObjectInjectionWorld.GetExistingSystemManaged<LinesSystem>();
         _nameSystem ??= World.DefaultGameObjectInjectionWorld.GetOrCreateSystemManaged<NameSystem>();
         _entityManager = World.DefaultGameObjectInjectionWorld.EntityManager;
-        _entityManager.TryGetComponent<Owner>(buildingRef, out var owner);
-        return _nameSystem.GetRenderedLabelName(owner.m_Owner);
+        return _entityManager.TryGetComponent<Owner>(buildingRef, out var owner) ? _nameSystem.GetRenderedLabelName(owner.m_Owner) : "";
     };
 
     private static readonly Func<Entity, string> GetBuildingNameBinding = (buildingRef) =>
@@ -46,6 +49,7 @@ public class NamesFormulas
         _linesSystem ??= World.DefaultGameObjectInjectionWorld.GetExistingSystemManaged<LinesSystem>();
         _nameSystem ??= World.DefaultGameObjectInjectionWorld.GetOrCreateSystemManaged<NameSystem>();
         _entityManager = World.DefaultGameObjectInjectionWorld.EntityManager;
+
         return _nameSystem.GetRenderedLabelName(buildingRef);
     };
     
@@ -55,8 +59,7 @@ public class NamesFormulas
         _nameSystem ??= World.DefaultGameObjectInjectionWorld.GetOrCreateSystemManaged<NameSystem>();
         _entityManager = World.DefaultGameObjectInjectionWorld.EntityManager;
         _entityManager.TryGetComponent<Building>(buildingRef, out var building);
-        _entityManager.TryGetComponent<Aggregated>(building.m_RoadEdge, out var aggregated);
-        return _nameSystem.GetRenderedLabelName(aggregated.m_Aggregate);
+        return _entityManager.TryGetComponent<Aggregated>(building.m_RoadEdge, out var aggregated) ? _nameSystem.GetRenderedLabelName(aggregated.m_Aggregate) : "";
     };
     
     private static readonly Func<TransportLineModel, TransportLineModel, string> GetSubwayBoardingNameBinding = (firstLine, secondLine) =>
@@ -81,6 +84,11 @@ public class NamesFormulas
     public static string GetTransferName(Entity buildingRef) => GetName("StationSignage.Transfer");
     
     public static string GetBoardingName(Entity buildingRef) => GetName("StationSignage.Boarding");
+    
+    private static readonly Func<string> TimeNameBinding = () => GetName("StationSignage.Time") + DateTime.Now.ToString("HH:mm tt");
+    
+    public static string GetTimeString(Entity buildingRef) => 
+        TimeNameBinding.Invoke() ?? LineUtils.Empty;
     
     public static string GetSubwayFirstSecondPlatformBoardingName(Entity buildingRef) => 
         GetSubwayBoardingNameBinding.Invoke(SubwayFormulas.GetFirstPlatformLine(buildingRef), SubwayFormulas.GetSecondPlatformLine(buildingRef));

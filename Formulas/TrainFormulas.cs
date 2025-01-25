@@ -4,10 +4,10 @@ using Unity.Entities;
 
 namespace StationSignage.Formulas
 {
-    public class SubwayFormulas
+    public class TrainFormulas
     {
-        private const TransportType TransportType = Game.Prefabs.TransportType.Subway;
-        
+        private const TransportType TransportType = Game.Prefabs.TransportType.Train;
+
         public static LinePanel GetFirstLine(Entity buildingRef) => TransportFormulas.LineBinding.Invoke(0, TransportType);
         
         public static LinePanel? GetSecondLine(Entity buildingRef) => TransportFormulas.LineBinding.Invoke(1, TransportType);
