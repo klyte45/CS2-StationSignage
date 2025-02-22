@@ -22,5 +22,6 @@
   "StationSignage.Connections": "Connections",
   "StationSignage.Transfer": "Transfer",
   "StationSignage.Boarding": "Boarding",
-  "StationSignage.NoSmoking": "No Smoking"
+  "StationSignage.NoSmoking": "No Smoking",
+  "StationSignage.WelcomeSubway": "Welcome to %s's Subway"
 }

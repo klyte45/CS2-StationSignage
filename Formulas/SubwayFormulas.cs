@@ -1,5 +1,10 @@
-﻿using Game.Prefabs;
+﻿using Game.City;
+using Game.Prefabs;
+using Game.SceneFlow;
+using Game.Simulation;
+using Game.UI;
 using StationSignage.Models;
+using StationSignage.Utils;
 using Unity.Entities;
 
 namespace StationSignage.Formulas
@@ -7,6 +12,7 @@ namespace StationSignage.Formulas
     public class SubwayFormulas
     {
         private const TransportType TransportType = Game.Prefabs.TransportType.Subway;
+        private static CityConfigurationSystem _cityConfigurationSystem;
         
         public static LinePanel GetFirstLine(Entity buildingRef) => TransportFormulas.LineBinding.Invoke(0, TransportType);
         
@@ -17,6 +23,17 @@ namespace StationSignage.Formulas
         public static LinePanel? GetFourthLine(Entity buildingRef) => TransportFormulas.LineBinding.Invoke(3, TransportType);
         
         public static LinePanel? GetFifthLine(Entity buildingRef) => TransportFormulas.LineBinding.Invoke(4, TransportType);
+        
+        public static string GetWelcomeMessage(Entity buildingRef)
+        {
+            _cityConfigurationSystem ??= World.DefaultGameObjectInjectionWorld.GetOrCreateSystemManaged<CityConfigurationSystem>();
+            return GetName("StationSignage.WelcomeSubway").Replace("%s", _cityConfigurationSystem.cityName);
+        }
+        
+        private static string GetName(string id)
+        {
+            return GameManager.instance.localizationManager.activeDictionary.TryGetValue(id, out var name) ? name : "";
+        }
         
         public static TransportLineModel GetFirstPlatformLine(Entity buildingRef) => 
             TransportFormulas.PlatformLineBinding.Invoke(buildingRef, 0, TransportType);

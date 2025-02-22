@@ -4,6 +4,8 @@ using Game.Buildings;
 using Game.Common;
 using Game.Net;
 using Game.SceneFlow;
+using Game.Settings;
+using Game.Simulation;
 using Game.UI;
 using StationSignage.Models;
 using StationSignage.Utils;
@@ -15,6 +17,7 @@ public class NamesFormulas
 {
     private static LinesSystem _linesSystem;
     private static NameSystem _nameSystem;
+    private static TimeSystem _timeSystem;
     private static EntityManager _entityManager;
     
     public NamesFormulas()
@@ -87,10 +90,17 @@ public class NamesFormulas
     
     public static string GetNoSmoking(Entity buildingRef) => GetName("StationSignage.NoSmoking");
     
-    private static readonly Func<string> TimeNameBinding = () => GetName("StationSignage.Time") + DateTime.Now.ToString("HH:mm tt");
-    
-    public static string GetTimeString(Entity buildingRef) => 
-        TimeNameBinding.Invoke() ?? LineUtils.Empty;
+    public static string GetTimeString(Entity buildingRef)
+    {
+        _timeSystem ??= World.DefaultGameObjectInjectionWorld.GetOrCreateSystemManaged<TimeSystem>();
+        var timeFormat = SharedSettings.instance.userInterface.timeFormat switch
+        {
+            InterfaceSettings.TimeFormat.TwentyFourHours => "HH:mm",
+            InterfaceSettings.TimeFormat.TwelveHours => "hh:mm tt",
+            _ => "HH:mm"
+        };
+        return GetName("StationSignage.Time") + _timeSystem.GetCurrentDateTime().ToString(timeFormat);
+    }
     
     public static string GetSubwayFirstSecondPlatformBoardingName(Entity buildingRef) => 
         GetSubwayBoardingNameBinding.Invoke(SubwayFormulas.GetFirstPlatformLine(buildingRef), SubwayFormulas.GetSecondPlatformLine(buildingRef));

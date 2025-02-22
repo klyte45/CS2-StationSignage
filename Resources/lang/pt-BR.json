@@ -22,5 +22,6 @@
   "StationSignage.Connections": "Conexoes",
   "StationSignage.Transfer": "Tranferencia",
   "StationSignage.Boarding": "Enbarque",
-  "StationSignage.NoSmoking": "Nao Fume"
+  "StationSignage.NoSmoking": "Nao Fume",
+  "StationSignage.WelcomeSubway": "Bem vindo ao metro de %s"
 }

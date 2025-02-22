@@ -8,6 +8,7 @@ using Game.Pathfind;
 using Game.Prefabs;
 using Game.Routes;
 using Game.SceneFlow;
+using Game.Simulation;
 using Game.UI;
 using Game.UI.InGame;
 using Game.Vehicles;
@@ -35,9 +36,6 @@ public static class TransportFormulas
         
      public static string GetLinesStatusMessage(Entity buildingRef) => 
          GetName("StationSignage.LineStatus");
-
-     public static string GetWelcomeMessage(Entity buildingRef) => 
-         "Welcome to Moema's Subway";
         
         private static string GetName(string id)
         {
@@ -105,7 +103,7 @@ public static class TransportFormulas
                     Transparent,
                     Transparent,
                     Color.black,
-                    GetWelcomeMessage(Entity.Null),
+                    SubwayFormulas.GetWelcomeMessage(Entity.Null),
                     Color.clear,
                     Color.clear,
                     Color.clear
@@ -365,32 +363,48 @@ public static class TransportFormulas
             var bikeIcon = Transparent;
             var wheelchairIcon = Transparent;
             var occupancyImagesList = new List<string>();
-            var footer = GetWelcomeMessage(Entity.Null);
+            var footer = SubwayFormulas.GetWelcomeMessage(Entity.Null);
             if (_destinationsDictionary.ContainsKey(line.Platform))
             {
                 footer = GetRouteBuildingName(_destinationsDictionary[line.Platform]);
             }
             RouteVehicle? closestTrain = null;
-            
+            float closestDistance = float.MaxValue;
             foreach (var vehicle in line.Vehicles)
             {
-                _entityManager.TryGetComponent<TrainNavigation>(vehicle.m_Vehicle, out var vehiclePosition);
-                _entityManager.TryGetComponent<PathInformation>(vehicle.m_Vehicle, out var pathInformation);
-                var closestDistance = math.distance(platformPosition.m_Position, vehiclePosition.m_Front.m_Position);
-                if (line.Platform == pathInformation.m_Destination)
+                if (_entityManager.TryGetComponent<TrainNavigation>(vehicle.m_Vehicle, out var vehiclePosition) &&
+                    _entityManager.TryGetComponent<PathInformation>(vehicle.m_Vehicle, out var pathInformation))
                 {
-                    bikeIcon = "BikeRoundIcon";
+                    // Check if the platform matches the vehicle's destination
+                    if (line.Platform == pathInformation.m_Destination)
+                    {
+                        // Calculate the distance between the platform and the vehicle's front position
+                        float distance = math.distance(platformPosition.m_Position, vehiclePosition.m_Front.m_Position);
+
+                        // Update the closest vehicle if this one is closer
+                        if (distance < closestDistance)
+                        {
+                            closestDistance = distance;
+                            closestTrain = vehicle;
+                        }
+                    }
+                }
+            }
+
+            if (closestTrain != null)
+            {
+                bikeIcon = "BikeRoundIcon";
                     wheelchairIcon = "WheelchairRoundIcon";
-                    _entityManager.TryGetComponent<Controller>(vehicle.m_Vehicle, out var controller);
+                    _entityManager.TryGetComponent<Controller>(closestTrain.Value.m_Vehicle, out var controller);
                     _entityManager.TryGetComponent<PublicTransport>(controller.m_Controller, out var publicTransport);
-                    _entityManager.TryGetBuffer<LayoutElement>(vehicle.m_Vehicle, true, out var layoutElements);
+                    _entityManager.TryGetBuffer<LayoutElement>(closestTrain.Value.m_Vehicle, true, out var layoutElements);
                     var destinationName =
-                        GetRouteBuildingName(GetDestinationBinding(vehicle.m_Vehicle, line.Waypoints));
+                        GetRouteBuildingName(GetDestinationBinding(closestTrain.Value.m_Vehicle, line.Waypoints));
                     if (destinationName is { Length: > 1 })
                     {
                         footer = destinationName;
                     }
-                    _destinationsDictionary[line.Platform] = GetDestinationBinding(vehicle.m_Vehicle, line.Waypoints);
+                    _destinationsDictionary[line.Platform] = GetDestinationBinding(closestTrain.Value.m_Vehicle, line.Waypoints);
                     for (var index = 0; index < layoutElements.Length; ++index)
                     {
                         var layoutElement = layoutElements[index];
@@ -422,7 +436,6 @@ public static class TransportFormulas
                         occupancyImagesList.Add(capacity + "Capacity" + engineDirection + carType);
                     }
                    
-                    closestTrain = vehicle;
                     if (publicTransport.m_State.HasFlag(PublicTransportFlags.Boarding))
                     {
                         title = GetName("StationSignage.TrainOnPlatform");
@@ -441,13 +454,11 @@ public static class TransportFormulas
                             case > 0:
                                 title = GetName("StationSignage.NextTrain");
                                 subtitle = GetName("StationSignage.DistanceToStation");
-                                message = ((int)closestDistance) + GetName("StationSignage.MetersAway");
+                                message = GetDistance(closestDistance);
                                 messageColor = Color.yellow;
                                 break;
                         }
                     }
-                    break;
-                }
             }
 
             var closestTrainName = "Train Model";
@@ -485,6 +496,16 @@ public static class TransportFormulas
                 trainNameColor,
                 levelOccupancyColor
             );
+        }
+
+        private static string GetDistance(float distance)
+        {
+            if (distance >= 1000)
+            {
+                var distanceInKilometers = distance / 1000f;
+                return $"{distanceInKilometers:0.0} " + GetName("StationSignage.KilometersAway");
+            }
+            return $"{distance:0} " + GetName("StationSignage.MetersAway");
         }
         
         private static string GetRouteBuildingName(RouteWaypoint? routeWaypoint)
