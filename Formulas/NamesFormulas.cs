@@ -85,6 +85,8 @@ public class NamesFormulas
     
     public static string GetBoardingName(Entity buildingRef) => GetName("StationSignage.Boarding");
     
+    public static string GetNoSmoking(Entity buildingRef) => GetName("StationSignage.NoSmoking");
+    
     private static readonly Func<string> TimeNameBinding = () => GetName("StationSignage.Time") + DateTime.Now.ToString("HH:mm tt");
     
     public static string GetTimeString(Entity buildingRef) => 

@@ -8,7 +8,8 @@
   "StationSignage.PrepareForBoarding": "Prepare For Boarding",
   "StationSignage.NextTrain": "Next Train",
   "StationSignage.DistanceToStation": "Distance to Station",
-  "StationSignage.MetersAway": " meters away",
+  "StationSignage.MetersAway": " mm away",
+  "StationSignage.KilometersAway": " km away",
   "StationSignage.BoardingNow": "Boarding Now",
   "StationSignage.LevelOfOccupancy": "Level of Occupancy",
   "StationSignage.AverageWaitTime": "Average Wait Time:",
@@ -20,5 +21,6 @@
   "StationSignage.TrainsTo": "Trains To",
   "StationSignage.Connections": "Connections",
   "StationSignage.Transfer": "Transfer",
-  "StationSignage.Boarding": "Boarding"
+  "StationSignage.Boarding": "Boarding",
+  "StationSignage.NoSmoking": "No Smoking"
 }
