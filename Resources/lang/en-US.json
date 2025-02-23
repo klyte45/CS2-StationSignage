@@ -8,7 +8,7 @@
   "StationSignage.PrepareForBoarding": "Prepare For Boarding",
   "StationSignage.NextTrain": "Next Train",
   "StationSignage.DistanceToStation": "Distance to Station",
-  "StationSignage.MetersAway": " mm away",
+  "StationSignage.MetersAway": " meters away",
   "StationSignage.KilometersAway": " km away",
   "StationSignage.BoardingNow": "Boarding Now",
   "StationSignage.LevelOfOccupancy": "Level of Occupancy",

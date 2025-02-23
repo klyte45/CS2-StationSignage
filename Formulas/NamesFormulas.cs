@@ -102,6 +102,9 @@ public class NamesFormulas
         return GetName("StationSignage.Time") + _timeSystem.GetCurrentDateTime().ToString(timeFormat);
     }
     
+    public static string GetLinesStatusMessage(Entity buildingRef) => 
+        GetName("StationSignage.LineStatus");
+    
     public static string GetSubwayFirstSecondPlatformBoardingName(Entity buildingRef) => 
         GetSubwayBoardingNameBinding.Invoke(SubwayFormulas.GetFirstPlatformLine(buildingRef), SubwayFormulas.GetSecondPlatformLine(buildingRef));
 }

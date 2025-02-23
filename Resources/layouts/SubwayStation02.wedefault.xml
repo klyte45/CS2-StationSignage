@@ -134,7 +134,7 @@
                 <offsetRotation x="-0" y="0" z="0" />
                 <scale x="0" y="0" z="1" />
               </transform>
-              <textMesh fontName="">
+              <textMesh fontName="HelveticaWorld_Regular">
                 <text></text>
               </textMesh>
               <defaultStyle>
@@ -204,7 +204,7 @@
                 <offsetRotation x="-0" y="0" z="0" />
                 <scale x="0.08" y="0.08" z="1" />
               </transform>
-              <textMesh fontName="">
+              <textMesh fontName="HelveticaWorld_Regular">
                 <text formulae="&amp;StationSignage.Formulas.NamesFormulas;GetTimeString">Hora: 17:40</text>
               </textMesh>
               <defaultStyle>
@@ -272,7 +272,7 @@
                 <offsetRotation x="-0" y="0" z="0" />
                 <scale x="0.06" y="0.06" z="1" />
               </transform>
-              <textMesh fontName="" maxWidthMeters="1.65">
+              <textMesh fontName="HelveticaWorld_Regular" maxWidthMeters="1.65">
                 <text formulae="&amp;StationSignage.Formulas.SubwayFormulas;GetFirstPlatformVehiclePanel.Footer">Bem Vindo ao Metro de Sao Paulod a awdawd awd wad</text>
               </textMesh>
               <defaultStyle>
@@ -340,7 +340,7 @@
                 <offsetRotation x="-0" y="0" z="0" />
                 <scale x="0.055" y="0.055" z="1" />
               </transform>
-              <textMesh fontName="">
+              <textMesh fontName="HelveticaWorld_Regular">
                 <text formulae="&amp;StationSignage.Formulas.SubwayFormulas;GetFirstPlatformVehiclePanel.Subtitle">NEW TEXT</text>
               </textMesh>
               <defaultStyle>
@@ -364,7 +364,7 @@
                 <offsetRotation x="-0" y="0" z="0" />
                 <scale x="0.055" y="0.055" z="1" />
               </transform>
-              <textMesh fontName="">
+              <textMesh fontName="HelveticaWorld_Regular">
                 <text formulae="&amp;StationSignage.Formulas.SubwayFormulas;GetFirstPlatformVehiclePanel.TrainMessage">NEW TEXT</text>
               </textMesh>
               <defaultStyle>
@@ -388,7 +388,7 @@
                 <offsetRotation x="-0" y="0" z="0" />
                 <scale x="0.055" y="0.055" z="1" />
               </transform>
-              <textMesh fontName="">
+              <textMesh fontName="HelveticaWorld_Regular">
                 <text formulae="&amp;StationSignage.Formulas.SubwayFormulas;GetFirstPlatformVehiclePanel.TrainName">NEW TEXT</text>
               </textMesh>
               <defaultStyle>
@@ -412,7 +412,7 @@
                 <offsetRotation x="-0" y="0" z="0" />
                 <scale x="0" y="0" z="1" />
               </transform>
-              <textMesh fontName="">
+              <textMesh fontName="HelveticaWorld_Regular">
                 <text></text>
               </textMesh>
               <defaultStyle>
@@ -531,7 +531,7 @@
                   <offsetRotation x="-0" y="0" z="0" />
                   <scale x="0.05" y="0.05" z="1" />
                 </transform>
-                <textMesh fontName="">
+                <textMesh fontName="HelveticaWorld_Regular">
                   <text formulae="&amp;StationSignage.Formulas.SubwayFormulas;GetFirstPlatformVehiclePanel.OccupancyTitle">NEW TEXT</text>
                 </textMesh>
                 <defaultStyle>
@@ -604,7 +604,7 @@
                 <offsetRotation x="-0" y="0" z="0" />
                 <scale x="0.06" y="0.06" z="1" />
               </transform>
-              <textMesh fontName="" maxWidthMeters="0.72">
+              <textMesh fontName="HelveticaWorld_Regular" maxWidthMeters="0.72">
                 <text formulae="&amp;StationSignage.Formulas.SubwayFormulas;GetFirstPlatformVehiclePanel.Title">&amp;StationSignage.Formulas.SubwayFormulas;GetFirstPlatformVehiclePanel.Title</text>
               </textMesh>
               <defaultStyle>
@@ -716,7 +716,7 @@
                 <offsetRotation x="-0" y="0" z="0" />
                 <scale x="0" y="0" z="1" />
               </transform>
-              <textMesh fontName="">
+              <textMesh fontName="HelveticaWorld_Regular">
                 <text></text>
               </textMesh>
               <defaultStyle>
@@ -786,7 +786,7 @@
                 <offsetRotation x="-0" y="0" z="0" />
                 <scale x="0.08" y="0.08" z="1" />
               </transform>
-              <textMesh fontName="">
+              <textMesh fontName="HelveticaWorld_Regular">
                 <text formulae="&amp;StationSignage.Formulas.NamesFormulas;GetTimeString">Hora: 17:40</text>
               </textMesh>
               <defaultStyle>
@@ -854,7 +854,7 @@
                 <offsetRotation x="-0" y="0" z="0" />
                 <scale x="0.06" y="0.06" z="1" />
               </transform>
-              <textMesh fontName="" maxWidthMeters="1.65">
+              <textMesh fontName="HelveticaWorld_Regular" maxWidthMeters="1.65">
                 <text formulae="&amp;StationSignage.Formulas.SubwayFormulas;GetFirstPlatformVehiclePanel.Footer">Bem Vindo ao Metro de Sao Paulo</text>
               </textMesh>
               <defaultStyle>
@@ -900,7 +900,7 @@
                 <offsetRotation x="-0" y="0" z="0" />
                 <scale x="0.06" y="0.06" z="1" />
               </transform>
-              <textMesh fontName="" maxWidthMeters="0.72">
+              <textMesh fontName="HelveticaWorld_Regular" maxWidthMeters="0.72">
                 <text formulae="&amp;StationSignage.Formulas.SubwayFormulas;GetFirstPlatformVehiclePanel.Title">&amp;StationSignage.Formulas.SubwayFormulas;GetFirstPlatformVehiclePanel.Title</text>
               </textMesh>
               <defaultStyle>
@@ -946,7 +946,7 @@
                 <offsetRotation x="-0" y="0" z="0" />
                 <scale x="0.055" y="0.055" z="1" />
               </transform>
-              <textMesh fontName="">
+              <textMesh fontName="HelveticaWorld_Regular">
                 <text formulae="&amp;StationSignage.Formulas.SubwayFormulas;GetFirstPlatformVehiclePanel.Subtitle">NEW TEXT</text>
               </textMesh>
               <defaultStyle>
@@ -970,7 +970,7 @@
                 <offsetRotation x="-0" y="0" z="0" />
                 <scale x="0.055" y="0.055" z="1" />
               </transform>
-              <textMesh fontName="">
+              <textMesh fontName="HelveticaWorld_Regular">
                 <text formulae="&amp;StationSignage.Formulas.SubwayFormulas;GetFirstPlatformVehiclePanel.TrainMessage">NEW TEXT</text>
               </textMesh>
               <defaultStyle>
@@ -994,7 +994,7 @@
                 <offsetRotation x="-0" y="0" z="0" />
                 <scale x="0.055" y="0.055" z="1" />
               </transform>
-              <textMesh fontName="">
+              <textMesh fontName="HelveticaWorld_Regular">
                 <text formulae="&amp;StationSignage.Formulas.SubwayFormulas;GetFirstPlatformVehiclePanel.TrainName">NEW TEXT</text>
               </textMesh>
               <defaultStyle>
@@ -1018,7 +1018,7 @@
                 <offsetRotation x="-0" y="0" z="0" />
                 <scale x="0" y="0" z="1" />
               </transform>
-              <textMesh fontName="">
+              <textMesh fontName="HelveticaWorld_Regular">
                 <text></text>
               </textMesh>
               <defaultStyle>
@@ -1137,7 +1137,7 @@
                   <offsetRotation x="-0" y="0" z="0" />
                   <scale x="0.05" y="0.05" z="1" />
                 </transform>
-                <textMesh fontName="">
+                <textMesh fontName="HelveticaWorld_Regular">
                   <text formulae="&amp;StationSignage.Formulas.SubwayFormulas;GetFirstPlatformVehiclePanel.OccupancyTitle">NEW TEXT</text>
                 </textMesh>
                 <defaultStyle>
@@ -1474,7 +1474,7 @@
                 <offsetRotation x="-0" y="0" z="0" />
                 <scale x="0" y="0" z="1" />
               </transform>
-              <textMesh fontName="">
+              <textMesh fontName="HelveticaWorld_Regular">
                 <text></text>
               </textMesh>
               <defaultStyle>
@@ -1544,7 +1544,7 @@
                 <offsetRotation x="-0" y="0" z="0" />
                 <scale x="0.08" y="0.08" z="1" />
               </transform>
-              <textMesh fontName="">
+              <textMesh fontName="HelveticaWorld_Regular">
                 <text formulae="&amp;StationSignage.Formulas.NamesFormulas;GetTimeString">Hora: 17:40</text>
               </textMesh>
               <defaultStyle>
@@ -1612,7 +1612,7 @@
                 <offsetRotation x="-0" y="0" z="0" />
                 <scale x="0.06" y="0.06" z="1" />
               </transform>
-              <textMesh fontName="" maxWidthMeters="1.65">
+              <textMesh fontName="HelveticaWorld_Regular" maxWidthMeters="1.65">
                 <text formulae="&amp;StationSignage.Formulas.SubwayFormulas;GetFirstPlatformVehiclePanel.Footer">Bem Vindo ao Metro de Sao Paulod a awdawd awd wad</text>
               </textMesh>
               <defaultStyle>
@@ -1680,7 +1680,7 @@
                 <offsetRotation x="-0" y="0" z="0" />
                 <scale x="0.055" y="0.055" z="1" />
               </transform>
-              <textMesh fontName="">
+              <textMesh fontName="HelveticaWorld_Regular">
                 <text formulae="&amp;StationSignage.Formulas.SubwayFormulas;GetFirstPlatformVehiclePanel.Subtitle">NEW TEXT</text>
               </textMesh>
               <defaultStyle>
@@ -1704,7 +1704,7 @@
                 <offsetRotation x="-0" y="0" z="0" />
                 <scale x="0.055" y="0.055" z="1" />
               </transform>
-              <textMesh fontName="">
+              <textMesh fontName="HelveticaWorld_Regular">
                 <text formulae="&amp;StationSignage.Formulas.SubwayFormulas;GetFirstPlatformVehiclePanel.TrainMessage">NEW TEXT</text>
               </textMesh>
               <defaultStyle>
@@ -1728,7 +1728,7 @@
                 <offsetRotation x="-0" y="0" z="0" />
                 <scale x="0.055" y="0.055" z="1" />
               </transform>
-              <textMesh fontName="">
+              <textMesh fontName="HelveticaWorld_Regular">
                 <text formulae="&amp;StationSignage.Formulas.SubwayFormulas;GetFirstPlatformVehiclePanel.TrainName">NEW TEXT</text>
               </textMesh>
               <defaultStyle>
@@ -1752,7 +1752,7 @@
                 <offsetRotation x="-0" y="0" z="0" />
                 <scale x="0" y="0" z="1" />
               </transform>
-              <textMesh fontName="">
+              <textMesh fontName="HelveticaWorld_Regular">
                 <text></text>
               </textMesh>
               <defaultStyle>
@@ -1871,7 +1871,7 @@
                   <offsetRotation x="-0" y="0" z="0" />
                   <scale x="0.05" y="0.05" z="1" />
                 </transform>
-                <textMesh fontName="">
+                <textMesh fontName="HelveticaWorld_Regular">
                   <text formulae="&amp;StationSignage.Formulas.SubwayFormulas;GetFirstPlatformVehiclePanel.OccupancyTitle">NEW TEXT</text>
                 </textMesh>
                 <defaultStyle>
@@ -1944,7 +1944,7 @@
                 <offsetRotation x="-0" y="0" z="0" />
                 <scale x="0.06" y="0.06" z="1" />
               </transform>
-              <textMesh fontName="" maxWidthMeters="0.72">
+              <textMesh fontName="HelveticaWorld_Regular" maxWidthMeters="0.72">
                 <text formulae="&amp;StationSignage.Formulas.SubwayFormulas;GetFirstPlatformVehiclePanel.Title">&amp;StationSignage.Formulas.SubwayFormulas;GetFirstPlatformVehiclePanel.Title</text>
               </textMesh>
               <defaultStyle>
@@ -2056,7 +2056,7 @@
                 <offsetRotation x="-0" y="0" z="0" />
                 <scale x="0" y="0" z="1" />
               </transform>
-              <textMesh fontName="">
+              <textMesh fontName="HelveticaWorld_Regular">
                 <text></text>
               </textMesh>
               <defaultStyle>
@@ -2126,7 +2126,7 @@
                 <offsetRotation x="-0" y="0" z="0" />
                 <scale x="0.08" y="0.08" z="1" />
               </transform>
-              <textMesh fontName="">
+              <textMesh fontName="HelveticaWorld_Regular">
                 <text formulae="&amp;StationSignage.Formulas.NamesFormulas;GetTimeString">Hora: 17:40</text>
               </textMesh>
               <defaultStyle>
@@ -2194,7 +2194,7 @@
                 <offsetRotation x="-0" y="0" z="0" />
                 <scale x="0.06" y="0.06" z="1" />
               </transform>
-              <textMesh fontName="" maxWidthMeters="1.65">
+              <textMesh fontName="HelveticaWorld_Regular" maxWidthMeters="1.65">
                 <text formulae="&amp;StationSignage.Formulas.SubwayFormulas;GetFirstPlatformVehiclePanel.Footer">Bem Vindo ao Metro de Sao Paulo</text>
               </textMesh>
               <defaultStyle>
@@ -2262,7 +2262,7 @@
                 <offsetRotation x="-0" y="0" z="0" />
                 <scale x="0.055" y="0.055" z="1" />
               </transform>
-              <textMesh fontName="">
+              <textMesh fontName="HelveticaWorld_Regular">
                 <text formulae="&amp;StationSignage.Formulas.SubwayFormulas;GetFirstPlatformVehiclePanel.Subtitle">NEW TEXT</text>
               </textMesh>
               <defaultStyle>
@@ -2286,7 +2286,7 @@
                 <offsetRotation x="-0" y="0" z="0" />
                 <scale x="0.055" y="0.055" z="1" />
               </transform>
-              <textMesh fontName="">
+              <textMesh fontName="HelveticaWorld_Regular">
                 <text formulae="&amp;StationSignage.Formulas.SubwayFormulas;GetFirstPlatformVehiclePanel.TrainMessage">NEW TEXT</text>
               </textMesh>
               <defaultStyle>
@@ -2310,7 +2310,7 @@
                 <offsetRotation x="-0" y="0" z="0" />
                 <scale x="0.055" y="0.055" z="1" />
               </transform>
-              <textMesh fontName="">
+              <textMesh fontName="HelveticaWorld_Regular">
                 <text formulae="&amp;StationSignage.Formulas.SubwayFormulas;GetFirstPlatformVehiclePanel.TrainName">NEW TEXT</text>
               </textMesh>
               <defaultStyle>
@@ -2334,7 +2334,7 @@
                 <offsetRotation x="-0" y="0" z="0" />
                 <scale x="0" y="0" z="1" />
               </transform>
-              <textMesh fontName="">
+              <textMesh fontName="HelveticaWorld_Regular">
                 <text></text>
               </textMesh>
               <defaultStyle>
@@ -2453,7 +2453,7 @@
                   <offsetRotation x="-0" y="0" z="0" />
                   <scale x="0.05" y="0.05" z="1" />
                 </transform>
-                <textMesh fontName="">
+                <textMesh fontName="HelveticaWorld_Regular">
                   <text formulae="&amp;StationSignage.Formulas.SubwayFormulas;GetFirstPlatformVehiclePanel.OccupancyTitle">NEW TEXT</text>
                 </textMesh>
                 <defaultStyle>
@@ -2526,7 +2526,7 @@
                 <offsetRotation x="-0" y="0" z="0" />
                 <scale x="0.06" y="0.06" z="1" />
               </transform>
-              <textMesh fontName="" maxWidthMeters="0.72">
+              <textMesh fontName="HelveticaWorld_Regular" maxWidthMeters="0.72">
                 <text formulae="&amp;StationSignage.Formulas.SubwayFormulas;GetFirstPlatformVehiclePanel.Title">&amp;StationSignage.Formulas.SubwayFormulas;GetFirstPlatformVehiclePanel.Title</text>
               </textMesh>
               <defaultStyle>
@@ -2858,7 +2858,7 @@
                 <offsetRotation x="-0" y="0" z="0" />
                 <scale x="0.3671875" y="0.3671875" z="1" />
               </transform>
-              <textMesh fontName="" maxWidthMeters="3">
+              <textMesh fontName="HelveticaWorld_Regular" maxWidthMeters="3">
                 <text formulae="&amp;StationSignage.Formulas.NamesFormulas;GetBuildingName">Aspen Square</text>
               </textMesh>
               <defaultStyle>
@@ -2928,7 +2928,7 @@
                 <offsetRotation x="-0" y="0" z="0" />
                 <scale x="0.112187505" y="0.112187505" z="1" />
               </transform>
-              <textMesh fontName="">
+              <textMesh fontName="HelveticaWorld_Regular">
                 <text formulae="&amp;StationSignage.Formulas.SubwayFormulas;GetFirstPlatformLine.Name">Subway Line 6</text>
               </textMesh>
               <defaultStyle>
@@ -2974,7 +2974,7 @@
                 <offsetRotation x="-0" y="0" z="0" />
                 <scale x="0.240781263" y="0.240781263" z="1" />
               </transform>
-              <textMesh fontName="" maxWidthMeters="0.7">
+              <textMesh fontName="HelveticaWorld_Regular" maxWidthMeters="0.7">
                 <text>Exit</text>
               </textMesh>
               <defaultStyle>
@@ -3022,7 +3022,7 @@
                 <offsetRotation x="-0" y="0" z="0" />
                 <scale x="0.139687508" y="0.139687508" z="1" />
               </transform>
-              <textMesh fontName="">
+              <textMesh fontName="HelveticaWorld_Regular">
                 <text formulae="&amp;StationSignage.Formulas.NamesFormulas;GetBuildingRoadName">Entrance A</text>
               </textMesh>
               <defaultStyle>
@@ -3116,7 +3116,7 @@
                 <offsetRotation x="-0" y="0" z="0" />
                 <scale x="0.240781263" y="0.240781263" z="1" />
               </transform>
-              <textMesh fontName="" maxWidthMeters="1.3">
+              <textMesh fontName="HelveticaWorld_Regular" maxWidthMeters="1.3">
                 <text formulae="&amp;StationSignage.Formulas.NamesFormulas;GetSubwayFirstSecondPlatformBoardingName">Boarding</text>
               </textMesh>
               <defaultStyle>
@@ -3164,7 +3164,7 @@
                 <offsetRotation x="-0" y="0" z="0" />
                 <scale x="0.139687508" y="0.139687508" z="1" />
               </transform>
-              <textMesh fontName="" maxWidthMeters="1.55">
+              <textMesh fontName="HelveticaWorld_Regular" maxWidthMeters="1.55">
                 <text formulae="&amp;StationSignage.Formulas.SubwayFormulas;GetSecondPlatformLine.Destination">&amp;StationSignage.Formulas.SubwayFormulas;GetFirstPlatformDestinationText</text>
               </textMesh>
               <defaultStyle>
@@ -3254,7 +3254,7 @@
                     <offsetRotation x="-0" y="0" z="0" />
                     <scale x="0.206093729" y="0.206093729" z="1" />
                   </transform>
-                  <textMesh fontName="" maxWidthMeters="0.25">
+                  <textMesh fontName="HelveticaWorld_Regular" maxWidthMeters="0.25">
                     <text formulae="&amp;StationSignage.Formulas.SubwayFormulas;GetSecondPlatformLine.Number">4</text>
                   </textMesh>
                   <defaultStyle>
@@ -3302,7 +3302,7 @@
                 <offsetRotation x="-0" y="0" z="0" />
                 <scale x="0.240781263" y="0.240781263" z="1" />
               </transform>
-              <textMesh fontName="" maxWidthMeters="0.7">
+              <textMesh fontName="HelveticaWorld_Regular" maxWidthMeters="0.7">
                 <text>Exit</text>
               </textMesh>
               <defaultStyle>
@@ -3350,7 +3350,7 @@
                 <offsetRotation x="-0" y="0" z="0" />
                 <scale x="0.139687508" y="0.139687508" z="1" />
               </transform>
-              <textMesh fontName="">
+              <textMesh fontName="HelveticaWorld_Regular">
                 <text formulae="&amp;StationSignage.Formulas.NamesFormulas;GetBuildingRoadName">Entrance A</text>
               </textMesh>
               <defaultStyle>
@@ -3574,7 +3574,7 @@
                 <offsetRotation x="-0" y="0" z="0" />
                 <scale x="0.3671875" y="0.3671875" z="1" />
               </transform>
-              <textMesh fontName="" maxWidthMeters="3">
+              <textMesh fontName="HelveticaWorld_Regular" maxWidthMeters="3">
                 <text formulae="&amp;StationSignage.Formulas.NamesFormulas;GetBuildingName">Aspen Square</text>
               </textMesh>
               <defaultStyle>
@@ -3644,7 +3644,7 @@
                 <offsetRotation x="-0" y="0" z="0" />
                 <scale x="0.112187505" y="0.112187505" z="1" />
               </transform>
-              <textMesh fontName="">
+              <textMesh fontName="HelveticaWorld_Regular">
                 <text formulae="&amp;StationSignage.Formulas.SubwayFormulas;GetFirstPlatformLine.Name">Subway Line 6</text>
               </textMesh>
               <defaultStyle>
@@ -3690,7 +3690,7 @@
                 <offsetRotation x="-0" y="0" z="0" />
                 <scale x="0.240781263" y="0.240781263" z="1" />
               </transform>
-              <textMesh fontName="" maxWidthMeters="0.7">
+              <textMesh fontName="HelveticaWorld_Regular" maxWidthMeters="0.7">
                 <text>Exit</text>
               </textMesh>
               <defaultStyle>
@@ -3738,7 +3738,7 @@
                 <offsetRotation x="-0" y="0" z="0" />
                 <scale x="0.139687508" y="0.139687508" z="1" />
               </transform>
-              <textMesh fontName="">
+              <textMesh fontName="HelveticaWorld_Regular">
                 <text formulae="&amp;StationSignage.Formulas.NamesFormulas;GetBuildingRoadName">Entrance A</text>
               </textMesh>
               <defaultStyle>
@@ -3832,7 +3832,7 @@
                 <offsetRotation x="-0" y="0" z="0" />
                 <scale x="0.240781263" y="0.240781263" z="1" />
               </transform>
-              <textMesh fontName="" maxWidthMeters="1.3">
+              <textMesh fontName="HelveticaWorld_Regular" maxWidthMeters="1.3">
                     <text formulae="&amp;StationSignage.Formulas.NamesFormulas;GetSubwayFirstSecondPlatformBoardingName">Boarding</text>
               </textMesh>
               <defaultStyle>
@@ -3880,7 +3880,7 @@
                 <offsetRotation x="-0" y="0" z="0" />
                 <scale x="0.139687508" y="0.139687508" z="1" />
               </transform>
-              <textMesh fontName="" maxWidthMeters="1.55">
+              <textMesh fontName="HelveticaWorld_Regular" maxWidthMeters="1.55">
                 <text formulae="&amp;StationSignage.Formulas.SubwayFormulas;GetSecondPlatformLine.Destination">&amp;StationSignage.Formulas.SubwayFormulas;GetFirstPlatformDestinationText</text>
               </textMesh>
               <defaultStyle>
@@ -3970,7 +3970,7 @@
                     <offsetRotation x="-0" y="0" z="0" />
                     <scale x="0.206093729" y="0.206093729" z="1" />
                   </transform>
-                  <textMesh fontName="" maxWidthMeters="0.25">
+                  <textMesh fontName="HelveticaWorld_Regular" maxWidthMeters="0.25">
                     <text formulae="&amp;StationSignage.Formulas.SubwayFormulas;GetSecondPlatformLine.Number">4</text>
                   </textMesh>
                   <defaultStyle>
@@ -4018,7 +4018,7 @@
                 <offsetRotation x="-0" y="0" z="0" />
                 <scale x="0.240781263" y="0.240781263" z="1" />
               </transform>
-              <textMesh fontName="" maxWidthMeters="0.7">
+              <textMesh fontName="HelveticaWorld_Regular" maxWidthMeters="0.7">
                 <text>Exit</text>
               </textMesh>
               <defaultStyle>
@@ -4066,7 +4066,7 @@
                 <offsetRotation x="-0" y="0" z="0" />
                 <scale x="0.139687508" y="0.139687508" z="1" />
               </transform>
-              <textMesh fontName="">
+              <textMesh fontName="HelveticaWorld_Regular">
                 <text formulae="&amp;StationSignage.Formulas.NamesFormulas;GetBuildingRoadName">Entrance A</text>
               </textMesh>
               <defaultStyle>
@@ -4268,7 +4268,7 @@
                 <offsetRotation x="-0" y="0" z="0" />
                 <scale x="0.3671875" y="0.3671875" z="1" />
               </transform>
-              <textMesh fontName="" maxWidthMeters="3">
+              <textMesh fontName="HelveticaWorld_Regular" maxWidthMeters="3">
                 <text formulae="&amp;StationSignage.Formulas.NamesFormulas;GetBuildingName">Aspen Square</text>
               </textMesh>
               <defaultStyle>
@@ -4338,7 +4338,7 @@
                 <offsetRotation x="-0" y="0" z="0" />
                 <scale x="0.112187505" y="0.112187505" z="1" />
               </transform>
-              <textMesh fontName="">
+              <textMesh fontName="HelveticaWorld_Regular">
                 <text formulae="&amp;StationSignage.Formulas.SubwayFormulas;GetFirstPlatformLine.Name">Subway Line 6</text>
               </textMesh>
               <defaultStyle>
@@ -4384,7 +4384,7 @@
                 <offsetRotation x="-0" y="0" z="0" />
                 <scale x="0.240781263" y="0.240781263" z="1" />
               </transform>
-              <textMesh fontName="" maxWidthMeters="0.7">
+              <textMesh fontName="HelveticaWorld_Regular" maxWidthMeters="0.7">
                 <text>Exit</text>
               </textMesh>
               <defaultStyle>
@@ -4432,7 +4432,7 @@
                 <offsetRotation x="-0" y="0" z="0" />
                 <scale x="0.139687508" y="0.139687508" z="1" />
               </transform>
-              <textMesh fontName="">
+              <textMesh fontName="HelveticaWorld_Regular">
                 <text formulae="&amp;StationSignage.Formulas.NamesFormulas;GetBuildingRoadName">Entrance A</text>
               </textMesh>
               <defaultStyle>
@@ -4526,7 +4526,7 @@
                 <offsetRotation x="-0" y="0" z="0" />
                 <scale x="0.240781263" y="0.240781263" z="1" />
               </transform>
-              <textMesh fontName="" maxWidthMeters="1.3">
+              <textMesh fontName="HelveticaWorld_Regular" maxWidthMeters="1.3">
                     <text formulae="&amp;StationSignage.Formulas.NamesFormulas;GetSubwayFirstSecondPlatformBoardingName">Boarding</text>
               </textMesh>
               <defaultStyle>
@@ -4574,7 +4574,7 @@
                 <offsetRotation x="-0" y="0" z="0" />
                 <scale x="0.139687508" y="0.139687508" z="1" />
               </transform>
-              <textMesh fontName="" maxWidthMeters="1.55">
+              <textMesh fontName="HelveticaWorld_Regular" maxWidthMeters="1.55">
                 <text formulae="&amp;StationSignage.Formulas.SubwayFormulas;GetSecondPlatformLine.Destination">&amp;StationSignage.Formulas.SubwayFormulas;GetFirstPlatformDestinationText</text>
               </textMesh>
               <defaultStyle>
@@ -4664,7 +4664,7 @@
                     <offsetRotation x="-0" y="0" z="0" />
                     <scale x="0.206093729" y="0.206093729" z="1" />
                   </transform>
-                  <textMesh fontName="" maxWidthMeters="0.25">
+                  <textMesh fontName="HelveticaWorld_Regular" maxWidthMeters="0.25">
                     <text formulae="&amp;StationSignage.Formulas.SubwayFormulas;GetSecondPlatformLine.Number">4</text>
                   </textMesh>
                   <defaultStyle>
@@ -4712,7 +4712,7 @@
                 <offsetRotation x="-0" y="0" z="0" />
                 <scale x="0.240781263" y="0.240781263" z="1" />
               </transform>
-              <textMesh fontName="" maxWidthMeters="0.7">
+              <textMesh fontName="HelveticaWorld_Regular" maxWidthMeters="0.7">
                 <text>Exit</text>
               </textMesh>
               <defaultStyle>
@@ -4760,7 +4760,7 @@
                 <offsetRotation x="-0" y="0" z="0" />
                 <scale x="0.139687508" y="0.139687508" z="1" />
               </transform>
-              <textMesh fontName="">
+              <textMesh fontName="HelveticaWorld_Regular">
                 <text formulae="&amp;StationSignage.Formulas.NamesFormulas;GetBuildingRoadName">Entrance A</text>
               </textMesh>
               <defaultStyle>
@@ -4896,7 +4896,7 @@
                 <offsetRotation x="-0" y="0" z="0" />
                 <scale x="0.3671875" y="0.3671875" z="1" />
               </transform>
-              <textMesh fontName="" maxWidthMeters="3">
+              <textMesh fontName="HelveticaWorld_Regular" maxWidthMeters="3">
                 <text formulae="&amp;StationSignage.Formulas.NamesFormulas;GetBuildingName">Aspen Square</text>
               </textMesh>
               <defaultStyle>
@@ -4966,7 +4966,7 @@
                 <offsetRotation x="-0" y="0" z="0" />
                 <scale x="0.112187505" y="0.112187505" z="1" />
               </transform>
-              <textMesh fontName="">
+              <textMesh fontName="HelveticaWorld_Regular">
                 <text formulae="&amp;StationSignage.Formulas.SubwayFormulas;GetFirstPlatformLine.Name">Subway Line 6</text>
               </textMesh>
               <defaultStyle>
@@ -5012,7 +5012,7 @@
                 <offsetRotation x="-0" y="0" z="0" />
                 <scale x="0.240781263" y="0.240781263" z="1" />
               </transform>
-              <textMesh fontName="" maxWidthMeters="0.7">
+              <textMesh fontName="HelveticaWorld_Regular" maxWidthMeters="0.7">
                 <text>Exit</text>
               </textMesh>
               <defaultStyle>
@@ -5060,7 +5060,7 @@
                 <offsetRotation x="-0" y="0" z="0" />
                 <scale x="0.139687508" y="0.139687508" z="1" />
               </transform>
-              <textMesh fontName="">
+              <textMesh fontName="HelveticaWorld_Regular">
                 <text formulae="&amp;StationSignage.Formulas.NamesFormulas;GetBuildingRoadName">Entrance A</text>
               </textMesh>
               <defaultStyle>
@@ -5154,7 +5154,7 @@
                 <offsetRotation x="-0" y="0" z="0" />
                 <scale x="0.240781263" y="0.240781263" z="1" />
               </transform>
-              <textMesh fontName="" maxWidthMeters="1.3">
+              <textMesh fontName="HelveticaWorld_Regular" maxWidthMeters="1.3">
                     <text formulae="&amp;StationSignage.Formulas.NamesFormulas;GetSubwayFirstSecondPlatformBoardingName">Boarding</text>
               </textMesh>
               <defaultStyle>
@@ -5202,7 +5202,7 @@
                 <offsetRotation x="-0" y="0" z="0" />
                 <scale x="0.139687508" y="0.139687508" z="1" />
               </transform>
-              <textMesh fontName="" maxWidthMeters="1.55">
+              <textMesh fontName="HelveticaWorld_Regular" maxWidthMeters="1.55">
                 <text formulae="&amp;StationSignage.Formulas.SubwayFormulas;GetSecondPlatformLine.Destination">&amp;StationSignage.Formulas.SubwayFormulas;GetFirstPlatformDestinationText</text>
               </textMesh>
               <defaultStyle>
@@ -5292,7 +5292,7 @@
                     <offsetRotation x="-0" y="0" z="0" />
                     <scale x="0.206093729" y="0.206093729" z="1" />
                   </transform>
-                  <textMesh fontName="" maxWidthMeters="0.25">
+                  <textMesh fontName="HelveticaWorld_Regular" maxWidthMeters="0.25">
                     <text formulae="&amp;StationSignage.Formulas.SubwayFormulas;GetSecondPlatformLine.Number">4</text>
                   </textMesh>
                   <defaultStyle>
@@ -5340,7 +5340,7 @@
                 <offsetRotation x="-0" y="0" z="0" />
                 <scale x="0.240781263" y="0.240781263" z="1" />
               </transform>
-              <textMesh fontName="" maxWidthMeters="0.7">
+              <textMesh fontName="HelveticaWorld_Regular" maxWidthMeters="0.7">
                 <text>Exit</text>
               </textMesh>
               <defaultStyle>
@@ -5388,7 +5388,7 @@
                 <offsetRotation x="-0" y="0" z="0" />
                 <scale x="0.139687508" y="0.139687508" z="1" />
               </transform>
-              <textMesh fontName="">
+              <textMesh fontName="HelveticaWorld_Regular">
                 <text formulae="&amp;StationSignage.Formulas.NamesFormulas;GetBuildingRoadName">Entrance A</text>
               </textMesh>
               <defaultStyle>
@@ -5590,7 +5590,7 @@
                 <offsetRotation x="-0" y="0" z="0" />
                 <scale x="0.163906261" y="0.163906261" z="1" />
               </transform>
-              <textMesh fontName="" maxWidthMeters="2.05">
+              <textMesh fontName="HelveticaWorld_Regular" maxWidthMeters="2.05">
                 <text formulae="&amp;StationSignage.Formulas.SubwayFormulas;GetFirstPlatformLine.Destination">Aspen Square dawd wadaw dwad aw</text>
               </textMesh>
               <defaultStyle>
@@ -5660,7 +5660,7 @@
                 <offsetRotation x="-0" y="0" z="0" />
                 <scale x="0.15125" y="0.15125" z="1" />
               </transform>
-              <textMesh fontName="" maxWidthMeters="0.9">
+              <textMesh fontName="HelveticaWorld_Regular" maxWidthMeters="0.9">
                 <text>Platform</text>
               </textMesh>
               <defaultStyle>
@@ -5684,7 +5684,7 @@
                 <offsetRotation x="-0" y="0" z="0" />
                 <scale x="0.09703126" y="0.09703126" z="1" />
               </transform>
-              <textMesh fontName="" maxWidthMeters="2.05">
+              <textMesh fontName="HelveticaWorld_Regular" maxWidthMeters="2.05">
                 <text>Trains To</text>
               </textMesh>
               <defaultStyle>
@@ -5729,7 +5729,7 @@
                   <offsetRotation x="-0" y="0" z="0" />
                   <scale x="0.121093757" y="0.121093757" z="1" />
                 </transform>
-                <textMesh fontName="" maxWidthMeters="1">
+                <textMesh fontName="HelveticaWorld_Regular" maxWidthMeters="1">
                   <text formulae="&amp;StationSignage.Formulas.SubwayFormulas;GetFirstPlatformLine.ConnectionsTitle">Connections</text>
                 </textMesh>
                 <defaultStyle>
@@ -5753,7 +5753,7 @@
                   <offsetRotation x="-0" y="0" z="0" />
                   <scale x="0.112187505" y="0.112187505" z="1" />
                 </transform>
-                <textMesh fontName="">
+                <textMesh fontName="HelveticaWorld_Regular">
                   <text formulae="&amp;StationSignage.Formulas.SubwayFormulas;GetFirstPlatformLine.ConnectionsLineName">Subway Line 6</text>
                 </textMesh>
                 <defaultStyle>
@@ -5843,7 +5843,7 @@
                       <offsetRotation x="-0" y="0" z="0" />
                       <scale x="0.08" y="0.08" z="1" />
                     </transform>
-                    <textMesh fontName="" maxWidthMeters="0.09">
+                    <textMesh fontName="HelveticaWorld_Regular" maxWidthMeters="0.09">
                       <text formulae="&amp;StationSignage.Formulas.SubwayFormulas;GetFirstPlatformLine.GetFirstSubwayConnection.Number">M1</text>
                     </textMesh>
                     <defaultStyle>
@@ -5889,7 +5889,7 @@
                       <offsetRotation x="-0" y="0" z="0" />
                       <scale x="0.08" y="0.08" z="1" />
                     </transform>
-                    <textMesh fontName="" maxWidthMeters="0.09">
+                    <textMesh fontName="HelveticaWorld_Regular" maxWidthMeters="0.09">
                       <text formulae="&amp;StationSignage.Formulas.SubwayFormulas;GetFirstPlatformLine.GetSecondSubwayConnection.Number">M1</text>
                     </textMesh>
                     <defaultStyle>
@@ -5935,7 +5935,7 @@
                       <offsetRotation x="-0" y="0" z="0" />
                       <scale x="0.08" y="0.08" z="1" />
                     </transform>
-                    <textMesh fontName="" maxWidthMeters="0.09">
+                    <textMesh fontName="HelveticaWorld_Regular" maxWidthMeters="0.09">
                       <text formulae="&amp;StationSignage.Formulas.SubwayFormulas;GetFirstPlatformLine.GetThirdSubwayConnection.Number">M1</text>
                     </textMesh>
                     <defaultStyle>
@@ -5981,7 +5981,7 @@
                       <offsetRotation x="-0" y="0" z="0" />
                       <scale x="0.08" y="0.08" z="1" />
                     </transform>
-                    <textMesh fontName="" maxWidthMeters="0.09">
+                    <textMesh fontName="HelveticaWorld_Regular" maxWidthMeters="0.09">
                       <text formulae="&amp;StationSignage.Formulas.SubwayFormulas;GetFirstPlatformLine.GetFourthSubwayConnection.Number">M1</text>
                     </textMesh>
                     <defaultStyle>
@@ -6073,7 +6073,7 @@
                       <offsetRotation x="-0" y="0" z="0" />
                       <scale x="0.08" y="0.08" z="1" />
                     </transform>
-                    <textMesh fontName="" maxWidthMeters="0.09">
+                    <textMesh fontName="HelveticaWorld_Regular" maxWidthMeters="0.09">
                       <text formulae="&amp;StationSignage.Formulas.SubwayFormulas;GetFirstPlatformLine.GetFirstTrainConnection.Number">M1</text>
                     </textMesh>
                     <defaultStyle>
@@ -6119,7 +6119,7 @@
                       <offsetRotation x="-0" y="0" z="0" />
                       <scale x="0.08" y="0.08" z="1" />
                     </transform>
-                    <textMesh fontName="" maxWidthMeters="0.09">
+                    <textMesh fontName="HelveticaWorld_Regular" maxWidthMeters="0.09">
                       <text formulae="&amp;StationSignage.Formulas.SubwayFormulas;GetFirstPlatformLine.GetSecondTrainConnection.Number">M1</text>
                     </textMesh>
                     <defaultStyle>
@@ -6165,7 +6165,7 @@
                       <offsetRotation x="-0" y="0" z="0" />
                       <scale x="0.08" y="0.08" z="1" />
                     </transform>
-                    <textMesh fontName="" maxWidthMeters="0.09">
+                    <textMesh fontName="HelveticaWorld_Regular" maxWidthMeters="0.09">
                       <text formulae="&amp;StationSignage.Formulas.SubwayFormulas;GetFirstPlatformLine.GetThirdTrainConnection.Number">M1</text>
                     </textMesh>
                     <defaultStyle>
@@ -6211,7 +6211,7 @@
                       <offsetRotation x="-0" y="0" z="0" />
                       <scale x="0.08" y="0.08" z="1" />
                     </transform>
-                    <textMesh fontName="" maxWidthMeters="0.09">
+                    <textMesh fontName="HelveticaWorld_Regular" maxWidthMeters="0.09">
                       <text formulae="&amp;StationSignage.Formulas.SubwayFormulas;GetFirstPlatformLine.GetThirdTrainConnection.Number">M1</text>
                     </textMesh>
                     <defaultStyle>
@@ -6414,7 +6414,7 @@
                 <offsetRotation x="-0" y="0" z="0" />
                 <scale x="0.163906261" y="0.163906261" z="1" />
               </transform>
-              <textMesh fontName="" maxWidthMeters="2.05">
+              <textMesh fontName="HelveticaWorld_Regular" maxWidthMeters="2.05">
                 <text formulae="&amp;StationSignage.Formulas.SubwayFormulas;GetFirstPlatformLine.Destination">Aspen Square dawd wadaw dwad aw</text>
               </textMesh>
               <defaultStyle>
@@ -6484,7 +6484,7 @@
                 <offsetRotation x="-0" y="0" z="0" />
                 <scale x="0.15125" y="0.15125" z="1" />
               </transform>
-              <textMesh fontName="" maxWidthMeters="0.9">
+              <textMesh fontName="HelveticaWorld_Regular" maxWidthMeters="0.9">
                 <text>Platform</text>
               </textMesh>
               <defaultStyle>
@@ -6508,7 +6508,7 @@
                 <offsetRotation x="-0" y="0" z="0" />
                 <scale x="0.09703126" y="0.09703126" z="1" />
               </transform>
-              <textMesh fontName="" maxWidthMeters="2.05">
+              <textMesh fontName="HelveticaWorld_Regular" maxWidthMeters="2.05">
                 <text>Trains To</text>
               </textMesh>
               <defaultStyle>
@@ -6553,7 +6553,7 @@
                   <offsetRotation x="-0" y="0" z="0" />
                   <scale x="0.121093757" y="0.121093757" z="1" />
                 </transform>
-                <textMesh fontName="" maxWidthMeters="1">
+                <textMesh fontName="HelveticaWorld_Regular" maxWidthMeters="1">
                   <text formulae="&amp;StationSignage.Formulas.SubwayFormulas;GetFirstPlatformLine.ConnectionsTitle">Connections</text>
                 </textMesh>
                 <defaultStyle>
@@ -6577,7 +6577,7 @@
                   <offsetRotation x="-0" y="0" z="0" />
                   <scale x="0.112187505" y="0.112187505" z="1" />
                 </transform>
-                <textMesh fontName="">
+                <textMesh fontName="HelveticaWorld_Regular">
                   <text formulae="&amp;StationSignage.Formulas.SubwayFormulas;GetFirstPlatformLine.ConnectionsLineName">Subway Line 6</text>
                 </textMesh>
                 <defaultStyle>
@@ -6667,7 +6667,7 @@
                       <offsetRotation x="-0" y="0" z="0" />
                       <scale x="0.08" y="0.08" z="1" />
                     </transform>
-                    <textMesh fontName="" maxWidthMeters="0.09">
+                    <textMesh fontName="HelveticaWorld_Regular" maxWidthMeters="0.09">
                       <text formulae="&amp;StationSignage.Formulas.SubwayFormulas;GetFirstPlatformLine.GetFirstSubwayConnection.Number">M1</text>
                     </textMesh>
                     <defaultStyle>
@@ -6713,7 +6713,7 @@
                       <offsetRotation x="-0" y="0" z="0" />
                       <scale x="0.08" y="0.08" z="1" />
                     </transform>
-                    <textMesh fontName="" maxWidthMeters="0.09">
+                    <textMesh fontName="HelveticaWorld_Regular" maxWidthMeters="0.09">
                       <text formulae="&amp;StationSignage.Formulas.SubwayFormulas;GetFirstPlatformLine.GetSecondSubwayConnection.Number">M1</text>
                     </textMesh>
                     <defaultStyle>
@@ -6759,7 +6759,7 @@
                       <offsetRotation x="-0" y="0" z="0" />
                       <scale x="0.08" y="0.08" z="1" />
                     </transform>
-                    <textMesh fontName="" maxWidthMeters="0.09">
+                    <textMesh fontName="HelveticaWorld_Regular" maxWidthMeters="0.09">
                       <text formulae="&amp;StationSignage.Formulas.SubwayFormulas;GetFirstPlatformLine.GetThirdSubwayConnection.Number">M1</text>
                     </textMesh>
                     <defaultStyle>
@@ -6805,7 +6805,7 @@
                       <offsetRotation x="-0" y="0" z="0" />
                       <scale x="0.08" y="0.08" z="1" />
                     </transform>
-                    <textMesh fontName="" maxWidthMeters="0.09">
+                    <textMesh fontName="HelveticaWorld_Regular" maxWidthMeters="0.09">
                       <text formulae="&amp;StationSignage.Formulas.SubwayFormulas;GetFirstPlatformLine.GetFourthSubwayConnection.Number">M1</text>
                     </textMesh>
                     <defaultStyle>
@@ -6897,7 +6897,7 @@
                       <offsetRotation x="-0" y="0" z="0" />
                       <scale x="0.08" y="0.08" z="1" />
                     </transform>
-                    <textMesh fontName="" maxWidthMeters="0.09">
+                    <textMesh fontName="HelveticaWorld_Regular" maxWidthMeters="0.09">
                       <text formulae="&amp;StationSignage.Formulas.SubwayFormulas;GetFirstPlatformLine.GetFirstTrainConnection.Number">M1</text>
                     </textMesh>
                     <defaultStyle>
@@ -6943,7 +6943,7 @@
                       <offsetRotation x="-0" y="0" z="0" />
                       <scale x="0.08" y="0.08" z="1" />
                     </transform>
-                    <textMesh fontName="" maxWidthMeters="0.09">
+                    <textMesh fontName="HelveticaWorld_Regular" maxWidthMeters="0.09">
                       <text formulae="&amp;StationSignage.Formulas.SubwayFormulas;GetFirstPlatformLine.GetSecondTrainConnection.Number">M1</text>
                     </textMesh>
                     <defaultStyle>
@@ -6989,7 +6989,7 @@
                       <offsetRotation x="-0" y="0" z="0" />
                       <scale x="0.08" y="0.08" z="1" />
                     </transform>
-                    <textMesh fontName="" maxWidthMeters="0.09">
+                    <textMesh fontName="HelveticaWorld_Regular" maxWidthMeters="0.09">
                       <text formulae="&amp;StationSignage.Formulas.SubwayFormulas;GetFirstPlatformLine.GetThirdTrainConnection.Number">M1</text>
                     </textMesh>
                     <defaultStyle>
@@ -7035,7 +7035,7 @@
                       <offsetRotation x="-0" y="0" z="0" />
                       <scale x="0.08" y="0.08" z="1" />
                     </transform>
-                    <textMesh fontName="" maxWidthMeters="0.09">
+                    <textMesh fontName="HelveticaWorld_Regular" maxWidthMeters="0.09">
                       <text formulae="&amp;StationSignage.Formulas.SubwayFormulas;GetFirstPlatformLine.GetThirdTrainConnection.Number">M1</text>
                     </textMesh>
                     <defaultStyle>
@@ -7216,7 +7216,7 @@
                 <offsetRotation x="-0" y="0" z="0" />
                 <scale x="0.163906261" y="0.163906261" z="1" />
               </transform>
-              <textMesh fontName="" maxWidthMeters="2.05">
+              <textMesh fontName="HelveticaWorld_Regular" maxWidthMeters="2.05">
                 <text formulae="&amp;StationSignage.Formulas.SubwayFormulas;GetFirstPlatformLine.Destination">Aspen Square dawd wadaw dwad aw</text>
               </textMesh>
               <defaultStyle>
@@ -7286,7 +7286,7 @@
                 <offsetRotation x="-0" y="0" z="0" />
                 <scale x="0.15125" y="0.15125" z="1" />
               </transform>
-              <textMesh fontName="" maxWidthMeters="0.9">
+              <textMesh fontName="HelveticaWorld_Regular" maxWidthMeters="0.9">
                 <text>Platform</text>
               </textMesh>
               <defaultStyle>
@@ -7310,7 +7310,7 @@
                 <offsetRotation x="-0" y="0" z="0" />
                 <scale x="0.09703126" y="0.09703126" z="1" />
               </transform>
-              <textMesh fontName="" maxWidthMeters="2.05">
+              <textMesh fontName="HelveticaWorld_Regular" maxWidthMeters="2.05">
                 <text>Trains To</text>
               </textMesh>
               <defaultStyle>
@@ -7355,7 +7355,7 @@
                   <offsetRotation x="-0" y="0" z="0" />
                   <scale x="0.121093757" y="0.121093757" z="1" />
                 </transform>
-                <textMesh fontName="" maxWidthMeters="1">
+                <textMesh fontName="HelveticaWorld_Regular" maxWidthMeters="1">
                   <text formulae="&amp;StationSignage.Formulas.SubwayFormulas;GetFirstPlatformLine.ConnectionsTitle">Connections</text>
                 </textMesh>
                 <defaultStyle>
@@ -7379,7 +7379,7 @@
                   <offsetRotation x="-0" y="0" z="0" />
                   <scale x="0.112187505" y="0.112187505" z="1" />
                 </transform>
-                <textMesh fontName="">
+                <textMesh fontName="HelveticaWorld_Regular">
                   <text formulae="&amp;StationSignage.Formulas.SubwayFormulas;GetFirstPlatformLine.ConnectionsLineName">Subway Line 6</text>
                 </textMesh>
                 <defaultStyle>
@@ -7469,7 +7469,7 @@
                       <offsetRotation x="-0" y="0" z="0" />
                       <scale x="0.08" y="0.08" z="1" />
                     </transform>
-                    <textMesh fontName="" maxWidthMeters="0.09">
+                    <textMesh fontName="HelveticaWorld_Regular" maxWidthMeters="0.09">
                       <text formulae="&amp;StationSignage.Formulas.SubwayFormulas;GetFirstPlatformLine.GetFirstSubwayConnection.Number">M1</text>
                     </textMesh>
                     <defaultStyle>
@@ -7515,7 +7515,7 @@
                       <offsetRotation x="-0" y="0" z="0" />
                       <scale x="0.08" y="0.08" z="1" />
                     </transform>
-                    <textMesh fontName="" maxWidthMeters="0.09">
+                    <textMesh fontName="HelveticaWorld_Regular" maxWidthMeters="0.09">
                       <text formulae="&amp;StationSignage.Formulas.SubwayFormulas;GetFirstPlatformLine.GetSecondSubwayConnection.Number">M1</text>
                     </textMesh>
                     <defaultStyle>
@@ -7561,7 +7561,7 @@
                       <offsetRotation x="-0" y="0" z="0" />
                       <scale x="0.08" y="0.08" z="1" />
                     </transform>
-                    <textMesh fontName="" maxWidthMeters="0.09">
+                    <textMesh fontName="HelveticaWorld_Regular" maxWidthMeters="0.09">
                       <text formulae="&amp;StationSignage.Formulas.SubwayFormulas;GetFirstPlatformLine.GetThirdSubwayConnection.Number">M1</text>
                     </textMesh>
                     <defaultStyle>
@@ -7607,7 +7607,7 @@
                       <offsetRotation x="-0" y="0" z="0" />
                       <scale x="0.08" y="0.08" z="1" />
                     </transform>
-                    <textMesh fontName="" maxWidthMeters="0.09">
+                    <textMesh fontName="HelveticaWorld_Regular" maxWidthMeters="0.09">
                       <text formulae="&amp;StationSignage.Formulas.SubwayFormulas;GetFirstPlatformLine.GetFourthSubwayConnection.Number">M1</text>
                     </textMesh>
                     <defaultStyle>
@@ -7699,7 +7699,7 @@
                       <offsetRotation x="-0" y="0" z="0" />
                       <scale x="0.08" y="0.08" z="1" />
                     </transform>
-                    <textMesh fontName="" maxWidthMeters="0.09">
+                    <textMesh fontName="HelveticaWorld_Regular" maxWidthMeters="0.09">
                       <text formulae="&amp;StationSignage.Formulas.SubwayFormulas;GetFirstPlatformLine.GetFirstTrainConnection.Number">M1</text>
                     </textMesh>
                     <defaultStyle>
@@ -7745,7 +7745,7 @@
                       <offsetRotation x="-0" y="0" z="0" />
                       <scale x="0.08" y="0.08" z="1" />
                     </transform>
-                    <textMesh fontName="" maxWidthMeters="0.09">
+                    <textMesh fontName="HelveticaWorld_Regular" maxWidthMeters="0.09">
                       <text formulae="&amp;StationSignage.Formulas.SubwayFormulas;GetFirstPlatformLine.GetSecondTrainConnection.Number">M1</text>
                     </textMesh>
                     <defaultStyle>
@@ -7791,7 +7791,7 @@
                       <offsetRotation x="-0" y="0" z="0" />
                       <scale x="0.08" y="0.08" z="1" />
                     </transform>
-                    <textMesh fontName="" maxWidthMeters="0.09">
+                    <textMesh fontName="HelveticaWorld_Regular" maxWidthMeters="0.09">
                       <text formulae="&amp;StationSignage.Formulas.SubwayFormulas;GetFirstPlatformLine.GetThirdTrainConnection.Number">M1</text>
                     </textMesh>
                     <defaultStyle>
@@ -7837,7 +7837,7 @@
                       <offsetRotation x="-0" y="0" z="0" />
                       <scale x="0.08" y="0.08" z="1" />
                     </transform>
-                    <textMesh fontName="" maxWidthMeters="0.09">
+                    <textMesh fontName="HelveticaWorld_Regular" maxWidthMeters="0.09">
                       <text formulae="&amp;StationSignage.Formulas.SubwayFormulas;GetFirstPlatformLine.GetThirdTrainConnection.Number">M1</text>
                     </textMesh>
                     <defaultStyle>
@@ -8040,7 +8040,7 @@
                 <offsetRotation x="-0" y="0" z="0" />
                 <scale x="0.163906261" y="0.163906261" z="1" />
               </transform>
-              <textMesh fontName="" maxWidthMeters="2.05">
+              <textMesh fontName="HelveticaWorld_Regular" maxWidthMeters="2.05">
                 <text formulae="&amp;StationSignage.Formulas.SubwayFormulas;GetFirstPlatformLine.Destination">Aspen Square dawd wadaw dwad aw</text>
               </textMesh>
               <defaultStyle>
@@ -8110,7 +8110,7 @@
                 <offsetRotation x="-0" y="0" z="0" />
                 <scale x="0.15125" y="0.15125" z="1" />
               </transform>
-              <textMesh fontName="" maxWidthMeters="0.9">
+              <textMesh fontName="HelveticaWorld_Regular" maxWidthMeters="0.9">
                 <text>Platform</text>
               </textMesh>
               <defaultStyle>
@@ -8134,7 +8134,7 @@
                 <offsetRotation x="-0" y="0" z="0" />
                 <scale x="0.09703126" y="0.09703126" z="1" />
               </transform>
-              <textMesh fontName="" maxWidthMeters="2.05">
+              <textMesh fontName="HelveticaWorld_Regular" maxWidthMeters="2.05">
                 <text>Trains To</text>
               </textMesh>
               <defaultStyle>
@@ -8179,7 +8179,7 @@
                   <offsetRotation x="-0" y="0" z="0" />
                   <scale x="0.121093757" y="0.121093757" z="1" />
                 </transform>
-                <textMesh fontName="" maxWidthMeters="1">
+                <textMesh fontName="HelveticaWorld_Regular" maxWidthMeters="1">
                   <text formulae="&amp;StationSignage.Formulas.SubwayFormulas;GetFirstPlatformLine.ConnectionsTitle">Connections</text>
                 </textMesh>
                 <defaultStyle>
@@ -8203,7 +8203,7 @@
                   <offsetRotation x="-0" y="0" z="0" />
                   <scale x="0.112187505" y="0.112187505" z="1" />
                 </transform>
-                <textMesh fontName="">
+                <textMesh fontName="HelveticaWorld_Regular">
                   <text formulae="&amp;StationSignage.Formulas.SubwayFormulas;GetFirstPlatformLine.ConnectionsLineName">Subway Line 6</text>
                 </textMesh>
                 <defaultStyle>
@@ -8293,7 +8293,7 @@
                       <offsetRotation x="-0" y="0" z="0" />
                       <scale x="0.08" y="0.08" z="1" />
                     </transform>
-                    <textMesh fontName="" maxWidthMeters="0.09">
+                    <textMesh fontName="HelveticaWorld_Regular" maxWidthMeters="0.09">
                       <text formulae="&amp;StationSignage.Formulas.SubwayFormulas;GetFirstPlatformLine.GetFirstSubwayConnection.Number">M1</text>
                     </textMesh>
                     <defaultStyle>
@@ -8339,7 +8339,7 @@
                       <offsetRotation x="-0" y="0" z="0" />
                       <scale x="0.08" y="0.08" z="1" />
                     </transform>
-                    <textMesh fontName="" maxWidthMeters="0.09">
+                    <textMesh fontName="HelveticaWorld_Regular" maxWidthMeters="0.09">
                       <text formulae="&amp;StationSignage.Formulas.SubwayFormulas;GetFirstPlatformLine.GetSecondSubwayConnection.Number">M1</text>
                     </textMesh>
                     <defaultStyle>
@@ -8385,7 +8385,7 @@
                       <offsetRotation x="-0" y="0" z="0" />
                       <scale x="0.08" y="0.08" z="1" />
                     </transform>
-                    <textMesh fontName="" maxWidthMeters="0.09">
+                    <textMesh fontName="HelveticaWorld_Regular" maxWidthMeters="0.09">
                       <text formulae="&amp;StationSignage.Formulas.SubwayFormulas;GetFirstPlatformLine.GetThirdSubwayConnection.Number">M1</text>
                     </textMesh>
                     <defaultStyle>
@@ -8431,7 +8431,7 @@
                       <offsetRotation x="-0" y="0" z="0" />
                       <scale x="0.08" y="0.08" z="1" />
                     </transform>
-                    <textMesh fontName="" maxWidthMeters="0.09">
+                    <textMesh fontName="HelveticaWorld_Regular" maxWidthMeters="0.09">
                       <text formulae="&amp;StationSignage.Formulas.SubwayFormulas;GetFirstPlatformLine.GetFourthSubwayConnection.Number">M1</text>
                     </textMesh>
                     <defaultStyle>
@@ -8523,7 +8523,7 @@
                       <offsetRotation x="-0" y="0" z="0" />
                       <scale x="0.08" y="0.08" z="1" />
                     </transform>
-                    <textMesh fontName="" maxWidthMeters="0.09">
+                    <textMesh fontName="HelveticaWorld_Regular" maxWidthMeters="0.09">
                       <text formulae="&amp;StationSignage.Formulas.SubwayFormulas;GetFirstPlatformLine.GetFirstTrainConnection.Number">M1</text>
                     </textMesh>
                     <defaultStyle>
@@ -8569,7 +8569,7 @@
                       <offsetRotation x="-0" y="0" z="0" />
                       <scale x="0.08" y="0.08" z="1" />
                     </transform>
-                    <textMesh fontName="" maxWidthMeters="0.09">
+                    <textMesh fontName="HelveticaWorld_Regular" maxWidthMeters="0.09">
                       <text formulae="&amp;StationSignage.Formulas.SubwayFormulas;GetFirstPlatformLine.GetSecondTrainConnection.Number">M1</text>
                     </textMesh>
                     <defaultStyle>
@@ -8615,7 +8615,7 @@
                       <offsetRotation x="-0" y="0" z="0" />
                       <scale x="0.08" y="0.08" z="1" />
                     </transform>
-                    <textMesh fontName="" maxWidthMeters="0.09">
+                    <textMesh fontName="HelveticaWorld_Regular" maxWidthMeters="0.09">
                       <text formulae="&amp;StationSignage.Formulas.SubwayFormulas;GetFirstPlatformLine.GetThirdTrainConnection.Number">M1</text>
                     </textMesh>
                     <defaultStyle>
@@ -8661,7 +8661,7 @@
                       <offsetRotation x="-0" y="0" z="0" />
                       <scale x="0.08" y="0.08" z="1" />
                     </transform>
-                    <textMesh fontName="" maxWidthMeters="0.09">
+                    <textMesh fontName="HelveticaWorld_Regular" maxWidthMeters="0.09">
                       <text formulae="&amp;StationSignage.Formulas.SubwayFormulas;GetFirstPlatformLine.GetThirdTrainConnection.Number">M1</text>
                     </textMesh>
                     <defaultStyle>
@@ -9020,7 +9020,7 @@
                 <offsetRotation x="-0" y="0" z="0" />
                 <scale x="0.07" y="0.07" z="1" />
               </transform>
-              <textMesh fontName="">
+              <textMesh fontName="HelveticaWorld_Regular">
                 <text formulae="&amp;StationSignage.Formulas.NamesFormulas;GetTimeString">Hora: 17:40</text>
               </textMesh>
               <defaultStyle>
@@ -9088,7 +9088,7 @@
                 <offsetRotation x="-0" y="0" z="0" />
                 <scale x="0.06" y="0.06" z="1" />
               </transform>
-              <textMesh fontName="" maxWidthMeters="1.65">
+              <textMesh fontName="HelveticaWorld_Regular" maxWidthMeters="1.65">
                 <text formulae="&amp;StationSignage.Formulas.SubwayFormulas;GetWelcomeMessage">Bem Vindo ao Metro de Sao P adw daaulo dawd awdaw d</text>
               </textMesh>
               <defaultStyle>
@@ -9134,8 +9134,8 @@
                 <offsetRotation x="-0" y="0" z="0" />
                 <scale x="0.04" y="0.04" z="1" />
               </transform>
-              <textMesh fontName="">
-                <text formulae="&amp;StationSignage.Formulas.SubwayFormulas;GetLinesStatusMessage">Situacao das Linhas</text>
+              <textMesh fontName="HelveticaWorld_Regular">
+                <text formulae="&amp;StationSignage.Formulas.NamesFormulas;GetLinesStatusMessage">Situacao das Linhas</text>
               </textMesh>
               <defaultStyle>
                 <color>FFFFFFFF</color>
@@ -9222,7 +9222,7 @@
                     <offsetRotation x="-0" y="0" z="0" />
                     <scale x="0.08" y="0.08" z="1" />
                   </transform>
-                  <textMesh fontName="" maxWidthMeters="0.09">
+                  <textMesh fontName="HelveticaWorld_Regular" maxWidthMeters="0.09">
                     <text formulae="&amp;StationSignage.Formulas.SubwayFormulas;GetFirstLine.Number">M1</text>
                   </textMesh>
                   <defaultStyle>
@@ -9247,7 +9247,7 @@
                   <offsetRotation x="-0" y="0" z="0" />
                   <scale x="0.06" y="0.06" z="1" />
                 </transform>
-                <textMesh fontName="" maxWidthMeters="0.65">
+                <textMesh fontName="HelveticaWorld_Regular" maxWidthMeters="0.65">
                   <text formulae="&amp;StationSignage.Formulas.SubwayFormulas;GetFirstLine.Status">Operacao Normal</text>
                 </textMesh>
                 <defaultStyle>
@@ -9338,7 +9338,7 @@
                     <offsetRotation x="-0" y="0" z="0" />
                     <scale x="0.08" y="0.08" z="1" />
                   </transform>
-                  <textMesh fontName="" maxWidthMeters="0.09">
+                  <textMesh fontName="HelveticaWorld_Regular" maxWidthMeters="0.09">
                     <text formulae="&amp;StationSignage.Formulas.SubwayFormulas;GetSecondLine.Number">2</text>
                   </textMesh>
                   <defaultStyle>
@@ -9363,7 +9363,7 @@
                   <offsetRotation x="-0" y="0" z="0" />
                   <scale x="0.06" y="0.06" z="1" />
                 </transform>
-                <textMesh fontName="" maxWidthMeters="0.65">
+                <textMesh fontName="HelveticaWorld_Regular" maxWidthMeters="0.65">
                   <text formulae="&amp;StationSignage.Formulas.SubwayFormulas;GetSecondLine.Status">Operacao Normal</text>
                 </textMesh>
                 <defaultStyle>
@@ -9454,7 +9454,7 @@
                     <offsetRotation x="-0" y="0" z="0" />
                     <scale x="0.08" y="0.08" z="1" />
                   </transform>
-                  <textMesh fontName="" maxWidthMeters="0.09">
+                  <textMesh fontName="HelveticaWorld_Regular" maxWidthMeters="0.09">
                     <text formulae="&amp;StationSignage.Formulas.SubwayFormulas;GetThirdLine.Number">3</text>
                   </textMesh>
                   <defaultStyle>
@@ -9479,7 +9479,7 @@
                   <offsetRotation x="-0" y="0" z="0" />
                   <scale x="0.06" y="0.06" z="1" />
                 </transform>
-                <textMesh fontName="" maxWidthMeters="0.65">
+                <textMesh fontName="HelveticaWorld_Regular" maxWidthMeters="0.65">
                   <text formulae="&amp;StationSignage.Formulas.SubwayFormulas;GetThirdLine.Status">Operacao Normal</text>
                 </textMesh>
                 <defaultStyle>
@@ -9570,7 +9570,7 @@
                     <offsetRotation x="-0" y="0" z="0" />
                     <scale x="0.08" y="0.08" z="1" />
                   </transform>
-                  <textMesh fontName="" maxWidthMeters="0.09">
+                  <textMesh fontName="HelveticaWorld_Regular" maxWidthMeters="0.09">
                     <text formulae="&amp;StationSignage.Formulas.SubwayFormulas;GetFourthLine.Number">4</text>
                   </textMesh>
                   <defaultStyle>
@@ -9595,7 +9595,7 @@
                   <offsetRotation x="-0" y="0" z="0" />
                   <scale x="0.06" y="0.06" z="1" />
                 </transform>
-                <textMesh fontName="" maxWidthMeters="0.65">
+                <textMesh fontName="HelveticaWorld_Regular" maxWidthMeters="0.65">
                   <text formulae="&amp;StationSignage.Formulas.SubwayFormulas;GetFourthLine.Status">Operacao Normal</text>
                 </textMesh>
                 <defaultStyle>
@@ -9686,7 +9686,7 @@
                     <offsetRotation x="-0" y="0" z="0" />
                     <scale x="0.08" y="0.08" z="1" />
                   </transform>
-                  <textMesh fontName="" maxWidthMeters="0.09">
+                  <textMesh fontName="HelveticaWorld_Regular" maxWidthMeters="0.09">
                     <text formulae="&amp;StationSignage.Formulas.SubwayFormulas;GetFifthLine.Number">5</text>
                   </textMesh>
                   <defaultStyle>
@@ -9711,7 +9711,7 @@
                   <offsetRotation x="-0" y="0" z="0" />
                   <scale x="0.06" y="0.06" z="1" />
                 </transform>
-                <textMesh fontName="" maxWidthMeters="0.65">
+                <textMesh fontName="HelveticaWorld_Regular" maxWidthMeters="0.65">
                   <text formulae="&amp;StationSignage.Formulas.SubwayFormulas;GetFifthLine.Status">Operacao Normal</text>
                 </textMesh>
                 <defaultStyle>
@@ -9916,7 +9916,7 @@
                 <offsetRotation x="-0" y="0" z="0" />
                 <scale x="0.07" y="0.07" z="1" />
               </transform>
-              <textMesh fontName="">
+              <textMesh fontName="HelveticaWorld_Regular">
                 <text formulae="&amp;StationSignage.Formulas.NamesFormulas;GetTimeString">Hora: 17:40</text>
               </textMesh>
               <defaultStyle>
@@ -9984,7 +9984,7 @@
                 <offsetRotation x="-0" y="0" z="0" />
                 <scale x="0.06" y="0.06" z="1" />
               </transform>
-              <textMesh fontName="" maxWidthMeters="1.65">
+              <textMesh fontName="HelveticaWorld_Regular" maxWidthMeters="1.65">
                 <text formulae="&amp;StationSignage.Formulas.SubwayFormulas;GetWelcomeMessage">Bem Vindo ao Metro de Sao P adw daaulo dawd awdaw d</text>
               </textMesh>
               <defaultStyle>
@@ -10030,8 +10030,8 @@
                 <offsetRotation x="-0" y="0" z="0" />
                 <scale x="0.04" y="0.04" z="1" />
               </transform>
-              <textMesh fontName="">
-                <text formulae="&amp;StationSignage.Formulas.SubwayFormulas;GetLinesStatusMessage">Situacao das Linhas</text>
+              <textMesh fontName="HelveticaWorld_Regular">
+                <text formulae="&amp;StationSignage.Formulas.NamesFormulas;GetLinesStatusMessage">Situacao das Linhas</text>
               </textMesh>
               <defaultStyle>
                 <color>FFFFFFFF</color>
@@ -10118,7 +10118,7 @@
                     <offsetRotation x="-0" y="0" z="0" />
                     <scale x="0.08" y="0.08" z="1" />
                   </transform>
-                  <textMesh fontName="" maxWidthMeters="0.09">
+                  <textMesh fontName="HelveticaWorld_Regular" maxWidthMeters="0.09">
                     <text formulae="&amp;StationSignage.Formulas.SubwayFormulas;GetFirstLine.Number">M1</text>
                   </textMesh>
                   <defaultStyle>
@@ -10143,7 +10143,7 @@
                   <offsetRotation x="-0" y="0" z="0" />
                   <scale x="0.06" y="0.06" z="1" />
                 </transform>
-                <textMesh fontName="" maxWidthMeters="0.65">
+                <textMesh fontName="HelveticaWorld_Regular" maxWidthMeters="0.65">
                   <text formulae="&amp;StationSignage.Formulas.SubwayFormulas;GetFirstLine.Status">Operacao Normal</text>
                 </textMesh>
                 <defaultStyle>
@@ -10234,7 +10234,7 @@
                     <offsetRotation x="-0" y="0" z="0" />
                     <scale x="0.08" y="0.08" z="1" />
                   </transform>
-                  <textMesh fontName="" maxWidthMeters="0.09">
+                  <textMesh fontName="HelveticaWorld_Regular" maxWidthMeters="0.09">
                     <text formulae="&amp;StationSignage.Formulas.SubwayFormulas;GetSecondLine.Number">2</text>
                   </textMesh>
                   <defaultStyle>
@@ -10259,7 +10259,7 @@
                   <offsetRotation x="-0" y="0" z="0" />
                   <scale x="0.06" y="0.06" z="1" />
                 </transform>
-                <textMesh fontName="" maxWidthMeters="0.65">
+                <textMesh fontName="HelveticaWorld_Regular" maxWidthMeters="0.65">
                   <text formulae="&amp;StationSignage.Formulas.SubwayFormulas;GetSecondLine.Status">Operacao Normal</text>
                 </textMesh>
                 <defaultStyle>
@@ -10350,7 +10350,7 @@
                     <offsetRotation x="-0" y="0" z="0" />
                     <scale x="0.08" y="0.08" z="1" />
                   </transform>
-                  <textMesh fontName="" maxWidthMeters="0.09">
+                  <textMesh fontName="HelveticaWorld_Regular" maxWidthMeters="0.09">
                     <text formulae="&amp;StationSignage.Formulas.SubwayFormulas;GetThirdLine.Number">3</text>
                   </textMesh>
                   <defaultStyle>
@@ -10375,7 +10375,7 @@
                   <offsetRotation x="-0" y="0" z="0" />
                   <scale x="0.06" y="0.06" z="1" />
                 </transform>
-                <textMesh fontName="" maxWidthMeters="0.65">
+                <textMesh fontName="HelveticaWorld_Regular" maxWidthMeters="0.65">
                   <text formulae="&amp;StationSignage.Formulas.SubwayFormulas;GetThirdLine.Status">Operacao Normal</text>
                 </textMesh>
                 <defaultStyle>
@@ -10466,7 +10466,7 @@
                     <offsetRotation x="-0" y="0" z="0" />
                     <scale x="0.08" y="0.08" z="1" />
                   </transform>
-                  <textMesh fontName="" maxWidthMeters="0.09">
+                  <textMesh fontName="HelveticaWorld_Regular" maxWidthMeters="0.09">
                     <text formulae="&amp;StationSignage.Formulas.SubwayFormulas;GetFourthLine.Number">4</text>
                   </textMesh>
                   <defaultStyle>
@@ -10491,7 +10491,7 @@
                   <offsetRotation x="-0" y="0" z="0" />
                   <scale x="0.06" y="0.06" z="1" />
                 </transform>
-                <textMesh fontName="" maxWidthMeters="0.65">
+                <textMesh fontName="HelveticaWorld_Regular" maxWidthMeters="0.65">
                   <text formulae="&amp;StationSignage.Formulas.SubwayFormulas;GetFourthLine.Status">Operacao Normal</text>
                 </textMesh>
                 <defaultStyle>
@@ -10582,7 +10582,7 @@
                     <offsetRotation x="-0" y="0" z="0" />
                     <scale x="0.08" y="0.08" z="1" />
                   </transform>
-                  <textMesh fontName="" maxWidthMeters="0.09">
+                  <textMesh fontName="HelveticaWorld_Regular" maxWidthMeters="0.09">
                     <text formulae="&amp;StationSignage.Formulas.SubwayFormulas;GetFifthLine.Number">5</text>
                   </textMesh>
                   <defaultStyle>
@@ -10607,7 +10607,7 @@
                   <offsetRotation x="-0" y="0" z="0" />
                   <scale x="0.06" y="0.06" z="1" />
                 </transform>
-                <textMesh fontName="" maxWidthMeters="0.65">
+                <textMesh fontName="HelveticaWorld_Regular" maxWidthMeters="0.65">
                   <text formulae="&amp;StationSignage.Formulas.SubwayFormulas;GetFifthLine.Status">Operacao Normal</text>
                 </textMesh>
                 <defaultStyle>
@@ -10788,7 +10788,7 @@
                 <offsetRotation x="-0" y="0" z="0" />
                 <scale x="0" y="0" z="1" />
               </transform>
-              <textMesh fontName="">
+              <textMesh fontName="HelveticaWorld_Regular">
                 <text></text>
               </textMesh>
               <defaultStyle>
@@ -10858,7 +10858,7 @@
                 <offsetRotation x="-0" y="0" z="0" />
                 <scale x="0.08" y="0.08" z="1" />
               </transform>
-              <textMesh fontName="">
+              <textMesh fontName="HelveticaWorld_Regular">
                 <text formulae="&amp;StationSignage.Formulas.NamesFormulas;GetTimeString">Hora: 17:40</text>
               </textMesh>
               <defaultStyle>
@@ -10926,7 +10926,7 @@
                 <offsetRotation x="-0" y="0" z="0" />
                 <scale x="0.06" y="0.06" z="1" />
               </transform>
-              <textMesh fontName="" maxWidthMeters="1.65">
+              <textMesh fontName="HelveticaWorld_Regular" maxWidthMeters="1.65">
                 <text formulae="&amp;StationSignage.Formulas.SubwayFormulas;GetSecondPlatformVehiclePanel.Footer">Bem Vindo ao Metro de Sao Paulod a awdawd awd wad</text>
               </textMesh>
               <defaultStyle>
@@ -10994,7 +10994,7 @@
                 <offsetRotation x="-0" y="0" z="0" />
                 <scale x="0.055" y="0.055" z="1" />
               </transform>
-              <textMesh fontName="">
+              <textMesh fontName="HelveticaWorld_Regular">
                 <text formulae="&amp;StationSignage.Formulas.SubwayFormulas;GetSecondPlatformVehiclePanel.Subtitle">NEW TEXT</text>
               </textMesh>
               <defaultStyle>
@@ -11018,7 +11018,7 @@
                 <offsetRotation x="-0" y="0" z="0" />
                 <scale x="0.055" y="0.055" z="1" />
               </transform>
-              <textMesh fontName="">
+              <textMesh fontName="HelveticaWorld_Regular">
                 <text formulae="&amp;StationSignage.Formulas.SubwayFormulas;GetSecondPlatformVehiclePanel.TrainMessage">NEW TEXT</text>
               </textMesh>
               <defaultStyle>
@@ -11042,7 +11042,7 @@
                 <offsetRotation x="-0" y="0" z="0" />
                 <scale x="0.055" y="0.055" z="1" />
               </transform>
-              <textMesh fontName="">
+              <textMesh fontName="HelveticaWorld_Regular">
                 <text formulae="&amp;StationSignage.Formulas.SubwayFormulas;GetSecondPlatformVehiclePanel.TrainName">NEW TEXT</text>
               </textMesh>
               <defaultStyle>
@@ -11066,7 +11066,7 @@
                 <offsetRotation x="-0" y="0" z="0" />
                 <scale x="0" y="0" z="1" />
               </transform>
-              <textMesh fontName="">
+              <textMesh fontName="HelveticaWorld_Regular">
                 <text></text>
               </textMesh>
               <defaultStyle>
@@ -11185,7 +11185,7 @@
                   <offsetRotation x="-0" y="0" z="0" />
                   <scale x="0.05" y="0.05" z="1" />
                 </transform>
-                <textMesh fontName="">
+                <textMesh fontName="HelveticaWorld_Regular">
                   <text formulae="&amp;StationSignage.Formulas.SubwayFormulas;GetSecondPlatformVehiclePanel.OccupancyTitle">NEW TEXT</text>
                 </textMesh>
                 <defaultStyle>
@@ -11258,7 +11258,7 @@
                 <offsetRotation x="-0" y="0" z="0" />
                 <scale x="0.06" y="0.06" z="1" />
               </transform>
-              <textMesh fontName="" maxWidthMeters="0.72">
+              <textMesh fontName="HelveticaWorld_Regular" maxWidthMeters="0.72">
                 <text formulae="&amp;StationSignage.Formulas.SubwayFormulas;GetSecondPlatformVehiclePanel.Title">&amp;StationSignage.Formulas.SubwayFormulas;GetSecondPlatformVehiclePanel.Title</text>
               </textMesh>
               <defaultStyle>
@@ -11370,7 +11370,7 @@
                 <offsetRotation x="-0" y="0" z="0" />
                 <scale x="0" y="0" z="1" />
               </transform>
-              <textMesh fontName="">
+              <textMesh fontName="HelveticaWorld_Regular">
                 <text></text>
               </textMesh>
               <defaultStyle>
@@ -11440,7 +11440,7 @@
                 <offsetRotation x="-0" y="0" z="0" />
                 <scale x="0.08" y="0.08" z="1" />
               </transform>
-              <textMesh fontName="">
+              <textMesh fontName="HelveticaWorld_Regular">
                 <text formulae="&amp;StationSignage.Formulas.NamesFormulas;GetTimeString">Hora: 17:40</text>
               </textMesh>
               <defaultStyle>
@@ -11508,7 +11508,7 @@
                 <offsetRotation x="-0" y="0" z="0" />
                 <scale x="0.06" y="0.06" z="1" />
               </transform>
-              <textMesh fontName="" maxWidthMeters="1.65">
+              <textMesh fontName="HelveticaWorld_Regular" maxWidthMeters="1.65">
                 <text formulae="&amp;StationSignage.Formulas.SubwayFormulas;GetSecondPlatformVehiclePanel.Footer">Bem Vindo ao Metro de Sao Paulo</text>
               </textMesh>
               <defaultStyle>
@@ -11554,7 +11554,7 @@
                 <offsetRotation x="-0" y="0" z="0" />
                 <scale x="0.06" y="0.06" z="1" />
               </transform>
-              <textMesh fontName="" maxWidthMeters="0.72">
+              <textMesh fontName="HelveticaWorld_Regular" maxWidthMeters="0.72">
                 <text formulae="&amp;StationSignage.Formulas.SubwayFormulas;GetSecondPlatformVehiclePanel.Title">&amp;StationSignage.Formulas.SubwayFormulas;GetSecondPlatformVehiclePanel.Title</text>
               </textMesh>
               <defaultStyle>
@@ -11600,7 +11600,7 @@
                 <offsetRotation x="-0" y="0" z="0" />
                 <scale x="0.055" y="0.055" z="1" />
               </transform>
-              <textMesh fontName="">
+              <textMesh fontName="HelveticaWorld_Regular">
                 <text formulae="&amp;StationSignage.Formulas.SubwayFormulas;GetSecondPlatformVehiclePanel.Subtitle">NEW TEXT</text>
               </textMesh>
               <defaultStyle>
@@ -11624,7 +11624,7 @@
                 <offsetRotation x="-0" y="0" z="0" />
                 <scale x="0.055" y="0.055" z="1" />
               </transform>
-              <textMesh fontName="">
+              <textMesh fontName="HelveticaWorld_Regular">
                 <text formulae="&amp;StationSignage.Formulas.SubwayFormulas;GetSecondPlatformVehiclePanel.TrainMessage">NEW TEXT</text>
               </textMesh>
               <defaultStyle>
@@ -11648,7 +11648,7 @@
                 <offsetRotation x="-0" y="0" z="0" />
                 <scale x="0.055" y="0.055" z="1" />
               </transform>
-              <textMesh fontName="">
+              <textMesh fontName="HelveticaWorld_Regular">
                 <text formulae="&amp;StationSignage.Formulas.SubwayFormulas;GetSecondPlatformVehiclePanel.TrainName">NEW TEXT</text>
               </textMesh>
               <defaultStyle>
@@ -11672,7 +11672,7 @@
                 <offsetRotation x="-0" y="0" z="0" />
                 <scale x="0" y="0" z="1" />
               </transform>
-              <textMesh fontName="">
+              <textMesh fontName="HelveticaWorld_Regular">
                 <text></text>
               </textMesh>
               <defaultStyle>
@@ -11791,7 +11791,7 @@
                   <offsetRotation x="-0" y="0" z="0" />
                   <scale x="0.05" y="0.05" z="1" />
                 </transform>
-                <textMesh fontName="">
+                <textMesh fontName="HelveticaWorld_Regular">
                   <text formulae="&amp;StationSignage.Formulas.SubwayFormulas;GetSecondPlatformVehiclePanel.OccupancyTitle">NEW TEXT</text>
                 </textMesh>
                 <defaultStyle>
@@ -12128,7 +12128,7 @@
                 <offsetRotation x="-0" y="0" z="0" />
                 <scale x="0" y="0" z="1" />
               </transform>
-              <textMesh fontName="">
+              <textMesh fontName="HelveticaWorld_Regular">
                 <text></text>
               </textMesh>
               <defaultStyle>
@@ -12198,7 +12198,7 @@
                 <offsetRotation x="-0" y="0" z="0" />
                 <scale x="0.08" y="0.08" z="1" />
               </transform>
-              <textMesh fontName="">
+              <textMesh fontName="HelveticaWorld_Regular">
                 <text formulae="&amp;StationSignage.Formulas.NamesFormulas;GetTimeString">Hora: 17:40</text>
               </textMesh>
               <defaultStyle>
@@ -12266,7 +12266,7 @@
                 <offsetRotation x="-0" y="0" z="0" />
                 <scale x="0.06" y="0.06" z="1" />
               </transform>
-              <textMesh fontName="" maxWidthMeters="1.65">
+              <textMesh fontName="HelveticaWorld_Regular" maxWidthMeters="1.65">
                 <text formulae="&amp;StationSignage.Formulas.SubwayFormulas;GetSecondPlatformVehiclePanel.Footer">Bem Vindo ao Metro de Sao Paulod a awdawd awd wad</text>
               </textMesh>
               <defaultStyle>
@@ -12334,7 +12334,7 @@
                 <offsetRotation x="-0" y="0" z="0" />
                 <scale x="0.055" y="0.055" z="1" />
               </transform>
-              <textMesh fontName="">
+              <textMesh fontName="HelveticaWorld_Regular">
                 <text formulae="&amp;StationSignage.Formulas.SubwayFormulas;GetSecondPlatformVehiclePanel.Subtitle">NEW TEXT</text>
               </textMesh>
               <defaultStyle>
@@ -12358,7 +12358,7 @@
                 <offsetRotation x="-0" y="0" z="0" />
                 <scale x="0.055" y="0.055" z="1" />
               </transform>
-              <textMesh fontName="">
+              <textMesh fontName="HelveticaWorld_Regular">
                 <text formulae="&amp;StationSignage.Formulas.SubwayFormulas;GetSecondPlatformVehiclePanel.TrainMessage">NEW TEXT</text>
               </textMesh>
               <defaultStyle>
@@ -12382,7 +12382,7 @@
                 <offsetRotation x="-0" y="0" z="0" />
                 <scale x="0.055" y="0.055" z="1" />
               </transform>
-              <textMesh fontName="">
+              <textMesh fontName="HelveticaWorld_Regular">
                 <text formulae="&amp;StationSignage.Formulas.SubwayFormulas;GetSecondPlatformVehiclePanel.TrainName">NEW TEXT</text>
               </textMesh>
               <defaultStyle>
@@ -12406,7 +12406,7 @@
                 <offsetRotation x="-0" y="0" z="0" />
                 <scale x="0" y="0" z="1" />
               </transform>
-              <textMesh fontName="">
+              <textMesh fontName="HelveticaWorld_Regular">
                 <text></text>
               </textMesh>
               <defaultStyle>
@@ -12525,7 +12525,7 @@
                   <offsetRotation x="-0" y="0" z="0" />
                   <scale x="0.05" y="0.05" z="1" />
                 </transform>
-                <textMesh fontName="">
+                <textMesh fontName="HelveticaWorld_Regular">
                   <text formulae="&amp;StationSignage.Formulas.SubwayFormulas;GetSecondPlatformVehiclePanel.OccupancyTitle">NEW TEXT</text>
                 </textMesh>
                 <defaultStyle>
@@ -12598,7 +12598,7 @@
                 <offsetRotation x="-0" y="0" z="0" />
                 <scale x="0.06" y="0.06" z="1" />
               </transform>
-              <textMesh fontName="" maxWidthMeters="0.72">
+              <textMesh fontName="HelveticaWorld_Regular" maxWidthMeters="0.72">
                 <text formulae="&amp;StationSignage.Formulas.SubwayFormulas;GetSecondPlatformVehiclePanel.Title">&amp;StationSignage.Formulas.SubwayFormulas;GetSecondPlatformVehiclePanel.Title</text>
               </textMesh>
               <defaultStyle>
@@ -12710,7 +12710,7 @@
                 <offsetRotation x="-0" y="0" z="0" />
                 <scale x="0" y="0" z="1" />
               </transform>
-              <textMesh fontName="">
+              <textMesh fontName="HelveticaWorld_Regular">
                 <text></text>
               </textMesh>
               <defaultStyle>
@@ -12780,7 +12780,7 @@
                 <offsetRotation x="-0" y="0" z="0" />
                 <scale x="0.08" y="0.08" z="1" />
               </transform>
-              <textMesh fontName="">
+              <textMesh fontName="HelveticaWorld_Regular">
                 <text formulae="&amp;StationSignage.Formulas.NamesFormulas;GetTimeString">Hora: 17:40</text>
               </textMesh>
               <defaultStyle>
@@ -12848,7 +12848,7 @@
                 <offsetRotation x="-0" y="0" z="0" />
                 <scale x="0.06" y="0.06" z="1" />
               </transform>
-              <textMesh fontName="" maxWidthMeters="1.65">
+              <textMesh fontName="HelveticaWorld_Regular" maxWidthMeters="1.65">
                 <text formulae="&amp;StationSignage.Formulas.SubwayFormulas;GetSecondPlatformVehiclePanel.Footer">Bem Vindo ao Metro de Sao Paulo</text>
               </textMesh>
               <defaultStyle>
@@ -12916,7 +12916,7 @@
                 <offsetRotation x="-0" y="0" z="0" />
                 <scale x="0.055" y="0.055" z="1" />
               </transform>
-              <textMesh fontName="">
+              <textMesh fontName="HelveticaWorld_Regular">
                 <text formulae="&amp;StationSignage.Formulas.SubwayFormulas;GetSecondPlatformVehiclePanel.Subtitle">NEW TEXT</text>
               </textMesh>
               <defaultStyle>
@@ -12940,7 +12940,7 @@
                 <offsetRotation x="-0" y="0" z="0" />
                 <scale x="0.055" y="0.055" z="1" />
               </transform>
-              <textMesh fontName="">
+              <textMesh fontName="HelveticaWorld_Regular">
                 <text formulae="&amp;StationSignage.Formulas.SubwayFormulas;GetSecondPlatformVehiclePanel.TrainMessage">NEW TEXT</text>
               </textMesh>
               <defaultStyle>
@@ -12964,7 +12964,7 @@
                 <offsetRotation x="-0" y="0" z="0" />
                 <scale x="0.055" y="0.055" z="1" />
               </transform>
-              <textMesh fontName="">
+              <textMesh fontName="HelveticaWorld_Regular">
                 <text formulae="&amp;StationSignage.Formulas.SubwayFormulas;GetSecondPlatformVehiclePanel.TrainName">NEW TEXT</text>
               </textMesh>
               <defaultStyle>
@@ -12988,7 +12988,7 @@
                 <offsetRotation x="-0" y="0" z="0" />
                 <scale x="0" y="0" z="1" />
               </transform>
-              <textMesh fontName="">
+              <textMesh fontName="HelveticaWorld_Regular">
                 <text></text>
               </textMesh>
               <defaultStyle>
@@ -13107,7 +13107,7 @@
                   <offsetRotation x="-0" y="0" z="0" />
                   <scale x="0.05" y="0.05" z="1" />
                 </transform>
-                <textMesh fontName="">
+                <textMesh fontName="HelveticaWorld_Regular">
                   <text formulae="&amp;StationSignage.Formulas.SubwayFormulas;GetSecondPlatformVehiclePanel.OccupancyTitle">NEW TEXT</text>
                 </textMesh>
                 <defaultStyle>
@@ -13180,7 +13180,7 @@
                 <offsetRotation x="-0" y="0" z="0" />
                 <scale x="0.06" y="0.06" z="1" />
               </transform>
-              <textMesh fontName="" maxWidthMeters="0.72">
+              <textMesh fontName="HelveticaWorld_Regular" maxWidthMeters="0.72">
                 <text formulae="&amp;StationSignage.Formulas.SubwayFormulas;GetSecondPlatformVehiclePanel.Title">&amp;StationSignage.Formulas.SubwayFormulas;GetSecondPlatformVehiclePanel.Title</text>
               </textMesh>
               <defaultStyle>
@@ -13512,7 +13512,7 @@
                 <offsetRotation x="-0" y="0" z="0" />
                 <scale x="0.3671875" y="0.3671875" z="1" />
               </transform>
-              <textMesh fontName="" maxWidthMeters="3">
+              <textMesh fontName="HelveticaWorld_Regular" maxWidthMeters="3">
                 <text formulae="&amp;StationSignage.Formulas.NamesFormulas;GetBuildingName">Aspen Square</text>
               </textMesh>
               <defaultStyle>
@@ -13582,7 +13582,7 @@
                 <offsetRotation x="-0" y="0" z="0" />
                 <scale x="0.112187505" y="0.112187505" z="1" />
               </transform>
-              <textMesh fontName="">
+              <textMesh fontName="HelveticaWorld_Regular">
                 <text formulae="&amp;StationSignage.Formulas.SubwayFormulas;GetSecondPlatformLine.Name">Subway Line 6</text>
               </textMesh>
               <defaultStyle>
@@ -13628,7 +13628,7 @@
                 <offsetRotation x="-0" y="0" z="0" />
                 <scale x="0.240781263" y="0.240781263" z="1" />
               </transform>
-              <textMesh fontName="" maxWidthMeters="0.7">
+              <textMesh fontName="HelveticaWorld_Regular" maxWidthMeters="0.7">
                 <text>Exit</text>
               </textMesh>
               <defaultStyle>
@@ -13676,7 +13676,7 @@
                 <offsetRotation x="-0" y="0" z="0" />
                 <scale x="0.139687508" y="0.139687508" z="1" />
               </transform>
-              <textMesh fontName="">
+              <textMesh fontName="HelveticaWorld_Regular">
                 <text formulae="&amp;StationSignage.Formulas.NamesFormulas;GetBuildingRoadName">Entrance A</text>
               </textMesh>
               <defaultStyle>
@@ -13770,7 +13770,7 @@
                 <offsetRotation x="-0" y="0" z="0" />
                 <scale x="0.240781263" y="0.240781263" z="1" />
               </transform>
-              <textMesh fontName="" maxWidthMeters="1.3">
+              <textMesh fontName="HelveticaWorld_Regular" maxWidthMeters="1.3">
                     <text formulae="&amp;StationSignage.Formulas.NamesFormulas;GetSubwayFirstSecondPlatformBoardingName">Boarding</text>
               </textMesh>
               <defaultStyle>
@@ -13818,7 +13818,7 @@
                 <offsetRotation x="-0" y="0" z="0" />
                 <scale x="0.139687508" y="0.139687508" z="1" />
               </transform>
-              <textMesh fontName="" maxWidthMeters="1.55">
+              <textMesh fontName="HelveticaWorld_Regular" maxWidthMeters="1.55">
                 <text formulae="&amp;StationSignage.Formulas.SubwayFormulas;GetFirstPlatformLine.Destination">&amp;StationSignage.Formulas.SubwayFormulas;GetFirstPlatformDestinationText</text>
               </textMesh>
               <defaultStyle>
@@ -13908,7 +13908,7 @@
                     <offsetRotation x="-0" y="0" z="0" />
                     <scale x="0.206093729" y="0.206093729" z="1" />
                   </transform>
-                  <textMesh fontName="" maxWidthMeters="0.25">
+                  <textMesh fontName="HelveticaWorld_Regular" maxWidthMeters="0.25">
                     <text formulae="&amp;StationSignage.Formulas.SubwayFormulas;GetFirstPlatformLine.Number">4</text>
                   </textMesh>
                   <defaultStyle>
@@ -13956,7 +13956,7 @@
                 <offsetRotation x="-0" y="0" z="0" />
                 <scale x="0.240781263" y="0.240781263" z="1" />
               </transform>
-              <textMesh fontName="" maxWidthMeters="0.7">
+              <textMesh fontName="HelveticaWorld_Regular" maxWidthMeters="0.7">
                 <text>Exit</text>
               </textMesh>
               <defaultStyle>
@@ -14004,7 +14004,7 @@
                 <offsetRotation x="-0" y="0" z="0" />
                 <scale x="0.139687508" y="0.139687508" z="1" />
               </transform>
-              <textMesh fontName="">
+              <textMesh fontName="HelveticaWorld_Regular">
                 <text formulae="&amp;StationSignage.Formulas.NamesFormulas;GetBuildingRoadName">Entrance A</text>
               </textMesh>
               <defaultStyle>
@@ -14228,7 +14228,7 @@
                 <offsetRotation x="-0" y="0" z="0" />
                 <scale x="0.3671875" y="0.3671875" z="1" />
               </transform>
-              <textMesh fontName="" maxWidthMeters="3">
+              <textMesh fontName="HelveticaWorld_Regular" maxWidthMeters="3">
                 <text formulae="&amp;StationSignage.Formulas.NamesFormulas;GetBuildingName">Aspen Square</text>
               </textMesh>
               <defaultStyle>
@@ -14298,7 +14298,7 @@
                 <offsetRotation x="-0" y="0" z="0" />
                 <scale x="0.112187505" y="0.112187505" z="1" />
               </transform>
-              <textMesh fontName="">
+              <textMesh fontName="HelveticaWorld_Regular">
                 <text formulae="&amp;StationSignage.Formulas.SubwayFormulas;GetSecondPlatformLine.Name">Subway Line 6</text>
               </textMesh>
               <defaultStyle>
@@ -14344,7 +14344,7 @@
                 <offsetRotation x="-0" y="0" z="0" />
                 <scale x="0.240781263" y="0.240781263" z="1" />
               </transform>
-              <textMesh fontName="" maxWidthMeters="0.7">
+              <textMesh fontName="HelveticaWorld_Regular" maxWidthMeters="0.7">
                 <text>Exit</text>
               </textMesh>
               <defaultStyle>
@@ -14392,7 +14392,7 @@
                 <offsetRotation x="-0" y="0" z="0" />
                 <scale x="0.139687508" y="0.139687508" z="1" />
               </transform>
-              <textMesh fontName="">
+              <textMesh fontName="HelveticaWorld_Regular">
                 <text formulae="&amp;StationSignage.Formulas.NamesFormulas;GetBuildingRoadName">Entrance A</text>
               </textMesh>
               <defaultStyle>
@@ -14486,7 +14486,7 @@
                 <offsetRotation x="-0" y="0" z="0" />
                 <scale x="0.240781263" y="0.240781263" z="1" />
               </transform>
-              <textMesh fontName="" maxWidthMeters="1.3">
+              <textMesh fontName="HelveticaWorld_Regular" maxWidthMeters="1.3">
                     <text formulae="&amp;StationSignage.Formulas.NamesFormulas;GetSubwayFirstSecondPlatformBoardingName">Boarding</text>
               </textMesh>
               <defaultStyle>
@@ -14534,7 +14534,7 @@
                 <offsetRotation x="-0" y="0" z="0" />
                 <scale x="0.139687508" y="0.139687508" z="1" />
               </transform>
-              <textMesh fontName="" maxWidthMeters="1.55">
+              <textMesh fontName="HelveticaWorld_Regular" maxWidthMeters="1.55">
                 <text formulae="&amp;StationSignage.Formulas.SubwayFormulas;GetFirstPlatformLine.Destination">&amp;StationSignage.Formulas.SubwayFormulas;GetFirstPlatformDestinationText</text>
               </textMesh>
               <defaultStyle>
@@ -14624,7 +14624,7 @@
                     <offsetRotation x="-0" y="0" z="0" />
                     <scale x="0.206093729" y="0.206093729" z="1" />
                   </transform>
-                  <textMesh fontName="" maxWidthMeters="0.25">
+                  <textMesh fontName="HelveticaWorld_Regular" maxWidthMeters="0.25">
                     <text formulae="&amp;StationSignage.Formulas.SubwayFormulas;GetFirstPlatformLine.Number">4</text>
                   </textMesh>
                   <defaultStyle>
@@ -14672,7 +14672,7 @@
                 <offsetRotation x="-0" y="0" z="0" />
                 <scale x="0.240781263" y="0.240781263" z="1" />
               </transform>
-              <textMesh fontName="" maxWidthMeters="0.7">
+              <textMesh fontName="HelveticaWorld_Regular" maxWidthMeters="0.7">
                 <text>Exit</text>
               </textMesh>
               <defaultStyle>
@@ -14720,7 +14720,7 @@
                 <offsetRotation x="-0" y="0" z="0" />
                 <scale x="0.139687508" y="0.139687508" z="1" />
               </transform>
-              <textMesh fontName="">
+              <textMesh fontName="HelveticaWorld_Regular">
                 <text formulae="&amp;StationSignage.Formulas.NamesFormulas;GetBuildingRoadName">Entrance A</text>
               </textMesh>
               <defaultStyle>
@@ -14922,7 +14922,7 @@
                 <offsetRotation x="-0" y="0" z="0" />
                 <scale x="0.3671875" y="0.3671875" z="1" />
               </transform>
-              <textMesh fontName="" maxWidthMeters="3">
+              <textMesh fontName="HelveticaWorld_Regular" maxWidthMeters="3">
                 <text formulae="&amp;StationSignage.Formulas.NamesFormulas;GetBuildingName">Aspen Square</text>
               </textMesh>
               <defaultStyle>
@@ -14992,7 +14992,7 @@
                 <offsetRotation x="-0" y="0" z="0" />
                 <scale x="0.112187505" y="0.112187505" z="1" />
               </transform>
-              <textMesh fontName="">
+              <textMesh fontName="HelveticaWorld_Regular">
                 <text formulae="&amp;StationSignage.Formulas.SubwayFormulas;GetSecondPlatformLine.Name">Subway Line 6</text>
               </textMesh>
               <defaultStyle>
@@ -15038,7 +15038,7 @@
                 <offsetRotation x="-0" y="0" z="0" />
                 <scale x="0.240781263" y="0.240781263" z="1" />
               </transform>
-              <textMesh fontName="" maxWidthMeters="0.7">
+              <textMesh fontName="HelveticaWorld_Regular" maxWidthMeters="0.7">
                 <text>Exit</text>
               </textMesh>
               <defaultStyle>
@@ -15086,7 +15086,7 @@
                 <offsetRotation x="-0" y="0" z="0" />
                 <scale x="0.139687508" y="0.139687508" z="1" />
               </transform>
-              <textMesh fontName="">
+              <textMesh fontName="HelveticaWorld_Regular">
                 <text formulae="&amp;StationSignage.Formulas.NamesFormulas;GetBuildingRoadName">Entrance A</text>
               </textMesh>
               <defaultStyle>
@@ -15180,7 +15180,7 @@
                 <offsetRotation x="-0" y="0" z="0" />
                 <scale x="0.240781263" y="0.240781263" z="1" />
               </transform>
-              <textMesh fontName="" maxWidthMeters="1.3">
+              <textMesh fontName="HelveticaWorld_Regular" maxWidthMeters="1.3">
                     <text formulae="&amp;StationSignage.Formulas.NamesFormulas;GetSubwayFirstSecondPlatformBoardingName">Boarding</text>
               </textMesh>
               <defaultStyle>
@@ -15228,7 +15228,7 @@
                 <offsetRotation x="-0" y="0" z="0" />
                 <scale x="0.139687508" y="0.139687508" z="1" />
               </transform>
-              <textMesh fontName="" maxWidthMeters="1.55">
+              <textMesh fontName="HelveticaWorld_Regular" maxWidthMeters="1.55">
                 <text formulae="&amp;StationSignage.Formulas.SubwayFormulas;GetFirstPlatformLine.Destination">&amp;StationSignage.Formulas.SubwayFormulas;GetFirstPlatformDestinationText</text>
               </textMesh>
               <defaultStyle>
@@ -15318,7 +15318,7 @@
                     <offsetRotation x="-0" y="0" z="0" />
                     <scale x="0.206093729" y="0.206093729" z="1" />
                   </transform>
-                  <textMesh fontName="" maxWidthMeters="0.25">
+                  <textMesh fontName="HelveticaWorld_Regular" maxWidthMeters="0.25">
                     <text formulae="&amp;StationSignage.Formulas.SubwayFormulas;GetFirstPlatformLine.Number">4</text>
                   </textMesh>
                   <defaultStyle>
@@ -15366,7 +15366,7 @@
                 <offsetRotation x="-0" y="0" z="0" />
                 <scale x="0.240781263" y="0.240781263" z="1" />
               </transform>
-              <textMesh fontName="" maxWidthMeters="0.7">
+              <textMesh fontName="HelveticaWorld_Regular" maxWidthMeters="0.7">
                 <text>Exit</text>
               </textMesh>
               <defaultStyle>
@@ -15414,7 +15414,7 @@
                 <offsetRotation x="-0" y="0" z="0" />
                 <scale x="0.139687508" y="0.139687508" z="1" />
               </transform>
-              <textMesh fontName="">
+              <textMesh fontName="HelveticaWorld_Regular">
                 <text formulae="&amp;StationSignage.Formulas.NamesFormulas;GetBuildingRoadName">Entrance A</text>
               </textMesh>
               <defaultStyle>
@@ -15550,7 +15550,7 @@
                 <offsetRotation x="-0" y="0" z="0" />
                 <scale x="0.3671875" y="0.3671875" z="1" />
               </transform>
-              <textMesh fontName="" maxWidthMeters="3">
+              <textMesh fontName="HelveticaWorld_Regular" maxWidthMeters="3">
                 <text formulae="&amp;StationSignage.Formulas.NamesFormulas;GetBuildingName">Aspen Square</text>
               </textMesh>
               <defaultStyle>
@@ -15620,7 +15620,7 @@
                 <offsetRotation x="-0" y="0" z="0" />
                 <scale x="0.112187505" y="0.112187505" z="1" />
               </transform>
-              <textMesh fontName="">
+              <textMesh fontName="HelveticaWorld_Regular">
                 <text formulae="&amp;StationSignage.Formulas.SubwayFormulas;GetSecondPlatformLine.Name">Subway Line 6</text>
               </textMesh>
               <defaultStyle>
@@ -15666,7 +15666,7 @@
                 <offsetRotation x="-0" y="0" z="0" />
                 <scale x="0.240781263" y="0.240781263" z="1" />
               </transform>
-              <textMesh fontName="" maxWidthMeters="0.7">
+              <textMesh fontName="HelveticaWorld_Regular" maxWidthMeters="0.7">
                 <text>Exit</text>
               </textMesh>
               <defaultStyle>
@@ -15714,7 +15714,7 @@
                 <offsetRotation x="-0" y="0" z="0" />
                 <scale x="0.139687508" y="0.139687508" z="1" />
               </transform>
-              <textMesh fontName="">
+              <textMesh fontName="HelveticaWorld_Regular">
                 <text formulae="&amp;StationSignage.Formulas.NamesFormulas;GetBuildingRoadName">Entrance A</text>
               </textMesh>
               <defaultStyle>
@@ -15808,7 +15808,7 @@
                 <offsetRotation x="-0" y="0" z="0" />
                 <scale x="0.240781263" y="0.240781263" z="1" />
               </transform>
-              <textMesh fontName="" maxWidthMeters="1.3">
+              <textMesh fontName="HelveticaWorld_Regular" maxWidthMeters="1.3">
                     <text formulae="&amp;StationSignage.Formulas.NamesFormulas;GetSubwayFirstSecondPlatformBoardingName">Boarding</text>
               </textMesh>
               <defaultStyle>
@@ -15856,7 +15856,7 @@
                 <offsetRotation x="-0" y="0" z="0" />
                 <scale x="0.139687508" y="0.139687508" z="1" />
               </transform>
-              <textMesh fontName="" maxWidthMeters="1.55">
+              <textMesh fontName="HelveticaWorld_Regular" maxWidthMeters="1.55">
                 <text formulae="&amp;StationSignage.Formulas.SubwayFormulas;GetFirstPlatformLine.Destination">&amp;StationSignage.Formulas.SubwayFormulas;GetFirstPlatformDestinationText</text>
               </textMesh>
               <defaultStyle>
@@ -15946,7 +15946,7 @@
                     <offsetRotation x="-0" y="0" z="0" />
                     <scale x="0.206093729" y="0.206093729" z="1" />
                   </transform>
-                  <textMesh fontName="" maxWidthMeters="0.25">
+                  <textMesh fontName="HelveticaWorld_Regular" maxWidthMeters="0.25">
                     <text formulae="&amp;StationSignage.Formulas.SubwayFormulas;GetFirstPlatformLine.Number">4</text>
                   </textMesh>
                   <defaultStyle>
@@ -15994,7 +15994,7 @@
                 <offsetRotation x="-0" y="0" z="0" />
                 <scale x="0.240781263" y="0.240781263" z="1" />
               </transform>
-              <textMesh fontName="" maxWidthMeters="0.7">
+              <textMesh fontName="HelveticaWorld_Regular" maxWidthMeters="0.7">
                 <text>Exit</text>
               </textMesh>
               <defaultStyle>
@@ -16042,7 +16042,7 @@
                 <offsetRotation x="-0" y="0" z="0" />
                 <scale x="0.139687508" y="0.139687508" z="1" />
               </transform>
-              <textMesh fontName="">
+              <textMesh fontName="HelveticaWorld_Regular">
                 <text formulae="&amp;StationSignage.Formulas.NamesFormulas;GetBuildingRoadName">Entrance A</text>
               </textMesh>
               <defaultStyle>
@@ -16244,7 +16244,7 @@
                 <offsetRotation x="-0" y="0" z="0" />
                 <scale x="0.163906261" y="0.163906261" z="1" />
               </transform>
-              <textMesh fontName="" maxWidthMeters="2.05">
+              <textMesh fontName="HelveticaWorld_Regular" maxWidthMeters="2.05">
                 <text formulae="&amp;StationSignage.Formulas.SubwayFormulas;GetSecondPlatformLine.Destination">Aspen Square dawd wadaw dwad aw</text>
               </textMesh>
               <defaultStyle>
@@ -16314,7 +16314,7 @@
                 <offsetRotation x="-0" y="0" z="0" />
                 <scale x="0.15125" y="0.15125" z="1" />
               </transform>
-              <textMesh fontName="" maxWidthMeters="0.9">
+              <textMesh fontName="HelveticaWorld_Regular" maxWidthMeters="0.9">
                 <text>Platform</text>
               </textMesh>
               <defaultStyle>
@@ -16338,7 +16338,7 @@
                 <offsetRotation x="-0" y="0" z="0" />
                 <scale x="0.09703126" y="0.09703126" z="1" />
               </transform>
-              <textMesh fontName="" maxWidthMeters="2.05">
+              <textMesh fontName="HelveticaWorld_Regular" maxWidthMeters="2.05">
                 <text>Trains To</text>
               </textMesh>
               <defaultStyle>
@@ -16383,7 +16383,7 @@
                   <offsetRotation x="-0" y="0" z="0" />
                   <scale x="0.121093757" y="0.121093757" z="1" />
                 </transform>
-                <textMesh fontName="" maxWidthMeters="1">
+                <textMesh fontName="HelveticaWorld_Regular" maxWidthMeters="1">
                   <text formulae="&amp;StationSignage.Formulas.SubwayFormulas;GetSecondPlatformLine.ConnectionsTitle">Connections</text>
                 </textMesh>
                 <defaultStyle>
@@ -16407,7 +16407,7 @@
                   <offsetRotation x="-0" y="0" z="0" />
                   <scale x="0.112187505" y="0.112187505" z="1" />
                 </transform>
-                <textMesh fontName="">
+                <textMesh fontName="HelveticaWorld_Regular">
                   <text formulae="&amp;StationSignage.Formulas.SubwayFormulas;GetSecondPlatformLine.ConnectionsLineName">Subway Line 6</text>
                 </textMesh>
                 <defaultStyle>
@@ -16497,7 +16497,7 @@
                       <offsetRotation x="-0" y="0" z="0" />
                       <scale x="0.08" y="0.08" z="1" />
                     </transform>
-                    <textMesh fontName="" maxWidthMeters="0.09">
+                    <textMesh fontName="HelveticaWorld_Regular" maxWidthMeters="0.09">
                       <text formulae="&amp;StationSignage.Formulas.SubwayFormulas;GetSecondPlatformLine.GetFirstSubwayConnection.Number">M1</text>
                     </textMesh>
                     <defaultStyle>
@@ -16543,7 +16543,7 @@
                       <offsetRotation x="-0" y="0" z="0" />
                       <scale x="0.08" y="0.08" z="1" />
                     </transform>
-                    <textMesh fontName="" maxWidthMeters="0.09">
+                    <textMesh fontName="HelveticaWorld_Regular" maxWidthMeters="0.09">
                       <text formulae="&amp;StationSignage.Formulas.SubwayFormulas;GetSecondPlatformLine.GetSecondSubwayConnection.Number">M1</text>
                     </textMesh>
                     <defaultStyle>
@@ -16589,7 +16589,7 @@
                       <offsetRotation x="-0" y="0" z="0" />
                       <scale x="0.08" y="0.08" z="1" />
                     </transform>
-                    <textMesh fontName="" maxWidthMeters="0.09">
+                    <textMesh fontName="HelveticaWorld_Regular" maxWidthMeters="0.09">
                       <text formulae="&amp;StationSignage.Formulas.SubwayFormulas;GetSecondPlatformLine.GetThirdSubwayConnection.Number">M1</text>
                     </textMesh>
                     <defaultStyle>
@@ -16635,7 +16635,7 @@
                       <offsetRotation x="-0" y="0" z="0" />
                       <scale x="0.08" y="0.08" z="1" />
                     </transform>
-                    <textMesh fontName="" maxWidthMeters="0.09">
+                    <textMesh fontName="HelveticaWorld_Regular" maxWidthMeters="0.09">
                       <text formulae="&amp;StationSignage.Formulas.SubwayFormulas;GetSecondPlatformLine.GetFourthSubwayConnection.Number">M1</text>
                     </textMesh>
                     <defaultStyle>
@@ -16727,7 +16727,7 @@
                       <offsetRotation x="-0" y="0" z="0" />
                       <scale x="0.08" y="0.08" z="1" />
                     </transform>
-                    <textMesh fontName="" maxWidthMeters="0.09">
+                    <textMesh fontName="HelveticaWorld_Regular" maxWidthMeters="0.09">
                       <text formulae="&amp;StationSignage.Formulas.SubwayFormulas;GetSecondPlatformLine.GetFirstTrainConnection.Number">M1</text>
                     </textMesh>
                     <defaultStyle>
@@ -16773,7 +16773,7 @@
                       <offsetRotation x="-0" y="0" z="0" />
                       <scale x="0.08" y="0.08" z="1" />
                     </transform>
-                    <textMesh fontName="" maxWidthMeters="0.09">
+                    <textMesh fontName="HelveticaWorld_Regular" maxWidthMeters="0.09">
                       <text formulae="&amp;StationSignage.Formulas.SubwayFormulas;GetSecondPlatformLine.GetSecondTrainConnection.Number">M1</text>
                     </textMesh>
                     <defaultStyle>
@@ -16819,7 +16819,7 @@
                       <offsetRotation x="-0" y="0" z="0" />
                       <scale x="0.08" y="0.08" z="1" />
                     </transform>
-                    <textMesh fontName="" maxWidthMeters="0.09">
+                    <textMesh fontName="HelveticaWorld_Regular" maxWidthMeters="0.09">
                       <text formulae="&amp;StationSignage.Formulas.SubwayFormulas;GetSecondPlatformLine.GetThirdTrainConnection.Number">M1</text>
                     </textMesh>
                     <defaultStyle>
@@ -16865,7 +16865,7 @@
                       <offsetRotation x="-0" y="0" z="0" />
                       <scale x="0.08" y="0.08" z="1" />
                     </transform>
-                    <textMesh fontName="" maxWidthMeters="0.09">
+                    <textMesh fontName="HelveticaWorld_Regular" maxWidthMeters="0.09">
                       <text formulae="&amp;StationSignage.Formulas.SubwayFormulas;GetSecondPlatformLine.GetThirdTrainConnection.Number">M1</text>
                     </textMesh>
                     <defaultStyle>
@@ -17068,7 +17068,7 @@
                 <offsetRotation x="-0" y="0" z="0" />
                 <scale x="0.163906261" y="0.163906261" z="1" />
               </transform>
-              <textMesh fontName="" maxWidthMeters="2.05">
+              <textMesh fontName="HelveticaWorld_Regular" maxWidthMeters="2.05">
                 <text formulae="&amp;StationSignage.Formulas.SubwayFormulas;GetSecondPlatformLine.Destination">Aspen Square dawd wadaw dwad aw</text>
               </textMesh>
               <defaultStyle>
@@ -17138,7 +17138,7 @@
                 <offsetRotation x="-0" y="0" z="0" />
                 <scale x="0.15125" y="0.15125" z="1" />
               </transform>
-              <textMesh fontName="" maxWidthMeters="0.9">
+              <textMesh fontName="HelveticaWorld_Regular" maxWidthMeters="0.9">
                 <text>Platform</text>
               </textMesh>
               <defaultStyle>
@@ -17162,7 +17162,7 @@
                 <offsetRotation x="-0" y="0" z="0" />
                 <scale x="0.09703126" y="0.09703126" z="1" />
               </transform>
-              <textMesh fontName="" maxWidthMeters="2.05">
+              <textMesh fontName="HelveticaWorld_Regular" maxWidthMeters="2.05">
                 <text>Trains To</text>
               </textMesh>
               <defaultStyle>
@@ -17207,7 +17207,7 @@
                   <offsetRotation x="-0" y="0" z="0" />
                   <scale x="0.121093757" y="0.121093757" z="1" />
                 </transform>
-                <textMesh fontName="" maxWidthMeters="1">
+                <textMesh fontName="HelveticaWorld_Regular" maxWidthMeters="1">
                   <text formulae="&amp;StationSignage.Formulas.SubwayFormulas;GetSecondPlatformLine.ConnectionsTitle">Connections</text>
                 </textMesh>
                 <defaultStyle>
@@ -17231,7 +17231,7 @@
                   <offsetRotation x="-0" y="0" z="0" />
                   <scale x="0.112187505" y="0.112187505" z="1" />
                 </transform>
-                <textMesh fontName="">
+                <textMesh fontName="HelveticaWorld_Regular">
                   <text formulae="&amp;StationSignage.Formulas.SubwayFormulas;GetSecondPlatformLine.ConnectionsLineName">Subway Line 6</text>
                 </textMesh>
                 <defaultStyle>
@@ -17321,7 +17321,7 @@
                       <offsetRotation x="-0" y="0" z="0" />
                       <scale x="0.08" y="0.08" z="1" />
                     </transform>
-                    <textMesh fontName="" maxWidthMeters="0.09">
+                    <textMesh fontName="HelveticaWorld_Regular" maxWidthMeters="0.09">
                       <text formulae="&amp;StationSignage.Formulas.SubwayFormulas;GetSecondPlatformLine.GetFirstSubwayConnection.Number">M1</text>
                     </textMesh>
                     <defaultStyle>
@@ -17367,7 +17367,7 @@
                       <offsetRotation x="-0" y="0" z="0" />
                       <scale x="0.08" y="0.08" z="1" />
                     </transform>
-                    <textMesh fontName="" maxWidthMeters="0.09">
+                    <textMesh fontName="HelveticaWorld_Regular" maxWidthMeters="0.09">
                       <text formulae="&amp;StationSignage.Formulas.SubwayFormulas;GetSecondPlatformLine.GetSecondSubwayConnection.Number">M1</text>
                     </textMesh>
                     <defaultStyle>
@@ -17413,7 +17413,7 @@
                       <offsetRotation x="-0" y="0" z="0" />
                       <scale x="0.08" y="0.08" z="1" />
                     </transform>
-                    <textMesh fontName="" maxWidthMeters="0.09">
+                    <textMesh fontName="HelveticaWorld_Regular" maxWidthMeters="0.09">
                       <text formulae="&amp;StationSignage.Formulas.SubwayFormulas;GetSecondPlatformLine.GetThirdSubwayConnection.Number">M1</text>
                     </textMesh>
                     <defaultStyle>
@@ -17459,7 +17459,7 @@
                       <offsetRotation x="-0" y="0" z="0" />
                       <scale x="0.08" y="0.08" z="1" />
                     </transform>
-                    <textMesh fontName="" maxWidthMeters="0.09">
+                    <textMesh fontName="HelveticaWorld_Regular" maxWidthMeters="0.09">
                       <text formulae="&amp;StationSignage.Formulas.SubwayFormulas;GetSecondPlatformLine.GetFourthSubwayConnection.Number">M1</text>
                     </textMesh>
                     <defaultStyle>
@@ -17551,7 +17551,7 @@
                       <offsetRotation x="-0" y="0" z="0" />
                       <scale x="0.08" y="0.08" z="1" />
                     </transform>
-                    <textMesh fontName="" maxWidthMeters="0.09">
+                    <textMesh fontName="HelveticaWorld_Regular" maxWidthMeters="0.09">
                       <text formulae="&amp;StationSignage.Formulas.SubwayFormulas;GetSecondPlatformLine.GetFirstTrainConnection.Number">M1</text>
                     </textMesh>
                     <defaultStyle>
@@ -17597,7 +17597,7 @@
                       <offsetRotation x="-0" y="0" z="0" />
                       <scale x="0.08" y="0.08" z="1" />
                     </transform>
-                    <textMesh fontName="" maxWidthMeters="0.09">
+                    <textMesh fontName="HelveticaWorld_Regular" maxWidthMeters="0.09">
                       <text formulae="&amp;StationSignage.Formulas.SubwayFormulas;GetSecondPlatformLine.GetSecondTrainConnection.Number">M1</text>
                     </textMesh>
                     <defaultStyle>
@@ -17643,7 +17643,7 @@
                       <offsetRotation x="-0" y="0" z="0" />
                       <scale x="0.08" y="0.08" z="1" />
                     </transform>
-                    <textMesh fontName="" maxWidthMeters="0.09">
+                    <textMesh fontName="HelveticaWorld_Regular" maxWidthMeters="0.09">
                       <text formulae="&amp;StationSignage.Formulas.SubwayFormulas;GetSecondPlatformLine.GetThirdTrainConnection.Number">M1</text>
                     </textMesh>
                     <defaultStyle>
@@ -17689,7 +17689,7 @@
                       <offsetRotation x="-0" y="0" z="0" />
                       <scale x="0.08" y="0.08" z="1" />
                     </transform>
-                    <textMesh fontName="" maxWidthMeters="0.09">
+                    <textMesh fontName="HelveticaWorld_Regular" maxWidthMeters="0.09">
                       <text formulae="&amp;StationSignage.Formulas.SubwayFormulas;GetSecondPlatformLine.GetThirdTrainConnection.Number">M1</text>
                     </textMesh>
                     <defaultStyle>
@@ -17870,7 +17870,7 @@
                 <offsetRotation x="-0" y="0" z="0" />
                 <scale x="0.163906261" y="0.163906261" z="1" />
               </transform>
-              <textMesh fontName="" maxWidthMeters="2.05">
+              <textMesh fontName="HelveticaWorld_Regular" maxWidthMeters="2.05">
                 <text formulae="&amp;StationSignage.Formulas.SubwayFormulas;GetSecondPlatformLine.Destination">Aspen Square dawd wadaw dwad aw</text>
               </textMesh>
               <defaultStyle>
@@ -17940,7 +17940,7 @@
                 <offsetRotation x="-0" y="0" z="0" />
                 <scale x="0.15125" y="0.15125" z="1" />
               </transform>
-              <textMesh fontName="" maxWidthMeters="0.9">
+              <textMesh fontName="HelveticaWorld_Regular" maxWidthMeters="0.9">
                 <text>Platform</text>
               </textMesh>
               <defaultStyle>
@@ -17964,7 +17964,7 @@
                 <offsetRotation x="-0" y="0" z="0" />
                 <scale x="0.09703126" y="0.09703126" z="1" />
               </transform>
-              <textMesh fontName="" maxWidthMeters="2.05">
+              <textMesh fontName="HelveticaWorld_Regular" maxWidthMeters="2.05">
                 <text>Trains To</text>
               </textMesh>
               <defaultStyle>
@@ -18009,7 +18009,7 @@
                   <offsetRotation x="-0" y="0" z="0" />
                   <scale x="0.121093757" y="0.121093757" z="1" />
                 </transform>
-                <textMesh fontName="" maxWidthMeters="1">
+                <textMesh fontName="HelveticaWorld_Regular" maxWidthMeters="1">
                   <text formulae="&amp;StationSignage.Formulas.SubwayFormulas;GetSecondPlatformLine.ConnectionsTitle">Connections</text>
                 </textMesh>
                 <defaultStyle>
@@ -18033,7 +18033,7 @@
                   <offsetRotation x="-0" y="0" z="0" />
                   <scale x="0.112187505" y="0.112187505" z="1" />
                 </transform>
-                <textMesh fontName="">
+                <textMesh fontName="HelveticaWorld_Regular">
                   <text formulae="&amp;StationSignage.Formulas.SubwayFormulas;GetSecondPlatformLine.ConnectionsLineName">Subway Line 6</text>
                 </textMesh>
                 <defaultStyle>
@@ -18123,7 +18123,7 @@
                       <offsetRotation x="-0" y="0" z="0" />
                       <scale x="0.08" y="0.08" z="1" />
                     </transform>
-                    <textMesh fontName="" maxWidthMeters="0.09">
+                    <textMesh fontName="HelveticaWorld_Regular" maxWidthMeters="0.09">
                       <text formulae="&amp;StationSignage.Formulas.SubwayFormulas;GetSecondPlatformLine.GetFirstSubwayConnection.Number">M1</text>
                     </textMesh>
                     <defaultStyle>
@@ -18169,7 +18169,7 @@
                       <offsetRotation x="-0" y="0" z="0" />
                       <scale x="0.08" y="0.08" z="1" />
                     </transform>
-                    <textMesh fontName="" maxWidthMeters="0.09">
+                    <textMesh fontName="HelveticaWorld_Regular" maxWidthMeters="0.09">
                       <text formulae="&amp;StationSignage.Formulas.SubwayFormulas;GetSecondPlatformLine.GetSecondSubwayConnection.Number">M1</text>
                     </textMesh>
                     <defaultStyle>
@@ -18215,7 +18215,7 @@
                       <offsetRotation x="-0" y="0" z="0" />
                       <scale x="0.08" y="0.08" z="1" />
                     </transform>
-                    <textMesh fontName="" maxWidthMeters="0.09">
+                    <textMesh fontName="HelveticaWorld_Regular" maxWidthMeters="0.09">
                       <text formulae="&amp;StationSignage.Formulas.SubwayFormulas;GetSecondPlatformLine.GetThirdSubwayConnection.Number">M1</text>
                     </textMesh>
                     <defaultStyle>
@@ -18261,7 +18261,7 @@
                       <offsetRotation x="-0" y="0" z="0" />
                       <scale x="0.08" y="0.08" z="1" />
                     </transform>
-                    <textMesh fontName="" maxWidthMeters="0.09">
+                    <textMesh fontName="HelveticaWorld_Regular" maxWidthMeters="0.09">
                       <text formulae="&amp;StationSignage.Formulas.SubwayFormulas;GetSecondPlatformLine.GetFourthSubwayConnection.Number">M1</text>
                     </textMesh>
                     <defaultStyle>
@@ -18353,7 +18353,7 @@
                       <offsetRotation x="-0" y="0" z="0" />
                       <scale x="0.08" y="0.08" z="1" />
                     </transform>
-                    <textMesh fontName="" maxWidthMeters="0.09">
+                    <textMesh fontName="HelveticaWorld_Regular" maxWidthMeters="0.09">
                       <text formulae="&amp;StationSignage.Formulas.SubwayFormulas;GetSecondPlatformLine.GetFirstTrainConnection.Number">M1</text>
                     </textMesh>
                     <defaultStyle>
@@ -18399,7 +18399,7 @@
                       <offsetRotation x="-0" y="0" z="0" />
                       <scale x="0.08" y="0.08" z="1" />
                     </transform>
-                    <textMesh fontName="" maxWidthMeters="0.09">
+                    <textMesh fontName="HelveticaWorld_Regular" maxWidthMeters="0.09">
                       <text formulae="&amp;StationSignage.Formulas.SubwayFormulas;GetSecondPlatformLine.GetSecondTrainConnection.Number">M1</text>
                     </textMesh>
                     <defaultStyle>
@@ -18445,7 +18445,7 @@
                       <offsetRotation x="-0" y="0" z="0" />
                       <scale x="0.08" y="0.08" z="1" />
                     </transform>
-                    <textMesh fontName="" maxWidthMeters="0.09">
+                    <textMesh fontName="HelveticaWorld_Regular" maxWidthMeters="0.09">
                       <text formulae="&amp;StationSignage.Formulas.SubwayFormulas;GetSecondPlatformLine.GetThirdTrainConnection.Number">M1</text>
                     </textMesh>
                     <defaultStyle>
@@ -18491,7 +18491,7 @@
                       <offsetRotation x="-0" y="0" z="0" />
                       <scale x="0.08" y="0.08" z="1" />
                     </transform>
-                    <textMesh fontName="" maxWidthMeters="0.09">
+                    <textMesh fontName="HelveticaWorld_Regular" maxWidthMeters="0.09">
                       <text formulae="&amp;StationSignage.Formulas.SubwayFormulas;GetSecondPlatformLine.GetThirdTrainConnection.Number">M1</text>
                     </textMesh>
                     <defaultStyle>
@@ -18694,7 +18694,7 @@
                 <offsetRotation x="-0" y="0" z="0" />
                 <scale x="0.163906261" y="0.163906261" z="1" />
               </transform>
-              <textMesh fontName="" maxWidthMeters="2.05">
+              <textMesh fontName="HelveticaWorld_Regular" maxWidthMeters="2.05">
                 <text formulae="&amp;StationSignage.Formulas.SubwayFormulas;GetSecondPlatformLine.Destination">Aspen Square dawd wadaw dwad aw</text>
               </textMesh>
               <defaultStyle>
@@ -18764,7 +18764,7 @@
                 <offsetRotation x="-0" y="0" z="0" />
                 <scale x="0.15125" y="0.15125" z="1" />
               </transform>
-              <textMesh fontName="" maxWidthMeters="0.9">
+              <textMesh fontName="HelveticaWorld_Regular" maxWidthMeters="0.9">
                 <text>Platform</text>
               </textMesh>
               <defaultStyle>
@@ -18788,7 +18788,7 @@
                 <offsetRotation x="-0" y="0" z="0" />
                 <scale x="0.09703126" y="0.09703126" z="1" />
               </transform>
-              <textMesh fontName="" maxWidthMeters="2.05">
+              <textMesh fontName="HelveticaWorld_Regular" maxWidthMeters="2.05">
                 <text>Trains To</text>
               </textMesh>
               <defaultStyle>
@@ -18833,7 +18833,7 @@
                   <offsetRotation x="-0" y="0" z="0" />
                   <scale x="0.121093757" y="0.121093757" z="1" />
                 </transform>
-                <textMesh fontName="" maxWidthMeters="1">
+                <textMesh fontName="HelveticaWorld_Regular" maxWidthMeters="1">
                   <text formulae="&amp;StationSignage.Formulas.SubwayFormulas;GetSecondPlatformLine.ConnectionsTitle">Connections</text>
                 </textMesh>
                 <defaultStyle>
@@ -18857,7 +18857,7 @@
                   <offsetRotation x="-0" y="0" z="0" />
                   <scale x="0.112187505" y="0.112187505" z="1" />
                 </transform>
-                <textMesh fontName="">
+                <textMesh fontName="HelveticaWorld_Regular">
                   <text formulae="&amp;StationSignage.Formulas.SubwayFormulas;GetSecondPlatformLine.ConnectionsLineName">Subway Line 6</text>
                 </textMesh>
                 <defaultStyle>
@@ -18947,7 +18947,7 @@
                       <offsetRotation x="-0" y="0" z="0" />
                       <scale x="0.08" y="0.08" z="1" />
                     </transform>
-                    <textMesh fontName="" maxWidthMeters="0.09">
+                    <textMesh fontName="HelveticaWorld_Regular" maxWidthMeters="0.09">
                       <text formulae="&amp;StationSignage.Formulas.SubwayFormulas;GetSecondPlatformLine.GetFirstSubwayConnection.Number">M1</text>
                     </textMesh>
                     <defaultStyle>
@@ -18993,7 +18993,7 @@
                       <offsetRotation x="-0" y="0" z="0" />
                       <scale x="0.08" y="0.08" z="1" />
                     </transform>
-                    <textMesh fontName="" maxWidthMeters="0.09">
+                    <textMesh fontName="HelveticaWorld_Regular" maxWidthMeters="0.09">
                       <text formulae="&amp;StationSignage.Formulas.SubwayFormulas;GetSecondPlatformLine.GetSecondSubwayConnection.Number">M1</text>
                     </textMesh>
                     <defaultStyle>
@@ -19039,7 +19039,7 @@
                       <offsetRotation x="-0" y="0" z="0" />
                       <scale x="0.08" y="0.08" z="1" />
                     </transform>
-                    <textMesh fontName="" maxWidthMeters="0.09">
+                    <textMesh fontName="HelveticaWorld_Regular" maxWidthMeters="0.09">
                       <text formulae="&amp;StationSignage.Formulas.SubwayFormulas;GetSecondPlatformLine.GetThirdSubwayConnection.Number">M1</text>
                     </textMesh>
                     <defaultStyle>
@@ -19085,7 +19085,7 @@
                       <offsetRotation x="-0" y="0" z="0" />
                       <scale x="0.08" y="0.08" z="1" />
                     </transform>
-                    <textMesh fontName="" maxWidthMeters="0.09">
+                    <textMesh fontName="HelveticaWorld_Regular" maxWidthMeters="0.09">
                       <text formulae="&amp;StationSignage.Formulas.SubwayFormulas;GetSecondPlatformLine.GetFourthSubwayConnection.Number">M1</text>
                     </textMesh>
                     <defaultStyle>
@@ -19177,7 +19177,7 @@
                       <offsetRotation x="-0" y="0" z="0" />
                       <scale x="0.08" y="0.08" z="1" />
                     </transform>
-                    <textMesh fontName="" maxWidthMeters="0.09">
+                    <textMesh fontName="HelveticaWorld_Regular" maxWidthMeters="0.09">
                       <text formulae="&amp;StationSignage.Formulas.SubwayFormulas;GetSecondPlatformLine.GetFirstTrainConnection.Number">M1</text>
                     </textMesh>
                     <defaultStyle>
@@ -19223,7 +19223,7 @@
                       <offsetRotation x="-0" y="0" z="0" />
                       <scale x="0.08" y="0.08" z="1" />
                     </transform>
-                    <textMesh fontName="" maxWidthMeters="0.09">
+                    <textMesh fontName="HelveticaWorld_Regular" maxWidthMeters="0.09">
                       <text formulae="&amp;StationSignage.Formulas.SubwayFormulas;GetSecondPlatformLine.GetSecondTrainConnection.Number">M1</text>
                     </textMesh>
                     <defaultStyle>
@@ -19269,7 +19269,7 @@
                       <offsetRotation x="-0" y="0" z="0" />
                       <scale x="0.08" y="0.08" z="1" />
                     </transform>
-                    <textMesh fontName="" maxWidthMeters="0.09">
+                    <textMesh fontName="HelveticaWorld_Regular" maxWidthMeters="0.09">
                       <text formulae="&amp;StationSignage.Formulas.SubwayFormulas;GetSecondPlatformLine.GetThirdTrainConnection.Number">M1</text>
                     </textMesh>
                     <defaultStyle>
@@ -19315,7 +19315,7 @@
                       <offsetRotation x="-0" y="0" z="0" />
                       <scale x="0.08" y="0.08" z="1" />
                     </transform>
-                    <textMesh fontName="" maxWidthMeters="0.09">
+                    <textMesh fontName="HelveticaWorld_Regular" maxWidthMeters="0.09">
                       <text formulae="&amp;StationSignage.Formulas.SubwayFormulas;GetSecondPlatformLine.GetThirdTrainConnection.Number">M1</text>
                     </textMesh>
                     <defaultStyle>
@@ -19674,7 +19674,7 @@
                 <offsetRotation x="-0" y="0" z="0" />
                 <scale x="0.07" y="0.07" z="1" />
               </transform>
-              <textMesh fontName="">
+              <textMesh fontName="HelveticaWorld_Regular">
                 <text formulae="&amp;StationSignage.Formulas.NamesFormulas;GetTimeString">Hora: 17:40</text>
               </textMesh>
               <defaultStyle>
@@ -19742,7 +19742,7 @@
                 <offsetRotation x="-0" y="0" z="0" />
                 <scale x="0.06" y="0.06" z="1" />
               </transform>
-              <textMesh fontName="" maxWidthMeters="1.65">
+              <textMesh fontName="HelveticaWorld_Regular" maxWidthMeters="1.65">
                 <text formulae="&amp;StationSignage.Formulas.SubwayFormulas;GetWelcomeMessage">Bem Vindo ao Metro de Sao P adw daaulo dawd awdaw d</text>
               </textMesh>
               <defaultStyle>
@@ -19788,8 +19788,8 @@
                 <offsetRotation x="-0" y="0" z="0" />
                 <scale x="0.04" y="0.04" z="1" />
               </transform>
-              <textMesh fontName="">
-                <text formulae="&amp;StationSignage.Formulas.SubwayFormulas;GetLinesStatusMessage">Situacao das Linhas</text>
+              <textMesh fontName="HelveticaWorld_Regular">
+                <text formulae="&amp;StationSignage.Formulas.NamesFormulas;GetLinesStatusMessage">Situacao das Linhas</text>
               </textMesh>
               <defaultStyle>
                 <color>FFFFFFFF</color>
@@ -19876,7 +19876,7 @@
                     <offsetRotation x="-0" y="0" z="0" />
                     <scale x="0.08" y="0.08" z="1" />
                   </transform>
-                  <textMesh fontName="" maxWidthMeters="0.09">
+                  <textMesh fontName="HelveticaWorld_Regular" maxWidthMeters="0.09">
                     <text formulae="&amp;StationSignage.Formulas.SubwayFormulas;GetFirstLine.Number">M1</text>
                   </textMesh>
                   <defaultStyle>
@@ -19901,7 +19901,7 @@
                   <offsetRotation x="-0" y="0" z="0" />
                   <scale x="0.06" y="0.06" z="1" />
                 </transform>
-                <textMesh fontName="" maxWidthMeters="0.65">
+                <textMesh fontName="HelveticaWorld_Regular" maxWidthMeters="0.65">
                   <text formulae="&amp;StationSignage.Formulas.SubwayFormulas;GetFirstLine.Status">Operacao Normal</text>
                 </textMesh>
                 <defaultStyle>
@@ -19992,7 +19992,7 @@
                     <offsetRotation x="-0" y="0" z="0" />
                     <scale x="0.08" y="0.08" z="1" />
                   </transform>
-                  <textMesh fontName="" maxWidthMeters="0.09">
+                  <textMesh fontName="HelveticaWorld_Regular" maxWidthMeters="0.09">
                     <text formulae="&amp;StationSignage.Formulas.SubwayFormulas;GetSecondLine.Number">2</text>
                   </textMesh>
                   <defaultStyle>
@@ -20017,7 +20017,7 @@
                   <offsetRotation x="-0" y="0" z="0" />
                   <scale x="0.06" y="0.06" z="1" />
                 </transform>
-                <textMesh fontName="" maxWidthMeters="0.65">
+                <textMesh fontName="HelveticaWorld_Regular" maxWidthMeters="0.65">
                   <text formulae="&amp;StationSignage.Formulas.SubwayFormulas;GetSecondLine.Status">Operacao Normal</text>
                 </textMesh>
                 <defaultStyle>
@@ -20108,7 +20108,7 @@
                     <offsetRotation x="-0" y="0" z="0" />
                     <scale x="0.08" y="0.08" z="1" />
                   </transform>
-                  <textMesh fontName="" maxWidthMeters="0.09">
+                  <textMesh fontName="HelveticaWorld_Regular" maxWidthMeters="0.09">
                     <text formulae="&amp;StationSignage.Formulas.SubwayFormulas;GetThirdLine.Number">3</text>
                   </textMesh>
                   <defaultStyle>
@@ -20133,7 +20133,7 @@
                   <offsetRotation x="-0" y="0" z="0" />
                   <scale x="0.06" y="0.06" z="1" />
                 </transform>
-                <textMesh fontName="" maxWidthMeters="0.65">
+                <textMesh fontName="HelveticaWorld_Regular" maxWidthMeters="0.65">
                   <text formulae="&amp;StationSignage.Formulas.SubwayFormulas;GetThirdLine.Status">Operacao Normal</text>
                 </textMesh>
                 <defaultStyle>
@@ -20224,7 +20224,7 @@
                     <offsetRotation x="-0" y="0" z="0" />
                     <scale x="0.08" y="0.08" z="1" />
                   </transform>
-                  <textMesh fontName="" maxWidthMeters="0.09">
+                  <textMesh fontName="HelveticaWorld_Regular" maxWidthMeters="0.09">
                     <text formulae="&amp;StationSignage.Formulas.SubwayFormulas;GetFourthLine.Number">4</text>
                   </textMesh>
                   <defaultStyle>
@@ -20249,7 +20249,7 @@
                   <offsetRotation x="-0" y="0" z="0" />
                   <scale x="0.06" y="0.06" z="1" />
                 </transform>
-                <textMesh fontName="" maxWidthMeters="0.65">
+                <textMesh fontName="HelveticaWorld_Regular" maxWidthMeters="0.65">
                   <text formulae="&amp;StationSignage.Formulas.SubwayFormulas;GetFourthLine.Status">Operacao Normal</text>
                 </textMesh>
                 <defaultStyle>
@@ -20340,7 +20340,7 @@
                     <offsetRotation x="-0" y="0" z="0" />
                     <scale x="0.08" y="0.08" z="1" />
                   </transform>
-                  <textMesh fontName="" maxWidthMeters="0.09">
+                  <textMesh fontName="HelveticaWorld_Regular" maxWidthMeters="0.09">
                     <text formulae="&amp;StationSignage.Formulas.SubwayFormulas;GetFifthLine.Number">5</text>
                   </textMesh>
                   <defaultStyle>
@@ -20365,7 +20365,7 @@
                   <offsetRotation x="-0" y="0" z="0" />
                   <scale x="0.06" y="0.06" z="1" />
                 </transform>
-                <textMesh fontName="" maxWidthMeters="0.65">
+                <textMesh fontName="HelveticaWorld_Regular" maxWidthMeters="0.65">
                   <text formulae="&amp;StationSignage.Formulas.SubwayFormulas;GetFifthLine.Status">Operacao Normal</text>
                 </textMesh>
                 <defaultStyle>
@@ -20570,7 +20570,7 @@
                 <offsetRotation x="-0" y="0" z="0" />
                 <scale x="0.07" y="0.07" z="1" />
               </transform>
-              <textMesh fontName="">
+              <textMesh fontName="HelveticaWorld_Regular">
                 <text formulae="&amp;StationSignage.Formulas.NamesFormulas;GetTimeString">Hora: 17:40</text>
               </textMesh>
               <defaultStyle>
@@ -20638,7 +20638,7 @@
                 <offsetRotation x="-0" y="0" z="0" />
                 <scale x="0.06" y="0.06" z="1" />
               </transform>
-              <textMesh fontName="" maxWidthMeters="1.65">
+              <textMesh fontName="HelveticaWorld_Regular" maxWidthMeters="1.65">
                 <text formulae="&amp;StationSignage.Formulas.SubwayFormulas;GetWelcomeMessage">Bem Vindo ao Metro de Sao P adw daaulo dawd awdaw d</text>
               </textMesh>
               <defaultStyle>
@@ -20684,8 +20684,8 @@
                 <offsetRotation x="-0" y="0" z="0" />
                 <scale x="0.04" y="0.04" z="1" />
               </transform>
-              <textMesh fontName="">
-                <text formulae="&amp;StationSignage.Formulas.SubwayFormulas;GetLinesStatusMessage">Situacao das Linhas</text>
+              <textMesh fontName="HelveticaWorld_Regular">
+                <text formulae="&amp;StationSignage.Formulas.NamesFormulas;GetLinesStatusMessage">Situacao das Linhas</text>
               </textMesh>
               <defaultStyle>
                 <color>FFFFFFFF</color>
@@ -20772,7 +20772,7 @@
                     <offsetRotation x="-0" y="0" z="0" />
                     <scale x="0.08" y="0.08" z="1" />
                   </transform>
-                  <textMesh fontName="" maxWidthMeters="0.09">
+                  <textMesh fontName="HelveticaWorld_Regular" maxWidthMeters="0.09">
                     <text formulae="&amp;StationSignage.Formulas.SubwayFormulas;GetFirstLine.Number">M1</text>
                   </textMesh>
                   <defaultStyle>
@@ -20797,7 +20797,7 @@
                   <offsetRotation x="-0" y="0" z="0" />
                   <scale x="0.06" y="0.06" z="1" />
                 </transform>
-                <textMesh fontName="" maxWidthMeters="0.65">
+                <textMesh fontName="HelveticaWorld_Regular" maxWidthMeters="0.65">
                   <text formulae="&amp;StationSignage.Formulas.SubwayFormulas;GetFirstLine.Status">Operacao Normal</text>
                 </textMesh>
                 <defaultStyle>
@@ -20888,7 +20888,7 @@
                     <offsetRotation x="-0" y="0" z="0" />
                     <scale x="0.08" y="0.08" z="1" />
                   </transform>
-                  <textMesh fontName="" maxWidthMeters="0.09">
+                  <textMesh fontName="HelveticaWorld_Regular" maxWidthMeters="0.09">
                     <text formulae="&amp;StationSignage.Formulas.SubwayFormulas;GetSecondLine.Number">2</text>
                   </textMesh>
                   <defaultStyle>
@@ -20913,7 +20913,7 @@
                   <offsetRotation x="-0" y="0" z="0" />
                   <scale x="0.06" y="0.06" z="1" />
                 </transform>
-                <textMesh fontName="" maxWidthMeters="0.65">
+                <textMesh fontName="HelveticaWorld_Regular" maxWidthMeters="0.65">
                   <text formulae="&amp;StationSignage.Formulas.SubwayFormulas;GetSecondLine.Status">Operacao Normal</text>
                 </textMesh>
                 <defaultStyle>
@@ -21004,7 +21004,7 @@
                     <offsetRotation x="-0" y="0" z="0" />
                     <scale x="0.08" y="0.08" z="1" />
                   </transform>
-                  <textMesh fontName="" maxWidthMeters="0.09">
+                  <textMesh fontName="HelveticaWorld_Regular" maxWidthMeters="0.09">
                     <text formulae="&amp;StationSignage.Formulas.SubwayFormulas;GetThirdLine.Number">3</text>
                   </textMesh>
                   <defaultStyle>
@@ -21029,7 +21029,7 @@
                   <offsetRotation x="-0" y="0" z="0" />
                   <scale x="0.06" y="0.06" z="1" />
                 </transform>
-                <textMesh fontName="" maxWidthMeters="0.65">
+                <textMesh fontName="HelveticaWorld_Regular" maxWidthMeters="0.65">
                   <text formulae="&amp;StationSignage.Formulas.SubwayFormulas;GetThirdLine.Status">Operacao Normal</text>
                 </textMesh>
                 <defaultStyle>
@@ -21120,7 +21120,7 @@
                     <offsetRotation x="-0" y="0" z="0" />
                     <scale x="0.08" y="0.08" z="1" />
                   </transform>
-                  <textMesh fontName="" maxWidthMeters="0.09">
+                  <textMesh fontName="HelveticaWorld_Regular" maxWidthMeters="0.09">
                     <text formulae="&amp;StationSignage.Formulas.SubwayFormulas;GetFourthLine.Number">4</text>
                   </textMesh>
                   <defaultStyle>
@@ -21145,7 +21145,7 @@
                   <offsetRotation x="-0" y="0" z="0" />
                   <scale x="0.06" y="0.06" z="1" />
                 </transform>
-                <textMesh fontName="" maxWidthMeters="0.65">
+                <textMesh fontName="HelveticaWorld_Regular" maxWidthMeters="0.65">
                   <text formulae="&amp;StationSignage.Formulas.SubwayFormulas;GetFourthLine.Status">Operacao Normal</text>
                 </textMesh>
                 <defaultStyle>
@@ -21236,7 +21236,7 @@
                     <offsetRotation x="-0" y="0" z="0" />
                     <scale x="0.08" y="0.08" z="1" />
                   </transform>
-                  <textMesh fontName="" maxWidthMeters="0.09">
+                  <textMesh fontName="HelveticaWorld_Regular" maxWidthMeters="0.09">
                     <text formulae="&amp;StationSignage.Formulas.SubwayFormulas;GetFifthLine.Number">5</text>
                   </textMesh>
                   <defaultStyle>
@@ -21261,7 +21261,7 @@
                   <offsetRotation x="-0" y="0" z="0" />
                   <scale x="0.06" y="0.06" z="1" />
                 </transform>
-                <textMesh fontName="" maxWidthMeters="0.65">
+                <textMesh fontName="HelveticaWorld_Regular" maxWidthMeters="0.65">
                   <text formulae="&amp;StationSignage.Formulas.SubwayFormulas;GetFifthLine.Status">Operacao Normal</text>
                 </textMesh>
                 <defaultStyle>

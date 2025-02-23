@@ -34,9 +34,6 @@ public static class TransportFormulas
     
      private static Dictionary<Entity, RouteWaypoint?> _destinationsDictionary = new();
         
-     public static string GetLinesStatusMessage(Entity buildingRef) => 
-         GetName("StationSignage.LineStatus");
-        
         private static string GetName(string id)
         {
             return GameManager.instance.localizationManager.activeDictionary.TryGetValue(id, out var name) ? name : "";
@@ -503,9 +500,9 @@ public static class TransportFormulas
             if (distance >= 1000)
             {
                 var distanceInKilometers = distance / 1000f;
-                return $"{distanceInKilometers:0.0} " + GetName("StationSignage.KilometersAway");
+                return $"{distanceInKilometers:0.0}" + GetName("StationSignage.KilometersAway");
             }
-            return $"{distance:0} " + GetName("StationSignage.MetersAway");
+            return $"{distance:0}" + GetName("StationSignage.MetersAway");
         }
         
         private static string GetRouteBuildingName(RouteWaypoint? routeWaypoint)
