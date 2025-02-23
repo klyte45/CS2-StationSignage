@@ -25,11 +25,7 @@ public static class LineUtils
         
     public const string Transparent = "Transparent";
 
-    public const string Empty = "                                                                                                                                                                                                  .";
-
-    public const string Icon = "Icon";
-    
-    private const string Logo = "Logo";
+    public const string Empty = "         .";
     
     private static readonly StringDictionary ModelsDictionary = new()
     {
@@ -56,6 +52,17 @@ public static class LineUtils
         }
 
         return subwayOperator;
+    }
+    
+    public static string GetTrainOperator(string routeString)
+    {
+        var trainOperator = "Operator05";
+        if (ViaMobilidadeLines.Contains(routeString))
+        {
+            trainOperator = "Operator02";
+        }
+
+        return trainOperator;
     }
     
     public static Tuple<string, string> GetRouteName(Entity entity)

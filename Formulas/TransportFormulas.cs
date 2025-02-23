@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Text.RegularExpressions;
 using Colossal.Entities;
 using Game.Buildings;
 using Game.Common;
@@ -31,6 +32,8 @@ public static class TransportFormulas
     private static LinesSystem _linesSystem;
     private static NameSystem _nameSystem;
     private static EntityManager _entityManager;
+    public const string SubwayEntityName = "SubwayLine";
+    public const string TrainEntityName = "PassengerTrainLine";
     
      private static Dictionary<Entity, RouteWaypoint?> _destinationsDictionary = new();
         
@@ -100,7 +103,7 @@ public static class TransportFormulas
                     Transparent,
                     Transparent,
                     Color.black,
-                    SubwayFormulas.GetWelcomeMessage(Entity.Null),
+                    GetWelcomeMessage(transportLineModel.Type),
                     Color.clear,
                     Color.clear,
                     Color.clear
@@ -156,9 +159,12 @@ public static class TransportFormulas
                             connectionsTitle = LineUtils.Empty;
                             connectionsLineName = routeName.Item1;
                         }
+                        var lettersRegex = new Regex("[^a-zA-Z]+");
+                        var entityDebugName = _nameSystem.GetDebugName(owner.m_Owner);
+                        var entityName = lettersRegex.Replace(entityDebugName, "");
                         lineNumberList.Add(
                             new TransportLineModel(
-                                "Subway",
+                                entityName,
                                 routeName.Item1,
                                 routeName.Item2,
                                 routeColor.m_Color,
@@ -167,7 +173,7 @@ public static class TransportFormulas
                                 GetVehicles(owner.m_Owner),
                                 route.m_Waypoint,
                                 index,
-                                LineUtils.GetSubwayOperator(routeName.Item2),
+                                GetOperator(entityName, routeName.Item2),
                                 GetDestinationBinding(route.m_Waypoint, stops, index)?.Item2,
                                 transform.m_Position,
                                 connectionsTitle,
@@ -187,6 +193,15 @@ public static class TransportFormulas
                     GetLines(subObjects[i].m_SubObject, type, i, ref lineNumberList, getConnections);
                 }
             }
+        }
+
+        private static string GetOperator(string type, string routeName)
+        {
+            if (type == TrainEntityName)
+            {
+                return LineUtils.GetTrainOperator(routeName);
+            }
+            return LineUtils.GetSubwayOperator(routeName);
         }
         
         private static List<LineConnection> GetConnectionLines(Entity waypoint, TransportType type)
@@ -360,7 +375,7 @@ public static class TransportFormulas
             var bikeIcon = Transparent;
             var wheelchairIcon = Transparent;
             var occupancyImagesList = new List<string>();
-            var footer = SubwayFormulas.GetWelcomeMessage(Entity.Null);
+            var footer = GetWelcomeMessage(line.Type);
             if (_destinationsDictionary.ContainsKey(line.Platform))
             {
                 footer = GetRouteBuildingName(_destinationsDictionary[line.Platform]);
@@ -493,6 +508,16 @@ public static class TransportFormulas
                 trainNameColor,
                 levelOccupancyColor
             );
+        }
+
+        private static string GetWelcomeMessage(string transportType)
+        {
+            if (transportType == TrainEntityName)
+            {
+                return TrainFormulas.GetWelcomeMessage(Entity.Null);
+            }
+
+            return SubwayFormulas.GetWelcomeMessage(Entity.Null);
         }
 
         private static string GetDistance(float distance)

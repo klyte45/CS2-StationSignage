@@ -23,5 +23,6 @@
   "StationSignage.Transfer": "Transferência",
   "StationSignage.Boarding": "Embarque",
   "StationSignage.NoSmoking": "Proibido Fumar",
-  "StationSignage.WelcomeSubway": "Bem-vindo ao metrô de %s"
+  "StationSignage.WelcomeSubway": "Bem-vindo ao metrô de %s",
+  "StationSignage.WelcomeTrain": "Bem-vindo ao trem de %s"
 }

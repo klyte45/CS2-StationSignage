@@ -1,4 +1,6 @@
-﻿using Game.Prefabs;
+﻿using Game.City;
+using Game.Prefabs;
+using Game.SceneFlow;
 using StationSignage.Models;
 using Unity.Entities;
 
@@ -7,6 +9,7 @@ namespace StationSignage.Formulas
     public class TrainFormulas
     {
         private const TransportType TransportType = Game.Prefabs.TransportType.Train;
+        private static CityConfigurationSystem _cityConfigurationSystem;
 
         public static LinePanel GetFirstLine(Entity buildingRef) => TransportFormulas.LineBinding.Invoke(0, TransportType);
         
@@ -41,5 +44,16 @@ namespace StationSignage.Formulas
         
         public static VehiclePanel GetFourthPlatformVehiclePanel(Entity buildingRef) =>
             TransportFormulas.VehiclePanelBinding.Invoke(TransportFormulas.PlatformLineBinding.Invoke(buildingRef, 3, TransportType), 3);
+        
+        private static string GetName(string id)
+        {
+            return GameManager.instance.localizationManager.activeDictionary.TryGetValue(id, out var name) ? name : "";
+        }
+        
+        public static string GetWelcomeMessage(Entity buildingRef)
+        {
+            _cityConfigurationSystem ??= World.DefaultGameObjectInjectionWorld.GetOrCreateSystemManaged<CityConfigurationSystem>();
+            return GetName("StationSignage.WelcomeTrain").Replace("%s", _cityConfigurationSystem.cityName);
+        }
     }
 }
