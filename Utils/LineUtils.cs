@@ -25,7 +25,7 @@ public static class LineUtils
         
     public const string Transparent = "Transparent";
 
-    public const string Empty = "         .";
+    public const string Empty = "";
     
     private static readonly StringDictionary ModelsDictionary = new()
     {

@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 using Colossal.Entities;
 using Game.Buildings;
 using Game.Common;
@@ -104,7 +105,4 @@ public class NamesFormulas
     
     public static string GetLinesStatusMessage(Entity buildingRef) => 
         GetName("StationSignage.LineStatus");
-    
-    public static string GetSubwayFirstSecondPlatformBoardingName(Entity buildingRef) => 
-        GetSubwayBoardingNameBinding.Invoke(SubwayFormulas.GetFirstPlatformLine(buildingRef), SubwayFormulas.GetSecondPlatformLine(buildingRef));
 }

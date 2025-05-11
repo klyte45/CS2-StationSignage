@@ -41,13 +41,13 @@ namespace StationSignage.Utils
             });
         }
 
-        public List<UITransportLineData> GetTransportLines(TransportType type)
+        public List<UITransportLineData> GetTransportLines(string type)
         {
             _prefabSystem ??= World.DefaultGameObjectInjectionWorld.GetExistingSystemManaged<PrefabSystem>();
             _entityManager = World.DefaultGameObjectInjectionWorld.EntityManager;
             _nameSystem ??= World.DefaultGameObjectInjectionWorld.GetOrCreateSystemManaged<NameSystem>();
             return TransportUIUtils.GetSortedLines(_linesQuery, _entityManager, _prefabSystem)
-                .Where(line => line.type == type)
+                .Where(line => line.type.ToString() == type)
                 .OrderBy(line => {
                         _entityManager.TryGetComponent<RouteNumber>(line.entity, out var routeNumber);
                         var lineName = _nameSystem.GetName(line.entity).Translate().Split(' ').LastOrDefault();

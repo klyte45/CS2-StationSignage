@@ -9,7 +9,6 @@ using Game.Pathfind;
 using Game.Prefabs;
 using Game.Routes;
 using Game.SceneFlow;
-using Game.Simulation;
 using Game.UI;
 using Game.UI.InGame;
 using Game.Vehicles;
@@ -18,6 +17,7 @@ using StationSignage.Models;
 using StationSignage.Utils;
 using Unity.Entities;
 using Unity.Mathematics;
+using UnityEngine;
 using Color = UnityEngine.Color;
 using PublicTransport = Game.Vehicles.PublicTransport;
 using SubObject = Game.Objects.SubObject;
@@ -34,6 +34,7 @@ public static class TransportFormulas
     private static EntityManager _entityManager;
     public const string SubwayEntityName = "SubwayLine";
     public const string TrainEntityName = "PassengerTrainLine";
+    private static readonly Dictionary<int, OwnerSortData> OwnerCache = new();
     
      private static Dictionary<Entity, RouteWaypoint?> _destinationsDictionary = new();
         
@@ -42,7 +43,7 @@ public static class TransportFormulas
             return GameManager.instance.localizationManager.activeDictionary.TryGetValue(id, out var name) ? name : "";
         }
 
-        public static readonly Func<int, TransportType, LinePanel?> LineBinding = (index, type) =>
+        public static readonly Func<int, string, LinePanel?> LineBinding = (index, type) =>
         {
             try
             {
@@ -50,70 +51,13 @@ public static class TransportFormulas
             }
             catch (Exception e)
             {
-                Mod.log.Info(e);
                 return null;
-            }
-        };
-        
-        public static readonly Func<Entity, int, TransportType, TransportLineModel> PlatformLineBinding = (entity, platform, type) =>
-        {
-            try
-            {
-                return GetStationLines(entity, type, false)[platform];
-            }
-            catch (Exception e)
-            {
-                Mod.log.Info(e);
-                return new TransportLineModel(
-                    LineUtils.Empty,
-                    LineUtils.Empty,
-                    LineUtils.Empty,
-                    Color.black,
-                    Color.white,
-                    [],
-                    [],
-                    Entity.Null,
-                    0,
-                    LineUtils.Transparent,
-                    LineUtils.Empty,
-                    new float3(),
-                    LineUtils.Empty,
-                    LineUtils.Empty,
-                    []
-                );
-            }
-        };
-        
-        public static readonly Func<TransportLineModel, int, VehiclePanel> VehiclePanelBinding = (transportLineModel, platformNumber) =>
-        {
-            try
-            {
-                return GetVehiclePanel(transportLineModel, platformNumber);
-            }
-            catch (Exception e)
-            {
-                Mod.log.Info(e);
-                return new VehiclePanel(
-                    LineUtils.Empty,
-                    LineUtils.Empty,
-                    LineUtils.Empty,
-                    LineUtils.Empty,
-                    [Transparent, Transparent, Transparent, Transparent, Transparent, Transparent, Transparent, Transparent],
-                    LineUtils.Empty,
-                    Transparent,
-                    Transparent,
-                    Color.black,
-                    GetWelcomeMessage(transportLineModel.Type),
-                    Color.clear,
-                    Color.clear,
-                    Color.clear
-                );
             }
         };
 
         private const string Transparent = LineUtils.Transparent;
 
-        private static LinePanel GetLine(int index, TransportType type)
+        private static LinePanel GetLine(int index, string type)
         {
             _linesSystem ??= World.DefaultGameObjectInjectionWorld.GetExistingSystemManaged<LinesSystem>();
             _nameSystem ??= World.DefaultGameObjectInjectionWorld.GetOrCreateSystemManaged<NameSystem>();
@@ -127,10 +71,17 @@ public static class TransportFormulas
             );
         }
         
+        public static int GetLineCount(string type)
+        {
+            _linesSystem ??= World.DefaultGameObjectInjectionWorld.GetExistingSystemManaged<LinesSystem>();
+            _nameSystem ??= World.DefaultGameObjectInjectionWorld.GetOrCreateSystemManaged<NameSystem>();
+            return _linesSystem.GetTransportLines(type).Count;
+        }
+        
         private static void GetLines(
             Entity selectedEntity,
-            TransportType type,
-            int index, 
+            string type,
+            int index,
             ref List<TransportLineModel> lineNumberList, 
             bool getConnections
             )
@@ -175,13 +126,30 @@ public static class TransportFormulas
                                 index,
                                 GetOperator(entityName, routeName.Item2),
                                 GetDestinationBinding(route.m_Waypoint, stops, index)?.Item2,
-                                transform.m_Position,
+                                transform,
                                 connectionsTitle,
                                 connectionsLineName,
                                 connections
                             )
                         );
                     }
+                }
+
+                if (routes.IsEmpty)
+                {
+                    if (_entityManager.TryGetComponent<TransportStop>(selectedEntity, out _))
+                    {
+                        _entityManager.TryGetComponent<Transform>(selectedEntity, out var transform);
+                        lineNumberList.Add(GetEmptyStop(transform));
+                    }
+                }
+            }
+            else
+            {
+                if (_entityManager.TryGetComponent<TransportStop>(selectedEntity, out _))
+                {
+                    _entityManager.TryGetComponent<Transform>(selectedEntity, out var transform);
+                    lineNumberList.Add(GetEmptyStop(transform));
                 }
             }
             
@@ -195,6 +163,27 @@ public static class TransportFormulas
             }
         }
 
+        private static TransportLineModel GetEmptyStop(Transform position)
+        {
+            return new TransportLineModel(
+                LineUtils.Empty,
+                LineUtils.Empty,
+                LineUtils.Empty,
+                Color.black,
+                Color.white,
+                [],
+                [],
+                Entity.Null,
+                0,
+                LineUtils.Transparent,
+                LineUtils.Empty,
+                position,
+                LineUtils.Empty,
+                LineUtils.Empty,
+                []
+            );
+        }
+
         private static string GetOperator(string type, string routeName)
         {
             if (type == TrainEntityName)
@@ -204,7 +193,7 @@ public static class TransportFormulas
             return LineUtils.GetSubwayOperator(routeName);
         }
         
-        private static List<LineConnection> GetConnectionLines(Entity waypoint, TransportType type)
+        private static List<LineConnection> GetConnectionLines(Entity waypoint, string type)
         {
             _entityManager.TryGetComponent<Connected>(waypoint, out var connected);
             var building = GetOwnerRecursive(connected.m_Connected);
@@ -227,25 +216,40 @@ public static class TransportFormulas
             return luminance > 0.5 ? Color.black : Color.white;
         }
         
-        private static List<TransportLineModel> GetStationLines(Entity buildingRef, TransportType type, bool getConnections)
+        public static List<TransportLineModel> GetStationLines(Entity buildingRef, string type, bool getConnections)
         {
             _nameSystem ??= World.DefaultGameObjectInjectionWorld.GetOrCreateSystemManaged<NameSystem>();
             _entityManager = World.DefaultGameObjectInjectionWorld.EntityManager;
             var lineNumberList = new List<TransportLineModel>();
             GetLines(buildingRef, type, 0, ref lineNumberList, getConnections);
             var buildingOwner = GetOwnerRecursive(buildingRef);
-            var selectedBuilding = buildingRef;
             if (lineNumberList.Count == 0 && _entityManager.TryGetBuffer(buildingOwner, true, out DynamicBuffer<InstalledUpgrade> upgrades))
             {
-                selectedBuilding = buildingOwner;
                 for (var i = 0; i < upgrades.Length; ++i)
                 {
                     GetLines(upgrades[i].m_Upgrade, type, i, ref lineNumberList, getConnections);
                 }
             }
-            _entityManager.TryGetComponent<Transform>(selectedBuilding, out var transform);
+            _entityManager.TryGetComponent<Transform>(buildingRef, out var transform);
+            SortByOwner(lineNumberList, transform);
+            return lineNumberList;
+        }
+        
+        private static void SortByOwner(List<TransportLineModel> subObjects, Transform owner)
+        {
+            if (subObjects == null || subObjects.Count <= 1)
+                return;
 
-            return lineNumberList.OrderBy(x => math.distance(transform.m_Position, x.Position)).ToList();
+            // Get or create cached owner data
+            var ownerId = owner.m_Position.GetHashCode() ^ owner.m_Rotation.GetHashCode();
+            if (!OwnerCache.TryGetValue(ownerId, out var ownerData))
+            {
+                ownerData = new OwnerSortData(owner);
+                OwnerCache[ownerId] = ownerData;
+            }
+
+            // Sort using cached vectors
+            subObjects.Sort((a, b) => ownerData.Compare(a.Position.m_Position, b.Position.m_Position));
         }
         
         private static List<RouteWaypoint> GetStops(Entity entity)
@@ -294,7 +298,7 @@ public static class TransportFormulas
         
         private static List<LineConnection> GetConnections(
             Entity platform,
-            TransportType type,
+            string type,
             List<RouteWaypoint> routeWaypoints,
             List<RouteWaypoint> singleStops
         )
@@ -362,7 +366,7 @@ public static class TransportFormulas
             return vehiclesList;
         }
 
-        private static VehiclePanel GetVehiclePanel(TransportLineModel line, int platformNumber)
+        public static VehiclePanel GetVehiclePanel(TransportLineModel line, int platformNumber, Dictionary<string, string> vars)
         {
             _entityManager = World.DefaultGameObjectInjectionWorld.EntityManager;
             _entityManager.TryGetComponent<Position>(line.Platform, out var platformPosition);
@@ -375,7 +379,7 @@ public static class TransportFormulas
             var bikeIcon = Transparent;
             var wheelchairIcon = Transparent;
             var occupancyImagesList = new List<string>();
-            var footer = GetWelcomeMessage(line.Type);
+            var footer = DisplayFormulas.GetWelcomeMessage(line.Type);
             if (_destinationsDictionary.ContainsKey(line.Platform))
             {
                 footer = GetRouteBuildingName(_destinationsDictionary[line.Platform]);
@@ -494,6 +498,7 @@ public static class TransportFormulas
             }
 
             return new VehiclePanel(
+                vars,
                 title,
                 subtitle,
                 message,
@@ -508,16 +513,6 @@ public static class TransportFormulas
                 trainNameColor,
                 levelOccupancyColor
             );
-        }
-
-        private static string GetWelcomeMessage(string transportType)
-        {
-            if (transportType == TrainEntityName)
-            {
-                return TrainFormulas.GetWelcomeMessage(Entity.Null);
-            }
-
-            return SubwayFormulas.GetWelcomeMessage(Entity.Null);
         }
 
         private static string GetDistance(float distance)

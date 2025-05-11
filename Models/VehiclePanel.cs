@@ -1,9 +1,11 @@
 ﻿using System.Collections.Generic;
+using StationSignage.Formulas;
 using UnityEngine;
 
 namespace StationSignage.Models;
 
 public class VehiclePanel(
+    Dictionary<string, string> vars,
     string title, 
     string subtitle, 
     string trainMessage,
@@ -33,43 +35,16 @@ public class VehiclePanel(
     public Color TrainMessageTextColor = trainMessageTextColor;
     public Color OccupancyTitleTextColor = occupancyTitleTextColor;
     
-    public string GetCarImage1()
+    public string GetCarImage()
     {
-        return OccupancyImages[0];
-    }
-    
-    public string GetCarImage2()
-    {
-        return OccupancyImages[1];
-    }
-    
-    public string GetCarImage3()
-    {
-        return OccupancyImages[2];
-    }
-    
-    public string GetCarImage4()
-    {
-        return OccupancyImages[3];
-    }
-    
-    public string GetCarImage5()
-    {
-        return OccupancyImages[4];
-    }
-    
-    public string GetCarImage6()
-    {
-        return OccupancyImages[5];
-    }
-    
-    public string GetCarImage7()
-    {
-        return OccupancyImages[6];
-    }
-    
-    public string GetCarImage8()
-    {
-        return OccupancyImages[7];
+        vars.TryGetValue(LinesUtils.TRAIN_HALF_VAR, out var trainHalf);
+        var isInversed = trainHalf == "2";
+        vars.TryGetValue(LinesUtils.CURRENT_INDEX_VAR, out var index);
+        int.TryParse(index, out var intIndex);
+
+        if (!isInversed) return OccupancyImages[intIndex];
+        var reversedList = OccupancyImages;
+        reversedList.Reverse();
+        return reversedList[intIndex];
     }
 }
