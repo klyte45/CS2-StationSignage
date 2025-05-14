@@ -53,9 +53,13 @@ public class NamesFormulas
         _linesSystem ??= World.DefaultGameObjectInjectionWorld.GetExistingSystemManaged<LinesSystem>();
         _nameSystem ??= World.DefaultGameObjectInjectionWorld.GetOrCreateSystemManaged<NameSystem>();
         _entityManager = World.DefaultGameObjectInjectionWorld.EntityManager;
-
-        return _nameSystem.GetRenderedLabelName(buildingRef);
+        return _nameSystem.GetRenderedLabelName(GetOwnerRecursive(buildingRef));
     };
+    
+    private static Entity GetOwnerRecursive(Entity entity)
+    {
+        return _entityManager.TryGetComponent<Owner>(entity, out var owner) ? GetOwnerRecursive(owner.m_Owner) : entity;
+    }
     
     private static readonly Func<Entity, string> GetBuildingRoadNameBinding = (buildingRef) =>
     {

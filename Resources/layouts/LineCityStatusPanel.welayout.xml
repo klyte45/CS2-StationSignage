@@ -87,7 +87,7 @@
         </transform>
         <whiteMesh />
         <defaultStyle>
-          <color formulae="&amp;StationSignage.Formulas.LinesUtils;GetPlatformLine.Color">FF0008FF</color>
+          <color formulae="&amp;StationSignage.Formulas.LinesUtils;GetPlatformOrDefault.Color">FF0008FF</color>
           <emissiveColor>FFFFFFFF</emissiveColor>
           <metallic>0</metallic>
           <smoothness>0</smoothness>
@@ -163,7 +163,7 @@
             <arraySpacing x="0" y="0" z="0" />
           </transform>
           <imageMesh atlas="StationSignage:main">
-            <image formulae="&amp;StationSignage.Formulas.LinesUtils;GetPlatformLine.OperatorImage">CircleB</image>
+            <image formulae="&amp;StationSignage.Formulas.LinesUtils;GetPlatformOrDefault.OperatorImage">CircleB</image>
           </imageMesh>
           <defaultStyle>
             <color>FFFFFFFF</color>
@@ -195,7 +195,7 @@
           <text formulae="&amp;StationSignage.Formulas.NamesFormulas;GetTimeString">Hora: 17:40</text>
         </textMesh>
         <defaultStyle>
-          <color formulae="&amp;StationSignage.Formulas.LinesUtils;GetPlatformLine.OnPrimaryColor">FFFFFFFF</color>
+          <color formulae="&amp;StationSignage.Formulas.LinesUtils;GetPlatformOrDefault.OnPrimaryColor">FFFFFFFF</color>
           <emissiveColor>FFFFFFFF</emissiveColor>
           <metallic>0</metallic>
           <smoothness>0</smoothness>
@@ -247,7 +247,7 @@
         </transform>
         <whiteMesh />
         <defaultStyle>
-          <color formulae="&amp;StationSignage.Formulas.LinesUtils;GetPlatformLine.Color">FF0008FF</color>
+          <color formulae="&amp;StationSignage.Formulas.LinesUtils;GetPlatformOrDefault.Color">FF0008FF</color>
           <emissiveColor>FFFFFFFF</emissiveColor>
           <metallic>0</metallic>
           <smoothness>0</smoothness>
@@ -272,10 +272,10 @@
           <arraySpacing x="0" y="0" z="0" />
         </transform>
         <textMesh fontName="HelveticaWorld_Regular" maxWidthMeters="1.65">
-          <text formulae="&amp;StationSignage.Formulas.SubwayFormulas;GetWelcomeMessage">Bem Vindo ao Metro de Sao P adw daaulo dawd awdaw d</text>
+          <text formulae="&amp;StationSignage.Formulas.DisplayFormulas;GetWelcomeMessage"></text>
         </textMesh>
         <defaultStyle>
-          <color formulae="&amp;StationSignage.Formulas.LinesUtils;GetPlatformLine.OnPrimaryColor">FFFFFFFF</color>
+          <color formulae="&amp;StationSignage.Formulas.LinesUtils;GetPlatformOrDefault.OnPrimaryColor">FFFFFFFF</color>
           <emissiveColor>FFFFFFFF</emissiveColor>
           <metallic>0</metallic>
           <smoothness>0</smoothness>

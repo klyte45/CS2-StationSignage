@@ -2,6 +2,7 @@
 using System.Linq;
 using JetBrains.Annotations;
 using StationSignage.Models;
+using StationSignage.Utils;
 using Unity.Entities;
 using UnityEngine;
 
@@ -28,7 +29,15 @@ public static class LinesUtils
     
     public static int PlatformHasLine(Entity buildingRef, Dictionary<string, string> vars)
     {
-        return GetPlatformLine(buildingRef, vars) != null || GetPlatformLeft(buildingRef, vars) != null || GetPlatformRight(buildingRef, vars) != null ? 0 : 1;
+        var line = GetPlatformLine(buildingRef, vars);
+        return line != null && line.Number != LineUtils.Empty ? 1 : -1;
+    }
+    
+    public static int CenterPlatformHasLine(Entity buildingRef, Dictionary<string, string> vars)
+    {
+        var platformLeft = GetPlatformLeft(buildingRef, vars);
+        var platformRight = GetPlatformRight(buildingRef, vars);
+        return (platformLeft.Number != LineUtils.Empty || platformRight.Number != LineUtils.Empty) ? 1 : -1;
     }
     
     public static Color GetCenterPlatformLineColor(Entity buildingRef, Dictionary<string, string> vars)
@@ -56,6 +65,41 @@ public static class LinesUtils
             TransportFormulas.GetStationLines(buildingRef, lineType, false).ElementAtOrDefault(platform) : null;
     }
     
+    [CanBeNull]
+    public static TransportLineModel GetPlatformLineCenter(Entity buildingRef, Dictionary<string, string> vars)
+    {
+        var platformLeft = GetPlatformLeft(buildingRef, vars);
+        var platformRight = GetPlatformRight(buildingRef, vars);
+
+        if (vars.TryGetValue("platformPosition", out var platformPosition))
+        {
+            var preferRight = platformPosition == "right";
+            var rightPlatformValid = platformRight?.Name != LineUtils.Empty;
+            var leftPlatformValid = platformLeft?.Name != LineUtils.Empty;
+
+            return preferRight 
+                ? (rightPlatformValid ? platformRight : platformLeft)
+                : (leftPlatformValid ? platformLeft : platformRight);
+        }
+
+        return platformLeft?.Name != LineUtils.Empty ? platformLeft : platformRight;
+    }
+    
+    [CanBeNull]
+    public static TransportLineModel GetPlatformOrDefault(Entity buildingRef, Dictionary<string, string> vars)
+    {
+        var platform = GetPlatformLine(buildingRef, vars);
+        if (platform == null || platform.Name == LineUtils.Empty)
+        {
+            vars.TryGetValue(PLATFORM_VAR, out var idxStr);
+            vars.TryGetValue(LINETYPE_VAR, out var lineType);
+            var stationLines = TransportFormulas.GetStationLines(buildingRef, lineType, false);
+            return stationLines.Count >= 1 ? stationLines.First() : null;
+        }
+
+        return platform;
+    }
+    
     private static TransportLineModel GetPlatformLeft(Entity buildingRef, Dictionary<string, string> vars)
     {
         return vars.TryGetValue("platformLeft", out var idxStr) && 
@@ -73,12 +117,26 @@ public static class LinesUtils
     [CanBeNull]
     public static List<TransportLineModel> GetLineConnections(Entity buildingRef, Dictionary<string, string> vars)
     {
-        vars.TryGetValue(PLATFORM_VAR, out var idxStr);
-         int.TryParse(idxStr, out var platform);
-         vars.TryGetValue(LINETYPE_VAR, out var lineType);
-         var lines = TransportFormulas.GetStationLines(buildingRef, lineType, false);
-         lines.RemoveAt(platform);
-         return lines;
+        vars.TryGetValue(LINETYPE_VAR, out var lineType);
+        var lines = TransportFormulas.GetStationLines(buildingRef, lineType, false);
+        if (vars.TryGetValue(PLATFORM_VAR, out var platformIdxStr))
+        {
+            int.TryParse(platformIdxStr, out var idx);
+            lines.RemoveAt(idx);
+        }
+        if (vars.TryGetValue("platformRight", out var platformRightIdxStr))
+        {
+            int.TryParse(platformRightIdxStr, out var idx);
+            lines.RemoveAt(idx);
+        }
+        if (vars.TryGetValue("platformLeft", out var platformLeftIdxStr))
+        {
+            int.TryParse(platformLeftIdxStr, out var idx);
+            lines.RemoveAt(idx);
+        }
+
+        lines.RemoveAll(x => x.Name == LineUtils.Empty);
+        return lines;
     }
     
     [CanBeNull]

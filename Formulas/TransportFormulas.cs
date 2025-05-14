@@ -33,8 +33,9 @@ public static class TransportFormulas
     private static NameSystem _nameSystem;
     private static EntityManager _entityManager;
     public const string SubwayEntityName = "SubwayLine";
-    public const string TrainEntityName = "PassengerTrainLine";
-    private static readonly Dictionary<int, OwnerSortData> OwnerCache = new();
+    private const string TrainEntityName = "PassengerTrainLine";
+    private static readonly Regex LettersRegex = new Regex("[^a-zA-Z]+");
+    private static readonly Dictionary<int, Matrix4x4> OwnerCache = new();
     
      private static Dictionary<Entity, RouteWaypoint?> _destinationsDictionary = new();
         
@@ -110,12 +111,10 @@ public static class TransportFormulas
                             connectionsTitle = LineUtils.Empty;
                             connectionsLineName = routeName.Item1;
                         }
-                        var lettersRegex = new Regex("[^a-zA-Z]+");
-                        var entityDebugName = _nameSystem.GetDebugName(owner.m_Owner);
-                        var entityName = lettersRegex.Replace(entityDebugName, "");
+                        var lineType = GetStopLineType(selectedEntity);
                         lineNumberList.Add(
                             new TransportLineModel(
-                                entityName,
+                                lineType,
                                 routeName.Item1,
                                 routeName.Item2,
                                 routeColor.m_Color,
@@ -124,7 +123,7 @@ public static class TransportFormulas
                                 GetVehicles(owner.m_Owner),
                                 route.m_Waypoint,
                                 index,
-                                GetOperator(entityName, routeName.Item2),
+                                GetOperator(lineType, routeName.Item2),
                                 GetDestinationBinding(route.m_Waypoint, stops, index)?.Item2,
                                 transform,
                                 connectionsTitle,
@@ -140,7 +139,7 @@ public static class TransportFormulas
                     if (_entityManager.TryGetComponent<TransportStop>(selectedEntity, out _))
                     {
                         _entityManager.TryGetComponent<Transform>(selectedEntity, out var transform);
-                        lineNumberList.Add(GetEmptyStop(transform));
+                        lineNumberList.Add(GetEmptyStop(transform, selectedEntity));
                     }
                 }
             }
@@ -148,8 +147,9 @@ public static class TransportFormulas
             {
                 if (_entityManager.TryGetComponent<TransportStop>(selectedEntity, out _))
                 {
+                    
                     _entityManager.TryGetComponent<Transform>(selectedEntity, out var transform);
-                    lineNumberList.Add(GetEmptyStop(transform));
+                    lineNumberList.Add(GetEmptyStop(transform, selectedEntity));
                 }
             }
             
@@ -163,10 +163,23 @@ public static class TransportFormulas
             }
         }
 
-        private static TransportLineModel GetEmptyStop(Transform position)
+        private static string GetStopLineType(Entity entity)
+        {
+            var entityDebugName = _nameSystem.GetDebugName(entity);
+            var entityName = LettersRegex.Replace(entityDebugName, "");
+            var lineType = "Subway";
+            if (entityName.Contains("Train"))
+            {
+                lineType = "Train";
+            }
+
+            return lineType;
+        }
+
+        private static TransportLineModel GetEmptyStop(Transform position, Entity selectedEntity)
         {
             return new TransportLineModel(
-                LineUtils.Empty,
+                GetStopLineType(selectedEntity),
                 LineUtils.Empty,
                 LineUtils.Empty,
                 Color.black,
@@ -221,8 +234,8 @@ public static class TransportFormulas
             _nameSystem ??= World.DefaultGameObjectInjectionWorld.GetOrCreateSystemManaged<NameSystem>();
             _entityManager = World.DefaultGameObjectInjectionWorld.EntityManager;
             var lineNumberList = new List<TransportLineModel>();
-            GetLines(buildingRef, type, 0, ref lineNumberList, getConnections);
             var buildingOwner = GetOwnerRecursive(buildingRef);
+            GetLines(buildingOwner, type, 0, ref lineNumberList, getConnections);
             if (lineNumberList.Count == 0 && _entityManager.TryGetBuffer(buildingOwner, true, out DynamicBuffer<InstalledUpgrade> upgrades))
             {
                 for (var i = 0; i < upgrades.Length; ++i)
@@ -237,19 +250,42 @@ public static class TransportFormulas
         
         private static void SortByOwner(List<TransportLineModel> subObjects, Transform owner)
         {
-            if (subObjects == null || subObjects.Count <= 1)
+            if (subObjects is not { Count: > 1 })
                 return;
 
-            // Get or create cached owner data
             var ownerId = owner.m_Position.GetHashCode() ^ owner.m_Rotation.GetHashCode();
-            if (!OwnerCache.TryGetValue(ownerId, out var ownerData))
+            if (!OwnerCache.TryGetValue(ownerId, out var inverseMatrix))
             {
-                ownerData = new OwnerSortData(owner);
-                OwnerCache[ownerId] = ownerData;
+                inverseMatrix = Matrix4x4.TRS(
+                    owner.m_Position,
+                    owner.m_Rotation,
+                    Vector3.one
+                ).inverse;
+            
+                OwnerCache[ownerId] = inverseMatrix;
             }
 
-            // Sort using cached vectors
-            subObjects.Sort((a, b) => ownerData.Compare(a.Position.m_Position, b.Position.m_Position));
+            subObjects.Sort((a, b) =>
+            {
+                var aIsTrain = a.Type == "Train";
+                var bIsTrain = b.Type == "Train";
+                if (aIsTrain != bIsTrain)
+                    return aIsTrain ? -1 : 1;
+
+                return CompareTransforms(a.Position.m_Position, b.Position.m_Position, inverseMatrix);
+            });
+        }
+        
+        private static int CompareTransforms(Vector3 aPos, Vector3 bPos, Matrix4x4 inverseMatrix)
+        {
+            var aLocal = inverseMatrix.MultiplyPoint3x4(aPos);
+            var bLocal = inverseMatrix.MultiplyPoint3x4(bPos);
+
+            var compare = bLocal.z.CompareTo(aLocal.z);
+            if (compare != 0) return compare;
+
+            compare = aLocal.x.CompareTo(bLocal.x);
+            return compare != 0 ? compare : aLocal.y.CompareTo(bLocal.y);
         }
         
         private static List<RouteWaypoint> GetStops(Entity entity)

@@ -140,7 +140,7 @@
       </transform>
       <whiteMesh />
       <defaultStyle>
-        <color formulae="&amp;StationSignage.Formulas.LinesUtils;GetPlatformLine.Color">FF9F00FF</color>
+        <color formulae="&amp;StationSignage.Formulas.LinesUtils;GetPlatformLineCenter.Color">FF9F00FF</color>
         <emissiveColor>FFFFFFFF</emissiveColor>
         <metallic>0</metallic>
         <smoothness>0</smoothness>
@@ -164,7 +164,7 @@
           <arraySpacing x="0" y="0" z="0" />
         </transform>
         <layoutMesh>
-          <layout>StationSignage:StationNameLarge</layout>
+          <layout>StationSignage:StationNameCenterLarge</layout>
         </layoutMesh>
       </self>
     </children>
@@ -183,7 +183,7 @@
       </transform>
       <whiteMesh />
       <defaultStyle>
-        <color formulae="&amp;StationSignage.Formulas.LinesUtils;GetPlatformLine.Color">FF9F00FF</color>
+        <color formulae="&amp;StationSignage.Formulas.LinesUtils;GetPlatformLineCenter.Color">FF9F00FF</color>
         <emissiveColor>FFFFFFFF</emissiveColor>
         <metallic>0</metallic>
         <smoothness>0</smoothness>
@@ -207,7 +207,7 @@
           <arraySpacing x="0" y="0" z="0" />
         </transform>
         <layoutMesh>
-          <layout>StationSignage:StationNameLarge</layout>
+          <layout>StationSignage:StationNameCenterLarge</layout>
         </layoutMesh>
       </self>
     </children>
