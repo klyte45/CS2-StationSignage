@@ -33,7 +33,7 @@ public static class TransportFormulas
     private static NameSystem _nameSystem;
     private static EntityManager _entityManager;
     public const string SubwayEntityName = "SubwayLine";
-    private const string TrainEntityName = "PassengerTrainLine";
+    private const string TrainEntityName = "Train";
     private static readonly Regex LettersRegex = new Regex("[^a-zA-Z]+");
     private static readonly Dictionary<int, Matrix4x4> OwnerCache = new();
     
@@ -409,7 +409,7 @@ public static class TransportFormulas
             _entityManager.TryGetComponent<WaitingPassengers>(line.Platform, out var waitingPassengers);
             var title = GetName("StationSignage.NextTrain");
             var subtitle = GetName("StationSignage.AverageWaitTime");
-            var message = waitingPassengers.m_AverageWaitingTime + GetName("StationSignage.Seconds");
+            var message = FormatWaitTime(waitingPassengers.m_AverageWaitingTime);
             var messageColor = Color.white;
             var occupancyTitle = GetName("StationSignage.LevelOfOccupancy");
             var bikeIcon = Transparent;
@@ -549,6 +549,16 @@ public static class TransportFormulas
                 trainNameColor,
                 levelOccupancyColor
             );
+        }
+        
+        private static string FormatWaitTime(int seconds)
+        {
+            if (seconds < 60)
+            {
+                return seconds + " " + GetName("StationSignage.Seconds");
+            }
+            var time = TimeSpan.FromSeconds(seconds);
+            return time.ToString(@"mm\:ss") + " " + GetName("StationSignage.Minutes");
         }
 
         private static string GetDistance(float distance)

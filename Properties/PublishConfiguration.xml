@@ -2,32 +2,88 @@
 	<!--Id must be set in order to update existed mod. it is not required for publishing mod for the first time-->
 	<ModId Value="" />
 	<!--Name of the mod to display to players-->
-	<DisplayName Value="StationSignage" />
+	<DisplayName Value="Station Signage [BETA] [WE Module]" />
 	<!--Short description of the mod-->
-	<ShortDescription Value="This is a short description" />
+	<ShortDescription Value="Bring life to your transit hubs with functional, dynamic signs! Track trains, guide passengers, and add realism" />
 	<!--Long description of the mod. Single line or multi line. Supports minimal markdown subset-->
 	<!--LongDescription Value="This is a long description" /-->
 	<LongDescription>
-This is a long description
+# Station Signage Mod
+**Enhance your train and subway stations with dynamic, informative signage!**
+
+This mod adds **realistic signage systems** to stations, providing passengers with crucial information like **platform directions, exits, transfers, city line status, and real-time next train arrivals**. Perfect for immersion and functional transit systems!
+
+**For full immersion**, pair this mod with **[Station Entrance Visuals](https://mods.paradoxplaza.com/mods/95823/Windows)** and **[Train Visuals](https://mods.paradoxplaza.com/mods/95885/Windows)** to create cohesive, visually stunning stations.
+
+*(This is a **WE (Write Everywhere) Module**, requiring the base mod to function.)*
+
+---
+
+## 🚉 Key Features
+
+### 🚆 Next Train Panel
+- Displays **real-time information** on the next arriving train.
+- Shows:
+- **Train distance** from the station (in meters or time).
+- **Model name** (e.g., "A12, B03").
+- **Car occupancy** (how full each train car is).
+
+### 🚏 Station Signage
+- Shows **station name, platform numbers, exits, and transfer options**.
+- Includes **line status updates** (delays, closures, etc.).
+- Customizable for different station layouts.
+
+---
+
+## ✅ Supported Assets (Beta)
+*(More stations and assets coming soon!)*
+- **Small Elevated Subway Station**
+- **Elevated Subway Station**
+- **Subway Station**
+- **Train Station + Extra Platforms**
+
+---
+
+## ⚠️ Beta Notice
+This mod is **still in development** and may have some bugs.
+Planned future updates:
+		
+✔ **More stations support**
+		
+✔ **Additional signage styles**
+		
+✔ **Improved accuracy**
+
+**Report bugs and suggest ideas on the workshop page!**
+
+---
+
+## 🙏 Special Thanks
+A huge thank you to **Klyte45** for their incredible work on **Write Everywhere** and for developing the **sub-templates feature** that made this mod possible!
+
+---
 	</LongDescription>
-	<!--Thumbnail-->
 	<Thumbnail Value="Properties/Thumbnail.png" />
-	<!--Screenshot, can be set multiple times-->
-	<Screenshot Value="" />
-	<!--Tag, can be set multiple times-->
-	<Tag Value="" />
+	<Screenshot Value="ParadoxRes/Screenshot1.png" />
+	<Screenshot Value="ParadoxRes/Screenshot2.png" />
+	<Screenshot Value="ParadoxRes/Screenshot3.png" />
+	<Screenshot Value="ParadoxRes/Screenshot4.png" />
+	<Screenshot Value="ParadoxRes/Screenshot5.png" />
+	<Screenshot Value="ParadoxRes/Screenshot6.png" />
+	<Screenshot Value="ParadoxRes/Screenshot7.png" />
+	<Screenshot Value="ParadoxRes/Screenshot8.png" />
+	<Tag Value="Code Mod" />
 	<!--Link to the forum post where the mod can be discussed-->
-	<ForumLink Value="" />
+	<ForumLink Value="https://forum.paradoxplaza.com/forum/threads/station-signage.1747876/" />
 	<!--Version of the mod-->
-	<ModVersion Value="1.0" />
+	<ModVersion Value="0.0.1" />
 	<!--Recommended version of the base game to use the mod-->
-	<GameVersion Value="1.0.*" />
-	<!--Dependency for the mod, can be set multiple times-->
-	<Dependency Id="" />
-	<!--Change log for new version. Single line or multi line. Supports minimal markdown subset-->
-	<ChangeLog Value="" />
+	<GameVersion Value="1.*" />
+	<Dependency Id="92908" />
+	<Dependency Id="75426" />
 	<!--ChangeLog>
 	</ChangeLog-->
 	<!--External link. supported types are discord, github, youtube, twitch, x, paypal, patreon, buymeacoffee, kofi, crowdin, gitlab-->
-	<ExternalLink Type="" Url="" />
+	<ExternalLink Type="kofi" Url="https://ko-fi.com/rodrigmatrix" />
+	<ExternalLink Type="github" Url="https://github.com/rodrigmatrix/StationSignage" />
 </Publish>

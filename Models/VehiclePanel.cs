@@ -1,4 +1,5 @@
 ﻿using System.Collections.Generic;
+using System.Linq;
 using StationSignage.Formulas;
 using UnityEngine;
 
@@ -38,13 +39,13 @@ public class VehiclePanel(
     public string GetCarImage()
     {
         vars.TryGetValue(LinesUtils.TRAIN_HALF_VAR, out var trainHalf);
-        var isInversed = trainHalf == "2";
+        var useFirstHalf = trainHalf != "2";
+        var splitIndex = OccupancyImages.Count / 2;
         vars.TryGetValue(LinesUtils.CURRENT_INDEX_VAR, out var index);
         int.TryParse(index, out var intIndex);
-
-        if (!isInversed) return OccupancyImages[intIndex];
-        var reversedList = OccupancyImages;
-        reversedList.Reverse();
-        return reversedList[intIndex];
+        var workingPart = useFirstHalf ? 
+            OccupancyImages.Take(splitIndex).ToList() : 
+            OccupancyImages.Skip(splitIndex).ToList();
+        return workingPart[intIndex];
     }
 }

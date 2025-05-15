@@ -51,11 +51,11 @@
       </self>
       <children>
         <self itemName="Train First Half">
-          <transform alignment="Left" arrayAxisOrder="XYZ">
+          <transform alignment="Left" useFormulaeToCheckIfDraw="true" arrayAxisOrder="XYZ">
             <offsetPosition x="1.550999" y="-0.662" z="1.437" />
             <offsetRotation x="-0" y="0" z="0" />
             <scale x="0" y="0" z="1" />
-            <mustDraw>0</mustDraw>
+            <mustDraw formulae="&amp;StationSignage.Formulas.LinesUtils;PlatformHasLine">0</mustDraw>
             <instanceCount>-1</instanceCount>
             <arrayInstances x="1" y="1" z="1" />
             <arraySpacing x="0" y="0" z="0" />
@@ -171,11 +171,11 @@
       </children>
       <children>
         <self itemName="Train Last Half">
-          <transform alignment="Left" arrayAxisOrder="XYZ">
+          <transform alignment="Left" useFormulaeToCheckIfDraw="true" arrayAxisOrder="XYZ">
             <offsetPosition x="74.996994" y="-0.651" z="1.41200006" />
             <offsetRotation x="-0" y="0" z="0" />
             <scale x="0" y="0" z="1" />
-            <mustDraw>0</mustDraw>
+            <mustDraw formulae="&amp;StationSignage.Formulas.LinesUtils;PlatformHasLine">0</mustDraw>
             <instanceCount>-1</instanceCount>
             <arrayInstances x="1" y="1" z="1" />
             <arraySpacing x="0" y="0" z="0" />
@@ -292,11 +292,11 @@
       </children>
       <children>
         <self itemName="Train Last Half">
-          <transform alignment="Left" arrayAxisOrder="XYZ">
+          <transform alignment="Left" useFormulaeToCheckIfDraw="true" arrayAxisOrder="XYZ">
             <offsetPosition x="103.646988" y="-0.651" z="1.41200006" />
             <offsetRotation x="-0" y="0" z="0" />
             <scale x="0" y="0" z="1" />
-            <mustDraw>0</mustDraw>
+            <mustDraw formulae="&amp;StationSignage.Formulas.LinesUtils;PlatformHasLine">0</mustDraw>
             <instanceCount>-1</instanceCount>
             <arrayInstances x="1" y="1" z="1" />
             <arraySpacing x="0" y="0" z="0" />
@@ -413,11 +413,11 @@
       </children>
       <children>
         <self itemName="Train First Half">
-          <transform alignment="Left" arrayAxisOrder="XYZ">
+          <transform alignment="Left" useFormulaeToCheckIfDraw="true" arrayAxisOrder="XYZ">
             <offsetPosition x="32.7609978" y="-0.662" z="2.127" />
             <offsetRotation x="-0" y="0" z="0" />
             <scale x="0" y="0" z="1" />
-            <mustDraw>0</mustDraw>
+            <mustDraw formulae="&amp;StationSignage.Formulas.LinesUtils;PlatformHasLine">0</mustDraw>
             <instanceCount>-1</instanceCount>
             <arrayInstances x="1" y="1" z="1" />
             <arraySpacing x="0" y="0" z="0" />
@@ -533,11 +533,11 @@
       </children>
       <children>
         <self itemName="Train Last Half">
-          <transform alignment="Left" arrayAxisOrder="XYZ">
+          <transform alignment="Left" useFormulaeToCheckIfDraw="true" arrayAxisOrder="XYZ">
             <offsetPosition x="121.016991" y="-0.651" z="1.41200006" />
             <offsetRotation x="-0" y="0" z="0" />
             <scale x="0" y="0" z="1" />
-            <mustDraw>0</mustDraw>
+            <mustDraw formulae="&amp;StationSignage.Formulas.LinesUtils;PlatformHasLine">0</mustDraw>
             <instanceCount>-1</instanceCount>
             <arrayInstances x="1" y="1" z="1" />
             <arraySpacing x="0" y="0" z="0" />
@@ -681,11 +681,11 @@
       </self>
       <children>
         <self itemName="Train First Half">
-          <transform alignment="Left" arrayAxisOrder="XYZ">
+          <transform alignment="Left" useFormulaeToCheckIfDraw="true" arrayAxisOrder="XYZ">
             <offsetPosition x="3.43699956" y="-0.662" z="1.437" />
             <offsetRotation x="-0" y="0" z="0" />
             <scale x="0" y="0" z="1" />
-            <mustDraw>0</mustDraw>
+            <mustDraw formulae="&amp;StationSignage.Formulas.LinesUtils;PlatformHasLine">0</mustDraw>
             <instanceCount>-1</instanceCount>
             <arrayInstances x="1" y="1" z="1" />
             <arraySpacing x="0" y="0" z="0" />
@@ -801,11 +801,11 @@
       </children>
       <children>
         <self itemName="Train Last Half">
-          <transform alignment="Left" arrayAxisOrder="XYZ">
+          <transform alignment="Left" useFormulaeToCheckIfDraw="true" arrayAxisOrder="XYZ">
             <offsetPosition x="76.9009857" y="-0.662" z="1.41200006" />
             <offsetRotation x="-0" y="0" z="0" />
             <scale x="0" y="0" z="1" />
-            <mustDraw>0</mustDraw>
+            <mustDraw formulae="&amp;StationSignage.Formulas.LinesUtils;PlatformHasLine">0</mustDraw>
             <instanceCount>-1</instanceCount>
             <arrayInstances x="1" y="1" z="1" />
             <arraySpacing x="0" y="0" z="0" />
@@ -921,11 +921,11 @@
       </children>
       <children>
         <self itemName="Train First Half">
-          <transform alignment="Left" arrayAxisOrder="XYZ">
+          <transform alignment="Left" useFormulaeToCheckIfDraw="true" arrayAxisOrder="XYZ">
             <offsetPosition x="-25.218" y="-0.662" z="1.437" />
             <offsetRotation x="-0" y="0" z="0" />
             <scale x="0" y="0" z="1" />
-            <mustDraw>0</mustDraw>
+            <mustDraw formulae="&amp;StationSignage.Formulas.LinesUtils;PlatformHasLine">0</mustDraw>
             <instanceCount>-1</instanceCount>
             <arrayInstances x="1" y="1" z="1" />
             <arraySpacing x="0" y="0" z="0" />
@@ -1041,11 +1041,11 @@
       </children>
       <children>
         <self itemName="Train Last Half">
-          <transform alignment="Left" arrayAxisOrder="XYZ">
+          <transform alignment="Left" useFormulaeToCheckIfDraw="true" arrayAxisOrder="XYZ">
             <offsetPosition x="45.64098" y="-0.662" z="1.98200011" />
             <offsetRotation x="-0" y="0" z="0" />
             <scale x="0" y="0" z="1" />
-            <mustDraw>0</mustDraw>
+            <mustDraw formulae="&amp;StationSignage.Formulas.LinesUtils;PlatformHasLine">0</mustDraw>
             <instanceCount>-1</instanceCount>
             <arrayInstances x="1" y="1" z="1" />
             <arraySpacing x="0" y="0" z="0" />
@@ -1161,11 +1161,11 @@
       </children>
       <children>
         <self itemName="Train First Half">
-          <transform alignment="Left" arrayAxisOrder="XYZ">
+          <transform alignment="Left" useFormulaeToCheckIfDraw="true" arrayAxisOrder="XYZ">
             <offsetPosition x="-42.5780029" y="-0.662" z="1.437" />
             <offsetRotation x="-0" y="0" z="0" />
             <scale x="0" y="0" z="1" />
-            <mustDraw>0</mustDraw>
+            <mustDraw formulae="&amp;StationSignage.Formulas.LinesUtils;PlatformHasLine">0</mustDraw>
             <instanceCount>-1</instanceCount>
             <arrayInstances x="1" y="1" z="1" />
             <arraySpacing x="0" y="0" z="0" />
@@ -1300,10 +1300,11 @@
     </children>
     <children>
       <self itemName="Platform Name">
-        <transform alignment="Left" useFormulaeToCheckIfDraw="true" arrayAxisOrder="XYZ">
+        <transform alignment="Left" arrayAxisOrder="XYZ">
           <offsetPosition x="0" y="0" z="0" />
           <offsetRotation x="-0" y="0" z="0" />
           <scale x="0" y="0" z="1" />
+          <mustDraw formulae="&amp;StationSignage.Formulas.LinesUtils;CenterPlatformHasLine">0</mustDraw>
           <instanceCount>-1</instanceCount>
           <arrayInstances x="1" y="1" z="1" />
           <arraySpacing x="0" y="0" z="0" />
@@ -1324,11 +1325,11 @@
       </self>
       <children>
         <self itemName="Station Name Start">
-          <transform alignment="Left" arrayAxisOrder="XYZ">
+          <transform alignment="Left" useFormulaeToCheckIfDraw="true" arrayAxisOrder="XYZ">
             <offsetPosition x="36.7940025" y="1.36400032" z="0" />
             <offsetRotation x="-0" y="0" z="0" />
             <scale x="0" y="0" z="1" />
-            <mustDraw>0</mustDraw>
+            <mustDraw formulae="&amp;StationSignage.Formulas.LinesUtils;CenterPlatformHasLine">0</mustDraw>
             <instanceCount>-1</instanceCount>
             <arrayInstances x="1" y="1" z="1" />
             <arraySpacing x="0" y="0" z="0" />
@@ -1734,11 +1735,11 @@
       </children>
       <children>
         <self itemName="Station Name Center">
-          <transform alignment="Left" arrayAxisOrder="XYZ">
+          <transform alignment="Left" useFormulaeToCheckIfDraw="true" arrayAxisOrder="XYZ">
             <offsetPosition x="-14.5759983" y="1.36400032" z="0" />
             <offsetRotation x="-0" y="0" z="0" />
             <scale x="0" y="0" z="1" />
-            <mustDraw>0</mustDraw>
+            <mustDraw formulae="&amp;StationSignage.Formulas.LinesUtils;CenterPlatformHasLine">0</mustDraw>
             <instanceCount>-1</instanceCount>
             <arrayInstances x="1" y="1" z="1" />
             <arraySpacing x="0" y="0" z="0" />
@@ -2122,11 +2123,11 @@
       </children>
       <children>
         <self itemName="Station Name End">
-          <transform alignment="Left" arrayAxisOrder="XYZ">
+          <transform alignment="Left" useFormulaeToCheckIfDraw="true" arrayAxisOrder="XYZ">
             <offsetPosition x="-49.4059944" y="1.36400032" z="0" />
             <offsetRotation x="-0" y="0" z="0" />
             <scale x="0" y="0" z="1" />
-            <mustDraw>0</mustDraw>
+            <mustDraw formulae="&amp;StationSignage.Formulas.LinesUtils;CenterPlatformHasLine">0</mustDraw>
             <instanceCount>-1</instanceCount>
             <arrayInstances x="1" y="1" z="1" />
             <arraySpacing x="0" y="0" z="0" />
@@ -2562,11 +2563,11 @@
     </self>
     <children>
       <self itemName="Platform 3 Panel">
-        <transform alignment="Left" arrayAxisOrder="XYZ">
+        <transform alignment="Left" useFormulaeToCheckIfDraw="true" arrayAxisOrder="XYZ">
           <offsetPosition x="20.354" y="0.430999577" z="1.46299994" />
           <offsetRotation x="-0" y="0" z="0" />
           <scale x="0" y="0" z="1" />
-          <mustDraw>0</mustDraw>
+          <mustDraw formulae="&amp;StationSignage.Formulas.LinesUtils;PlatformHasLine">0</mustDraw>
           <instanceCount>-1</instanceCount>
           <arrayInstances x="1" y="1" z="1" />
           <arraySpacing x="0" y="0" z="0" />
@@ -3195,6 +3196,7 @@
           <offsetPosition x="0" y="0" z="0" />
           <offsetRotation x="-0" y="0" z="0" />
           <scale x="0" y="0" z="1" />
+          <mustDraw formulae="&amp;StationSignage.Formulas.LinesUtils;PlatformHasLine">0</mustDraw>
           <instanceCount>-1</instanceCount>
           <arrayInstances x="1" y="1" z="1" />
           <arraySpacing x="0" y="0" z="0" />
@@ -4446,11 +4448,11 @@
     </self>
     <children>
       <self itemName="Platform 3 Panel">
-        <transform alignment="Left" arrayAxisOrder="XYZ">
+        <transform alignment="Left" useFormulaeToCheckIfDraw="true" arrayAxisOrder="XYZ">
           <offsetPosition x="19.810997" y="0.431" z="-1.50100148" />
           <offsetRotation x="-0" y="180" z="0" />
           <scale x="0" y="0" z="1" />
-          <mustDraw>0</mustDraw>
+          <mustDraw formulae="&amp;StationSignage.Formulas.LinesUtils;PlatformHasLine">0</mustDraw>
           <instanceCount>-1</instanceCount>
           <arrayInstances x="1" y="1" z="1" />
           <arraySpacing x="0" y="0" z="0" />
@@ -6305,7 +6307,7 @@
     <self itemName="Lines Panel">
       <transform alignment="Left" arrayAxisOrder="XYZ">
         <offsetPosition x="27.3130016" y="2.27499962" z="16.656" />
-        <offsetRotation x="0" y="270" z="0" />
+        <offsetRotation x="-0" y="270" z="0" />
         <scale x="0" y="0" z="1" />
         <mustDraw>0</mustDraw>
         <instanceCount>-1</instanceCount>
@@ -6322,7 +6324,7 @@
     <self itemName="Lines Panel">
       <transform alignment="Left" arrayAxisOrder="XYZ">
         <offsetPosition x="-21.4480019" y="4.5" z="14.814" />
-        <offsetRotation x="0" y="270" z="0" />
+        <offsetRotation x="-0" y="270" z="0" />
         <scale x="0" y="0" z="1" />
         <mustDraw>0</mustDraw>
         <instanceCount>-1</instanceCount>
