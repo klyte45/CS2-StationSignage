@@ -3,10 +3,12 @@ using System.Collections.Generic;
 using System.IO;
 using System.Linq;
 using System.Reflection;
+using Colossal.IO.AssetDatabase;
 using Colossal.Logging;
 using Game;
 using Game.Modding;
 using Game.SceneFlow;
+using Game.Settings;
 using HarmonyLib;
 using StationSignage.Utils;
 using StationSignage.WEBridge;
@@ -17,13 +19,18 @@ namespace StationSignage
     {
         public static ILog log = LogManager.GetLogger($"{nameof(StationSignage)}.{nameof(Mod)}").SetShowsErrorsInUI(false);
         private static readonly BindingFlags allFlags = BindingFlags.Public | BindingFlags.NonPublic | BindingFlags.Instance | BindingFlags.Static | BindingFlags.DeclaredOnly | BindingFlags.GetField | BindingFlags.GetProperty;
-
+        public static Settings m_Setting;
+        
         public void OnLoad(UpdateSystem updateSystem)
         {
             log.Info(nameof(OnLoad));
 
             if (GameManager.instance.modManager.TryGetExecutableAsset(this, out var asset))
                 log.Info($"Current mod asset at {asset.path}");
+            m_Setting = new Settings(this);
+            m_Setting.RegisterInOptionsUI();
+            GameManager.instance.localizationManager.AddSource("en-US", new LocaleEn(m_Setting));
+            AssetDatabase.global.LoadSettings(nameof(StationSignage), m_Setting, new Settings(this));
             
             updateSystem.UpdateAt<LinesSystem>(SystemUpdatePhase.GameSimulation);
 

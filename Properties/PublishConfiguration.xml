@@ -1,6 +1,5 @@
 ﻿<Publish>
-	<!--Id must be set in order to update existed mod. it is not required for publishing mod for the first time-->
-	<ModId Value="" />
+	<ModId Value="109310" />
 	<!--Name of the mod to display to players-->
 	<DisplayName Value="Station Signage [BETA] [WE Module]" />
 	<!--Short description of the mod-->
@@ -83,7 +82,7 @@ A huge thank you to **Klyte45** for their incredible work on **Write Everywhere*
 	<Dependency Id="75426" />
 	<!--ChangeLog>
 	</ChangeLog-->
-	<!--External link. supported types are discord, github, youtube, twitch, x, paypal, patreon, buymeacoffee, kofi, crowdin, gitlab-->
 	<ExternalLink Type="kofi" Url="https://ko-fi.com/rodrigmatrix" />
 	<ExternalLink Type="github" Url="https://github.com/rodrigmatrix/StationSignage" />
+	<ExternalLink Type="youtube" Url="https://youtu.be/ZV5wcXG3FpA" />
 </Publish>

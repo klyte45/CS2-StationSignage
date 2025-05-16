@@ -476,7 +476,7 @@
                 <layout>StationSignage:ExitRight</layout>
               </layoutMesh>
             </self>
-            <variable key="images" value="CircleA, RightArrow" />
+            <variable key="images" value="CircleA,RightArrow" />
           </children>
           <children>
             <self itemName="Emergency Exit">
@@ -521,7 +521,7 @@
                 <layout>StationSignage:TransferLineSign</layout>
               </layoutMesh>
             </self>
-            <variable key="images" value="TopLeftArrow, EscalatorsLeft" />
+            <variable key="images" value="TopLeftArrow,EscalatorsLeft" />
           </children>
           <children>
             <self itemName="Exit Left">
@@ -538,7 +538,7 @@
                 <layout>StationSignage:ExitLeft</layout>
               </layoutMesh>
             </self>
-            <variable key="images" value="CircleC, LeftArrow" />
+            <variable key="images" value="CircleC,LeftArrow" />
           </children>
         </children>
         <children>
@@ -633,7 +633,7 @@
                 <layout>StationSignage:ExitRight</layout>
               </layoutMesh>
             </self>
-            <variable key="images" value="CircleC, RightArrow" />
+            <variable key="images" value="CircleC,RightArrow" />
           </children>
           <children>
             <self itemName="Emergency Exit">
@@ -678,7 +678,7 @@
                 <layout>StationSignage:TransferLineSign</layout>
               </layoutMesh>
             </self>
-            <variable key="images" value="EscalatorsRight, TopRightArrow" />
+            <variable key="images" value="EscalatorsRight,TopRightArrow" />
           </children>
           <children>
             <self itemName="Exit Left">
@@ -695,7 +695,7 @@
                 <layout>StationSignage:ExitLeft</layout>
               </layoutMesh>
             </self>
-            <variable key="images" value="CircleA, LeftArrow" />
+            <variable key="images" value="CircleA,LeftArrow" />
           </children>
         </children>
         <children>
@@ -978,7 +978,7 @@
                 <layout>StationSignage:ExitRight</layout>
               </layoutMesh>
             </self>
-            <variable key="images" value="CircleB, RightArrow" />
+            <variable key="images" value="CircleB,RightArrow" />
           </children>
           <children>
             <self itemName="Emergency Exit">
@@ -1023,7 +1023,7 @@
                 <layout>StationSignage:TransferLineSign</layout>
               </layoutMesh>
             </self>
-            <variable key="images" value="EscalatorsRight, TopRightArrow" />
+            <variable key="images" value="EscalatorsRight,TopRightArrow" />
           </children>
           <children>
             <self itemName="Exit Left">
@@ -1040,7 +1040,7 @@
                 <layout>StationSignage:ExitLeft</layout>
               </layoutMesh>
             </self>
-            <variable key="images" value="CircleA, LeftArrow" />
+            <variable key="images" value="CircleA,LeftArrow" />
           </children>
         </children>
         <children>
@@ -1135,7 +1135,7 @@
                 <layout>StationSignage:ExitRight</layout>
               </layoutMesh>
             </self>
-            <variable key="images" value="CircleA, RightArrow" />
+            <variable key="images" value="CircleA,RightArrow" />
           </children>
           <children>
             <self itemName="Emergency Exit">
@@ -1180,7 +1180,7 @@
                 <layout>StationSignage:TransferLineSign</layout>
               </layoutMesh>
             </self>
-            <variable key="images" value="TopLeftArrow, EscalatorsLeft" />
+            <variable key="images" value="TopLeftArrow,EscalatorsLeft" />
           </children>
           <children>
             <self itemName="Exit Left">
@@ -1197,7 +1197,7 @@
                 <layout>StationSignage:ExitLeft</layout>
               </layoutMesh>
             </self>
-            <variable key="images" value="CircleB, LeftArrow" />
+            <variable key="images" value="CircleB,LeftArrow" />
           </children>
         </children>
         <children>
@@ -2292,7 +2292,7 @@
                 <layout>StationSignage:ExitRight</layout>
               </layoutMesh>
             </self>
-            <variable key="images" value="CircleC, RightArrow" />
+            <variable key="images" value="CircleC,RightArrow" />
           </children>
           <children>
             <self itemName="Emergency Exit">
@@ -2337,7 +2337,7 @@
                 <layout>StationSignage:TransferLineSign</layout>
               </layoutMesh>
             </self>
-            <variable key="images" value="TopLeftArrow, EscalatorsLeft" />
+            <variable key="images" value="TopLeftArrow,EscalatorsLeft" />
           </children>
           <children>
             <self itemName="Exit Left">
@@ -2354,7 +2354,7 @@
                 <layout>StationSignage:ExitLeft</layout>
               </layoutMesh>
             </self>
-            <variable key="images" value="CircleB, CircleA, LeftArrow" />
+            <variable key="images" value="CircleB,CircleA,LeftArrow" />
           </children>
         </children>
         <children>
@@ -2449,7 +2449,7 @@
                 <layout>StationSignage:ExitRight</layout>
               </layoutMesh>
             </self>
-            <variable key="images" value="CircleA, CircleB, ToRightArro" />
+            <variable key="images" value="CircleA,CircleB,ToRightArroW" />
           </children>
           <children>
             <self itemName="Emergency Exit">
@@ -2494,7 +2494,7 @@
                 <layout>StationSignage:TransferLineSign</layout>
               </layoutMesh>
             </self>
-            <variable key="images" value="EscalatorsRight, TopRightArrow" />
+            <variable key="images" value="EscalatorsRight,TopRightArrow" />
           </children>
           <children>
             <self itemName="Exit Left">
@@ -2511,7 +2511,7 @@
                 <layout>StationSignage:ExitLeft</layout>
               </layoutMesh>
             </self>
-            <variable key="images" value="CircleC, LeftArrow" />
+            <variable key="images" value="CircleC,LeftArrow" />
           </children>
         </children>
         <children>
@@ -2596,7 +2596,7 @@
                 <layout>StationSignage:ExitRight</layout>
               </layoutMesh>
             </self>
-            <variable key="images" value="CircleC, TopRightArrow" />
+            <variable key="images" value="CircleC,TopRightArrow" />
           </children>
           <children>
             <self itemName="Emergency Exit">
@@ -2641,7 +2641,7 @@
                 <layout>StationSignage:TransferLineSign</layout>
               </layoutMesh>
             </self>
-            <variable key="images" value="EscalatorsRight, TopRightArrow" />
+            <variable key="images" value="EscalatorsRight,TopRightArrow" />
           </children>
           <children>
             <self itemName="Exit Left">
@@ -2658,7 +2658,7 @@
                 <layout>StationSignage:ExitLeft</layout>
               </layoutMesh>
             </self>
-            <variable key="images" value="CircleB, CircleA, TopLeftArro" />
+            <variable key="images" value="CircleB,CircleA,TopLeftArroW" />
           </children>
         </children>
         <children>
@@ -2753,7 +2753,7 @@
                 <layout>StationSignage:ExitRight</layout>
               </layoutMesh>
             </self>
-            <variable key="images" value="CircleA, CircleC,TopRightArro" />
+            <variable key="images" value="CircleA,CircleC,TopRightArroW" />
           </children>
           <children>
             <self itemName="Emergency Exit">
@@ -2798,7 +2798,7 @@
                 <layout>StationSignage:TransferLineSign</layout>
               </layoutMesh>
             </self>
-            <variable key="images" value="TopLeftArrow, EscalatorsLeft" />
+            <variable key="images" value="TopLeftArrow,EscalatorsLeft" />
           </children>
           <children>
             <self itemName="Exit Left">
@@ -2815,7 +2815,7 @@
                 <layout>StationSignage:ExitLeft</layout>
               </layoutMesh>
             </self>
-            <variable key="images" value="CircleC, TopLeftArrow" />
+            <variable key="images" value="CircleC,TopLeftArrow" />
           </children>
         </children>
         <children>

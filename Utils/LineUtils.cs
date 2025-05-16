@@ -6,6 +6,7 @@ using Game.Common;
 using Game.Routes;
 using Game.UI;
 using Game.Vehicles;
+using StationSignage.BridgeWE;
 using Unity.Entities;
 
 namespace StationSignage.Utils;
@@ -16,12 +17,6 @@ public static class LineUtils
     private static LinesSystem _linesSystem;
     private static NameSystem _nameSystem;
     private static EntityManager _entityManager;
-    
-    private static readonly string[] ViaMobilidadeLines = ["5", "8", "9", "17"];
-    
-    private const string LinhaUni = "6";
-
-    private const string ViaQuatro = "4";
         
     public const string Transparent = "Transparent";
 
@@ -36,34 +31,6 @@ public static class LineUtils
         { "NA_TrainPassengerCar01", "C" },
         { "NA_TrainPassengerEngine01", "C" },
     };
-
-    public static string GetSubwayOperator(string routeString)
-    {
-        var subwayOperator = "Operator01";
-        if (ViaMobilidadeLines.Contains(routeString))
-        {
-            subwayOperator = "Operator02";
-        } else if (ViaQuatro == routeString)
-        {
-            subwayOperator = "Operator03";
-        } else if (LinhaUni == routeString)
-        {
-            subwayOperator = "Operator04";
-        }
-
-        return subwayOperator;
-    }
-    
-    public static string GetTrainOperator(string routeString)
-    {
-        var trainOperator = "Operator05";
-        if (ViaMobilidadeLines.Contains(routeString))
-        {
-            trainOperator = "Operator02";
-        }
-
-        return trainOperator;
-    }
     
     public static Tuple<string, string> GetRouteName(Entity entity)
     {
@@ -71,9 +38,19 @@ public static class LineUtils
         var nameSystem = World.DefaultGameObjectInjectionWorld.GetOrCreateSystemManaged<NameSystem>();
         var fullLineName = nameSystem.GetName(entity).Translate();
         entityManager.TryGetComponent<RouteNumber>(entity, out var routeNumber);
-        var lineName = fullLineName.Split(' ').LastOrDefault();
-        var routeName = lineName is { Length: >= 1 and <= 2 } ? lineName : routeNumber.m_Number.ToString();
+        var routeName = Mod.m_Setting.LineDisplayNameDropdown switch
+        {
+            Settings.LineDisplayNameOptions.Custom => GetSmallLineName(fullLineName, routeNumber),
+            Settings.LineDisplayNameOptions.WriteEverywhere => WERouteFn.GetTransportLineNumber(entity),
+            Settings.LineDisplayNameOptions.Generated => routeNumber.m_Number.ToString(),
+            _ => GetSmallLineName(fullLineName, routeNumber)
+        };
         return Tuple.Create(fullLineName, routeName);
+    }
+    
+    private static string GetSmallLineName(string fullLineName, RouteNumber routeNumber)
+    {
+        return fullLineName is { Length: >= 1 and <= 3 } ? fullLineName : routeNumber.m_Number.ToString();
     }
 
     public static string GetTrainName(Entity entity)

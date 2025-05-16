@@ -65,7 +65,7 @@ public static class TransportFormulas
             var line = _linesSystem.GetTransportLines(type)[index];
             return new LinePanel(
                 GetLineStatusText(line),
-                GetLineName(line),
+                LineUtils.GetRouteName(line.entity).Item2,
                 line.color,
                 GetOnPrimaryColor(line.color),
                 GetLineStatusColor(line)
@@ -201,9 +201,9 @@ public static class TransportFormulas
         {
             if (type == TrainEntityName)
             {
-                return LineUtils.GetTrainOperator(routeName);
+                return DisplayFormulas.GetTrainOperator(routeName);
             }
-            return LineUtils.GetSubwayOperator(routeName);
+            return DisplayFormulas.GetSubwayOperator(routeName);
         }
         
         private static List<LineConnection> GetConnectionLines(Entity waypoint, string type)
@@ -638,23 +638,6 @@ public static class TransportFormulas
             catch (Exception e)
             {
                 return null;
-            }
-        }
-
-        private static string GetLineName(UITransportLineData? transportLineData)
-        {
-            _entityManager = World.DefaultGameObjectInjectionWorld.EntityManager;
-            try
-            {
-                if (transportLineData == null) return LineUtils.Empty;
-                _entityManager.TryGetComponent<RouteNumber>(transportLineData.Value.entity, out var routeNumber);
-                var lineName = _nameSystem.GetName(transportLineData.Value.entity).Translate().Split(' ').LastOrDefault();
-                return lineName is { Length: >= 1 and <= 2 } ? lineName : routeNumber.m_Number.ToString();
-            }
-            catch (Exception e)
-            {
-                Mod.log.Info(e);
-                return LineUtils.Empty;
             }
         }
         
