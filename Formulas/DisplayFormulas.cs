@@ -17,8 +17,8 @@ public class DisplayFormulas
     private const string CptmOperator = "Operator05";
     private const string MetroOperator = "Operator01";
     private const string LinhaUniOperator = "Operator04";
-    private const string GenericSubwayOperator = "GenericSubwayOperator";
-    private const string GenericTrainOperator = "GenericTrainOperator";
+    private const string GenericSubwayOperator = "";
+    private const string GenericTrainOperator = "";
     private static readonly string[] ViaMobilidadeLines = ["4", "5", "8", "9", "15"];
     private static readonly string[] LinhaUniLines = ["6"];
 
@@ -100,7 +100,7 @@ public class DisplayFormulas
             Settings.LineOperatorCityOptions.SaoPaulo => GetSaoPauloSubwayOperator(routeName),
             Settings.LineOperatorCityOptions.NewYork => GetNewYorkSubwayOperator(routeName),
             Settings.LineOperatorCityOptions.London => GetLondonSubwayOperator(routeName),
-            _ => GenericSubwayOperator
+            _ => GenericSubwayOperator//&StationSignage.Formulas.LinesUtils;GetLineStatus.Color //&StationSignage.Formulas.DisplayFormulas;GetLineBackgroundShape
         };
     }
     

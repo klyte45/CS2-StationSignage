@@ -175,6 +175,6 @@ public static class LinesUtils
         _transportUtilitySystem ??= World.DefaultGameObjectInjectionWorld.GetExistingSystemManaged<TransportUtilitySystem>();
         return vars.TryGetValue(PLATFORM_VAR, out var idxStr) &&
                int.TryParse(idxStr, out var idx) && vars.TryGetValue(LINETYPE_VAR, out var lineType) ?
-            _transportUtilitySystem.GetVehiclePanel(GetPlatformLine(buildingRef, vars), idx, vars) : null;
+            _transportUtilitySystem.GetVehiclePanel(GetPlatformLine(buildingRef, vars), idx) : null;
     }
 }

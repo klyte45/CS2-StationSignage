@@ -51,8 +51,10 @@ public partial class TransportUtilitySystem : GameSystemBase
                 return null;
             }
         };
-        //  m_SimulationSystem.frameIndex;
     }
+
+    private uint CacheGenerationFrame = 0;
+    private uint CurrentCacheFrame => m_SimulationSystem.frameIndex >> 7;
 
     private LinesSystem _linesSystem;
     private NameSystem _nameSystem;
@@ -66,6 +68,59 @@ public partial class TransportUtilitySystem : GameSystemBase
     public Func<int, string, LinePanel> LineBinding;
     private const string Transparent = LineUtils.Transparent;
 
+    private readonly Dictionary<(Entity, string, bool), List<TransportLineModel>> cachedStationLines = new();
+    private readonly Dictionary<Entity, VehiclePanel> cachedPlatformPanel = new();
+
+
+
+    #region Public methods
+    public int GetLineCount(string type) => _linesSystem.GetTransportLinesCount(type);
+    public List<TransportLineModel> GetStationLines(Entity buildingRef, string type, bool getConnections)
+    {
+        CheckCacheIsValid();
+        if (cachedStationLines.TryGetValue((buildingRef, type, getConnections), out var cachedLines))
+        {
+            return cachedLines;
+        }
+        var lineNumberList = new List<TransportLineModel>();
+        var buildingOwner = GetOwnerRecursive(buildingRef);
+        GetLines(buildingOwner, type, 0, ref lineNumberList, getConnections);
+        if (lineNumberList.Count == 0 && EntityManager.TryGetBuffer(buildingOwner, true, out DynamicBuffer<InstalledUpgrade> upgrades))
+        {
+            for (var i = 0; i < upgrades.Length; ++i)
+            {
+                GetLines(upgrades[i].m_Upgrade, type, i, ref lineNumberList, getConnections);
+            }
+        }
+        EntityManager.TryGetComponent<Transform>(buildingRef, out var transform);
+        SortByOwner(lineNumberList, transform);
+        cachedStationLines[(buildingRef, type, getConnections)] = lineNumberList;
+        return lineNumberList;
+    }
+
+
+    public VehiclePanel GetVehiclePanel(TransportLineModel line, int platformNumber)
+    {
+        CheckCacheIsValid();
+        if (cachedPlatformPanel.TryGetValue(line.Platform, out var cached)) return cached;
+        var panel = RecalculateGetVehiclePanel(line, platformNumber);
+        cachedPlatformPanel[line.Platform] = panel;
+        return panel;
+    }
+
+    #endregion
+
+
+
+    private void CheckCacheIsValid()
+    {
+        if (CacheGenerationFrame != CurrentCacheFrame)
+        {
+            CacheGenerationFrame = CurrentCacheFrame;
+            cachedStationLines.Clear();
+            cachedPlatformPanel.Clear();
+        }
+    }
     private string GetName(string id)
     {
         return GameManager.instance.localizationManager.activeDictionary.TryGetValue(id, out var name) ? name : "";
@@ -75,7 +130,7 @@ public partial class TransportUtilitySystem : GameSystemBase
 
     private LinePanel GetLine(int index, string type)
     {
-        var line = _linesSystem.GetTransportLines(type)[index];
+        var line = _linesSystem.GetTransportLines(type).ElementAtOrDefault(index);
         return new LinePanel(
             GetLineStatusText(line),
             LineUtils.GetRouteName(line.entity).Item2,
@@ -85,10 +140,6 @@ public partial class TransportUtilitySystem : GameSystemBase
         );
     }
 
-    public int GetLineCount(string type)
-    {
-        return _linesSystem.GetTransportLines(type).Count;
-    }
 
     private void GetLines(
         Entity selectedEntity,
@@ -240,22 +291,7 @@ public partial class TransportUtilitySystem : GameSystemBase
         return luminance > 0.5 ? Color.black : Color.white;
     }
 
-    public List<TransportLineModel> GetStationLines(Entity buildingRef, string type, bool getConnections)
-    {
-        var lineNumberList = new List<TransportLineModel>();
-        var buildingOwner = GetOwnerRecursive(buildingRef);
-        GetLines(buildingOwner, type, 0, ref lineNumberList, getConnections);
-        if (lineNumberList.Count == 0 && EntityManager.TryGetBuffer(buildingOwner, true, out DynamicBuffer<InstalledUpgrade> upgrades))
-        {
-            for (var i = 0; i < upgrades.Length; ++i)
-            {
-                GetLines(upgrades[i].m_Upgrade, type, i, ref lineNumberList, getConnections);
-            }
-        }
-        EntityManager.TryGetComponent<Transform>(buildingRef, out var transform);
-        SortByOwner(lineNumberList, transform);
-        return lineNumberList;
-    }
+
 
     private void SortByOwner(List<TransportLineModel> subObjects, Transform owner)
     {
@@ -411,7 +447,7 @@ public partial class TransportUtilitySystem : GameSystemBase
         return vehiclesList;
     }
 
-    public VehiclePanel GetVehiclePanel(TransportLineModel line, int platformNumber, Dictionary<string, string> vars)
+    private VehiclePanel RecalculateGetVehiclePanel(TransportLineModel line, int platformNumber)
     {
         EntityManager.TryGetComponent<Position>(line.Platform, out var platformPosition);
         EntityManager.TryGetComponent<WaitingPassengers>(line.Platform, out var waitingPassengers);
@@ -422,7 +458,7 @@ public partial class TransportUtilitySystem : GameSystemBase
         var occupancyTitle = GetName("StationSignage.LevelOfOccupancy");
         var bikeIcon = Transparent;
         var wheelchairIcon = Transparent;
-        var occupancyImagesList = new List<string>();
+        var occupancyImagesList = new List<int>();
         var footer = DisplayFormulas.GetWelcomeMessage(line.Type);
         if (_destinationsDictionary.ContainsKey(line.Platform))
         {
@@ -474,26 +510,7 @@ public partial class TransportUtilitySystem : GameSystemBase
                 var filledPercentage = (passengers.Length * 100) / vehicleData.m_PassengerCapacity;
                 var carType = "Car";
                 var engineDirection = "";
-                if (index == 0)
-                {
-                    carType = "Engine";
-                    engineDirection = "Left";
-                }
-
-                if (index == layoutElements.Length - 1)
-                {
-                    carType = "Engine";
-                    engineDirection = "Right";
-                }
-
-                var capacity = filledPercentage switch
-                {
-                    <= 5 => "Empty",
-                    <= 30 => "Low",
-                    <= 50 => "Medium",
-                    > 50 => "Filled"
-                };
-                occupancyImagesList.Add(capacity + "Capacity" + engineDirection + carType);
+                occupancyImagesList.Add(filledPercentage);
             }
 
             if (publicTransport.m_State.HasFlag(PublicTransportFlags.Boarding))
@@ -537,12 +554,11 @@ public partial class TransportUtilitySystem : GameSystemBase
             bikeIcon = Transparent;
             for (var i = 0; i < 8; i++)
             {
-                occupancyImagesList.Add(Transparent);
+                occupancyImagesList.Add(0);
             }
         }
 
         return new VehiclePanel(
-            vars,
             title,
             subtitle,
             message,

@@ -10,6 +10,7 @@ using Game.Modding;
 using Game.SceneFlow;
 using Game.Settings;
 using HarmonyLib;
+using StationSignage.BridgeWE;
 using StationSignage.Systems;
 using StationSignage.Utils;
 using StationSignage.WEBridge;
@@ -37,16 +38,14 @@ namespace StationSignage
             updateSystem.UpdateAt<TransportUtilitySystem>(SystemUpdatePhase.GameSimulation);
 
 
-
-            GameManager.instance.onGameLoadingComplete += DoWhenLoaded;
+            GameManager.instance.RegisterUpdater(DoWhenLoaded);
         }
 
-        private void DoWhenLoaded(Colossal.Serialization.Entities.Purpose purpose, GameMode mode)
+        private void DoWhenLoaded()
         {
             log.Info($"Loading patches");
             DoPatches();
             RegisterModFiles();
-            GameManager.instance.onGameLoadingComplete -= DoWhenLoaded;
         }
 
         private void RegisterModFiles()
@@ -82,6 +81,7 @@ namespace StationSignage
                     (typeof(WEFontManagementBridge), "FontManagementBridge"),
                     (typeof(WEImageManagementBridge), "ImageManagementBridge"),
                     (typeof(WETemplatesManagementBridge), "TemplatesManagementBridge"),
+                    (typeof(WERouteFn), "WERouteFn"),
                 })
                 {
                     var targetType = exportedTypes.First(x => x.Name == sourceClassName);

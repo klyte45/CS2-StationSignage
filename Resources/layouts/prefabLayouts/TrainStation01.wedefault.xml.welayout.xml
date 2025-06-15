@@ -4004,7 +4004,7 @@
         <arraySpacing x="0" y="0" z="0" />
       </transform>
       <layoutMesh>
-        <layout>StationSignage:LineCityStatusPanel</layout>
+        <layout>StationSignage:CompanyLines_Monitor</layout>
       </layoutMesh>
     </self>
     <variable key="lineType" value="Train" />
