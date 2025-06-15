@@ -7,9 +7,10 @@ using Game.Routes;
 using Game.Tools;
 using Game.UI;
 using Game.UI.InGame;
+using StationSignage.Utils;
 using Unity.Entities;
 
-namespace StationSignage.Utils
+namespace StationSignage.Systems
 {
     public partial class LinesSystem : SystemBase
     {

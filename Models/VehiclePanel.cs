@@ -36,16 +36,16 @@ public class VehiclePanel(
     public Color TrainMessageTextColor = trainMessageTextColor;
     public Color OccupancyTitleTextColor = occupancyTitleTextColor;
     
-    public string GetCarImage()
-    {
-        vars.TryGetValue(LinesUtils.TRAIN_HALF_VAR, out var trainHalf);
-        var useFirstHalf = trainHalf != "2";
-        var splitIndex = OccupancyImages.Count / 2;
-        vars.TryGetValue(LinesUtils.CURRENT_INDEX_VAR, out var index);
-        int.TryParse(index, out var intIndex);
-        var workingPart = useFirstHalf ? 
-            OccupancyImages.Take(splitIndex).ToList() : 
-            OccupancyImages.Skip(splitIndex).ToList();
-        return workingPart[intIndex];
-    }
+    //public string GetCarImage()
+    //{
+    //    vars.TryGetValue(LinesUtils.TRAIN_HALF_VAR, out var trainHalf);
+    //    var useFirstHalf = trainHalf != "2";
+    //    var splitIndex = OccupancyImages.Count / 2;
+    //    vars.TryGetValue(LinesUtils.CURRENT_INDEX_VAR, out var index);
+    //    int.TryParse(index, out var intIndex);
+    //    var workingPart = useFirstHalf ? 
+    //        OccupancyImages.Take(splitIndex).ToList() : 
+    //        OccupancyImages.Skip(splitIndex).ToList();
+    //    return workingPart[intIndex];
+    //}
 }

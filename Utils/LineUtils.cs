@@ -14,7 +14,6 @@ namespace StationSignage.Utils;
 public static class LineUtils
 {
     
-    private static LinesSystem _linesSystem;
     private static NameSystem _nameSystem;
     private static EntityManager _entityManager;
         

@@ -14,6 +14,7 @@
 		<PublishConfigurationPath>Properties\PublishConfiguration.xml</PublishConfigurationPath>
 		<AdditionalFilesDirectory>Resources</AdditionalFilesDirectory>
 	</PropertyGroup>
+  <Target Name="RunModPostProcessor" AfterTargets="AfterBuild" Condition="False" />
 
 	<ItemGroup>
 		<Reference Include="Game">

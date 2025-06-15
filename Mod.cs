@@ -10,6 +10,7 @@ using Game.Modding;
 using Game.SceneFlow;
 using Game.Settings;
 using HarmonyLib;
+using StationSignage.Systems;
 using StationSignage.Utils;
 using StationSignage.WEBridge;
 
@@ -33,6 +34,9 @@ namespace StationSignage
             AssetDatabase.global.LoadSettings(nameof(StationSignage), m_Setting, new Settings(this));
             
             updateSystem.UpdateAt<LinesSystem>(SystemUpdatePhase.GameSimulation);
+            updateSystem.UpdateAt<TransportUtilitySystem>(SystemUpdatePhase.GameSimulation);
+
+
 
             GameManager.instance.onGameLoadingComplete += DoWhenLoaded;
         }
