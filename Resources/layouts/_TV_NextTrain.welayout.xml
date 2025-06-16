@@ -25,28 +25,21 @@
   </self>
   <children>
     <self itemName="Divider">
-      <transform alignment="Left" arrayAxisOrder="XYZ">
-        <offsetPosition x="0" y="0.298" z="0.015" />
+      <transform pivot="MiddleLeft" alignment="Left" arrayAxisOrder="XYZ">
+        <offsetPosition x="0.85" y="0.298" z="0" />
         <offsetRotation x="-0" y="0" z="0" />
-        <scale x="1.7" y="0.01" z="1" />
+        <scale x="1.7" y="0.01" z="0.01" />
         <mustDraw>1</mustDraw>
         <instanceCount>-1</instanceCount>
         <arrayInstances x="1" y="1" z="1" />
         <arraySpacing x="0" y="0" z="0" />
       </transform>
       <whiteMesh />
-      <defaultStyle>
+      <decalStyle decalFlags="32" affectSmoothness="false" affectAO="false" affectEmission="false" drawOrder="0">
         <color>FFFFFFFF</color>
-        <emissiveColor>FFFFFFFF</emissiveColor>
         <metallic>0</metallic>
         <smoothness>0</smoothness>
-        <emissiveIntensity>0</emissiveIntensity>
-        <emissiveExposureWeight>0</emissiveExposureWeight>
-        <coatStrength>0</coatStrength>
-        <colorMask1>FFFFFF</colorMask1>
-        <colorMask2>FFFFFF</colorMask2>
-        <colorMask3>FFFFFF</colorMask3>
-      </defaultStyle>
+      </decalStyle>
     </self>
   </children>
   <children>

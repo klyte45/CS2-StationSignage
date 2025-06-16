@@ -74,8 +74,12 @@ public class DisplayFormulas
     public static string GetImage(Entity buildingRef, Dictionary<string, string> vars)
     {
         vars.TryGetValue("$idx", out var idxStr);
-        int.TryParse(idxStr, out var idx);
-        return GetImageList(buildingRef, vars).ElementAtOrDefault(idx);
+        return vars.TryGetValue("img_" + idxStr, out var images) ? images : "";
+    }
+    public static int GetImageCount(Entity buildingRef, Dictionary<string, string> vars)
+    {
+        vars.TryGetValue("img_ct", out var idxStr);
+        return int.TryParse(idxStr, out var ct) ? ct : 0;
     }
 
     public static string GetPlatformImage(Entity buildingRef, Dictionary<string, string> vars)
@@ -83,19 +87,6 @@ public class DisplayFormulas
         vars.TryGetValue("platform", out var platformStr);
         int.TryParse(platformStr, out var idx);
         return "Circle" + (idx + 1);
-    }
-
-    public static HashSet<string> GetImageList(Entity buildingRef, Dictionary<string, string> vars)
-    {
-        vars.TryGetValue("images", out var images);
-        if (string.IsNullOrWhiteSpace(images))
-            return [];
-
-        return images
-            .Split(',')
-            .Select(s => s.Trim())
-            .Where(s => !string.IsNullOrEmpty(s))
-            .ToHashSet();
     }
 
     public static string GetWelcomeMessage(string lineType)

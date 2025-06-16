@@ -131,24 +131,30 @@ public static class LinesUtils
         _transportUtilitySystem ??= World.DefaultGameObjectInjectionWorld.GetExistingSystemManaged<TransportUtilitySystem>();
         vars.TryGetValue(LINETYPE_VAR, out var lineType);
         var lines = _transportUtilitySystem.GetStationLines(buildingRef, lineType, false);
+        var platformsToRemove = new HashSet<int>();
         if (vars.TryGetValue(PLATFORM_VAR, out var platformIdxStr))
         {
-            int.TryParse(platformIdxStr, out var idx);
-            lines.RemoveAt(idx);
+            if (int.TryParse(platformIdxStr, out var idx))
+            {
+                platformsToRemove.Add(idx);
+            }
         }
         if (vars.TryGetValue("platformRight", out var platformRightIdxStr))
         {
-            int.TryParse(platformRightIdxStr, out var idx);
-            lines.RemoveAt(idx);
+            if (int.TryParse(platformRightIdxStr, out var idx))
+            {
+                platformsToRemove.Add(idx);
+            }
         }
         if (vars.TryGetValue("platformLeft", out var platformLeftIdxStr))
         {
-            int.TryParse(platformLeftIdxStr, out var idx);
-            lines.RemoveAt(idx);
+            if (int.TryParse(platformLeftIdxStr, out var idx))
+            {
+                platformsToRemove.Add(idx);
+            }
         }
 
-        lines.RemoveAll(x => x.Name == LineUtils.Empty);
-        return lines;
+        return [.. lines.Where(x => !(x.Name == LineUtils.Empty || platformsToRemove.Contains(x.Index)))];
     }
 
     [CanBeNull]

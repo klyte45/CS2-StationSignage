@@ -7,7 +7,7 @@ using Unity.Entities;
 
 namespace StationSignage.Models;
 
-public class TransportLineModel(
+public struct TransportLineModel(
     string type,
     string name,
     string number,
