@@ -1,0 +1,182 @@
+<WELayout>
+  <self itemName="BG">
+    <transform alignment="Left" arrayAxisOrder="XYZ">
+      <offsetPosition x="0" y="0" z="-1" />
+      <offsetRotation x="-0" y="0" z="0" />
+      <scale x="3" y="1" z="1" />
+      <mustDraw>1</mustDraw>
+      <instanceCount>-1</instanceCount>
+      <arrayInstances x="1" y="1" z="1" />
+      <arraySpacing x="0" y="0" z="0" />
+    </transform>
+    <whiteMesh />
+    <defaultStyle>
+      <color formulae="&amp;StationSignage.Formulas.LinesUtils;GetPlatformLine.Color">FF9F00FF</color>
+      <emissiveColor>FFFFFFFF</emissiveColor>
+      <metallic>0.85</metallic>
+      <smoothness>0</smoothness>
+      <emissiveIntensity>0</emissiveIntensity>
+      <emissiveExposureWeight>0</emissiveExposureWeight>
+      <coatStrength>0.1035765</coatStrength>
+      <colorMask1>FFFFFF</colorMask1>
+      <colorMask2>FFFFFF</colorMask2>
+      <colorMask3>FFFFFF</colorMask3>
+    </defaultStyle>
+  </self>
+  <children>
+    <self itemName="Destination Name">
+      <transform pivot="MiddleLeft" alignment="Left" arrayAxisOrder="XYZ">
+        <offsetPosition x="1.31800008" y="0.215" z="0" />
+        <offsetRotation x="-0" y="0" z="0" />
+        <scale x="0.163906261" y="0.163906261" z="1" />
+        <mustDraw>1</mustDraw>
+        <instanceCount>-1</instanceCount>
+        <arrayInstances x="1" y="1" z="1" />
+        <arraySpacing x="0" y="0" z="0" />
+      </transform>
+      <textMesh fontName="HelveticaWorld_Regular">
+        <text formulae="&amp;StationSignage.Formulas.LinesUtils;GetPlatformLine.Destination">Aspen Square dawd wadaw dwad aw</text>
+        <MaxWidthMeters>2.05</MaxWidthMeters>
+      </textMesh>
+      <defaultStyle decalFlags="32">
+        <color formulae="&amp;StationSignage.Formulas.LinesUtils;GetPlatformLine.OnPrimaryColor">000000FF</color>
+        <emissiveColor>FFFFFFFF</emissiveColor>
+        <metallic>0</metallic>
+        <smoothness>0</smoothness>
+        <emissiveIntensity>0</emissiveIntensity>
+        <emissiveExposureWeight>0</emissiveExposureWeight>
+        <coatStrength>0</coatStrength>
+        <colorMask1>FFFFFF</colorMask1>
+        <colorMask2>FFFFFF</colorMask2>
+        <colorMask3>FFFFFF</colorMask3>
+      </defaultStyle>
+    </self>
+  </children>
+  <children>
+    <self itemName="PlatformIcon">
+      <transform pivot="MiddleRight" alignment="Left" arrayAxisOrder="XYZ">
+        <offsetPosition x="-1.41600013" y="0.24000001" z="-0" />
+        <offsetRotation x="-0" y="0" z="0" />
+        <scale x="0.325781256" y="0.325781256" z="0.01" />
+        <mustDraw>1</mustDraw>
+        <instanceCount>-1</instanceCount>
+        <arrayInstances x="1" y="1" z="1" />
+        <arraySpacing x="0" y="0" z="0" />
+      </transform>
+      <imageMesh atlas="StationSignage:StationIcons">
+        <image formulae="&amp;StationSignage.Formulas.DisplayFormulas;GetPlatformImage">Circle1</image>
+      </imageMesh>
+      <decalStyle affectSmoothness="false" affectAO="false" affectEmission="false" drawOrder="0">
+        <color formulae="&amp;StationSignage.Formulas.LinesUtils;GetPlatformLine.OnPrimaryColor">000000FF</color>
+        <metallic>0</metallic>
+        <smoothness>0</smoothness>
+      </decalStyle>
+    </self>
+  </children>
+  <children>
+    <self itemName="Divider">
+      <transform alignment="Left" arrayAxisOrder="XYZ">
+        <offsetPosition x="0" y="-0.242" z="0" />
+        <offsetRotation x="-0" y="0" z="0" />
+        <scale x="3" y="0.019375" z="0.01" />
+        <mustDraw>1</mustDraw>
+        <instanceCount>-1</instanceCount>
+        <arrayInstances x="1" y="1" z="1" />
+        <arraySpacing x="0" y="0" z="0" />
+      </transform>
+      <whiteMesh />
+      <decalStyle affectSmoothness="false" affectAO="false" affectEmission="false" drawOrder="0">
+        <color formulae="&amp;StationSignage.Formulas.LinesUtils;GetPlatformLine.OnPrimaryColor">000000FF</color>
+        <metallic>0</metallic>
+        <smoothness>0</smoothness>
+      </decalStyle>
+    </self>
+  </children>
+  <children>
+    <self itemName="PlatformText">
+      <transform pivot="MiddleRight" alignment="Left" arrayAxisOrder="XYZ">
+        <offsetPosition x="-1.40700006" y="-0.07300002" z="0" />
+        <offsetRotation x="-0" y="0" z="0" />
+        <scale x="0.15125" y="0.15125" z="1" />
+        <mustDraw>1</mustDraw>
+        <instanceCount>-1</instanceCount>
+        <arrayInstances x="1" y="1" z="1" />
+        <arraySpacing x="0" y="0" z="0" />
+      </transform>
+      <textMesh fontName="HelveticaWorld_Regular">
+        <text>Platform</text>
+        <MaxWidthMeters>0.9</MaxWidthMeters>
+      </textMesh>
+      <defaultStyle decalFlags="32">
+        <color formulae="&amp;StationSignage.Formulas.LinesUtils;GetPlatformLine.OnPrimaryColor">000000FF</color>
+        <emissiveColor>FFFFFFFF</emissiveColor>
+        <metallic>0</metallic>
+        <smoothness>0</smoothness>
+        <emissiveIntensity>0</emissiveIntensity>
+        <emissiveExposureWeight>0</emissiveExposureWeight>
+        <coatStrength>0</coatStrength>
+        <colorMask1>FFFFFF</colorMask1>
+        <colorMask2>FFFFFF</colorMask2>
+        <colorMask3>FFFFFF</colorMask3>
+      </defaultStyle>
+    </self>
+  </children>
+  <children>
+    <self itemName="Trains To">
+      <transform pivot="MiddleLeft" alignment="Left" arrayAxisOrder="XYZ">
+        <offsetPosition x="1.329" y="-0.018000003" z="0" />
+        <offsetRotation x="-0" y="0" z="0" />
+        <scale x="0.09703126" y="0.09703126" z="1" />
+        <mustDraw>1</mustDraw>
+        <instanceCount>-1</instanceCount>
+        <arrayInstances x="1" y="1" z="1" />
+        <arraySpacing x="0" y="0" z="0" />
+      </transform>
+      <textMesh fontName="HelveticaWorld_Regular">
+        <text>Trains To</text>
+        <MaxWidthMeters>2.05</MaxWidthMeters>
+      </textMesh>
+      <defaultStyle decalFlags="32">
+        <color formulae="&amp;StationSignage.Formulas.LinesUtils;GetPlatformLine.OnPrimaryColor">000000FF</color>
+        <emissiveColor>FFFFFFFF</emissiveColor>
+        <metallic>0</metallic>
+        <smoothness>0</smoothness>
+        <emissiveIntensity>0</emissiveIntensity>
+        <emissiveExposureWeight>0</emissiveExposureWeight>
+        <coatStrength>0</coatStrength>
+        <colorMask1>FFFFFF</colorMask1>
+        <colorMask2>FFFFFF</colorMask2>
+        <colorMask3>FFFFFF</colorMask3>
+      </defaultStyle>
+    </self>
+  </children>
+  <children>
+    <self itemName="Line Name">
+      <transform alignment="Left" arrayAxisOrder="XYZ">
+        <offsetPosition x="0" y="-0.37" z="0" />
+        <offsetRotation x="-0" y="0" z="0" />
+        <scale x="0.112187505" y="0.112187505" z="1" />
+        <mustDraw>1</mustDraw>
+        <instanceCount>-1</instanceCount>
+        <arrayInstances x="1" y="1" z="1" />
+        <arraySpacing x="0" y="0" z="0" />
+      </transform>
+      <textMesh fontName="HelveticaWorld_Regular">
+        <text formulae="&amp;StationSignage.Formulas.LinesUtils;GetPlatformLine.Name">Subway Line 6</text>
+        <MaxWidthMeters>0</MaxWidthMeters>
+      </textMesh>
+      <defaultStyle decalFlags="32">
+        <color formulae="&amp;StationSignage.Formulas.LinesUtils;GetPlatformLine.OnPrimaryColor">000000FF</color>
+        <emissiveColor>FFFFFFFF</emissiveColor>
+        <metallic>0</metallic>
+        <smoothness>0</smoothness>
+        <emissiveIntensity>0</emissiveIntensity>
+        <emissiveExposureWeight>0</emissiveExposureWeight>
+        <coatStrength>0</coatStrength>
+        <colorMask1>FFFFFF</colorMask1>
+        <colorMask2>FFFFFF</colorMask2>
+        <colorMask3>FFFFFF</colorMask3>
+      </defaultStyle>
+    </self>
+  </children>
+</WELayout>
