@@ -37,6 +37,8 @@ namespace StationSignage
             updateSystem.UpdateAt<LinesSystem>(SystemUpdatePhase.GameSimulation);
             updateSystem.UpdateAt<TransportUtilitySystem>(SystemUpdatePhase.GameSimulation);
 
+            updateSystem.UpdateAt<SS_RoutePathWatchSystem>(SystemUpdatePhase.Modification1);
+            updateSystem.UpdateAfter<SS_PlatformMappingSystem>(SystemUpdatePhase.UIUpdate);
 
             GameManager.instance.RegisterUpdater(DoWhenLoaded);
         }

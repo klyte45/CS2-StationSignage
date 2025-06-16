@@ -1,15 +1,20 @@
-﻿using Game.Objects;
+﻿using System;
+using System.Collections.Generic;
+using Game.Objects;
 using Game.Routes;
 using StationSignage.Utils;
-using System;
-using System.Collections.Generic;
 using Unity.Entities;
+using Unity.Mathematics;
 
 namespace StationSignage.Models;
 
-public struct TransportLineModel(
-    string type,
-    string name,
+
+
+
+
+public class TransportLineModel(
+    string type, 
+    string name, 
     string number,
     UnityEngine.Color color,
     UnityEngine.Color onPrimaryColor,
@@ -26,7 +31,6 @@ public struct TransportLineModel(
 )
 {
     public string Type = type;
-    public int TypeInt = type == "Train" ? 1 : 2;
     public string Name = name;
     public string Number = number;
     public UnityEngine.Color Color = color;
@@ -37,8 +41,8 @@ public struct TransportLineModel(
     public string OperatorName = operatorName;
     public UnityEngine.Color OnPrimaryColor = onPrimaryColor;
     public string Destination = destination;
-    public string OperatorIcon = "SquareLogo" + operatorName;
-    public string OperatorImage = "WideSideLogo" + operatorName;
+    public string OperatorIcon = operatorName + "Icon";
+    public string OperatorImage = operatorName;
     public Transform Position = position;
     public List<LineConnection> Connections = connections;
     public string ConnectionsTitle = connectionsTitle;
