@@ -82,6 +82,7 @@ namespace StationSignage
                     (typeof(WEImageManagementBridge), "ImageManagementBridge"),
                     (typeof(WETemplatesManagementBridge), "TemplatesManagementBridge"),
                     (typeof(WERouteFn), "WERouteFn"),
+                    (typeof(WELocalizationBridge), "LocalizationBridge"),
                 })
                 {
                     var targetType = exportedTypes.First(x => x.Name == sourceClassName);

@@ -1,8 +1,7 @@
-﻿using System.Collections.Generic;
-using System.Linq;
-using Game.City;
+﻿using Game.City;
 using Game.SceneFlow;
-using StationSignage.Utils;
+using System.Collections.Generic;
+using System.Linq;
 using Unity.Entities;
 
 namespace StationSignage.Formulas;
@@ -22,6 +21,29 @@ public class DisplayFormulas
     private static readonly string[] ViaMobilidadeLines = ["4", "5", "8", "9", "15"];
     private static readonly string[] LinhaUniLines = ["6"];
 
+    public static int GetTvChannel(Entity _, Dictionary<string, string> vars)
+    {
+        vars.TryGetValue("tvCh", out var channelStr);
+        if (int.TryParse(channelStr, out var channel))
+        {
+            return channel;
+        }
+        return 0; // Default channel if parsing fails
+    }
+    public static string GetTvChannelFooter(Entity _, Dictionary<string, string> vars)
+    {
+        vars.TryGetValue("tvCh", out var channelStr);
+        if (int.TryParse(channelStr, out var channel))
+        {
+            return channel switch
+            {
+                1 => LinesUtils.GetPlatformVehiclePanel(_, vars).Footer,
+                _ => GetWelcomeMessage(vars)
+            };
+        }
+        return GetWelcomeMessage(vars); // Default channel if parsing fails
+    }
+
     public static string GetLineBackgroundShape(Entity buildingRef)
     {
         return Mod.m_Setting.LineIndicatorShapeDropdown switch
@@ -29,9 +51,9 @@ public class DisplayFormulas
             Settings.LineIndicatorShapeOptions.Square => Square,
             Settings.LineIndicatorShapeOptions.Circle => Circle,
             _ => Square
-        };
+        };//&StationSignage.Formulas.LinesUtils;GetPlatformVehiclePanel.TrainNameTextColor
     }
-    
+
     public static string GetShapeIcon(Entity buildingRef)
     {
         return Mod.m_Setting.LineIndicatorShapeDropdown switch
@@ -41,28 +63,28 @@ public class DisplayFormulas
             _ => Square
         };
     }
-    
-    public static string GetWelcomeMessage(Entity buildingRef, Dictionary<string, string> vars)
+
+    private static string GetWelcomeMessage(Dictionary<string, string> vars)
     {
         vars.TryGetValue("lineType", out var lineType);
         _cityConfigurationSystem ??= World.DefaultGameObjectInjectionWorld.GetOrCreateSystemManaged<CityConfigurationSystem>();
         return GetWelcomeMessage(lineType);
     }
-    
+
     public static string GetImage(Entity buildingRef, Dictionary<string, string> vars)
     {
         vars.TryGetValue("$idx", out var idxStr);
         int.TryParse(idxStr, out var idx);
         return GetImageList(buildingRef, vars).ElementAtOrDefault(idx);
     }
-    
+
     public static string GetPlatformImage(Entity buildingRef, Dictionary<string, string> vars)
     {
         vars.TryGetValue("platform", out var platformStr);
         int.TryParse(platformStr, out var idx);
         return "Circle" + (idx + 1);
     }
-    
+
     public static HashSet<string> GetImageList(Entity buildingRef, Dictionary<string, string> vars)
     {
         vars.TryGetValue("images", out var images);
@@ -75,23 +97,23 @@ public class DisplayFormulas
             .Where(s => !string.IsNullOrEmpty(s))
             .ToHashSet();
     }
-    
+
     public static string GetWelcomeMessage(string lineType)
     {
         _cityConfigurationSystem ??= World.DefaultGameObjectInjectionWorld.GetOrCreateSystemManaged<CityConfigurationSystem>();
         if (lineType == "Subway")
         {
-            return GetName("StationSignage.WelcomeSubway").Replace("%s", _cityConfigurationSystem.cityName); 
+            return GetName("StationSignage.WelcomeSubway").Replace("%s", _cityConfigurationSystem.cityName);
         }
 
         return GetName("StationSignage.WelcomeTrain").Replace("%s", _cityConfigurationSystem.cityName);
     }
-    
+
     private static string GetName(string id)
     {
         return GameManager.instance.localizationManager.activeDictionary.TryGetValue(id, out var name) ? name : "";
     }
-    
+
     public static string GetSubwayOperator(string routeName)
     {
         return Mod.m_Setting.LineOperatorCityDropdown switch
@@ -103,7 +125,7 @@ public class DisplayFormulas
             _ => GenericSubwayOperator//&StationSignage.Formulas.LinesUtils;GetLineStatus.Color //&StationSignage.Formulas.DisplayFormulas;GetLineBackgroundShape
         };
     }
-    
+
     public static string GetTrainOperator(string routeName)
     {
         return Mod.m_Setting.LineOperatorCityDropdown switch
@@ -132,7 +154,7 @@ public class DisplayFormulas
 
         return MetroOperator;
     }
-    
+
     private static string GetSaoPauloTrainOperator(string lineOperator)
     {
         if (ViaMobilidadeLines.Where(y => y == lineOperator).ToList().Count > 0)
@@ -142,12 +164,12 @@ public class DisplayFormulas
 
         return CptmOperator;
     }
-    
+
     private static string GetNewYorkSubwayOperator(string lineOperator)
     {
         return "MTAOperator";
     }
-    
+
     private static string GetLondonSubwayOperator(string lineOperator)
     {
         return "UndergroundOperator";
