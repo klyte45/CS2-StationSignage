@@ -11,6 +11,8 @@ namespace StationSignage.Components
         public LineOperationStatus lineOperationStatus;
         public int expectedInterval;
         public int actualInterval;
+        public bool isPassenger;
+        public bool isCargo;
     }
 
     public enum LineOperationStatus

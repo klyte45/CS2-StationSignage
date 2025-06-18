@@ -2,7 +2,7 @@
 
 namespace StationSignage.Components
 {
-    public struct SS_Dirty : IComponentData
+    public struct SS_DirtyTransportLine : IComponentData
     {
     }
 }

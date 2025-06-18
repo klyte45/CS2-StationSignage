@@ -203,9 +203,10 @@ namespace StationSignage.Systems
                     var destination = GetPlatformEntity(vehicles[k].m_Vehicle, m_pathInformationLookup, m_connectedLookup);
                     if (destination == platform)
                     {
+                        var pathElements = m_pathElementLookup[vehicles[k].m_Vehicle];
+                        if (pathElements.Length == 0) continue;
                         var pathInfo = m_pathInformationLookup[vehicles[k].m_Vehicle];
                         var pathOwner = m_pathOwnerLookup[vehicles[k].m_Vehicle];
-                        var pathElements = m_pathElementLookup[vehicles[k].m_Vehicle];
 
                         var distance = pathInfo.m_Distance * (1 - (pathOwner.m_ElementIndex / pathElements.Length));
                         var data = new IncomingVehicle

@@ -67,7 +67,7 @@ namespace StationSignage.Systems
                     PathUpdated pathUpdated = pathUpdatedArray[i];
                     if (m_OwnerLookup.TryGetComponent(pathUpdated.m_Owner, out var owner) && m_routeLookup.HasComponent(owner.m_Owner))
                     {
-                        m_cmdBuffer.AddComponent<SS_Dirty>(unfilteredChunkIndex, owner.m_Owner);
+                        m_cmdBuffer.AddComponent<SS_DirtyTransportLine>(unfilteredChunkIndex, owner.m_Owner);
                     }
                 }
             }

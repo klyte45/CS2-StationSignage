@@ -85,7 +85,7 @@ public partial class SS_PlatformMappingSystem : SystemBase
                     };
                     transportTypeCounter[route.Item3] = counter;
                     cmdBuffer.AddComponent(route.routePlatformData.platformData, data);
-                    cmdBuffer.AddComponent<SS_Dirty>(route.routePlatformData.platformData);
+                    cmdBuffer.AddComponent<SS_DirtyTransportLine>(route.routePlatformData.platformData);
                 }
 
             }
