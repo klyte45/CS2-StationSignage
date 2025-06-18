@@ -10,10 +10,10 @@
       <arraySpacing x="0" y="0" z="0" />
     </transform>
     <textMesh fontName="" maxWidthMeters="1.8">
-      <text formulae="&amp;StationSignage.Formulas.LinesUtils;GetLineConnection.Destination">NEW TEXT</text>
+      <text formulae="&amp;StationSignage.Formulas.LinesFormulas;GetLineConnection.Destination">NEW TEXT</text>
     </textMesh>
     <defaultStyle>
-      <color formulae="&amp;StationSignage.Formulas.LinesUtils;GetPlatformLine.OnPrimaryColor">FFFFFFFF</color>
+      <color formulae="&amp;StationSignage.Formulas.LinesFormulas;GetPlatformLine.OnPrimaryColor">FFFFFFFF</color>
       <emissiveColor>FFFFFFFF</emissiveColor>
       <metallic>0</metallic>
       <smoothness>0</smoothness>

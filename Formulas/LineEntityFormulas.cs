@@ -9,7 +9,7 @@ using Unity.Entities;
 
 namespace StationSignage.Formulas
 {
-    public static class ComponentDataGetters
+    public static class LineEntityFormulas
     {
         private static LinesSystem _linesSystem;
         private static NameSystem _nameSystem;

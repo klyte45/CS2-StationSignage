@@ -38,7 +38,7 @@
         <text formulae="&amp;StationSignage.Formulas.NamesFormulas;GetNoSmoking">Exitd awd awd awd aw dawd</text>
       </textMesh>
       <defaultStyle>
-        <color formulae="&amp;StationSignage.Formulas.LinesUtils;GetPlatformLine.OnPrimaryColor">000000FF</color>
+        <color formulae="&amp;StationSignage.Formulas.LinesFormulas;GetPlatformLine.OnPrimaryColor">000000FF</color>
         <emissiveColor>FFFFFFFF</emissiveColor>
         <metallic>0</metallic>
         <smoothness>0</smoothness>
@@ -66,7 +66,7 @@
         <image>NoSmoking</image>
       </imageMesh>
       <defaultStyle>
-        <color formulae="&amp;StationSignage.Formulas.LinesUtils;GetPlatformLine.OnPrimaryColor">FFFFFFFF</color>
+        <color formulae="&amp;StationSignage.Formulas.LinesFormulas;GetPlatformLine.OnPrimaryColor">FFFFFFFF</color>
         <emissiveColor>FFFFFFFF</emissiveColor>
         <metallic>0</metallic>
         <smoothness>0</smoothness>

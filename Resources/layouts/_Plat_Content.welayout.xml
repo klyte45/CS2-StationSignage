@@ -11,7 +11,7 @@
     </transform>
     <whiteMesh />
     <defaultStyle>
-      <color formulae="&amp;StationSignage.Formulas.LinesUtils;GetPlatformLine.Color">FF9F00FF</color>
+      <color formulae="&amp;StationSignage.Formulas.LinesFormulas;GetPlatformLine.Color">FF9F00FF</color>
       <emissiveColor>FFFFFFFF</emissiveColor>
       <metallic>0.85</metallic>
       <smoothness>0</smoothness>
@@ -35,11 +35,11 @@
         <arraySpacing x="0" y="0" z="0" />
       </transform>
       <textMesh fontName="HelveticaWorld_Regular">
-        <text formulae="&amp;StationSignage.Formulas.LinesUtils;GetPlatformLine.Destination">Aspen Square dawd wadaw dwad aw</text>
+        <text formulae="&amp;StationSignage.Formulas.LinesFormulas;GetPlatformLine.Destination">Aspen Square dawd wadaw dwad aw</text>
         <MaxWidthMeters>2.05</MaxWidthMeters>
       </textMesh>
       <defaultStyle decalFlags="32">
-        <color formulae="&amp;StationSignage.Formulas.LinesUtils;GetPlatformLine.OnPrimaryColor">000000FF</color>
+        <color formulae="&amp;StationSignage.Formulas.LinesFormulas;GetPlatformLine.OnPrimaryColor">000000FF</color>
         <emissiveColor>FFFFFFFF</emissiveColor>
         <metallic>0</metallic>
         <smoothness>0</smoothness>
@@ -67,7 +67,7 @@
         <image formulae="&amp;StationSignage.Formulas.DisplayFormulas;GetPlatformImage">Circle1</image>
       </imageMesh>
       <decalStyle affectSmoothness="false" affectAO="false" affectEmission="false" drawOrder="0">
-        <color formulae="&amp;StationSignage.Formulas.LinesUtils;GetPlatformLine.OnPrimaryColor">000000FF</color>
+        <color formulae="&amp;StationSignage.Formulas.LinesFormulas;GetPlatformLine.OnPrimaryColor">000000FF</color>
         <metallic>0</metallic>
         <smoothness>0</smoothness>
       </decalStyle>
@@ -86,7 +86,7 @@
       </transform>
       <whiteMesh />
       <decalStyle affectSmoothness="false" affectAO="false" affectEmission="false" drawOrder="0">
-        <color formulae="&amp;StationSignage.Formulas.LinesUtils;GetPlatformLine.OnPrimaryColor">000000FF</color>
+        <color formulae="&amp;StationSignage.Formulas.LinesFormulas;GetPlatformLine.OnPrimaryColor">000000FF</color>
         <metallic>0</metallic>
         <smoothness>0</smoothness>
       </decalStyle>
@@ -108,7 +108,7 @@
         <MaxWidthMeters>0.9</MaxWidthMeters>
       </textMesh>
       <defaultStyle decalFlags="32">
-        <color formulae="&amp;StationSignage.Formulas.LinesUtils;GetPlatformLine.OnPrimaryColor">000000FF</color>
+        <color formulae="&amp;StationSignage.Formulas.LinesFormulas;GetPlatformLine.OnPrimaryColor">000000FF</color>
         <emissiveColor>FFFFFFFF</emissiveColor>
         <metallic>0</metallic>
         <smoothness>0</smoothness>
@@ -137,7 +137,7 @@
         <MaxWidthMeters>2.05</MaxWidthMeters>
       </textMesh>
       <defaultStyle decalFlags="32">
-        <color formulae="&amp;StationSignage.Formulas.LinesUtils;GetPlatformLine.OnPrimaryColor">000000FF</color>
+        <color formulae="&amp;StationSignage.Formulas.LinesFormulas;GetPlatformLine.OnPrimaryColor">000000FF</color>
         <emissiveColor>FFFFFFFF</emissiveColor>
         <metallic>0</metallic>
         <smoothness>0</smoothness>
@@ -162,11 +162,11 @@
         <arraySpacing x="0" y="0" z="0" />
       </transform>
       <textMesh fontName="HelveticaWorld_Regular">
-        <text formulae="&amp;StationSignage.Formulas.LinesUtils;GetPlatformLine.Name">Subway Line 6</text>
+        <text formulae="&amp;StationSignage.Formulas.LinesFormulas;GetPlatformLine.Name">Subway Line 6</text>
         <MaxWidthMeters>0</MaxWidthMeters>
       </textMesh>
       <defaultStyle decalFlags="32">
-        <color formulae="&amp;StationSignage.Formulas.LinesUtils;GetPlatformLine.OnPrimaryColor">000000FF</color>
+        <color formulae="&amp;StationSignage.Formulas.LinesFormulas;GetPlatformLine.OnPrimaryColor">000000FF</color>
         <emissiveColor>FFFFFFFF</emissiveColor>
         <metallic>0</metallic>
         <smoothness>0</smoothness>

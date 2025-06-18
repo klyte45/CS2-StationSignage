@@ -38,7 +38,7 @@
         <text formulae="&amp;StationSignage.Formulas.NamesFormulas;GetExitName">Exit dawd wad</text>
       </textMesh>
       <defaultStyle>
-        <color formulae="&amp;StationSignage.Formulas.LinesUtils;GetPlatformLine.OnPrimaryColor">000000FF</color>
+        <color formulae="&amp;StationSignage.Formulas.LinesFormulas;GetPlatformLine.OnPrimaryColor">000000FF</color>
         <emissiveColor>FFFFFFFF</emissiveColor>
         <metallic>0</metallic>
         <smoothness>0</smoothness>
@@ -82,7 +82,7 @@
         <text formulae="&amp;StationSignage.Formulas.NamesFormulas;GetBuildingRoadName">Entrance A</text>
       </textMesh>
       <defaultStyle>
-        <color formulae="&amp;StationSignage.Formulas.LinesUtils;GetPlatformLine.OnPrimaryColor">000000FF</color>
+        <color formulae="&amp;StationSignage.Formulas.LinesFormulas;GetPlatformLine.OnPrimaryColor">000000FF</color>
         <emissiveColor>FFFFFFFF</emissiveColor>
         <metallic>0</metallic>
         <smoothness>0</smoothness>

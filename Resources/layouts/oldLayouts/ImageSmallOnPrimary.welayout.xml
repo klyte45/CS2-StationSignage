@@ -13,7 +13,7 @@
       <image formulae="&amp;StationSignage.Formulas.DisplayFormulas;GetImage"></image>
     </imageMesh>
     <defaultStyle>
-      <color formulae="&amp;StationSignage.Formulas.LinesUtils;GetPlatformLine.OnPrimaryColor">FFFFFFFF</color>
+      <color formulae="&amp;StationSignage.Formulas.LinesFormulas;GetPlatformLine.OnPrimaryColor">FFFFFFFF</color>
       <emissiveColor>FFFFFFFF</emissiveColor>
       <metallic>0</metallic>
       <smoothness>0</smoothness>

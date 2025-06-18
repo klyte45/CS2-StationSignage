@@ -11,7 +11,7 @@
     </transform>
     <whiteMesh />
     <defaultStyle>
-      <color formulae="&amp;StationSignage.Formulas.LinesUtils;GetPlatformLine.Color">FFFFFFFF</color>
+      <color formulae="&amp;StationSignage.Formulas.LinesFormulas;GetPlatformLine.Color">FFFFFFFF</color>
       <emissiveColor>FFFFFFFF</emissiveColor>
       <metallic>0.85</metallic>
       <smoothness>0</smoothness>
@@ -39,7 +39,7 @@
         <MaxWidthMeters>3</MaxWidthMeters>
       </textMesh>
       <defaultStyle>
-        <color formulae="&amp;StationSignage.Formulas.LinesUtils;GetPlatformLine.OnPrimaryColor">000000FF</color>
+        <color formulae="&amp;StationSignage.Formulas.LinesFormulas;GetPlatformLine.OnPrimaryColor">000000FF</color>
         <emissiveColor>FFFFFFFF</emissiveColor>
         <metallic>0</metallic>
         <smoothness>0</smoothness>
@@ -58,16 +58,16 @@
         <offsetPosition x="2.023" y="0.139000013" z="0" />
         <offsetRotation x="-0" y="0" z="0" />
         <scale x="0.5890625" y="0.5890625" z="0.01" />
-        <mustDraw formulae="&amp;StationSignage.Formulas.LinesUtils;GetPlatformOrDefault.TypeInt.=1">1</mustDraw>
+        <mustDraw formulae="&amp;StationSignage.Formulas.LinesFormulas;GetPlatformOrDefault.TypeInt.=1">1</mustDraw>
         <instanceCount>-1</instanceCount>
         <arrayInstances x="1" y="1" z="1" />
         <arraySpacing x="0" y="0" z="0" />
       </transform>
       <imageMesh atlas="StationSignage:TrainCompanyDecals">
-        <image formulae="&amp;StationSignage.Formulas.LinesUtils;GetPlatformLine.OperatorIcon">Operator04Icon</image>
+        <image formulae="&amp;StationSignage.Formulas.LinesFormulas;GetPlatformLine.OperatorIcon">Operator04Icon</image>
       </imageMesh>
       <decalStyle affectSmoothness="false" affectAO="false" affectEmission="false" drawOrder="0">
-        <color formulae="&amp;StationSignage.Formulas.LinesUtils;GetPlatformLine.OnPrimaryColor">000000FF</color>
+        <color formulae="&amp;StationSignage.Formulas.LinesFormulas;GetPlatformLine.OnPrimaryColor">000000FF</color>
         <metallic>0</metallic>
         <smoothness>0</smoothness>
       </decalStyle>
@@ -86,7 +86,7 @@
       </transform>
       <whiteMesh />
       <decalStyle affectSmoothness="false" affectAO="false" affectEmission="false" drawOrder="0">
-        <color formulae="&amp;StationSignage.Formulas.LinesUtils;GetPlatformLine.OnPrimaryColor">000000FF</color>
+        <color formulae="&amp;StationSignage.Formulas.LinesFormulas;GetPlatformLine.OnPrimaryColor">000000FF</color>
         <metallic>0</metallic>
         <smoothness>0</smoothness>
       </decalStyle>
@@ -104,11 +104,11 @@
         <arraySpacing x="0" y="0" z="0" />
       </transform>
       <textMesh fontName="HelveticaWorld_Regular">
-        <text formulae="&amp;StationSignage.Formulas.LinesUtils;GetPlatformLine.Name">Subway Line 6</text>
+        <text formulae="&amp;StationSignage.Formulas.LinesFormulas;GetPlatformLine.Name">Subway Line 6</text>
         <MaxWidthMeters>0</MaxWidthMeters>
       </textMesh>
       <defaultStyle>
-        <color formulae="&amp;StationSignage.Formulas.LinesUtils;GetPlatformLine.OnPrimaryColor">000000FF</color>
+        <color formulae="&amp;StationSignage.Formulas.LinesFormulas;GetPlatformLine.OnPrimaryColor">000000FF</color>
         <emissiveColor>FFFFFFFF</emissiveColor>
         <metallic>0</metallic>
         <smoothness>0</smoothness>
@@ -127,16 +127,16 @@
         <offsetPosition x="2.023" y="0.139000013" z="0" />
         <offsetRotation x="-0" y="0" z="0" />
         <scale x="0.5890625" y="0.5890625" z="0.01" />
-        <mustDraw formulae="&amp;StationSignage.Formulas.LinesUtils;GetPlatformOrDefault.TypeInt.=0">1</mustDraw>
+        <mustDraw formulae="&amp;StationSignage.Formulas.LinesFormulas;GetPlatformOrDefault.TypeInt.=0">1</mustDraw>
         <instanceCount>-1</instanceCount>
         <arrayInstances x="1" y="1" z="1" />
         <arraySpacing x="0" y="0" z="0" />
       </transform>
       <imageMesh atlas="StationSignage:MetroCompanyDecals">
-        <image formulae="&amp;StationSignage.Formulas.LinesUtils;GetPlatformLine.OperatorIcon">Operator04Icon</image>
+        <image formulae="&amp;StationSignage.Formulas.LinesFormulas;GetPlatformLine.OperatorIcon">Operator04Icon</image>
       </imageMesh>
       <decalStyle affectSmoothness="false" affectAO="false" affectEmission="false" drawOrder="0">
-        <color formulae="&amp;StationSignage.Formulas.LinesUtils;GetPlatformLine.OnPrimaryColor">000000FF</color>
+        <color formulae="&amp;StationSignage.Formulas.LinesFormulas;GetPlatformLine.OnPrimaryColor">000000FF</color>
         <metallic>0</metallic>
         <smoothness>0</smoothness>
       </decalStyle>

@@ -54,7 +54,7 @@
         <arraySpacing x="0" y="0" z="0" />
       </transform>
       <textMesh fontName="HelveticaWorld_Regular">
-        <text formulae="&amp;StationSignage.Formulas.LinesUtils;GetPlatformVehiclePanel.Subtitle">NEW TEXT</text>
+        <text formulae="&amp;StationSignage.Formulas.LinesFormulas;GetPlatformVehiclePanel.Subtitle">NEW TEXT</text>
         <MaxWidthMeters>0</MaxWidthMeters>
       </textMesh>
       <defaultStyle>
@@ -83,11 +83,11 @@
         <arraySpacing x="0" y="0" z="0" />
       </transform>
       <textMesh fontName="HelveticaWorld_Regular">
-        <text formulae="&amp;StationSignage.Formulas.LinesUtils;GetPlatformVehiclePanel.TrainMessage">NEW TEXT</text>
+        <text formulae="&amp;StationSignage.Formulas.LinesFormulas;GetPlatformVehiclePanel.TrainMessage">NEW TEXT</text>
         <MaxWidthMeters>0</MaxWidthMeters>
       </textMesh>
       <defaultStyle>
-        <color formulae="&amp;StationSignage.Formulas.LinesUtils;GetPlatformVehiclePanel.TrainMessageTextColor">FFFFFFFF</color>
+        <color formulae="&amp;StationSignage.Formulas.LinesFormulas;GetPlatformVehiclePanel.TrainMessageTextColor">FFFFFFFF</color>
         <emissiveColor>FFFFFFFF</emissiveColor>
         <metallic>0</metallic>
         <smoothness>0</smoothness>
@@ -112,11 +112,11 @@
         <arraySpacing x="0" y="0" z="0" />
       </transform>
       <textMesh fontName="HelveticaWorld_Regular" rescaleHeightOnTextOverflow="true">
-        <text formulae="&amp;StationSignage.Formulas.LinesUtils;GetPlatformVehiclePanel.TrainName"></text>
+        <text formulae="&amp;StationSignage.Formulas.LinesFormulas;GetPlatformVehiclePanel.TrainName"></text>
         <MaxWidthMeters>1.6</MaxWidthMeters>
       </textMesh>
       <defaultStyle>
-        <color formulae="&amp;StationSignage.Formulas.LinesUtils;GetPlatformVehiclePanel.TrainNameTextColor">000000FF</color>
+        <color formulae="&amp;StationSignage.Formulas.LinesFormulas;GetPlatformVehiclePanel.TrainNameTextColor">000000FF</color>
         <emissiveColor>FFFFFFFF</emissiveColor>
         <metallic>0</metallic>
         <smoothness>0</smoothness>
@@ -178,7 +178,7 @@
             <offsetRotation x="-0" y="0" z="0" />
             <scale x="0" y="1E-06" z="1" />
             <mustDraw>1</mustDraw>
-            <instanceCount formulae="&amp;StationSignage.Formulas.LinesUtils;GetPlatformVehiclePanel.OccupancyRates.Count">-1</instanceCount>
+            <instanceCount formulae="&amp;StationSignage.Formulas.LinesFormulas;GetPlatformVehiclePanel.OccupancyRates.Count">-1</instanceCount>
             <arrayInstances x="8" y="1" z="1" />
             <arraySpacing x="-0.32" y="0" z="0" />
           </transform>
@@ -201,7 +201,7 @@
         <arraySpacing x="0" y="0" z="0" />
       </transform>
       <textMesh fontName="HelveticaWorld_Regular">
-        <text formulae="&amp;StationSignage.Formulas.LinesUtils;GetPlatformVehiclePanel.Title">&amp;StationSignage.Formulas.SubwayFormulas;GetFirstPlatformVehiclePanel.Title</text>
+        <text formulae="&amp;StationSignage.Formulas.LinesFormulas;GetPlatformVehiclePanel.Title">&amp;StationSignage.Formulas.SubwayFormulas;GetFirstPlatformVehiclePanel.Title</text>
         <MaxWidthMeters>0.72</MaxWidthMeters>
       </textMesh>
       <defaultStyle>
@@ -230,11 +230,11 @@
         <arraySpacing x="0" y="0" z="0" />
       </transform>
       <textMesh fontName="HelveticaWorld_Regular" rescaleHeightOnTextOverflow="true">
-        <text formulae="&amp;StationSignage.Formulas.LinesUtils;GetPlatformVehiclePanel.OccupancyTitle">NEW TEXT</text>
+        <text formulae="&amp;StationSignage.Formulas.LinesFormulas;GetPlatformVehiclePanel.OccupancyTitle">NEW TEXT</text>
         <MaxWidthMeters>1.6</MaxWidthMeters>
       </textMesh>
       <defaultStyle>
-        <color formulae="&amp;StationSignage.Formulas.LinesUtils;GetPlatformVehiclePanel.OccupancyTitleTextColor">000000FF</color>
+        <color formulae="&amp;StationSignage.Formulas.LinesFormulas;GetPlatformVehiclePanel.OccupancyTitleTextColor">000000FF</color>
         <emissiveColor>FFFFFFFF</emissiveColor>
         <metallic>0</metallic>
         <smoothness>0</smoothness>
@@ -259,7 +259,7 @@
         <arraySpacing x="0" y="0" z="0" />
       </transform>
       <imageMesh atlas="StationSignage:StationIcons">
-        <image formulae="&amp;StationSignage.Formulas.LinesUtils;GetPlatformVehiclePanel.BikeIcon">BikeRoundIcon</image>
+        <image formulae="&amp;StationSignage.Formulas.LinesFormulas;GetPlatformVehiclePanel.BikeIcon">BikeRoundIcon</image>
       </imageMesh>
       <decalStyle decalFlags="32" affectSmoothness="false" affectAO="false" affectEmission="false" drawOrder="0">
         <color>FFFFFFFF</color>
@@ -280,7 +280,7 @@
         <arraySpacing x="0" y="0" z="0" />
       </transform>
       <imageMesh atlas="StationSignage:StationIcons">
-        <image formulae="&amp;StationSignage.Formulas.LinesUtils;GetPlatformVehiclePanel.WheelchairIcon">WheelchairRoundIcon</image>
+        <image formulae="&amp;StationSignage.Formulas.LinesFormulas;GetPlatformVehiclePanel.WheelchairIcon">WheelchairRoundIcon</image>
       </imageMesh>
       <decalStyle decalFlags="32" affectSmoothness="false" affectAO="false" affectEmission="false" drawOrder="0">
         <color>FFFFFFFF</color>

@@ -1,7 +1,7 @@
 <WELayout>
   <self itemName="StationTV">
     <transform alignment="Left" arrayAxisOrder="XYZ">
-      <offsetPosition x="0" y="0" z="0" />
+      <offsetPosition x="0" y="10" z="0" />
       <offsetRotation x="-0" y="0" z="0" />
       <scale x="1.73" y="1.2" z="0.03" />
       <mustDraw>1</mustDraw>
@@ -86,7 +86,7 @@
           </transform>
           <whiteMesh />
           <decalStyle decalFlags="32" affectSmoothness="false" affectAO="false" affectEmission="true" drawOrder="-60">
-            <color formulae="&amp;StationSignage.Formulas.LinesUtils;GetPlatformOrDefault.Color">FF0008FF</color>
+            <color formulae="&amp;StationSignage.Formulas.DisplayFormulas;GetTvBarColors">FF0008FF</color>
             <metallic>0</metallic>
             <smoothness>0</smoothness>
           </decalStyle>
@@ -116,15 +116,15 @@
               <offsetPosition x="-0" y="0" z="0" />
               <offsetRotation x="-0" y="0" z="0" />
               <scale x="0.4" y="0.1" z="0.12" />
-              <mustDraw formulae="&amp;StationSignage.Formulas.LinesUtils;GetPlatformOrDefault.TypeInt.=1">1</mustDraw>
+              <mustDraw formulae="&amp;StationSignage.Formulas.PlatformFormulas;GetPlatform/StationSignage.Components.SS_PlatformData;type.=1">1</mustDraw>
               <instanceCount>-1</instanceCount>
               <arrayInstances x="1" y="1" z="1" />
               <arraySpacing x="0" y="0" z="0" />
             </transform>
             <imageMesh atlas="StationSignage:TrainCompanyDecals">
-              <image formulae="&amp;StationSignage.Formulas.LinesUtils;GetPlatformOrDefault.OperatorImage">CircleB</image>
+              <image formulae="&amp;StationSignage.Formulas.PlatformFormulas;GetPlatform/&amp;StationSignage.Formulas.PlatformFormulas;GetFirstLineOperatorOrDefault/&amp;StationSignage.Formulas.DisplayFormulas;GetOperatorImageWide">CircleB</image>
             </imageMesh>
-            <decalStyle decalFlags="32" affectSmoothness="false" affectAO="false" affectEmission="true" drawOrder="0">
+            <decalStyle decalFlags="32" affectSmoothness="false" affectAO="false" affectEmission="false" drawOrder="0">
               <color>FFFFFFFF</color>
               <metallic>0</metallic>
               <smoothness>0</smoothness>
@@ -132,18 +132,18 @@
           </self>
         </children>
         <children>
-          <self itemName="Image Train">
+          <self itemName="Image Metro">
             <transform alignment="Left" isAbsoluteScale="true" useFormulaeToCheckIfDraw="true" arrayAxisOrder="XYZ">
               <offsetPosition x="-0" y="0" z="0" />
               <offsetRotation x="-0" y="0" z="0" />
               <scale x="0.4" y="0.1" z="0.12" />
-              <mustDraw formulae="&amp;StationSignage.Formulas.LinesUtils;GetPlatformOrDefault.TypeInt.=2">1</mustDraw>
+              <mustDraw formulae="&amp;StationSignage.Formulas.PlatformFormulas;GetPlatform/StationSignage.Components.SS_PlatformData;type.=8">1</mustDraw>
               <instanceCount>-1</instanceCount>
               <arrayInstances x="1" y="1" z="1" />
               <arraySpacing x="0" y="0" z="0" />
             </transform>
             <imageMesh atlas="StationSignage:MetroCompanyDecals">
-              <image formulae="&amp;StationSignage.Formulas.LinesUtils;GetPlatformOrDefault.OperatorImage">CircleB</image>
+              <image formulae="&amp;StationSignage.Formulas.PlatformFormulas;GetPlatform/&amp;StationSignage.Formulas.PlatformFormulas;GetFirstLineOperatorOrDefault/&amp;StationSignage.Formulas.DisplayFormulas;GetOperatorImageWide">CircleB</image>
             </imageMesh>
             <decalStyle decalFlags="32" affectSmoothness="false" affectAO="false" affectEmission="true" drawOrder="0">
               <color>FFFFFFFF</color>
@@ -169,7 +169,7 @@
             <MaxWidthMeters>0</MaxWidthMeters>
           </textMesh>
           <defaultStyle decalFlags="2">
-            <color formulae="&amp;StationSignage.Formulas.LinesUtils;GetPlatformOrDefault.OnPrimaryColor">FFFFFFFF</color>
+            <color formulae="&amp;StationSignage.Formulas.DisplayFormulas;GetTvBarColors/&amp;BelzontWE.Builtin.WEColorsFn;GetContrastColor">FFFFFFFF</color>
             <emissiveColor>929292FF</emissiveColor>
             <metallic>0</metallic>
             <smoothness>0</smoothness>
@@ -221,7 +221,7 @@
           </transform>
           <whiteMesh />
           <decalStyle decalFlags="32" affectSmoothness="false" affectAO="false" affectEmission="true" drawOrder="-4">
-            <color formulae="&amp;StationSignage.Formulas.LinesUtils;GetPlatformOrDefault.Color">FF0008FF</color>
+            <color formulae="&amp;StationSignage.Formulas.DisplayFormulas;GetTvBarColors">FF0008FF</color>
             <metallic>0</metallic>
             <smoothness>0</smoothness>
           </decalStyle>
@@ -243,7 +243,7 @@
             <MaxWidthMeters>1.65</MaxWidthMeters>
           </textMesh>
           <defaultStyle>
-            <color formulae="&amp;StationSignage.Formulas.LinesUtils;GetPlatformOrDefault.OnPrimaryColor">FFFFFFFF</color>
+            <color formulae="&amp;StationSignage.Formulas.DisplayFormulas;GetTvBarColors/&amp;BelzontWE.Builtin.WEColorsFn;GetContrastColor">FFFFFFFF</color>
             <emissiveColor>929292FF</emissiveColor>
             <metallic>0</metallic>
             <smoothness>0</smoothness>

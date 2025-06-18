@@ -267,42 +267,16 @@ namespace StationSignage.Systems
                 }
                 return false;
             }
-
-
-            /**
-              *  
-                if (!transportLineData.Value.active)
-                {
-            NotOperating
-                }
-
-                if (transportLineData.Value.vehicles == 0)
-                {
-                    return GetName("StationSignage.OperationStopped");
-                }
-
-                if (transportLineData.Value.vehicles == 1)
-                {
-                    return GetName("StationSignage.ReducedSpeed");
-                }
-
-                if (transportLineData.Value.usage == 0.0)
-                {
-                    return GetName("StationSignage.NoUsage");
-                }
-
-                return GetName("StationSignage.NormalOperation");
-              */
         }
 
         public List<Entity> GetCityLines(TransportType tt, bool acceptCargo, bool acceptPassenger)
         {
-            var response = new NativeList<LineStatusGetJobResponseItem>(Allocator.Temp);
+            var response = new NativeList<LineStatusGetJobResponseItem>(_linesStatusesQuery.CalculateEntityCount(), Allocator.Temp);
             try
             {
                 new LineStatusGetJob
                 {
-                    response = response,
+                    response = response.AsParallelWriter(),
                     entityType = GetEntityTypeHandle(),
                     routeNumberType = GetComponentTypeHandle<RouteNumber>(true),
                     statusLookup = GetComponentTypeHandle<SS_LineStatus>(true),
@@ -330,7 +304,7 @@ namespace StationSignage.Systems
 
         private struct LineStatusGetJob : IJobChunk
         {
-            public NativeList<LineStatusGetJobResponseItem> response;
+            public NativeList<LineStatusGetJobResponseItem>.ParallelWriter response;
             public EntityTypeHandle entityType;
             public ComponentTypeHandle<RouteNumber> routeNumberType;
             public ComponentTypeHandle<SS_LineStatus> statusLookup;
@@ -346,13 +320,13 @@ namespace StationSignage.Systems
                 for (int i = 0; i < entities.Length; i++)
                 {
                     var status = statuses[i];
-                    if (status.type == accepted &&
+                    if ((accepted == TransportType.None || status.type == accepted) &&
                        acceptCargo == status.isCargo &&
                        acceptPassenger == status.isPassenger)
                     {
                         var entity = entities[i];
 
-                        response.Add(new LineStatusGetJobResponseItem
+                        response.AddNoResize(new LineStatusGetJobResponseItem
                         {
                             entity = entity,
                             status = status,
