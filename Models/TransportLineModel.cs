@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using Game.Objects;
 using Game.Routes;
+using StationSignage.Components;
 using StationSignage.Utils;
 using Unity.Entities;
 using Unity.Mathematics;
@@ -22,7 +23,7 @@ public class TransportLineModel(
     List<RouteVehicle> vehicles,
     Entity platform,
     int index,
-    string operatorName,
+    ServiceOperator operatorName,
     string destination,
     Transform position,
     string connectionsTitle,
@@ -38,11 +39,11 @@ public class TransportLineModel(
     public readonly List<RouteVehicle> Vehicles = vehicles;
     public Entity Platform = platform;
     public int Index = index;
-    public string OperatorName = operatorName;
+    public ServiceOperator OperatorName = operatorName;
     public UnityEngine.Color OnPrimaryColor = onPrimaryColor;
     public string Destination = destination;
     public string OperatorIcon = operatorName + "Icon";
-    public string OperatorImage = operatorName;
+    public string OperatorImage = operatorName.ToString();
     public Transform Position = position;
     public List<LineConnection> Connections = connections;
     public string ConnectionsTitle = connectionsTitle;

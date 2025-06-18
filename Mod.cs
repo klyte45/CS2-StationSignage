@@ -19,10 +19,14 @@ namespace StationSignage
 {
     public class Mod : IMod
     {
+
         public static ILog log = LogManager.GetLogger($"{nameof(StationSignage)}.{nameof(Mod)}").SetShowsErrorsInUI(false);
-        private static readonly BindingFlags allFlags = BindingFlags.Public | BindingFlags.NonPublic | BindingFlags.Instance | BindingFlags.Static | BindingFlags.DeclaredOnly | BindingFlags.GetField | BindingFlags.GetProperty;
+        public static readonly BindingFlags allFlags = BindingFlags.Public | BindingFlags.NonPublic | BindingFlags.Instance | BindingFlags.Static | BindingFlags.DeclaredOnly | BindingFlags.GetField | BindingFlags.GetProperty;
         public static Settings m_Setting;
-        
+        private static Harmony m_harmony;
+
+        public static Harmony HarmonyInstance => m_harmony ??= new Harmony($"rodrigmatrix.redirectors.{typeof(Mod).Assembly.GetName().Name}");
+
         public void OnLoad(UpdateSystem updateSystem)
         {
             log.Info(nameof(OnLoad));
@@ -34,10 +38,11 @@ namespace StationSignage
             GameManager.instance.localizationManager.AddSource("en-US", new LocaleEn(m_Setting));
             AssetDatabase.global.LoadSettings(nameof(StationSignage), m_Setting, new Settings(this));
             
-            updateSystem.UpdateAt<LinesSystem>(SystemUpdatePhase.GameSimulation);
+            updateSystem.UpdateAt<LinesSystem>(SystemUpdatePhase.UIUpdate);
             updateSystem.UpdateAt<TransportUtilitySystem>(SystemUpdatePhase.GameSimulation);
 
             updateSystem.UpdateAt<SS_RoutePathWatchSystem>(SystemUpdatePhase.Modification1);
+            updateSystem.UpdateAfter<SS_VehiclePathWatchSystem>(SystemUpdatePhase.MainLoop);
             updateSystem.UpdateAfter<SS_PlatformMappingSystem>(SystemUpdatePhase.UIUpdate);
 
             GameManager.instance.RegisterUpdater(DoWhenLoaded);

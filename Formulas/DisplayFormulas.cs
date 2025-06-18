@@ -1,8 +1,10 @@
 ﻿using Game.City;
 using Game.SceneFlow;
+using StationSignage.Components;
 using System.Collections.Generic;
 using System.Linq;
 using Unity.Entities;
+using UnityEngine;
 
 namespace StationSignage.Formulas;
 
@@ -11,13 +13,7 @@ public class DisplayFormulas
     private static CityConfigurationSystem _cityConfigurationSystem;
     private const string Square = "LineBgSquare";
     private const string Circle = "LineBgCircle";
-    private const string ViaMobilidadeOperator = "Operator02";
     private const string ViaQuatroOperator = "Operator03";
-    private const string CptmOperator = "Operator05";
-    private const string MetroOperator = "Operator01";
-    private const string LinhaUniOperator = "Operator04";
-    private const string GenericSubwayOperator = "";
-    private const string GenericTrainOperator = "";
     private static readonly string[] ViaMobilidadeLines = ["4", "5", "8", "9", "15"];
     private static readonly string[] LinhaUniLines = ["6"];
 
@@ -92,77 +88,56 @@ public class DisplayFormulas
     public static string GetWelcomeMessage(string lineType)
     {
         _cityConfigurationSystem ??= World.DefaultGameObjectInjectionWorld.GetOrCreateSystemManaged<CityConfigurationSystem>();
-        if (lineType == "Subway")
-        {
-            return GetName("StationSignage.WelcomeSubway").Replace("%s", _cityConfigurationSystem.cityName);
-        }
-
-        return GetName("StationSignage.WelcomeTrain").Replace("%s", _cityConfigurationSystem.cityName);
+        return lineType == "Subway"
+            ? GetName("StationSignage.WelcomeSubway").Replace("%s", _cityConfigurationSystem.cityName)
+            : GetName("StationSignage.WelcomeTrain").Replace("%s", _cityConfigurationSystem.cityName);
     }
 
     private static string GetName(string id)
-    {
-        return GameManager.instance.localizationManager.activeDictionary.TryGetValue(id, out var name) ? name : "";
-    }
+        => GameManager.instance.localizationManager.activeDictionary.TryGetValue(id, out var name) ? name : "";
 
-    public static string GetSubwayOperator(string routeName)
-    {
-        return Mod.m_Setting.LineOperatorCityDropdown switch
+    public static ServiceOperator GetSubwayOperator(string routeName)
+        => Mod.m_Setting.LineOperatorCityDropdown switch
         {
-            Settings.LineOperatorCityOptions.Generic => GenericSubwayOperator,
+            Settings.LineOperatorCityOptions.Generic => ServiceOperator.Default,
             Settings.LineOperatorCityOptions.SaoPaulo => GetSaoPauloSubwayOperator(routeName),
             Settings.LineOperatorCityOptions.NewYork => GetNewYorkSubwayOperator(routeName),
             Settings.LineOperatorCityOptions.London => GetLondonSubwayOperator(routeName),
-            _ => GenericSubwayOperator//&StationSignage.Formulas.LinesUtils;GetLineStatus.Color //&StationSignage.Formulas.DisplayFormulas;GetLineBackgroundShape
+            _ => ServiceOperator.Default//&StationSignage.Formulas.LinesUtils;GetLineStatus.Color //&StationSignage.Formulas.DisplayFormulas;GetLineBackgroundShape
         };
-    }
 
-    public static string GetTrainOperator(string routeName)
-    {
-        return Mod.m_Setting.LineOperatorCityDropdown switch
+    public static ServiceOperator GetTrainOperator(string routeName)
+        => Mod.m_Setting.LineOperatorCityDropdown switch
         {
-            Settings.LineOperatorCityOptions.Generic => GenericTrainOperator,
+            Settings.LineOperatorCityOptions.Generic => ServiceOperator.Default,
             Settings.LineOperatorCityOptions.SaoPaulo => GetSaoPauloTrainOperator(routeName),
-            _ => GenericTrainOperator
+            _ => ServiceOperator.Default
         };
-    }
 
-    private static string GetSaoPauloSubwayOperator(string lineOperator)
+    private static ServiceOperator GetSaoPauloSubwayOperator(string lineOperator)
+        => lineOperator == ViaQuatroOperator ? ServiceOperator.Operator03
+            : ViaMobilidadeLines.Where(y => y == lineOperator).ToList().Count > 0 ? ServiceOperator.Operator02
+            : LinhaUniLines.Where(y => y == lineOperator).ToList().Count > 0 ? ServiceOperator.Operator04
+            : ServiceOperator.Operator01;
+
+    private static ServiceOperator GetSaoPauloTrainOperator(string lineOperator)
+        => ViaMobilidadeLines.Where(y => y == lineOperator).ToList().Count > 0 ? ServiceOperator.Operator02 : ServiceOperator.Operator05;
+
+    private static ServiceOperator GetNewYorkSubwayOperator(string lineOperator) => ServiceOperator.MTAOperator;
+
+    private static ServiceOperator GetLondonSubwayOperator(string lineOperator) => ServiceOperator.UndergroundOperator;
+
+
+    public static string GetLineStatusText(LineOperationStatus lineStatus) => GetName($"StationSignage.{lineStatus}");
+
+    public static Color GetLineStatusColor(LineOperationStatus lineStatus)
     {
-        if (lineOperator == ViaQuatroOperator)
+
+        return lineStatus switch
         {
-            return ViaQuatroOperator;
-        }
-        if (ViaMobilidadeLines.Where(y => y == lineOperator).ToList().Count > 0)
-        {
-            return ViaMobilidadeOperator;
-        }
-
-        if (LinhaUniLines.Where(y => y == lineOperator).ToList().Count > 0)
-        {
-            return LinhaUniOperator;
-        }
-
-        return MetroOperator;
-    }
-
-    private static string GetSaoPauloTrainOperator(string lineOperator)
-    {
-        if (ViaMobilidadeLines.Where(y => y == lineOperator).ToList().Count > 0)
-        {
-            return ViaMobilidadeOperator;
-        }
-
-        return CptmOperator;
-    }
-
-    private static string GetNewYorkSubwayOperator(string lineOperator)
-    {
-        return "MTAOperator";
-    }
-
-    private static string GetLondonSubwayOperator(string lineOperator)
-    {
-        return "UndergroundOperator";
+            LineOperationStatus.OperationStopped or LineOperationStatus.NotOperating => Color.red,
+            LineOperationStatus.ReducedSpeed or LineOperationStatus.NoUsage => Color.yellow,
+            _ => Color.green
+        };
     }
 }

@@ -7,10 +7,19 @@ namespace StationSignage.Components
     public struct SS_LineStatus : IComponentData
     {
         public TransportType type;
-        public Color color;
-        public Color contrastColor;
         public ServiceOperator operatorSP;
+        public LineOperationStatus lineOperationStatus;
         public int expectedInterval;
         public int actualInterval;
     }
+
+    public enum LineOperationStatus
+    {
+        NormalOperation,
+        NotOperating,
+        OperationStopped,
+        ReducedSpeed,
+        NoUsage,
+    }
+
 }
