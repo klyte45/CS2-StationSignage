@@ -3,14 +3,15 @@ using Game.City;
 using Game.Common;
 using Game.Prefabs;
 using Game.SceneFlow;
+using Game.Settings;
 using StationSignage.BridgeWE;
 using StationSignage.Components;
 using StationSignage.Systems;
+using StationSignage.WEBridge;
 using System.Collections.Generic;
 using Unity.Entities;
 using Unity.Mathematics;
 using UnityEngine;
-using static StationSignage.Formulas.SS_IncomingVehicleSystem;
 
 namespace StationSignage.Formulas;
 
@@ -97,31 +98,65 @@ public class DisplayFormulas
         };
     }
 
-    public static VehicleTvData GetVehicleIncomingInformation(Entity building, Dictionary<string, string> vars)
+    public static SS_VehicleTvData GetVehicleIncomingInformation(Entity building, Dictionary<string, string> vars)
     {
         var platform = PlatformFormulas.GetPlatform(building, vars);
-        SS_IncomingVehicleSystem.Instance.EntityManager.TryGetComponent(platform, out SS_VehicleIncomingData vehicleData);
-        return SS_IncomingVehicleSystem.Instance.GetTvInformation(vehicleData.nextVehicle0);
+        return SS_IncomingVehicleSystem.Instance.GetTvInformation(platform);
     }
 
     public static string GetVehicleIncomingMessage(Entity building, Dictionary<string, string> vars)
     {
-        var platform = PlatformFormulas.GetPlatform(building, vars);
-        SS_IncomingVehicleSystem.Instance.EntityManager.TryGetComponent(platform, out SS_VehicleIncomingData vehicleData);
-        return "AAAAAAAAAAAAAAA";
+        var info = GetVehicleIncomingInformation(building, vars);
+        if (info.subtitle == SS_IncomingVehicleSystem.VehicleStatusDescription.DistanceToStation)
+        {
+            if ((GameManager.instance.settings.userInterface.unitSystem == InterfaceSettings.UnitSystem.Freedom))
+            {
+                var valueMiles = info.distanceHm / 16.0934f; // Convert meters to miles
+                return valueMiles < 1
+                    ? $"{(math.ceil(valueMiles * 52.80f) * 100).ToString("#,##0", WELocalizationBridge.GetWeCultureInfo())}ft"
+                    : $"{valueMiles.ToString("#,##0.0", WELocalizationBridge.GetWeCultureInfo())}mi";
+            }
+            else
+            {
+                var valueKm = info.distanceHm / 10f; // Convert meters to kilometers
+                return valueKm < 1
+                    ? $"{(math.ceil(valueKm * 10) * 100).ToString("#,##0", WELocalizationBridge.GetWeCultureInfo())}m"
+                    : $"{valueKm.ToString("#,##0.0", WELocalizationBridge.GetWeCultureInfo())}km";
+            }
+        }
+        if (info.subtitle == SS_IncomingVehicleSystem.VehicleStatusDescription.AverageWaitTime)
+        {
+            var timeSecs = info.distanceHm;
+            if (timeSecs < 60)
+            {
+                return $"{timeSecs}s";
+            }
+            else if (timeSecs < 3600)
+            {
+                var minutes = timeSecs / 60;
+                return $"{minutes}min{timeSecs%60:00}s";
+            }
+            else
+            {
+                var hours = timeSecs / 3600;
+                var minutes = timeSecs / 60 % 60;
+                return $"{hours}h{minutes:00}min";
+            }
+        }
+        return "";
     }
 
-    public static Color GetIncomingVehicleCapacityColor(VehicleTvData data, Dictionary<string, string> vars)
+    public static Color GetIncomingVehicleCapacityColor(SS_VehicleTvData data, Dictionary<string, string> vars)
         => !vars.TryGetValue("$idx", out var idxStr) || !int.TryParse(idxStr, out var idx) || idx < 0 || idx >= 8 ? Color.white
             : data[idx] switch
             {
-                <= 25 => Color.green,
-                <= 75 => Color.yellow,
+                <= 64 => Color.green,
+                <= 192 => Color.yellow,
                 _ => Color.red,
             };
-    public static float3 GetIncomingVehicleCapacityScale(VehicleTvData data, Dictionary<string, string> vars)
+    public static float3 GetIncomingVehicleCapacityScale(SS_VehicleTvData data, Dictionary<string, string> vars)
         => !vars.TryGetValue("$idx", out var idxStr) || !int.TryParse(idxStr, out var idx) || idx < 0 || idx >= 8 ? new float3(1, 1, 1)
-            : new float3(1, data[idx] * .01f, 1);
+            : new float3(1, data[idx] / 255f, 1);
     public static string GetIncomingVehicleImageName(Entity _, Dictionary<string, string> vars)
         => !vars.TryGetValue("$idx", out var idxStr) || !int.TryParse(idxStr, out var idx) ? "CapacityCar"
         : idx == 0 ? "CapacityStartEngine"

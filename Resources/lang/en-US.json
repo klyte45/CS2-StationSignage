@@ -25,5 +25,7 @@
   "StationSignage.Boarding": "Boarding",
   "StationSignage.NoSmoking": "No Smoking",
   "StationSignage.WelcomeSubway": "Welcome to %s's Subway",
-  "StationSignage.WelcomeTrain": "Welcome to %s's Rail"
+  "StationSignage.WelcomeTrain": "Welcome to %s's Rail",
+  "StationSignage.ClosedPlatform": "Closed platform",
+  "StationSignage.WelcomeCity": "Welcome to %s"
 }

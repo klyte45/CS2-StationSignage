@@ -58,17 +58,24 @@
 		</Reference>
 	</ItemGroup>
 
-	<ItemGroup>
-		<Reference Update="System">
-			<Private>false</Private>
-		</Reference>
-		<Reference Update="System.Core">
-			<Private>false</Private>
-		</Reference>
-		<Reference Update="System.Data">
-			<Private>false</Private>
-		</Reference>
-	</ItemGroup>
+  <ItemGroup>
+    <Reference Include="System">
+      <HintPath>$(CSII_MANAGEDPATH)\System.dll</HintPath>
+      <Private>false</Private>
+    </Reference>
+    <Reference Update="System.Core">
+      <HintPath>$(CSII_MANAGEDPATH)\System.Core.dll</HintPath>
+      <Private>false</Private>
+    </Reference>
+    <Reference Update="System.Data">
+      <HintPath>$(CSII_MANAGEDPATH)\System.Data.dll</HintPath>
+      <Private>false</Private>
+    </Reference>
+    <Reference Include="mscorlib">
+      <HintPath>$(CSII_MANAGEDPATH)\mscorlib.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+  </ItemGroup>
 
 	<ItemGroup>
 		<PackageReference Include="Lib.Harmony" Version="2.2.2" />

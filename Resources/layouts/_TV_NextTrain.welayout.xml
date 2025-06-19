@@ -54,7 +54,7 @@
         <arraySpacing x="0" y="0" z="0" />
       </transform>
       <textMesh fontName="HelveticaWorld_Regular">
-        <text formulae="&amp;StationSignage.Formulas.DisplayFormulas;GetVehicleIncomingInformation.Subtitle.ToString/&amp;StationSignage.Formulas.DisplayFormulas;GetNameFromMod">NEW TEXT</text>
+        <text formulae="&amp;StationSignage.Formulas.DisplayFormulas;GetVehicleIncomingInformation.subtitle.ToString/&amp;StationSignage.Formulas.DisplayFormulas;GetNameFromMod">NEW TEXT</text>
         <MaxWidthMeters>0</MaxWidthMeters>
       </textMesh>
       <defaultStyle>
@@ -112,7 +112,7 @@
         <arraySpacing x="0" y="0" z="0" />
       </transform>
       <textMesh fontName="HelveticaWorld_Regular">
-        <text formulae="&amp;StationSignage.Formulas.DisplayFormulas;GetVehicleIncomingInformation.Title.ToString/&amp;StationSignage.Formulas.DisplayFormulas;GetNameFromMod">&amp;StationSignage.Formulas.SubwayFormulas;GetFirstPlatformVehiclePanel.Title</text>
+        <text formulae="&amp;StationSignage.Formulas.DisplayFormulas;GetVehicleIncomingInformation.title.ToString/&amp;StationSignage.Formulas.DisplayFormulas;GetNameFromMod">&amp;StationSignage.Formulas.SubwayFormulas;GetFirstPlatformVehiclePanel.Title</text>
         <MaxWidthMeters>0.72</MaxWidthMeters>
       </textMesh>
       <defaultStyle>

@@ -25,5 +25,7 @@
   "StationSignage.Boarding": "Embarque",
   "StationSignage.NoSmoking": "Proibido Fumar",
   "StationSignage.WelcomeSubway": "Bem-vindo ao metrô de %s",
-  "StationSignage.WelcomeTrain": "Bem-vindo ao trem de %s"
+  "StationSignage.WelcomeTrain": "Bem-vindo ao trem de %s",
+  "StationSignage.ClosedPlatform": "Plataforma fechada",
+  "StationSignage.WelcomeCity": "Bem-vindo à %s"
 }

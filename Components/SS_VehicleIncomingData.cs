@@ -22,7 +22,7 @@ namespace StationSignage.Components
         public void Deserialize<TReader>(TReader reader) where TReader : IReader
         {
             reader.Read(out uint version);
-            if(version > CURRENT_VERSION)
+            if (version > CURRENT_VERSION)
             {
                 throw new System.Exception($"Unsupported version {version} for {nameof(SS_VehicleIncomingData)}. Current version is {CURRENT_VERSION}.");
             }
@@ -31,6 +31,6 @@ namespace StationSignage.Components
             reader.Read(out nextVehicle2);
             reader.Read(out nextVehicle3);
         }
-
     }
+
 }

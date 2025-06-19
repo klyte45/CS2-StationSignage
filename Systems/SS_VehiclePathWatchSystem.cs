@@ -1,9 +1,11 @@
 ﻿using Colossal.Entities;
 using Game;
 using Game.Common;
+using Game.Net;
 using Game.Pathfind;
 using Game.Routes;
 using Game.SceneFlow;
+using Game.Vehicles;
 using HarmonyLib;
 using StationSignage.Components;
 using System;
@@ -65,9 +67,13 @@ namespace StationSignage.Systems
                     m_pathInformationLookup = GetComponentLookup<PathInformation>(true),
                     m_connectedLookup = GetComponentLookup<Connected>(true),
                     m_ownerLookup = GetComponentLookup<Owner>(true),
-                    m_pathOwnerLookup = GetComponentLookup<PathOwner>(true),
                     m_pathElementLookup = GetBufferLookup<PathElement>(true),
                     m_cmdBuffer = m_endFrameBarrier.CreateCommandBuffer().AsParallelWriter(),
+                    m_carLaneLookup = GetComponentLookup<CarCurrentLane>(true),
+                    m_waterLaneLookup = GetComponentLookup<WatercraftCurrentLane>(true),
+                    m_airLaneLookup = GetComponentLookup<AircraftCurrentLane>(true),
+                    m_curveLookup = GetComponentLookup<Curve>(true),
+                    m_trainLaneLookup = GetComponentLookup<TrainCurrentLane>(true)
                 }.ScheduleParallel(m_stopsWithoutIncomingInfo, Dependency).Complete();
                 return;
             }
@@ -85,9 +91,13 @@ namespace StationSignage.Systems
                 m_connectedLookup = GetComponentLookup<Connected>(true),
                 m_connectedLinesLookup = GetBufferLookup<ConnectedRoute>(true),
                 m_ownerLookup = GetComponentLookup<Owner>(true),
-                m_pathOwnerLookup = GetComponentLookup<PathOwner>(true),
                 m_pathElementLookup = GetBufferLookup<PathElement>(true),
                 m_cmdBuffer = m_endFrameBarrier.CreateCommandBuffer().AsParallelWriter(),
+                m_carLaneLookup = GetComponentLookup<CarCurrentLane>(true),
+                m_waterLaneLookup = GetComponentLookup<WatercraftCurrentLane>(true),
+                m_airLaneLookup = GetComponentLookup<AircraftCurrentLane>(true),
+                m_trainLaneLookup = GetComponentLookup<TrainCurrentLane>(true),
+                m_curveLookup = GetComponentLookup<Curve>(true)
             }.ScheduleParallel(m_vehiclesWithNewPathfind, Dependency).Complete();
         }
 
@@ -125,9 +135,13 @@ namespace StationSignage.Systems
             public ComponentLookup<Connected> m_connectedLookup;
             public BufferLookup<ConnectedRoute> m_connectedLinesLookup;
             public ComponentLookup<Owner> m_ownerLookup;
-            public ComponentLookup<PathOwner> m_pathOwnerLookup;
             public BufferLookup<PathElement> m_pathElementLookup;
             public EntityCommandBuffer.ParallelWriter m_cmdBuffer;
+            public ComponentLookup<CarCurrentLane> m_carLaneLookup;
+            public ComponentLookup<WatercraftCurrentLane> m_waterLaneLookup;
+            public ComponentLookup<AircraftCurrentLane> m_airLaneLookup;
+            public ComponentLookup<TrainCurrentLane> m_trainLaneLookup;
+            public ComponentLookup<Curve> m_curveLookup;
 
             public void Execute(in ArchetypeChunk chunk, int unfilteredChunkIndex, bool useEnabledMask, in v128 chunkEnabledMask)
             {
@@ -143,10 +157,13 @@ namespace StationSignage.Systems
 
                     if (m_connectedLinesLookup.TryGetBuffer(prevTarget, out var routesPrev)) MapIncomingVehicle(unfilteredChunkIndex, prevTarget, ref routesPrev,
                         ref m_ownerLookup, ref m_routeVehiclesLookup, ref m_pathInformationLookup,
-                        ref m_pathOwnerLookup, ref m_pathElementLookup, ref m_connectedLookup, ref m_cmdBuffer);
+                         ref m_pathElementLookup, ref m_connectedLookup, ref m_cmdBuffer,
+                        ref m_carLaneLookup, ref m_waterLaneLookup, ref m_airLaneLookup, ref m_trainLaneLookup, ref m_curveLookup);
                     if (m_connectedLinesLookup.TryGetBuffer(nextTarget, out var routesNext)) MapIncomingVehicle(unfilteredChunkIndex, nextTarget, ref routesNext,
                         ref m_ownerLookup, ref m_routeVehiclesLookup, ref m_pathInformationLookup,
-                        ref m_pathOwnerLookup, ref m_pathElementLookup, ref m_connectedLookup, ref m_cmdBuffer);
+                     ref m_pathElementLookup, ref m_connectedLookup, ref m_cmdBuffer,
+                        ref m_carLaneLookup, ref m_waterLaneLookup, ref m_airLaneLookup, ref m_trainLaneLookup, ref m_curveLookup
+                        );
 
                     m_cmdBuffer.RemoveComponent<SS_DirtyVehicle>(unfilteredChunkIndex, entity);
                 }
@@ -161,9 +178,13 @@ namespace StationSignage.Systems
             public ComponentLookup<PathInformation> m_pathInformationLookup;
             public ComponentLookup<Connected> m_connectedLookup;
             public ComponentLookup<Owner> m_ownerLookup;
-            public ComponentLookup<PathOwner> m_pathOwnerLookup;
             public BufferLookup<PathElement> m_pathElementLookup;
             public EntityCommandBuffer.ParallelWriter m_cmdBuffer;
+            public ComponentLookup<CarCurrentLane> m_carLaneLookup;
+            public ComponentLookup<WatercraftCurrentLane> m_waterLaneLookup;
+            public ComponentLookup<AircraftCurrentLane> m_airLaneLookup;
+            public ComponentLookup<TrainCurrentLane> m_trainLaneLookup;
+            public ComponentLookup<Curve> m_curveLookup;
 
             public void Execute(in ArchetypeChunk chunk, int unfilteredChunkIndex, bool useEnabledMask, in v128 chunkEnabledMask)
             {
@@ -176,7 +197,8 @@ namespace StationSignage.Systems
 
                     MapIncomingVehicle(unfilteredChunkIndex, entity, ref connectedRoutes,
                         ref m_ownerLookup, ref m_routeVehiclesLookup, ref m_pathInformationLookup,
-                        ref m_pathOwnerLookup, ref m_pathElementLookup, ref m_connectedLookup, ref m_cmdBuffer);
+                        ref m_pathElementLookup, ref m_connectedLookup, ref m_cmdBuffer,
+                        ref m_carLaneLookup, ref m_waterLaneLookup, ref m_airLaneLookup, ref m_trainLaneLookup, ref m_curveLookup);
                 }
             }
         }
@@ -188,10 +210,17 @@ namespace StationSignage.Systems
           ref ComponentLookup<Owner> m_ownerLookup,
           ref BufferLookup<RouteVehicle> m_routeVehiclesLookup,
           ref ComponentLookup<PathInformation> m_pathInformationLookup,
-          ref ComponentLookup<PathOwner> m_pathOwnerLookup,
           ref BufferLookup<PathElement> m_pathElementLookup,
           ref ComponentLookup<Connected> m_connectedLookup,
-          ref EntityCommandBuffer.ParallelWriter m_cmdBuffer)
+          ref EntityCommandBuffer.ParallelWriter m_cmdBuffer,
+          ref ComponentLookup<CarCurrentLane> m_carLaneLookup,
+          ref ComponentLookup<WatercraftCurrentLane> m_waterLaneLookup,
+          ref ComponentLookup<AircraftCurrentLane> m_airLaneLookup,
+          ref ComponentLookup<TrainCurrentLane> m_trainLaneLookup,
+          ref ComponentLookup<Curve> m_curveLookup
+
+
+            )
         {
             var results = new NativeArray<IncomingVehicle>(4, Allocator.Temp);
             for (int j = 0; j < routesOnPlatform.Length; j++)
@@ -203,20 +232,24 @@ namespace StationSignage.Systems
                     var destination = GetPlatformEntity(vehicles[k].m_Vehicle, m_pathInformationLookup, m_connectedLookup);
                     if (destination == platform)
                     {
-                        var pathElements = m_pathElementLookup[vehicles[k].m_Vehicle];
-                        if (pathElements.Length == 0) continue;
-                        var pathInfo = m_pathInformationLookup[vehicles[k].m_Vehicle];
-                        var pathOwner = m_pathOwnerLookup[vehicles[k].m_Vehicle];
+                        var vehicle = vehicles[k].m_Vehicle;
+                        CalculateDistance(
+                            ref m_pathInformationLookup, ref m_pathElementLookup, ref m_carLaneLookup,
+                            ref m_waterLaneLookup, ref m_airLaneLookup, ref m_trainLaneLookup, ref m_curveLookup,
+                            vehicle, out float distance, out bool foundLane);
+                        if (!foundLane)
+                        {
+                            continue;
+                        }
 
-                        var distance = pathInfo.m_Distance * (1 - (pathOwner.m_ElementIndex / pathElements.Length));
                         var data = new IncomingVehicle
                         {
-                            m_Vehicle = vehicles[k].m_Vehicle,
+                            m_Vehicle = vehicle,
                             distance = distance
                         };
                         for (int l = 0; l < results.Length; l++)
                         {
-                            if (results[l].m_Vehicle == Entity.Null || results[l].distance <= data.distance)
+                            if (results[l].m_Vehicle == Entity.Null || results[l].distance > data.distance)
                             {
                                 (data, results[l]) = (results[l], data);
                             }
@@ -233,6 +266,53 @@ namespace StationSignage.Systems
                 nextVehicle3 = results[3].m_Vehicle
             });
             results.Dispose();
+        }
+
+        internal static void CalculateDistance(ref ComponentLookup<PathInformation> m_pathInformationLookup, ref BufferLookup<PathElement> m_pathElementLookup, 
+            ref ComponentLookup<CarCurrentLane> m_carLaneLookup, ref ComponentLookup<WatercraftCurrentLane> m_waterLaneLookup, 
+            ref ComponentLookup<AircraftCurrentLane> m_airLaneLookup, ref ComponentLookup<TrainCurrentLane> m_trainLaneLookup,
+            ref ComponentLookup<Curve> m_curveLookup, Entity vehicle, out float distance, out bool foundLane)
+        {
+            distance = 0f;
+            foundLane = false;
+            var pathElements = m_pathElementLookup[vehicle];
+            if (pathElements.Length == 0) return;
+            var pathInfo = m_pathInformationLookup[vehicle];
+
+            Entity currentLane = Entity.Null;
+
+            if (m_carLaneLookup.TryGetComponent(vehicle, out var carLane))
+            {
+                currentLane = carLane.m_Lane;
+            }
+            else if (m_waterLaneLookup.TryGetComponent(vehicle, out var waterLane))
+            {
+                currentLane = waterLane.m_Lane;
+            }
+            else if (m_airLaneLookup.TryGetComponent(vehicle, out var airLane))
+            {
+                currentLane = airLane.m_Lane;
+            }
+            else if (m_trainLaneLookup.TryGetComponent(vehicle, out var trainCurrentLane))
+            {
+                currentLane = trainCurrentLane.m_Front.m_Lane;
+            }
+            else
+            {
+                return;
+            }
+
+            for (int l = 0; l < pathElements.Length; l++)
+            {
+                if (!foundLane)
+                {
+                    foundLane = currentLane == pathElements[l].m_Target;
+                }
+                if (foundLane)
+                {
+                    distance += m_curveLookup[pathElements[l].m_Target].m_Length * Math.Abs(pathElements[l].m_TargetDelta[1] - pathElements[l].m_TargetDelta[0]);
+                }
+            }
         }
 
         private static Entity GetPlatformEntity(
