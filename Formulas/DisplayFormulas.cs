@@ -8,7 +8,9 @@ using StationSignage.Components;
 using StationSignage.Systems;
 using System.Collections.Generic;
 using Unity.Entities;
+using Unity.Mathematics;
 using UnityEngine;
+using static StationSignage.Formulas.SS_IncomingVehicleSystem;
 
 namespace StationSignage.Formulas;
 
@@ -95,8 +97,45 @@ public class DisplayFormulas
         };
     }
 
+    public static VehicleTvData GetVehicleIncomingInformation(Entity building, Dictionary<string, string> vars)
+    {
+        var platform = PlatformFormulas.GetPlatform(building, vars);
+        SS_IncomingVehicleSystem.Instance.EntityManager.TryGetComponent(platform, out SS_VehicleIncomingData vehicleData);
+        return SS_IncomingVehicleSystem.Instance.GetTvInformation(vehicleData.nextVehicle0);
+    }
+
+    public static string GetVehicleIncomingMessage(Entity building, Dictionary<string, string> vars)
+    {
+        var platform = PlatformFormulas.GetPlatform(building, vars);
+        SS_IncomingVehicleSystem.Instance.EntityManager.TryGetComponent(platform, out SS_VehicleIncomingData vehicleData);
+        return "AAAAAAAAAAAAAAA";
+    }
+
+    public static Color GetIncomingVehicleCapacityColor(VehicleTvData data, Dictionary<string, string> vars)
+        => !vars.TryGetValue("$idx", out var idxStr) || !int.TryParse(idxStr, out var idx) || idx < 0 || idx >= 8 ? Color.white
+            : data[idx] switch
+            {
+                <= 25 => Color.green,
+                <= 75 => Color.yellow,
+                _ => Color.red,
+            };
+    public static float3 GetIncomingVehicleCapacityScale(VehicleTvData data, Dictionary<string, string> vars)
+        => !vars.TryGetValue("$idx", out var idxStr) || !int.TryParse(idxStr, out var idx) || idx < 0 || idx >= 8 ? new float3(1, 1, 1)
+            : new float3(1, data[idx] * .01f, 1);
+    public static string GetIncomingVehicleImageName(Entity _, Dictionary<string, string> vars)
+        => !vars.TryGetValue("$idx", out var idxStr) || !int.TryParse(idxStr, out var idx) ? "CapacityCar"
+        : idx == 0 ? "CapacityStartEngine"
+        : idx == 7 ? "CapacityEndEngine"
+        : "CapacityCar";
+
+
+    public static string GetName(Entity _, Dictionary<string, string> vars)
+        => vars.TryGetValue("strKey", out var id) && GameManager.instance.localizationManager.activeDictionary.TryGetValue($"StationSignage.{id}", out var name) ? name : "";
+
     private static string GetName(string id)
         => GameManager.instance.localizationManager.activeDictionary.TryGetValue(id, out var name) ? name : "";
+    public static string GetNameFromMod(string id)
+        => GameManager.instance.localizationManager.activeDictionary.TryGetValue($"StationSignage.{id}", out var name) ? name : "";
 
     public static string GetOperatorImageIcon(ServiceOperator serviceOperator) => "SquareLogo" + (serviceOperator == ServiceOperator.Default ? "" : serviceOperator.ToString());
     public static string GetOperatorImageWide(ServiceOperator serviceOperator) => "WideSideLogo" + (serviceOperator == ServiceOperator.Default ? "" : serviceOperator.ToString());

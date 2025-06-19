@@ -216,7 +216,7 @@ namespace StationSignage.Systems
                         };
                         for (int l = 0; l < results.Length; l++)
                         {
-                            if (results[l].m_Vehicle == Entity.Null || results[l].distance > distance)
+                            if (results[l].m_Vehicle == Entity.Null || results[l].distance <= data.distance)
                             {
                                 (data, results[l]) = (results[l], data);
                             }

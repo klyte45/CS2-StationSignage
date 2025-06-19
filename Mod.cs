@@ -11,6 +11,7 @@ using Game.SceneFlow;
 using Game.Settings;
 using HarmonyLib;
 using StationSignage.BridgeWE;
+using StationSignage.Formulas;
 using StationSignage.Systems;
 using StationSignage.Utils;
 using StationSignage.WEBridge;
@@ -44,6 +45,7 @@ namespace StationSignage
             updateSystem.UpdateAt<SS_RoutePathWatchSystem>(SystemUpdatePhase.Modification1);
             updateSystem.UpdateAfter<SS_VehiclePathWatchSystem>(SystemUpdatePhase.MainLoop);
             updateSystem.UpdateAfter<SS_PlatformMappingSystem>(SystemUpdatePhase.UIUpdate);
+            updateSystem.UpdateAfter<SS_IncomingVehicleSystem>(SystemUpdatePhase.MainLoop);
 
             GameManager.instance.RegisterUpdater(DoWhenLoaded);
         }
