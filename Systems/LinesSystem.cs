@@ -269,30 +269,42 @@ namespace StationSignage.Systems
             }
         }
 
+        private readonly Dictionary<(TransportType, bool, bool), List<Entity>> CachedCityLines = [];
+        private uint cacheFrame;
+
         public List<Entity> GetCityLines(TransportType tt, bool acceptCargo, bool acceptPassenger)
         {
-            var response = new NativeList<LineStatusGetJobResponseItem>(_linesStatusesQuery.CalculateEntityCount(), Allocator.Temp);
-            try
+            if (cacheFrame != GameSimulationFrame >> 5)
             {
-                new LineStatusGetJob
+                CachedCityLines.Clear();
+                cacheFrame = GameSimulationFrame >> 5;
+            }
+            if (!CachedCityLines.TryGetValue((tt, acceptCargo, acceptPassenger), out var result))
+            {
+                var response = new NativeList<LineStatusGetJobResponseItem>(_linesStatusesQuery.CalculateEntityCount(), Allocator.Temp);
+                try
                 {
-                    response = response.AsParallelWriter(),
-                    entityType = GetEntityTypeHandle(),
-                    routeNumberType = GetComponentTypeHandle<RouteNumber>(true),
-                    statusLookup = GetComponentTypeHandle<SS_LineStatus>(true),
-                    accepted = tt,
-                    acceptCargo = acceptCargo,
-                    acceptPassenger = acceptPassenger
-                }.ScheduleParallel(_linesStatusesQuery, Dependency).Complete();
-                return [.. response.AsArray()
+                    new LineStatusGetJob
+                    {
+                        response = response.AsParallelWriter(),
+                        entityType = GetEntityTypeHandle(),
+                        routeNumberType = GetComponentTypeHandle<RouteNumber>(true),
+                        statusLookup = GetComponentTypeHandle<SS_LineStatus>(true),
+                        accepted = tt,
+                        acceptCargo = acceptCargo,
+                        acceptPassenger = acceptPassenger
+                    }.ScheduleParallel(_linesStatusesQuery, Dependency).Complete();
+                    result = CachedCityLines[(tt, acceptCargo, acceptPassenger)] = [.. response.AsArray()
                     .OrderBy(x=> x.status.type)
                     .ThenBy(x => x.route.m_Number)
                     .Select(x=>x.entity)];
+                }
+                finally
+                {
+                    response.Dispose();
+                }
             }
-            finally
-            {
-                response.Dispose();
-            }
+            return result;
         }
 
         private struct LineStatusGetJobResponseItem

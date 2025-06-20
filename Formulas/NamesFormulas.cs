@@ -96,7 +96,7 @@ public class NamesFormulas
             InterfaceSettings.TimeFormat.TwelveHours => "hh:mm tt",
             _ => "HH:mm"
         };
-        return GetName("StationSignage.Time") + _timeSystem.GetCurrentDateTime().ToString(timeFormat);
+        return _timeSystem.GetCurrentDateTime().ToString(timeFormat);
     }
 
     public static string GetLinesStatusMessage(Entity buildingRef) =>

@@ -268,8 +268,8 @@ namespace StationSignage.Systems
             results.Dispose();
         }
 
-        internal static void CalculateDistance(ref ComponentLookup<PathInformation> m_pathInformationLookup, ref BufferLookup<PathElement> m_pathElementLookup, 
-            ref ComponentLookup<CarCurrentLane> m_carLaneLookup, ref ComponentLookup<WatercraftCurrentLane> m_waterLaneLookup, 
+        internal static void CalculateDistance(ref ComponentLookup<PathInformation> m_pathInformationLookup, ref BufferLookup<PathElement> m_pathElementLookup,
+            ref ComponentLookup<CarCurrentLane> m_carLaneLookup, ref ComponentLookup<WatercraftCurrentLane> m_waterLaneLookup,
             ref ComponentLookup<AircraftCurrentLane> m_airLaneLookup, ref ComponentLookup<TrainCurrentLane> m_trainLaneLookup,
             ref ComponentLookup<Curve> m_curveLookup, Entity vehicle, out float distance, out bool foundLane)
         {
@@ -279,7 +279,7 @@ namespace StationSignage.Systems
             if (pathElements.Length == 0) return;
             var pathInfo = m_pathInformationLookup[vehicle];
 
-            Entity currentLane = Entity.Null;
+            Entity currentLane;
 
             if (m_carLaneLookup.TryGetComponent(vehicle, out var carLane))
             {

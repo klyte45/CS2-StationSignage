@@ -28,8 +28,10 @@ namespace StationSignage.Formulas
 
         public static Entity GetPlatform(Entity building, Dictionary<string, string> vars)
         {
+            if (EntityManager.HasComponent<SS_PlatformData>(building)) return building;
             if (vars.TryGetValue(LinesFormulas.PLATFORM_VAR, out var platformStr) && byte.TryParse(platformStr, out var platform))
             {
+
                 if (EntityManager.TryGetBuffer<SS_PlatformMappingLink>(building, true, out var buffer) && platform <= buffer.Length)
                 {
                     return buffer[platform - 1].platformData;
