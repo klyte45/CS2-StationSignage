@@ -3,9 +3,7 @@ using Game.Pathfind;
 using Game.Routes;
 using StationSignage.Components;
 using System;
-using System.Diagnostics;
 using Unity.Burst.Intrinsics;
-using Unity.Collections;
 using Unity.Entities;
 
 namespace StationSignage.Systems
@@ -25,8 +23,6 @@ namespace StationSignage.Systems
             new RoutePathReadyJob
             {
                 m_PathUpdatedType = GetComponentTypeHandle<PathUpdated>(true),
-                m_RouteWaypointType = GetBufferTypeHandle<RouteWaypoint>(true),
-                m_RouteSegmentType = GetBufferTypeHandle<RouteSegment>(true),
                 m_OwnerLookup = GetComponentLookup<Owner>(true),
                 m_routeLookup = GetComponentLookup<Route>(true),
                 m_cmdBuffer = m_ModificationBarrier1.CreateCommandBuffer().AsParallelWriter(),
@@ -44,15 +40,7 @@ namespace StationSignage.Systems
 
         private struct RoutePathReadyJob : IJobChunk
         {
-            [ReadOnly]
             public ComponentTypeHandle<PathUpdated> m_PathUpdatedType;
-
-            [ReadOnly]
-            public BufferTypeHandle<RouteWaypoint> m_RouteWaypointType;
-
-            [ReadOnly]
-            public BufferTypeHandle<RouteSegment> m_RouteSegmentType;
-
             public ComponentLookup<Owner> m_OwnerLookup;
             public ComponentLookup<Route> m_routeLookup;
 

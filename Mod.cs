@@ -43,6 +43,7 @@ namespace StationSignage
             updateSystem.UpdateAt<TransportUtilitySystem>(SystemUpdatePhase.GameSimulation);
 
             updateSystem.UpdateAt<SS_RoutePathWatchSystem>(SystemUpdatePhase.Modification1);
+            updateSystem.UpdateAt<SS_WaypointConnectionsSystem>(SystemUpdatePhase.Modification1);
             updateSystem.UpdateAfter<SS_VehiclePathWatchSystem>(SystemUpdatePhase.MainLoop);
             updateSystem.UpdateAfter<SS_PlatformMappingSystem>(SystemUpdatePhase.UIUpdate);
             updateSystem.UpdateAfter<SS_IncomingVehicleSystem>(SystemUpdatePhase.MainLoop);

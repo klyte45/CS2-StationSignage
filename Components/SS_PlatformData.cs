@@ -9,7 +9,5 @@ namespace StationSignage.Components
         public TransportType type;
         public byte transportTypePlatformNumber;
         public byte railsPlatformNumber;
-
-        public override string ToString() => $"PlatformData: {type} Overall: {overallNumber} TransportTypeNumber: {transportTypePlatformNumber} RailsPlatformNumber: {railsPlatformNumber}";
     }
 }

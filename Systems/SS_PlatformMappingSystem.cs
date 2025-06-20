@@ -142,7 +142,7 @@ public partial class SS_PlatformMappingSystem : SystemBase
 
             for (int i = 0; i < entities.Length; i++)
             {
-                if (m_ownerLookup.TryGetComponent(entities[i], out var owner))
+                if (m_ownerLookup.TryGetComponent(entities[i], out var owner) && owner.m_Owner != Entity.Null)
                 {
                     while (m_ownerLookup.TryGetComponent(owner.m_Owner, out var parentOwner))
                     {
