@@ -25,6 +25,8 @@ public partial class SS_PlatformMappingSystem : SystemBase
     private EntityQuery m_connectableRoutesNotMapped;
     private EntityQuery m_connectionsUpdatedPlatforms;
     private EndFrameBarrier m_endFrameBarrier;
+    public static uint CacheVersion { get; private set; }
+    private byte dirtyCooldown = 0;
 
     protected override void OnCreate()
     {
@@ -103,12 +105,14 @@ public partial class SS_PlatformMappingSystem : SystemBase
                     ]
                 },
         });
-
-        CheckedStateRef.RequireAnyForUpdate(m_connectableRoutesNotMapped, m_connectionsUpdatedPlatforms);
     }
     protected override void OnUpdate()
     {
         if (GameManager.instance.isGameLoading) return;
+        if (--dirtyCooldown == 1)
+        {
+            CacheVersion++;
+        }
         if (!m_connectableRoutesNotMapped.IsEmptyIgnoreFilter)
         {
             using var output = new NativeParallelHashSet<PairEntityRoute>(m_connectableRoutesNotMapped.CalculateEntityCount() * 2, Allocator.Temp);
@@ -186,6 +190,8 @@ public partial class SS_PlatformMappingSystem : SystemBase
                 m_waypointDestinationsLookup = GetBufferLookup<SS_WaypointDestinationConnections>(true),
                 m_routeNumberLookup = GetComponentLookup<RouteNumber>(true)
             }.ScheduleParallel(m_connectionsUpdatedPlatforms, Dependency).Complete();
+            dirtyCooldown = 5;
+
         }
     }
 
@@ -211,7 +217,7 @@ public partial class SS_PlatformMappingSystem : SystemBase
                 {
                     var entity = entities[i];
                     cmdBuffer.RemoveComponent<SS_PlatformConnectionsUpdated>(unfilteredChunkIndex, entity);
-                    if (m_connectedRouteLookup.TryGetBuffer(entity, out var connectedRoutes) && connectedRoutes.Length > 0)
+                    if (m_connectedRouteLookup.TryGetBuffer(entity, out var connectedRoutes))
                     {
                         linesToExclude.Clear();
                         waypointDestinationsSet.Clear();
@@ -233,7 +239,7 @@ public partial class SS_PlatformMappingSystem : SystemBase
                         }
                         using var sortedData = waypointDestinationsSet.ToNativeArray(Allocator.Temp);
                         sortedData.Sort();
-
+                        cmdBuffer.RemoveComponent<SS_WaypointDestinationConnections>(unfilteredChunkIndex, entity);
                         var results = cmdBuffer.AddBuffer<SS_WaypointDestinationConnections>(unfilteredChunkIndex, entity);
                         results.Clear();
                         for (int j = 0; j < sortedData.Length; j++)

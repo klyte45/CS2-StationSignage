@@ -22,7 +22,7 @@ namespace StationSignage.Systems
                  Any =[
                     ComponentType.ReadOnly<PathUpdated>(),
                     ComponentType.ReadOnly<PathTargetMoved>(),
-                ]
+                 ]
             }
             });
         }
@@ -71,7 +71,8 @@ namespace StationSignage.Systems
                         m_cmdBuffer.AddComponent<SS_DirtyTransportLine>(unfilteredChunkIndex, owner.m_Owner);
                         if (m_connectedLookup.TryGetComponent(pathUpdated.m_Owner, out var connected))
                         {
-                            m_cmdBuffer.AddComponent<SS_PlatformConnectionsUpdated>(unfilteredChunkIndex, connected.m_Connected);
+                            m_cmdBuffer.AddComponent<SS_WaypointDestinationConnectionsDirtyPre>(unfilteredChunkIndex, pathUpdated.m_Owner);
+                            m_cmdBuffer.RemoveComponent<SS_VehicleIncomingData>(unfilteredChunkIndex, connected.m_Connected);
                         }
                     }
                     if (m_PathTargetMovedLookup.TryGetComponent(entity, out var pathMoved)
@@ -81,7 +82,8 @@ namespace StationSignage.Systems
                         m_cmdBuffer.AddComponent<SS_DirtyTransportLine>(unfilteredChunkIndex, owner.m_Owner);
                         if (m_connectedLookup.TryGetComponent(pathMoved.m_Target, out var connected))
                         {
-                            m_cmdBuffer.AddComponent<SS_PlatformConnectionsUpdated>(unfilteredChunkIndex, connected.m_Connected);
+                            m_cmdBuffer.AddComponent<SS_WaypointDestinationConnectionsDirtyPre>(unfilteredChunkIndex, pathMoved.m_Target);
+                            m_cmdBuffer.RemoveComponent<SS_VehicleIncomingData>(unfilteredChunkIndex, connected.m_Connected);
                         }
                     }
                 }

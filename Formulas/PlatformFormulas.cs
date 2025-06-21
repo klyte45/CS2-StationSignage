@@ -1,10 +1,10 @@
-﻿using Colossal.Entities;
+﻿using Colossal;
+using Colossal.Entities;
 using Game.Common;
 using Game.Pathfind;
 using Game.Routes;
 using StationSignage.Components;
 using StationSignage.Enums;
-using StationSignage.Systems;
 using StationSignage.Utils;
 using System;
 using System.Collections.Generic;
@@ -76,10 +76,10 @@ namespace StationSignage.Formulas
 
         public static List<SS_WaypointDestinationConnections> GetPlatformConnections(Entity platformStop, Dictionary<string, string> vars)
         {
-            if (SS_WaypointConnectionsSystem.ConnectionsVersion != connectionsVersionCache)
+            if (SS_PlatformMappingSystem.CacheVersion != connectionsVersionCache)
             {
                 _cachedConnections.Clear();
-                connectionsVersionCache = SS_WaypointConnectionsSystem.ConnectionsVersion;
+                connectionsVersionCache = SS_PlatformMappingSystem.CacheVersion;
             }
             TransportTypeByImportance lowestPriority = TransportTypeByImportance.LessPrioritary;
             TransportTypeByImportance highestPriority = TransportTypeByImportance.MostPrioritary;
@@ -87,19 +87,48 @@ namespace StationSignage.Formulas
             {
                 lowestPriority = parsedVal;
             }
-            if (vars.TryGetValue("highPr", out filterStr) && Enum.TryParse<TransportTypeByImportance>(filterStr, out parsedVal))
+            if (vars.TryGetValue("highPr", out filterStr) && Enum.TryParse(filterStr, out parsedVal))
             {
                 highestPriority = parsedVal;
             }
             if (lowestPriority < highestPriority) (lowestPriority, highestPriority) = (highestPriority, lowestPriority);
             if (!_cachedConnections.TryGetValue((platformStop, lowestPriority, highestPriority), out var connections))
             {
+                HashSet<Entity> excludedLines = [];
+                var owner = EntityUtils.FindTopOwnership(platformStop, EntityManager);
+                if (EntityManager.TryGetBuffer<SS_PlatformMappingLink>(owner, true, out var platformData))
+                {
+                    for (int i = 0; i < platformData.Length; i++)
+                    {
+                        var platform = platformData[i].platformData;
+                        if (EntityManager.TryGetBuffer<ConnectedRoute>(platform, true, out var routesConn))
+                        {
+                            for (int j = 0; j < routesConn.Length; j++)
+                            {
+                                if (EntityManager.TryGetComponent<Owner>(routesConn[j].m_Waypoint, out var passingLine))
+                                {
+                                    excludedLines.Add(passingLine.m_Owner);
+                                }
+                            }
+                        }
+                    }
+                }
+                if (EntityManager.TryGetBuffer<ConnectedRoute>(owner, true, out var routes))
+                {
+                    for (int j = 0; j < routes.Length; j++)
+                    {
+                        if (EntityManager.TryGetComponent<Owner>(routes[j].m_Waypoint, out var passingLine))
+                        {
+                            excludedLines.Add(passingLine.m_Owner);
+                        }
+                    }
+                }
                 EntityManager.TryGetBuffer<SS_WaypointDestinationConnections>(platformStop, true, out var connectionsBuffer);
                 connections = [];
                 for (int i = 0; i < connectionsBuffer.Length; i++)
                 {
                     var connection = connectionsBuffer[i];
-                    if (connection.Importance <= lowestPriority && connection.Importance >= highestPriority)
+                    if (!excludedLines.Contains(connection.line) && connection.Importance <= lowestPriority && connection.Importance >= highestPriority)
                     {
                         connections.Add(connection);
                     }

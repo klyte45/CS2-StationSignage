@@ -231,11 +231,11 @@
     </children>
     <children>
       <self itemName="Destination Name">
-        <transform pivot="MiddleLeft" alignment="Left" arrayAxisOrder="XYZ">
+        <transform pivot="MiddleLeft" alignment="Left" useFormulaeToCheckIfDraw="true" arrayAxisOrder="XYZ">
           <offsetPosition x="1.35" y="0.13" z="0" />
           <offsetRotation x="-0" y="0" z="0" />
           <scale x="0.21" y="0.21" z="1" />
-          <mustDraw formulae="&amp;StationSignage.Formulas.PlatformFormulas;GetPlatform/Game.Routes.ConnectedRoute;Length.&gt;0">1</mustDraw>
+          <mustDraw formulae="&amp;StationSignage.Formulas.PlatformFormulas;GetPlatform/Game.Routes.ConnectedRoute;Length">1</mustDraw>
           <instanceCount>-1</instanceCount>
           <arrayInstances x="1" y="1" z="1" />
           <arraySpacing x="0" y="0" z="0" />
@@ -260,32 +260,46 @@
     </children>
   </children>
   <children>
-    <self itemName="Destination Name">
-      <transform pivot="MiddleLeft" alignment="Left" useFormulaeToCheckIfDraw="true" arrayAxisOrder="XYZ">
-        <offsetPosition x="1.35" y="0.06" z="0" />
+    <self itemName="NoConnections">
+      <transform alignment="Left" useFormulaeToCheckIfDraw="true" arrayAxisOrder="XYZ">
+        <offsetPosition x="0" y="0" z="0" />
         <offsetRotation x="-0" y="0" z="0" />
-        <scale x="0.3" y="0.3" z="1" />
-        <mustDraw formulae="&amp;StationSignage.Formulas.PlatformFormulas;GetPlatform/&amp;StationSignage.Formulas.PlatformFormulas;GetPlatformConnections.Count.&lt;1">1</mustDraw>
+        <scale x="1" y="1" z="1" />
+        <mustDraw formulae="&amp;StationSignage.Formulas.PlatformFormulas;GetPlatform/&amp;StationSignage.Formulas.PlatformFormulas;GetPlatformConnections.Count.=0">0</mustDraw>
         <instanceCount>-1</instanceCount>
         <arrayInstances x="1" y="1" z="1" />
         <arraySpacing x="0" y="0" z="0" />
       </transform>
-      <textMesh fontName="HelveticaWorld_Regular" rescaleHeightOnTextOverflow="true">
-        <text formulae="&amp;StationSignage.Formulas.PlatformFormulas;GetPlatform/Game.Routes.ConnectedRoute;0.m_Waypoint/&amp;StationSignage.BridgeWE.WERouteFn;GetWaypointStaticDestinationName">Aspen Square dawd wadaw dwad aw</text>
-        <MaxWidthMeters>2.7</MaxWidthMeters>
-      </textMesh>
-      <defaultStyle decalFlags="32">
-        <color formulae="&amp;StationSignage.Formulas.PlatformFormulas;GetPlatform/&amp;StationSignage.Formulas.PlatformFormulas;GetFirstLineOrDefault/&amp;StationSignage.Formulas.LineEntityFormulas;GetLineColor/&amp;BelzontWE.Builtin.WEColorsFn;GetContrastColor">000000FF</color>
-        <emissiveColor>FFFFFFFF</emissiveColor>
-        <metallic>0</metallic>
-        <smoothness>0</smoothness>
-        <emissiveIntensity>0</emissiveIntensity>
-        <emissiveExposureWeight>0</emissiveExposureWeight>
-        <coatStrength>0</coatStrength>
-        <colorMask1>FFFFFF</colorMask1>
-        <colorMask2>FFFFFF</colorMask2>
-        <colorMask3>FFFFFF</colorMask3>
-      </defaultStyle>
+      <matrixTransform />
     </self>
+    <children>
+      <self itemName="Destination Name">
+        <transform pivot="MiddleLeft" alignment="Left" useFormulaeToCheckIfDraw="true" arrayAxisOrder="XYZ">
+          <offsetPosition x="1.35" y="0.06" z="0" />
+          <offsetRotation x="-0" y="0" z="0" />
+          <scale x="0.3" y="0.3" z="1" />
+          <mustDraw formulae="&amp;StationSignage.Formulas.PlatformFormulas;GetPlatform/Game.Routes.ConnectedRoute;Length">1</mustDraw>
+          <instanceCount>-1</instanceCount>
+          <arrayInstances x="1" y="1" z="1" />
+          <arraySpacing x="0" y="0" z="0" />
+        </transform>
+        <textMesh fontName="HelveticaWorld_Regular" rescaleHeightOnTextOverflow="true">
+          <text formulae="&amp;StationSignage.Formulas.PlatformFormulas;GetPlatform/Game.Routes.ConnectedRoute;0.m_Waypoint/&amp;StationSignage.BridgeWE.WERouteFn;GetWaypointStaticDestinationName">Aspen Square dawd wadaw dwad aw</text>
+          <MaxWidthMeters>2.7</MaxWidthMeters>
+        </textMesh>
+        <defaultStyle decalFlags="32">
+          <color formulae="&amp;StationSignage.Formulas.PlatformFormulas;GetPlatform/&amp;StationSignage.Formulas.PlatformFormulas;GetFirstLineOrDefault/&amp;StationSignage.Formulas.LineEntityFormulas;GetLineColor/&amp;BelzontWE.Builtin.WEColorsFn;GetContrastColor">000000FF</color>
+          <emissiveColor>FFFFFFFF</emissiveColor>
+          <metallic>0</metallic>
+          <smoothness>0</smoothness>
+          <emissiveIntensity>0</emissiveIntensity>
+          <emissiveExposureWeight>0</emissiveExposureWeight>
+          <coatStrength>0</coatStrength>
+          <colorMask1>FFFFFF</colorMask1>
+          <colorMask2>FFFFFF</colorMask2>
+          <colorMask3>FFFFFF</colorMask3>
+        </defaultStyle>
+      </self>
+    </children>
   </children>
 </WELayout>

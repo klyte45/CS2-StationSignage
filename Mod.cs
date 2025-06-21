@@ -45,6 +45,7 @@ namespace StationSignage
             updateSystem.UpdateAfter<SS_VehiclePathWatchSystem>(SystemUpdatePhase.MainLoop);
             updateSystem.UpdateAfter<SS_PlatformMappingSystem>(SystemUpdatePhase.UIUpdate);
             updateSystem.UpdateAfter<SS_IncomingVehicleSystem>(SystemUpdatePhase.MainLoop);
+            updateSystem.UpdateAfter<SS_ApplyRouteWatchSystem>(SystemUpdatePhase.ApplyTool);
 
             GameManager.instance.RegisterUpdater(DoWhenLoaded);
         }

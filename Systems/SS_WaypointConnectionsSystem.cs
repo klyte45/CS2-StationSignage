@@ -26,6 +26,8 @@ namespace StationSignage.Systems
         private static SS_WaypointConnectionsSystem Instance;
         public static ushort ConnectionsVersion => Instance.modificationIdx;
 
+        internal void IncreaseVersion() => modificationIdx++;
+
         private const uint CURRENT_VERSION = 0;
         public void Deserialize<TReader>(TReader reader) where TReader : IReader
         {
