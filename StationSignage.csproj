@@ -13,6 +13,7 @@
 		<!--The file where mod information which is required for publishing mod on PDX mods are stored-->
 		<PublishConfigurationPath>Properties\PublishConfiguration.xml</PublishConfigurationPath>
 		<AdditionalFilesDirectory>Resources</AdditionalFilesDirectory>
+		<AllowUnsafeBlocks>true</AllowUnsafeBlocks>
 	</PropertyGroup>
   <Target Name="RunModPostProcessor" AfterTargets="AfterBuild" Condition="False" />
 

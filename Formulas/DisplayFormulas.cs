@@ -54,7 +54,7 @@ public class DisplayFormulas
         return channel switch
         {
             1 => WERouteFn.GetWaypointStaticDestinationName(PlatformFormulas.GetIncomingTrainDestinationForPlatform(PlatformFormulas.GetPlatform(_, vars))),
-            _ => GetWelcomeMessage(LinesSystem.Instance.EntityManager.GetComponentData<SS_PlatformData>(PlatformFormulas.GetPlatform(_, vars)).type)
+            _ => GetWelcomeMessage(SS_LineStatusSystem.Instance.EntityManager.GetComponentData<SS_PlatformData>(PlatformFormulas.GetPlatform(_, vars)).type)
         };
     }
 
@@ -83,8 +83,7 @@ public class DisplayFormulas
     public static string GetPlatformImage(Entity buildingRef, Dictionary<string, string> vars)
     {
         vars.TryGetValue("platform", out var platformStr);
-        int.TryParse(platformStr, out var idx);
-        return "Circle" + (idx + 1);
+        return "Circle" + platformStr;
     }
 
     public static string GetWelcomeMessage(TransportType lineType)

@@ -4,6 +4,7 @@ using Game.Common;
 using Game.Objects;
 using Game.Pathfind;
 using Game.Routes;
+using Game.SceneFlow;
 using Game.Tools;
 using StationSignage.BridgeWE;
 using StationSignage.Components;
@@ -18,9 +19,12 @@ namespace StationSignage.Systems
     {
         private ModificationBarrier1 m_ModificationBarrier1;
         private EntityQuery m_PathReadyQuery;
-        private EntityQuery m_unmappedStops;
+        private EntityQuery m_unmappedOrPreDirtyStops;
+        private EntityQuery m_dirtyRoutes;
         private EntityQuery m_dirtyStops;
         private ushort modificationIdx;
+        private static SS_WaypointConnectionsSystem Instance;
+        public static ushort ConnectionsVersion => Instance.modificationIdx;
 
         private const uint CURRENT_VERSION = 0;
         public void Deserialize<TReader>(TReader reader) where TReader : IReader
@@ -48,12 +52,13 @@ namespace StationSignage.Systems
 
         protected override void OnCreate()
         {
+            Instance = this;
             m_ModificationBarrier1 = World.GetExistingSystemManaged<ModificationBarrier1>();
             m_PathReadyQuery = GetEntityQuery([
                 ComponentType.ReadOnly<Event>(),
                 ComponentType.ReadOnly<PathUpdated>()
             ]);
-            m_unmappedStops = GetEntityQuery(new EntityQueryDesc[]
+            m_unmappedOrPreDirtyStops = GetEntityQuery(new EntityQueryDesc[]
             {
                 new()
                 {
@@ -63,7 +68,32 @@ namespace StationSignage.Systems
                     ],
                     None = [
                         ComponentType.ReadOnly<SS_WaypointDestinationConnections>(),
-                        ComponentType.ReadOnly<SS_WaypointDestinationConnectionsDirty>(),
+                        ComponentType.ReadOnly<SS_WaypointDestinationConnectionsToBeUpdated>(),
+                        ComponentType.ReadOnly<Temp>(),
+                        ComponentType.ReadOnly<Deleted>(),
+                    ]
+                },
+                new()
+                {
+                    All = [
+                        ComponentType.ReadOnly<Waypoint>(),
+                        ComponentType.ReadOnly<Connected>(),
+                        ComponentType.ReadOnly<SS_WaypointDestinationConnectionsDirtyPre>()
+                    ],
+                    None = [
+                        ComponentType.ReadOnly<Temp>(),
+                        ComponentType.ReadOnly<Deleted>(),
+                    ]
+                },
+            });
+            m_dirtyRoutes = GetEntityQuery(new EntityQueryDesc[] {
+                new()
+                {
+                    All = [
+                        ComponentType.ReadOnly<RouteWaypoint>(),
+                        ComponentType.ReadOnly<SS_WaypointDestinationConnectionsDirtyPre>()
+                    ],
+                    None = [
                         ComponentType.ReadOnly<Temp>(),
                         ComponentType.ReadOnly<Deleted>(),
                     ]
@@ -76,7 +106,7 @@ namespace StationSignage.Systems
                     All = [
                         ComponentType.ReadOnly<Waypoint>(),
                         ComponentType.ReadOnly<Connected>(),
-                        ComponentType.ReadOnly<SS_WaypointDestinationConnectionsDirty>(),
+                        ComponentType.ReadOnly<SS_WaypointDestinationConnectionsToBeUpdated>(),
                     ],
                     None = [
                         ComponentType.ReadOnly<Temp>(),
@@ -84,10 +114,11 @@ namespace StationSignage.Systems
                     ]
                 }
             });
-            RequireAnyForUpdate(m_dirtyStops, m_PathReadyQuery, m_unmappedStops);
+            RequireAnyForUpdate(m_dirtyStops, m_dirtyRoutes, m_PathReadyQuery, m_unmappedOrPreDirtyStops);
         }
         protected override void OnUpdate()
         {
+            if (GameManager.instance.isGameLoading) return;
             if (!m_PathReadyQuery.IsEmpty)
             {
                 new RouteModifiedJob
@@ -100,14 +131,25 @@ namespace StationSignage.Systems
                     frameRequest = ++modificationIdx
                 }.ScheduleParallel(m_PathReadyQuery, Dependency).Complete();
             }
-            if (!m_unmappedStops.IsEmpty)
+            if (!m_dirtyRoutes.IsEmpty)
+            {
+                new RouteConnectionModifiedJob
+                {
+                    m_entityTypeHandle = GetEntityTypeHandle(),
+                    m_routeLookup = GetComponentLookup<Route>(true),
+                    m_routeWaypointLookup = GetBufferLookup<RouteWaypoint>(true),
+                    m_cmdBuffer = m_ModificationBarrier1.CreateCommandBuffer().AsParallelWriter(),
+                    frameRequest = modificationIdx
+                }.ScheduleParallel(m_dirtyRoutes, Dependency).Complete();
+            }
+            if (!m_unmappedOrPreDirtyStops.IsEmpty)
             {
                 new UnmappedRouteWaypointsJob
                 {
                     entityTypeHandle = GetEntityTypeHandle(),
                     m_cmdBuffer = m_ModificationBarrier1.CreateCommandBuffer().AsParallelWriter(),
                     frameRequest = modificationIdx
-                }.ScheduleParallel(m_unmappedStops, Dependency).Complete();
+                }.ScheduleParallel(m_unmappedOrPreDirtyStops, Dependency).Complete();
             }
             if (!m_dirtyStops.IsEmpty)
             {
@@ -120,14 +162,16 @@ namespace StationSignage.Systems
                     m_routeWaypointLookup = GetBufferLookup<RouteWaypoint>(true),
                     m_connectedLookup = GetComponentLookup<Connected>(true),
                     m_connectedRouteLookup = GetBufferLookup<ConnectedRoute>(true),
-                    m_dirtyLookup = GetComponentLookup<SS_WaypointDestinationConnectionsDirty>(true),
+                    m_dirtyLookup = GetComponentLookup<SS_WaypointDestinationConnectionsToBeUpdated>(true),
                     m_attachedLookup = GetComponentLookup<Attached>(true),
                     m_waypointLookup = GetComponentLookup<Waypoint>(true),
-                    m_platformsLinkLookup = GetBufferLookup<SS_PlatformMappingLink>(true)
+                    m_platformsLinkLookup = GetBufferLookup<SS_PlatformMappingLink>(true),
+                    m_ConnectionsLookup = GetBufferLookup<SS_WaypointDestinationConnections>(true),
+                    m_statusesLookup = GetComponentLookup<SS_LineStatus>(true)
+
                 }.ScheduleParallel(m_dirtyStops, Dependency).Complete();
             }
         }
-
 
         private struct RouteModifiedJob : IJobChunk
         {
@@ -151,8 +195,8 @@ namespace StationSignage.Systems
                     {
                         for (int j = 0; j < waypoints.Length; j++)
                         {
-                            m_cmdBuffer.RemoveComponent<SS_WaypointDestinationConnectionsDirty>(unfilteredChunkIndex, waypoints[j].m_Waypoint);
-                            m_cmdBuffer.AddComponent(unfilteredChunkIndex, waypoints[j].m_Waypoint, new SS_WaypointDestinationConnectionsDirty
+                            m_cmdBuffer.RemoveComponent<SS_WaypointDestinationConnectionsToBeUpdated>(unfilteredChunkIndex, waypoints[j].m_Waypoint);
+                            m_cmdBuffer.AddComponent(unfilteredChunkIndex, waypoints[j].m_Waypoint, new SS_WaypointDestinationConnectionsToBeUpdated
                             {
                                 requestFrame = frameRequest,
                                 untilWaypoint = WERouteFn.GetWaypointStaticDestinationEntity(waypoints[j].m_Waypoint)
@@ -163,6 +207,40 @@ namespace StationSignage.Systems
             }
         }
 
+        private struct RouteConnectionModifiedJob : IJobChunk
+        {
+            public EntityTypeHandle m_entityTypeHandle;
+
+            public ComponentLookup<Route> m_routeLookup;
+            public BufferLookup<RouteWaypoint> m_routeWaypointLookup;
+
+            public EntityCommandBuffer.ParallelWriter m_cmdBuffer;
+            public uint frameRequest;
+
+            public void Execute(in ArchetypeChunk chunk, int unfilteredChunkIndex, bool useEnabledMask, in v128 chunkEnabledMask)
+            {
+
+                var entityArray = chunk.GetNativeArray(m_entityTypeHandle);
+
+                for (int i = 0; i < entityArray.Length; i++)
+                {
+                    var entity = entityArray[i];
+                    if (m_routeWaypointLookup.TryGetBuffer(entity, out var waypoints))
+                    {
+                        for (int j = 0; j < waypoints.Length; j++)
+                        {
+                            m_cmdBuffer.RemoveComponent<SS_WaypointDestinationConnectionsToBeUpdated>(unfilteredChunkIndex, waypoints[j].m_Waypoint);
+                            m_cmdBuffer.AddComponent(unfilteredChunkIndex, waypoints[j].m_Waypoint, new SS_WaypointDestinationConnectionsToBeUpdated
+                            {
+                                requestFrame = frameRequest,
+                                untilWaypoint = WERouteFn.GetWaypointStaticDestinationEntity(waypoints[j].m_Waypoint)
+                            });
+                        }
+                    }
+                    m_cmdBuffer.RemoveComponent<SS_WaypointDestinationConnectionsDirtyPre>(unfilteredChunkIndex, entity);
+                }
+            }
+        }
 
         private struct UnmappedRouteWaypointsJob : IJobChunk
         {
@@ -176,11 +254,13 @@ namespace StationSignage.Systems
                 for (int i = 0; i < entityArray.Length; i++)
                 {
                     var entity = entityArray[i];
-                    m_cmdBuffer.AddComponent(unfilteredChunkIndex, entity, new SS_WaypointDestinationConnectionsDirty
+                    m_cmdBuffer.RemoveComponent<SS_WaypointDestinationConnectionsToBeUpdated>(unfilteredChunkIndex, entity);
+                    m_cmdBuffer.AddComponent(unfilteredChunkIndex, entity, new SS_WaypointDestinationConnectionsToBeUpdated
                     {
                         requestFrame = frameRequest,
                         untilWaypoint = WERouteFn.GetWaypointStaticDestinationEntity(entity)
                     });
+                    m_cmdBuffer.RemoveComponent<SS_WaypointDestinationConnectionsDirtyPre>(unfilteredChunkIndex, entity);
                 }
             }
         }
@@ -196,13 +276,15 @@ namespace StationSignage.Systems
             public ComponentLookup<Waypoint> m_waypointLookup;
             public ComponentLookup<Connected> m_connectedLookup;
             public BufferLookup<ConnectedRoute> m_connectedRouteLookup;
-            public ComponentLookup<SS_WaypointDestinationConnectionsDirty> m_dirtyLookup;
+            public ComponentLookup<SS_WaypointDestinationConnectionsToBeUpdated> m_dirtyLookup;
+            public BufferLookup<SS_WaypointDestinationConnections> m_ConnectionsLookup;
             public BufferLookup<SS_PlatformMappingLink> m_platformsLinkLookup;
+            public ComponentLookup<SS_LineStatus> m_statusesLookup;
 
             public void Execute(in ArchetypeChunk chunk, int unfilteredChunkIndex, bool useEnabledMask, in v128 chunkEnabledMask)
             {
                 var entityArray = chunk.GetNativeArray(entityTypeHandle);
-                NativeHashSet<Entity> mappedLines = new(25, Allocator.Temp);
+                NativeHashMap<Entity, SS_WaypointDestinationConnections> mappedLines = new(25, Allocator.Temp);
                 try
                 {
                     for (int i = 0; i < entityArray.Length;)
@@ -211,9 +293,14 @@ namespace StationSignage.Systems
                         var dirtyParams = m_dirtyLookup[entity];
                         if (dirtyParams.requestFrame != frameRequest)
                         {
-                            m_cmdBuffer.RemoveComponent<SS_WaypointDestinationConnectionsDirty>(unfilteredChunkIndex, entity);
-                            m_cmdBuffer.RemoveComponent<SS_WaypointDestinationConnections>(unfilteredChunkIndex, entity);
-                            continue;
+                            m_cmdBuffer.RemoveComponent<SS_WaypointDestinationConnectionsToBeUpdated>(unfilteredChunkIndex, entity);
+                            m_cmdBuffer.AddComponent<SS_WaypointDestinationConnectionsDirtyPre>(unfilteredChunkIndex, entity);
+                            goto continueMainLoop;
+                        }
+                        if (m_ConnectionsLookup.TryGetBuffer(entity, out var connections) && connections.Length > 0 && connections[0].requestFrame == frameRequest)
+                        {
+                            m_cmdBuffer.RemoveComponent<SS_WaypointDestinationConnectionsToBeUpdated>(unfilteredChunkIndex, entity);
+                            goto continueMainLoop;
                         }
                         if (m_ownerLookup.TryGetComponent(entity, out var owner) &&
                             m_routeWaypointLookup.TryGetBuffer(owner.m_Owner, out var waypoints))
@@ -233,7 +320,7 @@ namespace StationSignage.Systems
                                     {
                                         var buffer = m_cmdBuffer.AddBuffer<SS_WaypointDestinationConnections>(unfilteredChunkIndex, entity);
                                         buffer.Clear();
-                                        m_cmdBuffer.RemoveComponent<SS_WaypointDestinationConnectionsDirty>(unfilteredChunkIndex, entity);
+                                        m_cmdBuffer.RemoveComponent<SS_WaypointDestinationConnectionsToBeUpdated>(unfilteredChunkIndex, entity);
                                         goto continueMainLoop;
                                     }
                                     var buildingEntity = EntityUtils.FindTopOwnership(connectedPlatform.m_Connected, ref m_ownerLookup, ref m_attachedLookup);
@@ -242,31 +329,31 @@ namespace StationSignage.Systems
                                         for (int l = 0; l < platformLinks.Length; l++)
                                         {
                                             var refPlatform = platformLinks[l].platformData;
-                                            IterateConnectedRoutes(ref mappedLines, lineOwner, refPlatform);
+                                            IterateConnectedRoutes(ref mappedLines, ref m_statusesLookup, lineOwner, refPlatform);
+                                            m_cmdBuffer.AddComponent<SS_PlatformConnectionsUpdated>(unfilteredChunkIndex, refPlatform);
                                         }
                                     }
                                     else
                                     {
-                                        if (!IterateConnectedRoutes(ref mappedLines, lineOwner, buildingEntity))
+                                        if (!IterateConnectedRoutes(ref mappedLines, ref m_statusesLookup, lineOwner, buildingEntity))
                                         {
                                             goto continueMainLoop;
                                         }
+                                        m_cmdBuffer.AddComponent<SS_PlatformConnectionsUpdated>(unfilteredChunkIndex, buildingEntity);
                                     }
                                 }
                             }
                             {
                                 var buffer = m_cmdBuffer.AddBuffer<SS_WaypointDestinationConnections>(unfilteredChunkIndex, entity);
                                 buffer.Clear();
-                                using var finalConnections = mappedLines.ToNativeArray(Allocator.Temp);
+                                using var finalConnections = mappedLines.GetKeyArray(Allocator.Temp);
                                 for (int k = 0; k < finalConnections.Length; k++)
                                 {
-                                    buffer.Add(new SS_WaypointDestinationConnections
-                                    {
-                                        line = finalConnections[k],
-                                        requestFrame = frameRequest,
-                                    });
+                                    var value = mappedLines[finalConnections[k]];
+                                    value.requestFrame = frameRequest;
+                                    buffer.Add(value);
                                 }
-                                m_cmdBuffer.RemoveComponent<SS_WaypointDestinationConnectionsDirty>(unfilteredChunkIndex, entity);
+                                m_cmdBuffer.RemoveComponent<SS_WaypointDestinationConnectionsToBeUpdated>(unfilteredChunkIndex, entity);
                             }
                         }
                     continueMainLoop:
@@ -280,16 +367,24 @@ namespace StationSignage.Systems
 
             }
 
-            private bool IterateConnectedRoutes(ref NativeHashSet<Entity> mappedLines, Entity lineOwner, Entity refPlatform)
+            private bool IterateConnectedRoutes(ref NativeHashMap<Entity, SS_WaypointDestinationConnections> mappedLines, ref ComponentLookup<SS_LineStatus> statusLookup, Entity lineOwner, Entity refPlatform)
             {
                 if (m_connectedRouteLookup.TryGetBuffer(refPlatform, out var connectedRoutes))
                 {
                     for (int m = 0; m < connectedRoutes.Length; m++)
                     {
                         if (m_ownerLookup.TryGetComponent(connectedRoutes[m].m_Waypoint, out var ownerLineConnected)
-                            && ownerLineConnected.m_Owner != lineOwner)
+                            && ownerLineConnected.m_Owner != lineOwner
+                            && !mappedLines.ContainsKey(ownerLineConnected.m_Owner))
                         {
-                            mappedLines.Add(ownerLineConnected.m_Owner);
+                            statusLookup.TryGetComponent(ownerLineConnected.m_Owner, out var status);
+                            mappedLines[ownerLineConnected.m_Owner] = new()
+                            {
+                                isCargo = status.isCargo,
+                                isPassenger = status.isPassenger,
+                                TransportType = status.type,
+                                line = ownerLineConnected.m_Owner
+                            };
                         }
                     }
                     return true;

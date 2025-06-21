@@ -2,7 +2,6 @@
 using Game.Pathfind;
 using Game.Routes;
 using StationSignage.Components;
-using System;
 using Unity.Burst.Intrinsics;
 using Unity.Entities;
 
@@ -12,6 +11,21 @@ namespace StationSignage.Systems
     {
         private EntityQuery m_PathReadyQuery;
         private ModificationBarrier1 m_ModificationBarrier1;
+        protected override void OnCreate()
+        {
+            m_ModificationBarrier1 = World.GetExistingSystemManaged<ModificationBarrier1>();
+            m_PathReadyQuery = GetEntityQuery(new EntityQueryDesc[] {
+             new(){
+                 All =[
+                     ComponentType.ReadOnly<Event>()
+                 ],
+                 Any =[
+                    ComponentType.ReadOnly<PathUpdated>(),
+                    ComponentType.ReadOnly<PathTargetMoved>(),
+                ]
+            }
+            });
+        }
 
         protected override void OnUpdate()
         {
@@ -22,40 +36,53 @@ namespace StationSignage.Systems
 
             new RoutePathReadyJob
             {
-                m_PathUpdatedType = GetComponentTypeHandle<PathUpdated>(true),
                 m_OwnerLookup = GetComponentLookup<Owner>(true),
                 m_routeLookup = GetComponentLookup<Route>(true),
                 m_cmdBuffer = m_ModificationBarrier1.CreateCommandBuffer().AsParallelWriter(),
+                m_connectedLookup = GetComponentLookup<Connected>(true),
+                m_entityTypeHandle = GetEntityTypeHandle(),
+                m_PathUpdatedLookup = GetComponentLookup<PathUpdated>(true),
+                m_PathTargetMovedLookup = GetComponentLookup<PathTargetMoved>(true)
             }.ScheduleParallel(m_PathReadyQuery, Dependency).Complete();
-        }
-
-        protected override void OnCreate()
-        {
-            m_ModificationBarrier1 = World.GetExistingSystemManaged<ModificationBarrier1>();
-            m_PathReadyQuery = GetEntityQuery([
-                ComponentType.ReadOnly<Event>(),
-                ComponentType.ReadOnly<PathUpdated>()
-            ]);
         }
 
         private struct RoutePathReadyJob : IJobChunk
         {
-            public ComponentTypeHandle<PathUpdated> m_PathUpdatedType;
+            public EntityTypeHandle m_entityTypeHandle;
+            public ComponentLookup<PathUpdated> m_PathUpdatedLookup;
+            public ComponentLookup<PathTargetMoved> m_PathTargetMovedLookup;
             public ComponentLookup<Owner> m_OwnerLookup;
             public ComponentLookup<Route> m_routeLookup;
+            public ComponentLookup<Connected> m_connectedLookup;
 
             public EntityCommandBuffer.ParallelWriter m_cmdBuffer;
 
             public void Execute(in ArchetypeChunk chunk, int unfilteredChunkIndex, bool useEnabledMask, in v128 chunkEnabledMask)
             {
 
-                var pathUpdatedArray = chunk.GetNativeArray(ref m_PathUpdatedType);
-                for (int i = 0; i < pathUpdatedArray.Length; i++)
+                var entities = chunk.GetNativeArray(m_entityTypeHandle);
+                for (int i = 0; i < entities.Length; i++)
                 {
-                    PathUpdated pathUpdated = pathUpdatedArray[i];
-                    if (m_OwnerLookup.TryGetComponent(pathUpdated.m_Owner, out var owner) && m_routeLookup.HasComponent(owner.m_Owner))
+                    var entity = entities[i];
+                    if (m_PathUpdatedLookup.TryGetComponent(entity, out var pathUpdated)
+                        && m_OwnerLookup.TryGetComponent(pathUpdated.m_Owner, out var owner)
+                        && m_routeLookup.HasComponent(owner.m_Owner))
                     {
                         m_cmdBuffer.AddComponent<SS_DirtyTransportLine>(unfilteredChunkIndex, owner.m_Owner);
+                        if (m_connectedLookup.TryGetComponent(pathUpdated.m_Owner, out var connected))
+                        {
+                            m_cmdBuffer.AddComponent<SS_PlatformConnectionsUpdated>(unfilteredChunkIndex, connected.m_Connected);
+                        }
+                    }
+                    if (m_PathTargetMovedLookup.TryGetComponent(entity, out var pathMoved)
+                        && m_OwnerLookup.TryGetComponent(pathMoved.m_Target, out owner)
+                        && m_routeLookup.HasComponent(owner.m_Owner))
+                    {
+                        m_cmdBuffer.AddComponent<SS_DirtyTransportLine>(unfilteredChunkIndex, owner.m_Owner);
+                        if (m_connectedLookup.TryGetComponent(pathMoved.m_Target, out var connected))
+                        {
+                            m_cmdBuffer.AddComponent<SS_PlatformConnectionsUpdated>(unfilteredChunkIndex, connected.m_Connected);
+                        }
                     }
                 }
             }

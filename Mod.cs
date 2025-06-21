@@ -39,9 +39,7 @@ namespace StationSignage
             GameManager.instance.localizationManager.AddSource("en-US", new LocaleEn(m_Setting));
             AssetDatabase.global.LoadSettings(nameof(StationSignage), m_Setting, new Settings(this));
             
-            updateSystem.UpdateAt<LinesSystem>(SystemUpdatePhase.UIUpdate);
-            updateSystem.UpdateAt<TransportUtilitySystem>(SystemUpdatePhase.GameSimulation);
-
+            updateSystem.UpdateAt<SS_LineStatusSystem>(SystemUpdatePhase.UIUpdate);
             updateSystem.UpdateAt<SS_RoutePathWatchSystem>(SystemUpdatePhase.Modification1);
             updateSystem.UpdateAt<SS_WaypointConnectionsSystem>(SystemUpdatePhase.Modification1);
             updateSystem.UpdateAfter<SS_VehiclePathWatchSystem>(SystemUpdatePhase.MainLoop);

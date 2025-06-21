@@ -1,11 +1,14 @@
-﻿using Colossal;
-using Colossal.Entities;
-using Game.Buildings;
+﻿using Colossal.Entities;
 using Game.Common;
 using Game.Pathfind;
 using Game.Routes;
 using StationSignage.Components;
+using StationSignage.Enums;
+using StationSignage.Systems;
+using StationSignage.Utils;
+using System;
 using System.Collections.Generic;
+using System.Linq;
 using Unity.Entities;
 
 namespace StationSignage.Formulas
@@ -29,6 +32,7 @@ namespace StationSignage.Formulas
         public static Entity GetPlatform(Entity building, Dictionary<string, string> vars)
         {
             if (EntityManager.HasComponent<SS_PlatformData>(building)) return building;
+            building = EntityUtils.FindTopOwnership(building, EntityManager);
             if (vars.TryGetValue(LinesFormulas.PLATFORM_VAR, out var platformStr) && byte.TryParse(platformStr, out var platform))
             {
 
@@ -46,21 +50,14 @@ namespace StationSignage.Formulas
             {
                 if (buffer.nextVehicle0 != Entity.Null)
                 {
-                    return EntityManager.TryGetComponent<PathInformation>(buffer.nextVehicle0, out var pathInfo) 
+                    return EntityManager.TryGetComponent<PathInformation>(buffer.nextVehicle0, out var pathInfo)
                         ? pathInfo.m_Destination
                         : default;
-                }                
+                }
             }
             return EntityManager.TryGetBuffer<ConnectedRoute>(platform, true, out var connectedRoutes) && connectedRoutes.Length > 0
                 ? connectedRoutes[0].m_Waypoint
                 : Entity.Null;
-        }
-
-        public static UnityEngine.Color GetLineColorOrDefault(Entity transportLine)
-        {
-            return EntityManager.TryGetComponent<Color>(transportLine,  out var colorData)
-                ? colorData.m_Color
-                : UnityEngine.Color.white;
         }
 
         public static Entity GetFirstLineOrDefault(Entity platformStop)
@@ -69,6 +66,52 @@ namespace StationSignage.Formulas
                 ? EntityManager.GetComponentData<Owner>(buffer[0].m_Waypoint).m_Owner
                 : Entity.Null;
         }
+
+        public static SS_WaypointDestinationConnections GetDestinationByIdx(Entity platformStop, Dictionary<string, string> vars)
+        {
+            return vars.TryGetValue(LinesFormulas.CURRENT_INDEX_VAR, out var idxStr) && byte.TryParse(idxStr, out var idx)
+                ? GetPlatformConnections(platformStop, vars).ElementAtOrDefault(idx)
+                : default;
+        }
+
+        public static List<SS_WaypointDestinationConnections> GetPlatformConnections(Entity platformStop, Dictionary<string, string> vars)
+        {
+            if (SS_WaypointConnectionsSystem.ConnectionsVersion != connectionsVersionCache)
+            {
+                _cachedConnections.Clear();
+                connectionsVersionCache = SS_WaypointConnectionsSystem.ConnectionsVersion;
+            }
+            TransportTypeByImportance lowestPriority = TransportTypeByImportance.LessPrioritary;
+            TransportTypeByImportance highestPriority = TransportTypeByImportance.MostPrioritary;
+            if (vars.TryGetValue("lowPr", out var filterStr) && Enum.TryParse<TransportTypeByImportance>(filterStr, out var parsedVal))
+            {
+                lowestPriority = parsedVal;
+            }
+            if (vars.TryGetValue("highPr", out filterStr) && Enum.TryParse<TransportTypeByImportance>(filterStr, out parsedVal))
+            {
+                highestPriority = parsedVal;
+            }
+            if (lowestPriority < highestPriority) (lowestPriority, highestPriority) = (highestPriority, lowestPriority);
+            if (!_cachedConnections.TryGetValue((platformStop, lowestPriority, highestPriority), out var connections))
+            {
+                EntityManager.TryGetBuffer<SS_WaypointDestinationConnections>(platformStop, true, out var connectionsBuffer);
+                connections = [];
+                for (int i = 0; i < connectionsBuffer.Length; i++)
+                {
+                    var connection = connectionsBuffer[i];
+                    if (connection.Importance <= lowestPriority && connection.Importance >= highestPriority)
+                    {
+                        connections.Add(connection);
+                    }
+                }
+                _cachedConnections[(platformStop, lowestPriority, highestPriority)] = connections;
+            }
+            return connections;
+        }
+
+        private static Dictionary<(Entity platform, TransportTypeByImportance low, TransportTypeByImportance high), List<SS_WaypointDestinationConnections>> _cachedConnections = [];
+        private static uint connectionsVersionCache = 0;
+
 
         public static ServiceOperator GetFirstLineOperatorOrDefault(Entity platformStop)
         {
