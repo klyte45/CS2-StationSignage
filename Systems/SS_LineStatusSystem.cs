@@ -9,6 +9,7 @@ using Game.Vehicles;
 using StationSignage.Components;
 using System.Collections.Generic;
 using System.Linq;
+using Unity.Burst;
 using Unity.Burst.Intrinsics;
 using Unity.Collections;
 using Unity.Entities;
@@ -146,7 +147,7 @@ namespace StationSignage.Systems
             public SS_LineStatus status;
             public RouteNumber route;
         }
-
+        [BurstCompile]
         private struct LineStatusGetJob : IJobChunk
         {
             public NativeList<LineStatusGetJobResponseItem>.ParallelWriter response;
@@ -181,7 +182,7 @@ namespace StationSignage.Systems
                 }
             }
         }
-
+        [BurstCompile]
         private struct LineStatusUpdateJob : IJobChunk
         {
             public EntityTypeHandle entityType;

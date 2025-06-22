@@ -10,6 +10,7 @@ using StationSignage.Components;
 using StationSignage.Systems;
 using System;
 using System.Collections.Generic;
+using Unity.Burst;
 using Unity.Burst.Intrinsics;
 using Unity.Entities;
 using Unity.Mathematics;
@@ -148,7 +149,7 @@ namespace StationSignage.Formulas
             ClosedPlatform
         }
 
-
+        [BurstCompile]
         private struct VehicleTvDataUpdater : IJobChunk
         {
             public EntityTypeHandle entityType;

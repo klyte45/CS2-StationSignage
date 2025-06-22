@@ -196,7 +196,7 @@ public partial class SS_PlatformMappingSystem : SystemBase
     }
 
 
-
+    [BurstCompile]
     private struct ConnectionsSortingJob : IJobChunk
     {
         public EntityTypeHandle m_EntityType;
@@ -273,6 +273,21 @@ public partial class SS_PlatformMappingSystem : SystemBase
 
             public bool Equals(WaypointDestinationSortable other) => CompareTo(other) == 0;
 
+            public override int GetHashCode()
+            {
+                return HashCode.Combine(AsULong);
+            }
+
+            public static bool operator ==(WaypointDestinationSortable left, WaypointDestinationSortable right)
+            {
+                return left.Equals(right);
+            }
+
+            public static bool operator !=(WaypointDestinationSortable left, WaypointDestinationSortable right)
+            {
+                return !(left == right);
+            }
+
             public static bool operator <(WaypointDestinationSortable left, WaypointDestinationSortable right)
             {
                 return left.CompareTo(right) < 0;
@@ -314,12 +329,23 @@ public partial class SS_PlatformMappingSystem : SystemBase
         public readonly Entity target = target;
         public readonly SS_PlatformMappingLink route = route;
 
-        public override bool Equals(object obj) => obj is PairEntityRoute route && Equals(route);
+        public bool Equals(PairEntityRoute other) => target == other.target &&
+                   route.platformData == other.route.platformData;
 
-        public bool Equals(PairEntityRoute other) => target.Equals(other.target) &&
-                   route.Equals(other.route);
-
-        public override int GetHashCode() => HashCode.Combine(target, route);
+#pragma warning disable IDE0070 // Use 'System.HashCode'
+        public override int GetHashCode()
+#pragma warning restore IDE0070 // Use 'System.HashCode'
+        {
+            unchecked
+            {
+                int hashCode = 17;
+                hashCode = (hashCode * 23) + target.Index;
+                hashCode = (hashCode * 23) + target.Version;
+                hashCode = (hashCode * 23) + route.platformData.Index;
+                hashCode = (hashCode * 23) + route.platformData.Version;
+                return hashCode;
+            }
+        }
 
         public static bool operator ==(PairEntityRoute left, PairEntityRoute right) => left.Equals(right);
 

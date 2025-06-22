@@ -15,7 +15,7 @@
 		<AdditionalFilesDirectory>Resources</AdditionalFilesDirectory>
 		<AllowUnsafeBlocks>true</AllowUnsafeBlocks>
 	</PropertyGroup>
-  <Target Name="RunModPostProcessor" AfterTargets="AfterBuild" Condition="False" />
+  <!--<Target Name="RunModPostProcessor" AfterTargets="AfterBuild" Condition="False" />-->
 
 	<ItemGroup>
 		<Reference Include="Game">

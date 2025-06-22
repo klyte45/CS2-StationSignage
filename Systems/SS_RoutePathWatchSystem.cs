@@ -2,6 +2,7 @@
 using Game.Pathfind;
 using Game.Routes;
 using StationSignage.Components;
+using Unity.Burst;
 using Unity.Burst.Intrinsics;
 using Unity.Entities;
 
@@ -45,7 +46,7 @@ namespace StationSignage.Systems
                 m_PathTargetMovedLookup = GetComponentLookup<PathTargetMoved>(true)
             }.ScheduleParallel(m_PathReadyQuery, Dependency).Complete();
         }
-
+        [BurstCompile]
         private struct RoutePathReadyJob : IJobChunk
         {
             public EntityTypeHandle m_entityTypeHandle;

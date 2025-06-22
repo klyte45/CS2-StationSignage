@@ -9,6 +9,7 @@ using Game.Tools;
 using StationSignage.BridgeWE;
 using StationSignage.Components;
 using StationSignage.Utils;
+using Unity.Burst;
 using Unity.Burst.Intrinsics;
 using Unity.Collections;
 using Unity.Entities;
@@ -174,7 +175,7 @@ namespace StationSignage.Systems
                 }.ScheduleParallel(m_dirtyStops, Dependency).Complete();
             }
         }
-
+        [BurstCompile]
         private struct RouteModifiedJob : IJobChunk
         {
             public ComponentTypeHandle<PathUpdated> m_PathUpdatedType;
@@ -208,7 +209,7 @@ namespace StationSignage.Systems
                 }
             }
         }
-
+        [BurstCompile]
         private struct RouteConnectionModifiedJob : IJobChunk
         {
             public EntityTypeHandle m_entityTypeHandle;
@@ -243,7 +244,7 @@ namespace StationSignage.Systems
                 }
             }
         }
-
+        [BurstCompile]
         private struct UnmappedRouteWaypointsJob : IJobChunk
         {
             public EntityTypeHandle entityTypeHandle;
@@ -266,7 +267,7 @@ namespace StationSignage.Systems
                 }
             }
         }
-
+        [BurstCompile]
         private struct DirtyRouteWaypointUpdate : IJobChunk
         {
             public EntityTypeHandle entityTypeHandle;

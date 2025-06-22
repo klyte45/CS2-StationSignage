@@ -9,6 +9,7 @@ using Game.Vehicles;
 using HarmonyLib;
 using StationSignage.Components;
 using System;
+using Unity.Burst;
 using Unity.Burst.Intrinsics;
 using Unity.Collections;
 using Unity.Entities;
@@ -125,7 +126,7 @@ namespace StationSignage.Systems
                 }
             }
         }
-
+        [BurstCompile]
         private struct VehiclePathChangedJob : IJobChunk
         {
             public EntityTypeHandle m_entityType;
@@ -169,7 +170,7 @@ namespace StationSignage.Systems
                 }
             }
         }
-
+        [BurstCompile]
         private struct EmptyPlatformInfoFillerJob : IJobChunk
         {
             public EntityTypeHandle m_entityType;
