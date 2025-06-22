@@ -175,7 +175,7 @@ namespace StationSignage.Systems
                 }.ScheduleParallel(m_dirtyStops, Dependency).Complete();
             }
         }
-        [BurstCompile]
+        //Can't be bursted: Harmony patching needed to work
         private struct RouteModifiedJob : IJobChunk
         {
             public ComponentTypeHandle<PathUpdated> m_PathUpdatedType;
@@ -209,7 +209,7 @@ namespace StationSignage.Systems
                 }
             }
         }
-        [BurstCompile]
+        //Can't be bursted: Harmony patching needed to work
         private struct RouteConnectionModifiedJob : IJobChunk
         {
             public EntityTypeHandle m_entityTypeHandle;
@@ -244,7 +244,7 @@ namespace StationSignage.Systems
                 }
             }
         }
-        [BurstCompile]
+//Can't be bursted: Harmony patching needed to work
         private struct UnmappedRouteWaypointsJob : IJobChunk
         {
             public EntityTypeHandle entityTypeHandle;
