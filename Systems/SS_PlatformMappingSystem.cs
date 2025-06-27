@@ -24,6 +24,7 @@ public partial class SS_PlatformMappingSystem : SystemBase
 
     private EntityQuery m_connectableRoutesNotMapped;
     private EntityQuery m_connectionsUpdatedPlatforms;
+    private EntityQuery m_resetWaypointsQuery;
     private EndFrameBarrier m_endFrameBarrier;
     public static uint CacheVersion { get; private set; }
     private byte dirtyCooldown = 0;
@@ -105,13 +106,31 @@ public partial class SS_PlatformMappingSystem : SystemBase
                     ]
                 },
         });
+
+        m_resetWaypointsQuery = GetEntityQuery([
+            new EntityQueryDesc
+            {
+                All = [ComponentType.ReadOnly<SS_WaypointDestinationConnections>()]
+            }
+        ]);
     }
+    public void MarkToResetWaypointsDestinations()
+    {
+        shallReset = true;
+    }
+
+    private bool shallReset;
     protected override void OnUpdate()
     {
         if (GameManager.instance.isGameLoading) return;
         if (--dirtyCooldown == 1)
         {
             CacheVersion++;
+        }
+        if (shallReset)
+        {
+            m_endFrameBarrier.CreateCommandBuffer().RemoveComponent<SS_WaypointDestinationConnections>(m_resetWaypointsQuery, EntityQueryCaptureMode.AtPlayback); 
+            shallReset = false;
         }
         if (!m_connectableRoutesNotMapped.IsEmptyIgnoreFilter)
         {
