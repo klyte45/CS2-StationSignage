@@ -35,7 +35,7 @@
         <arraySpacing x="0" y="0" z="0" />
       </transform>
       <whiteMesh />
-      <decalStyle affectSmoothness="false" affectAO="false" affectEmission="false" drawOrder="0">
+      <decalStyle affectSmoothness="false" affectEmission="false" drawOrder="0">
         <color formulae="&amp;StationSignage.Formulas.PlatformFormulas;GetPlatform/&amp;StationSignage.Formulas.PlatformFormulas;GetFirstLineOrDefault/&amp;StationSignage.Formulas.LineEntityFormulas;GetLineColor/&amp;BelzontWE.Builtin.WEColorsFn;GetContrastColor">000000FF</color>
         <metallic>0</metallic>
         <smoothness>0</smoothness>
@@ -47,7 +47,7 @@
       <transform alignment="Left" arrayAxisOrder="XYZ">
         <offsetPosition x="0" y="-0.37" z="0" />
         <offsetRotation x="-0" y="0" z="0" />
-        <scale x="0.112187505" y="0.112187505" z="1" />
+        <scale x="0.112187505" y="0.112187505" z="0.01" />
         <mustDraw>1</mustDraw>
         <instanceCount>-1</instanceCount>
         <arrayInstances x="1" y="1" z="1" />
@@ -55,20 +55,13 @@
       </transform>
       <textMesh fontName="HelveticaWorld_Regular">
         <text formulae="&amp;StationSignage.Formulas.PlatformFormulas;GetPlatform/&amp;StationSignage.Formulas.PlatformFormulas;GetFirstLineOrDefault/&amp;StationSignage.Formulas.LineEntityFormulas;GetLineName">Subway Line 6</text>
-        <MaxWidthMeters>0</MaxWidthMeters>
+        <MaxWidthMeters>2.5</MaxWidthMeters>
       </textMesh>
-      <defaultStyle decalFlags="32">
+      <decalStyle affectSmoothness="false" affectEmission="false" drawOrder="0">
         <color formulae="&amp;StationSignage.Formulas.PlatformFormulas;GetPlatform/&amp;StationSignage.Formulas.PlatformFormulas;GetFirstLineOrDefault/&amp;StationSignage.Formulas.LineEntityFormulas;GetLineColor/&amp;BelzontWE.Builtin.WEColorsFn;GetContrastColor">000000FF</color>
-        <emissiveColor>FFFFFFFF</emissiveColor>
         <metallic>0</metallic>
         <smoothness>0</smoothness>
-        <emissiveIntensity>0</emissiveIntensity>
-        <emissiveExposureWeight>0</emissiveExposureWeight>
-        <coatStrength>0</coatStrength>
-        <colorMask1>FFFFFF</colorMask1>
-        <colorMask2>FFFFFF</colorMask2>
-        <colorMask3>FFFFFF</colorMask3>
-      </defaultStyle>
+      </decalStyle>
     </self>
   </children>
   <children>
@@ -102,7 +95,7 @@
         <imageMesh atlas="StationSignage:StationIcons">
           <image formulae="&amp;StationSignage.Formulas.DisplayFormulas;GetPlatformImage">Circle1</image>
         </imageMesh>
-        <decalStyle affectSmoothness="false" affectAO="false" affectEmission="false" drawOrder="0">
+        <decalStyle affectSmoothness="false" affectEmission="false" drawOrder="0">
           <color formulae="&amp;StationSignage.Formulas.PlatformFormulas;GetPlatform/&amp;StationSignage.Formulas.PlatformFormulas;GetFirstLineOrDefault/&amp;StationSignage.Formulas.LineEntityFormulas;GetLineColor/&amp;BelzontWE.Builtin.WEColorsFn;GetContrastColor">000000FF</color>
           <metallic>0</metallic>
           <smoothness>0</smoothness>
@@ -114,7 +107,7 @@
         <transform pivot="MiddleRight" alignment="Left" arrayAxisOrder="XYZ">
           <offsetPosition x="-1.19700027" y="0" z="0" />
           <offsetRotation x="-0" y="0" z="0" />
-          <scale x="0.1" y="0.1" z="1" />
+          <scale x="0.1" y="0.1" z="0.01" />
           <mustDraw>1</mustDraw>
           <instanceCount>-1</instanceCount>
           <arrayInstances x="1" y="1" z="1" />
@@ -124,18 +117,11 @@
           <text formulae="&amp;StationSignage.Formulas.DisplayFormulas;GetName">Platform</text>
           <MaxWidthMeters>0.9</MaxWidthMeters>
         </textMesh>
-        <defaultStyle decalFlags="32">
+        <decalStyle decalFlags="40" affectSmoothness="false" affectEmission="false" drawOrder="0">
           <color formulae="&amp;StationSignage.Formulas.PlatformFormulas;GetPlatform/&amp;StationSignage.Formulas.PlatformFormulas;GetFirstLineOrDefault/&amp;StationSignage.Formulas.LineEntityFormulas;GetLineColor/&amp;BelzontWE.Builtin.WEColorsFn;GetContrastColor">000000FF</color>
-          <emissiveColor>FFFFFFFF</emissiveColor>
           <metallic>0</metallic>
           <smoothness>0</smoothness>
-          <emissiveIntensity>0</emissiveIntensity>
-          <emissiveExposureWeight>0</emissiveExposureWeight>
-          <coatStrength>0</coatStrength>
-          <colorMask1>FFFFFF</colorMask1>
-          <colorMask2>FFFFFF</colorMask2>
-          <colorMask3>FFFFFF</colorMask3>
-        </defaultStyle>
+        </decalStyle>
       </self>
       <variable key="strKey" value="Platform" />
     </children>
@@ -144,7 +130,7 @@
         <transform pivot="MiddleLeft" alignment="Left" arrayAxisOrder="XYZ">
           <offsetPosition x="1.4" y="0" z="0" />
           <offsetRotation x="-0" y="0" z="0" />
-          <scale x="0.1" y="0.1" z="1" />
+          <scale x="0.1" y="0.1" z="0.01" />
           <mustDraw>1</mustDraw>
           <instanceCount>-1</instanceCount>
           <arrayInstances x="1" y="1" z="1" />
@@ -154,18 +140,11 @@
           <text formulae="&amp;StationSignage.Formulas.DisplayFormulas;GetName">Trains To</text>
           <MaxWidthMeters>2.05</MaxWidthMeters>
         </textMesh>
-        <defaultStyle decalFlags="32">
+        <decalStyle decalFlags="40" affectSmoothness="false" affectEmission="false" drawOrder="0">
           <color formulae="&amp;StationSignage.Formulas.PlatformFormulas;GetPlatform/&amp;StationSignage.Formulas.PlatformFormulas;GetFirstLineOrDefault/&amp;StationSignage.Formulas.LineEntityFormulas;GetLineColor/&amp;BelzontWE.Builtin.WEColorsFn;GetContrastColor">000000FF</color>
-          <emissiveColor>FFFFFFFF</emissiveColor>
           <metallic>0</metallic>
           <smoothness>0</smoothness>
-          <emissiveIntensity>0</emissiveIntensity>
-          <emissiveExposureWeight>0</emissiveExposureWeight>
-          <coatStrength>0</coatStrength>
-          <colorMask1>FFFFFF</colorMask1>
-          <colorMask2>FFFFFF</colorMask2>
-          <colorMask3>FFFFFF</colorMask3>
-        </defaultStyle>
+        </decalStyle>
       </self>
       <variable key="strKey" value="TrainsTo" />
     </children>
@@ -188,7 +167,7 @@
         <transform pivot="MiddleLeft" alignment="Left" arrayAxisOrder="XYZ">
           <offsetPosition x="1.4" y="-0.15" z="0" />
           <offsetRotation x="-0" y="0" z="0" />
-          <scale x="0.07" y="0.07" z="1" />
+          <scale x="0.07" y="0.07" z="0.01" />
           <mustDraw formulae="&amp;StationSignage.Formulas.PlatformFormulas;GetPlatform/&amp;StationSignage.Formulas.PlatformFormulas;GetPlatformConnections.Count.&gt;0">1</mustDraw>
           <instanceCount>-1</instanceCount>
           <arrayInstances x="1" y="1" z="1" />
@@ -198,18 +177,11 @@
           <text formulae="&amp;StationSignage.Formulas.DisplayFormulas;GetName">Platform</text>
           <MaxWidthMeters>0.4</MaxWidthMeters>
         </textMesh>
-        <defaultStyle decalFlags="32">
+        <decalStyle decalFlags="40" affectSmoothness="false" affectEmission="false" drawOrder="0">
           <color formulae="&amp;StationSignage.Formulas.PlatformFormulas;GetPlatform/&amp;StationSignage.Formulas.PlatformFormulas;GetFirstLineOrDefault/&amp;StationSignage.Formulas.LineEntityFormulas;GetLineColor/&amp;BelzontWE.Builtin.WEColorsFn;GetContrastColor">000000FF</color>
-          <emissiveColor>FFFFFFFF</emissiveColor>
           <metallic>0</metallic>
           <smoothness>0</smoothness>
-          <emissiveIntensity>0</emissiveIntensity>
-          <emissiveExposureWeight>0</emissiveExposureWeight>
-          <coatStrength>0</coatStrength>
-          <colorMask1>FFFFFF</colorMask1>
-          <colorMask2>FFFFFF</colorMask2>
-          <colorMask3>FFFFFF</colorMask3>
-        </defaultStyle>
+        </decalStyle>
       </self>
       <variable key="strKey" value="Connections" />
     </children>
@@ -234,28 +206,21 @@
         <transform pivot="MiddleLeft" alignment="Left" useFormulaeToCheckIfDraw="true" arrayAxisOrder="XYZ">
           <offsetPosition x="1.35" y="0.13" z="0" />
           <offsetRotation x="-0" y="0" z="0" />
-          <scale x="0.21" y="0.21" z="1" />
+          <scale x="0.21" y="0.21" z="0.01" />
           <mustDraw formulae="&amp;StationSignage.Formulas.PlatformFormulas;GetPlatform/Game.Routes.ConnectedRoute;Length">1</mustDraw>
           <instanceCount>-1</instanceCount>
           <arrayInstances x="1" y="1" z="1" />
           <arraySpacing x="0" y="0" z="0" />
         </transform>
         <textMesh fontName="HelveticaWorld_Regular" rescaleHeightOnTextOverflow="true">
-          <text formulae="&amp;StationSignage.Formulas.PlatformFormulas;GetPlatform/Game.Routes.ConnectedRoute;0.m_Waypoint/&amp;StationSignage.BridgeWE.WERouteFn;GetWaypointStaticDestinationName">Aspen Square dawd wadaw dwad aw</text>
+          <text formulae="&amp;StationSignage.Formulas.PlatformFormulas;GetPlatform/Game.Routes.ConnectedRoute;0.m_Waypoint/&amp;BelzontWE.Builtin.WERouteFn;GetWaypointStaticDestinationEntity/Game.Routes.Connected;m_Connected/&amp;BelzontWE.Builtin.WEUtitlitiesFn;GetEntityName">Aspen Square dawd wadaw dwad aw</text>
           <MaxWidthMeters>2.7</MaxWidthMeters>
         </textMesh>
-        <defaultStyle decalFlags="32">
+        <decalStyle decalFlags="40" affectSmoothness="false" affectEmission="false" drawOrder="0">
           <color formulae="&amp;StationSignage.Formulas.PlatformFormulas;GetPlatform/&amp;StationSignage.Formulas.PlatformFormulas;GetFirstLineOrDefault/&amp;StationSignage.Formulas.LineEntityFormulas;GetLineColor/&amp;BelzontWE.Builtin.WEColorsFn;GetContrastColor">000000FF</color>
-          <emissiveColor>FFFFFFFF</emissiveColor>
           <metallic>0</metallic>
           <smoothness>0</smoothness>
-          <emissiveIntensity>0</emissiveIntensity>
-          <emissiveExposureWeight>0</emissiveExposureWeight>
-          <coatStrength>0</coatStrength>
-          <colorMask1>FFFFFF</colorMask1>
-          <colorMask2>FFFFFF</colorMask2>
-          <colorMask3>FFFFFF</colorMask3>
-        </defaultStyle>
+        </decalStyle>
       </self>
     </children>
   </children>
@@ -277,28 +242,21 @@
         <transform pivot="MiddleLeft" alignment="Left" useFormulaeToCheckIfDraw="true" arrayAxisOrder="XYZ">
           <offsetPosition x="1.35" y="0.06" z="0" />
           <offsetRotation x="-0" y="0" z="0" />
-          <scale x="0.3" y="0.3" z="1" />
+          <scale x="0.3" y="0.3" z="0.01" />
           <mustDraw formulae="&amp;StationSignage.Formulas.PlatformFormulas;GetPlatform/Game.Routes.ConnectedRoute;Length">1</mustDraw>
           <instanceCount>-1</instanceCount>
           <arrayInstances x="1" y="1" z="1" />
           <arraySpacing x="0" y="0" z="0" />
         </transform>
         <textMesh fontName="HelveticaWorld_Regular" rescaleHeightOnTextOverflow="true">
-          <text formulae="&amp;StationSignage.Formulas.PlatformFormulas;GetPlatform/Game.Routes.ConnectedRoute;0.m_Waypoint/&amp;StationSignage.BridgeWE.WERouteFn;GetWaypointStaticDestinationName">Aspen Square dawd wadaw dwad aw</text>
+          <text formulae="&amp;StationSignage.Formulas.PlatformFormulas;GetPlatform/Game.Routes.ConnectedRoute;0.m_Waypoint/&amp;BelzontWE.Builtin.WERouteFn;GetWaypointStaticDestinationEntity/Game.Routes.Connected;m_Connected/&amp;BelzontWE.Builtin.WEUtitlitiesFn;GetEntityName">Aspen Square dawd wadaw dwad aw</text>
           <MaxWidthMeters>2.7</MaxWidthMeters>
         </textMesh>
-        <defaultStyle decalFlags="32">
+        <decalStyle decalFlags="40" affectSmoothness="false" affectEmission="false" drawOrder="0">
           <color formulae="&amp;StationSignage.Formulas.PlatformFormulas;GetPlatform/&amp;StationSignage.Formulas.PlatformFormulas;GetFirstLineOrDefault/&amp;StationSignage.Formulas.LineEntityFormulas;GetLineColor/&amp;BelzontWE.Builtin.WEColorsFn;GetContrastColor">000000FF</color>
-          <emissiveColor>FFFFFFFF</emissiveColor>
           <metallic>0</metallic>
           <smoothness>0</smoothness>
-          <emissiveIntensity>0</emissiveIntensity>
-          <emissiveExposureWeight>0</emissiveExposureWeight>
-          <coatStrength>0</coatStrength>
-          <colorMask1>FFFFFF</colorMask1>
-          <colorMask2>FFFFFF</colorMask2>
-          <colorMask3>FFFFFF</colorMask3>
-        </defaultStyle>
+        </decalStyle>
       </self>
     </children>
   </children>
