@@ -3,7 +3,7 @@
     <transform alignment="Left" arrayAxisOrder="XYZ">
       <offsetPosition x="0" y="0" z="-0.001" />
       <offsetRotation x="-0" y="0" z="0" />
-      <scale x="0.31" y="0.13" z="0.01" />
+      <scale x="0.31" y="0.13" z="0.02" />
       <mustDraw>1</mustDraw>
       <instanceCount>-1</instanceCount>
       <arrayInstances x="1" y="1" z="1" />
@@ -28,19 +28,22 @@
       <transform alignment="Left" arrayAxisOrder="XYZ">
         <offsetPosition x="0" y="0" z="0" />
         <offsetRotation x="-0" y="0" z="0" />
-        <scale x="0.131" y="0.131" z="0.01" />
+        <scale x="0.131" y="0.131" z="0.02" />
         <mustDraw>1</mustDraw>
         <instanceCount>-1</instanceCount>
         <arrayInstances x="1" y="1" z="1" />
         <arraySpacing x="0" y="0" z="0" />
       </transform>
       <imageMesh atlas="StationSignage:TrainFiller">
+        <mesh></mesh>
         <image formulae="&amp;StationSignage.Formulas.DisplayFormulas;GetIncomingVehicleImageName">CapacityRightEngine</image>
       </imageMesh>
-      <decalStyle decalFlags="16" affectSmoothness="false" affectAO="false" affectEmission="false" drawOrder="3">
+      <decalStyle decalFlags="16" affectSmoothness="false" drawOrder="5">
         <color>FFFFFFFF</color>
         <metallic>0</metallic>
         <smoothness>0</smoothness>
+        <normalOpacity>0</normalOpacity>
+        <metallicOpacity>0</metallicOpacity>
       </decalStyle>
     </self>
   </children>
@@ -69,17 +72,19 @@
         <transform pivot="BottomCenter" alignment="Left" arrayAxisOrder="XYZ">
           <offsetPosition x="0" y="0" z="0" />
           <offsetRotation x="-0" y="0" z="0" />
-          <scale x="0.3" y="0.09" z="0.01" />
+          <scale x="0.3" y="0.09" z="0.02" />
           <mustDraw>1</mustDraw>
           <instanceCount>-1</instanceCount>
           <arrayInstances x="1" y="1" z="1" />
           <arraySpacing x="0" y="0" z="0" />
         </transform>
         <whiteMesh />
-        <decalStyle decalFlags="16" affectSmoothness="false" affectAO="false" affectEmission="false" drawOrder="0">
+        <decalStyle decalFlags="16" affectSmoothness="false" drawOrder="4">
           <color formulae="&amp;StationSignage.Formulas.DisplayFormulas;GetVehicleIncomingInformation/&amp;StationSignage.Formulas.DisplayFormulas;GetIncomingVehicleCapacityColor">FF0B0BFF</color>
           <metallic>0</metallic>
           <smoothness>0</smoothness>
+          <normalOpacity>0</normalOpacity>
+          <metallicOpacity>0</metallicOpacity>
         </decalStyle>
       </self>
     </children>

@@ -1,6 +1,5 @@
 ﻿using Colossal.Entities;
 using Game.Prefabs;
-using JetBrains.Annotations;
 using StationSignage.Components;
 using StationSignage.Systems;
 using System.Collections.Generic;
@@ -49,7 +48,7 @@ public static class LinesFormulas
             if (idx < cityLines.Count)
             {
                 return cityLines[idx];
-            }            
+            }
         }
         return Entity.Null;
     }

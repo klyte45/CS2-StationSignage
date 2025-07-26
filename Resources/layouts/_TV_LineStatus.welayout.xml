@@ -28,7 +28,7 @@
       <transform pivot="MiddleLeft" alignment="Left" arrayAxisOrder="XYZ">
         <offsetPosition x="0.8" y="0.35" z="0" />
         <offsetRotation x="-0" y="0" z="0" />
-        <scale x="0.04" y="0.04" z="1" />
+        <scale x="0.04" y="0.04" z="0.01" />
         <mustDraw>1</mustDraw>
         <instanceCount>-1</instanceCount>
         <arrayInstances x="1" y="1" z="1" />
@@ -38,18 +38,13 @@
         <text formulae="&amp;StationSignage.Formulas.NamesFormulas;GetLinesStatusMessage"></text>
         <MaxWidthMeters>1.6</MaxWidthMeters>
       </textMesh>
-      <defaultStyle>
+      <decalStyle decalFlags="32" affectSmoothness="false" drawOrder="0">
         <color>FFFFFFFF</color>
-        <emissiveColor>FFFFFFFF</emissiveColor>
         <metallic>0</metallic>
         <smoothness>0</smoothness>
-        <emissiveIntensity>0</emissiveIntensity>
-        <emissiveExposureWeight>0</emissiveExposureWeight>
-        <coatStrength>0</coatStrength>
-        <colorMask1>FFFFFF</colorMask1>
-        <colorMask2>FFFFFF</colorMask2>
-        <colorMask3>FFFFFF</colorMask3>
-      </defaultStyle>
+        <normalOpacity>0</normalOpacity>
+        <metallicOpacity>0</metallicOpacity>
+      </decalStyle>
     </self>
   </children>
   <children>
@@ -64,10 +59,12 @@
         <arraySpacing x="0" y="0" z="0" />
       </transform>
       <whiteMesh />
-      <decalStyle decalFlags="32" affectSmoothness="false" affectAO="false" affectEmission="false" drawOrder="0">
+      <decalStyle decalFlags="32" affectSmoothness="false" drawOrder="0">
         <color>FFFFFFFF</color>
         <metallic>0</metallic>
         <smoothness>0</smoothness>
+        <normalOpacity>0</normalOpacity>
+        <metallicOpacity>0</metallicOpacity>
       </decalStyle>
     </self>
   </children>

@@ -10,18 +10,13 @@
       <arraySpacing x="0" y="0" z="0" />
     </transform>
     <whiteMesh />
-    <defaultStyle>
+    <decalStyle decalFlags="32" affectSmoothness="false" drawOrder="0">
       <color>FFFFFFFF</color>
-      <emissiveColor>FFFFFFFF</emissiveColor>
       <metallic>0</metallic>
       <smoothness>0</smoothness>
-      <emissiveIntensity>0</emissiveIntensity>
-      <emissiveExposureWeight>0</emissiveExposureWeight>
-      <coatStrength>0</coatStrength>
-      <colorMask1>FFFFFF</colorMask1>
-      <colorMask2>FFFFFF</colorMask2>
-      <colorMask3>FFFFFF</colorMask3>
-    </defaultStyle>
+      <normalOpacity>0</normalOpacity>
+      <metallicOpacity>0</metallicOpacity>
+    </decalStyle>
   </self>
   <children>
     <self itemName="Divider">
@@ -35,10 +30,12 @@
         <arraySpacing x="0" y="0" z="0" />
       </transform>
       <whiteMesh />
-      <decalStyle decalFlags="32" affectSmoothness="false" affectAO="false" affectEmission="false" drawOrder="0">
+      <decalStyle decalFlags="32" affectSmoothness="false" drawOrder="0">
         <color>FFFFFFFF</color>
         <metallic>0</metallic>
         <smoothness>0</smoothness>
+        <normalOpacity>0</normalOpacity>
+        <metallicOpacity>0</metallicOpacity>
       </decalStyle>
     </self>
   </children>
@@ -47,7 +44,7 @@
       <transform pivot="MiddleLeft" alignment="Left" arrayAxisOrder="XYZ">
         <offsetPosition x="0.8" y="0.22" z="0" />
         <offsetRotation x="-0" y="0" z="0" />
-        <scale x="0.055" y="0.055" z="1" />
+        <scale x="0.055" y="0.055" z="0.01" />
         <mustDraw>1</mustDraw>
         <instanceCount>-1</instanceCount>
         <arrayInstances x="1" y="1" z="1" />
@@ -57,18 +54,13 @@
         <text formulae="&amp;StationSignage.Formulas.DisplayFormulas;GetVehicleIncomingInformation.subtitle.ToString/&amp;StationSignage.Formulas.DisplayFormulas;GetNameFromMod">NEW TEXT</text>
         <MaxWidthMeters>0</MaxWidthMeters>
       </textMesh>
-      <defaultStyle>
+      <decalStyle decalFlags="32" affectSmoothness="false" drawOrder="0">
         <color>FFFFFFFF</color>
-        <emissiveColor>FFFFFFFF</emissiveColor>
         <metallic>0</metallic>
         <smoothness>0</smoothness>
-        <emissiveIntensity>0</emissiveIntensity>
-        <emissiveExposureWeight>0</emissiveExposureWeight>
-        <coatStrength>0</coatStrength>
-        <colorMask1>FFFFFF</colorMask1>
-        <colorMask2>FFFFFF</colorMask2>
-        <colorMask3>FFFFFF</colorMask3>
-      </defaultStyle>
+        <normalOpacity>0</normalOpacity>
+        <metallicOpacity>0</metallicOpacity>
+      </decalStyle>
     </self>
   </children>
   <children>
@@ -76,7 +68,7 @@
       <transform pivot="MiddleRight" alignment="Left" arrayAxisOrder="XYZ">
         <offsetPosition x="-0.8" y="0.22" z="0" />
         <offsetRotation x="-0" y="0" z="0" />
-        <scale x="0.055" y="0.055" z="1" />
+        <scale x="0.055" y="0.055" z="0.01" />
         <mustDraw>1</mustDraw>
         <instanceCount>-1</instanceCount>
         <arrayInstances x="1" y="1" z="1" />
@@ -86,18 +78,13 @@
         <text formulae="&amp;StationSignage.Formulas.DisplayFormulas;GetVehicleIncomingMessage">NEW TEXT</text>
         <MaxWidthMeters>0</MaxWidthMeters>
       </textMesh>
-      <defaultStyle>
+      <decalStyle decalFlags="32" affectSmoothness="false" drawOrder="0">
         <color>FFF000FF</color>
-        <emissiveColor>FFFFFFFF</emissiveColor>
         <metallic>0</metallic>
         <smoothness>0</smoothness>
-        <emissiveIntensity>0</emissiveIntensity>
-        <emissiveExposureWeight>0</emissiveExposureWeight>
-        <coatStrength>0</coatStrength>
-        <colorMask1>FFFFFF</colorMask1>
-        <colorMask2>FFFFFF</colorMask2>
-        <colorMask3>FFFFFF</colorMask3>
-      </defaultStyle>
+        <normalOpacity>0</normalOpacity>
+        <metallicOpacity>0</metallicOpacity>
+      </decalStyle>
     </self>
   </children>
   <children>
@@ -105,7 +92,7 @@
       <transform pivot="MiddleLeft" alignment="Left" arrayAxisOrder="XYZ">
         <offsetPosition x="0.8" y="0.34800002" z="0" />
         <offsetRotation x="-0" y="0" z="0" />
-        <scale x="0.05" y="0.05" z="1" />
+        <scale x="0.05" y="0.05" z="0.1" />
         <mustDraw>1</mustDraw>
         <instanceCount>-1</instanceCount>
         <arrayInstances x="1" y="1" z="1" />
@@ -115,18 +102,13 @@
         <text formulae="&amp;StationSignage.Formulas.DisplayFormulas;GetVehicleIncomingInformation.title.ToString/&amp;StationSignage.Formulas.DisplayFormulas;GetNameFromMod">&amp;StationSignage.Formulas.SubwayFormulas;GetFirstPlatformVehiclePanel.Title</text>
         <MaxWidthMeters>0.72</MaxWidthMeters>
       </textMesh>
-      <defaultStyle>
+      <decalStyle decalFlags="32" affectSmoothness="false" drawOrder="0">
         <color>FFFFFFFF</color>
-        <emissiveColor>FFFFFFFF</emissiveColor>
         <metallic>0</metallic>
         <smoothness>0</smoothness>
-        <emissiveIntensity>0</emissiveIntensity>
-        <emissiveExposureWeight>0</emissiveExposureWeight>
-        <coatStrength>0</coatStrength>
-        <colorMask1>FFFFFF</colorMask1>
-        <colorMask2>FFFFFF</colorMask2>
-        <colorMask3>FFFFFF</colorMask3>
-      </defaultStyle>
+        <normalOpacity>0</normalOpacity>
+        <metallicOpacity>0</metallicOpacity>
+      </decalStyle>
     </self>
   </children>
   <children>
@@ -147,19 +129,22 @@
         <transform pivot="MiddleRight" alignment="Left" isAbsoluteScale="true" arrayAxisOrder="XYZ">
           <offsetPosition x="-0.8" y="-0" z="0" />
           <offsetRotation x="-0" y="0" z="0" />
-          <scale x="0.075" y="0.075" z="0.01" />
+          <scale x="0.075" y="0.075" z="0.02" />
           <mustDraw formulae="&amp;StationSignage.Formulas.PlatformFormulas;GetPlatform/StationSignage.Components.SS_VehicleIncomingData;nextVehicle0.Index">1</mustDraw>
           <instanceCount>-1</instanceCount>
           <arrayInstances x="1" y="1" z="1" />
           <arraySpacing x="0" y="0" z="0" />
         </transform>
         <imageMesh atlas="StationSignage:StationIcons">
+          <mesh></mesh>
           <image>BikeRoundIcon</image>
         </imageMesh>
-        <decalStyle decalFlags="32" affectSmoothness="false" affectAO="false" affectEmission="false" drawOrder="0">
+        <decalStyle decalFlags="32" affectSmoothness="false" drawOrder="0">
           <color>FFFFFFFF</color>
           <metallic>0</metallic>
           <smoothness>0</smoothness>
+          <normalOpacity>0</normalOpacity>
+          <metallicOpacity>0</metallicOpacity>
         </decalStyle>
       </self>
     </children>
@@ -168,19 +153,22 @@
         <transform pivot="MiddleRight" alignment="Left" isAbsoluteScale="true" arrayAxisOrder="XYZ">
           <offsetPosition x="-0.7" y="-0" z="0" />
           <offsetRotation x="-0" y="0" z="0" />
-          <scale x="0.075" y="0.075" z="0.01" />
+          <scale x="0.075" y="0.075" z="0.02" />
           <mustDraw formulae="&amp;StationSignage.Formulas.PlatformFormulas;GetPlatform/StationSignage.Components.SS_VehicleIncomingData;nextVehicle0.Index">1</mustDraw>
           <instanceCount>-1</instanceCount>
           <arrayInstances x="1" y="1" z="1" />
           <arraySpacing x="0" y="0" z="0" />
         </transform>
         <imageMesh atlas="StationSignage:StationIcons">
+          <mesh></mesh>
           <image>WheelchairRoundIcon</image>
         </imageMesh>
-        <decalStyle decalFlags="32" affectSmoothness="false" affectAO="false" affectEmission="false" drawOrder="0">
+        <decalStyle decalFlags="32" affectSmoothness="false" drawOrder="0">
           <color>FFFFFFFF</color>
           <metallic>0</metallic>
           <smoothness>0</smoothness>
+          <normalOpacity>0</normalOpacity>
+          <metallicOpacity>0</metallicOpacity>
         </decalStyle>
       </self>
     </children>
@@ -189,7 +177,7 @@
         <transform pivot="MiddleLeft" alignment="Left" arrayAxisOrder="XYZ">
           <offsetPosition x="0.8" y="0" z="0" />
           <offsetRotation x="-0" y="0" z="0" />
-          <scale x="0.05" y="0.05" z="1" />
+          <scale x="0.05" y="0.05" z="0.02" />
           <mustDraw>1</mustDraw>
           <instanceCount>-1</instanceCount>
           <arrayInstances x="1" y="1" z="1" />
@@ -199,18 +187,13 @@
           <text formulae="&amp;StationSignage.Formulas.DisplayFormulas;GetName">NEW TEXT</text>
           <MaxWidthMeters>1.6</MaxWidthMeters>
         </textMesh>
-        <defaultStyle>
+        <decalStyle decalFlags="32" affectSmoothness="false" drawOrder="0">
           <color>FFFF00FF</color>
-          <emissiveColor>FFFFFFFF</emissiveColor>
           <metallic>0</metallic>
           <smoothness>0</smoothness>
-          <emissiveIntensity>0</emissiveIntensity>
-          <emissiveExposureWeight>0</emissiveExposureWeight>
-          <coatStrength>0</coatStrength>
-          <colorMask1>FFFFFF</colorMask1>
-          <colorMask2>FFFFFF</colorMask2>
-          <colorMask3>FFFFFF</colorMask3>
-        </defaultStyle>
+          <normalOpacity>0</normalOpacity>
+          <metallicOpacity>0</metallicOpacity>
+        </decalStyle>
       </self>
       <variable key="strKey" value="LevelOfOccupancy" />
     </children>
@@ -271,7 +254,7 @@
         <transform alignment="Left" arrayAxisOrder="XYZ">
           <offsetPosition x="0" y="-0.35" z="0" />
           <offsetRotation x="-0" y="0" z="0" />
-          <scale x="0.04" y="0.04" z="1" />
+          <scale x="0.04" y="0.04" z="0.02" />
           <mustDraw>1</mustDraw>
           <instanceCount>-1</instanceCount>
           <arrayInstances x="1" y="1" z="1" />
@@ -281,18 +264,13 @@
           <text formulae="&amp;StationSignage.Formulas.PlatformFormulas;GetPlatform/StationSignage.Components.SS_VehicleIncomingData;nextVehicle0/&amp;BelzontWE.Builtin.WEVehicleFn;GetConvoyId"></text>
           <MaxWidthMeters>1.6</MaxWidthMeters>
         </textMesh>
-        <defaultStyle>
+        <decalStyle decalFlags="32" affectSmoothness="false" drawOrder="0">
           <color>FFFF00FF</color>
-          <emissiveColor>FFFFFFFF</emissiveColor>
           <metallic>0</metallic>
           <smoothness>0</smoothness>
-          <emissiveIntensity>0</emissiveIntensity>
-          <emissiveExposureWeight>0</emissiveExposureWeight>
-          <coatStrength>0</coatStrength>
-          <colorMask1>FFFFFF</colorMask1>
-          <colorMask2>FFFFFF</colorMask2>
-          <colorMask3>FFFFFF</colorMask3>
-        </defaultStyle>
+          <normalOpacity>0</normalOpacity>
+          <metallicOpacity>0</metallicOpacity>
+        </decalStyle>
       </self>
     </children>
   </children>
