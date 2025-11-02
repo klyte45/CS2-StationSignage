@@ -2,6 +2,7 @@
 using Game.Common;
 using Game.Prefabs;
 using Game.Routes;
+using Game.Settings;
 using Game.Simulation;
 using Game.Tools;
 using Game.UI;

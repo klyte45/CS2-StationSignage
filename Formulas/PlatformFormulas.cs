@@ -5,6 +5,7 @@ using Game.Pathfind;
 using Game.Routes;
 using StationSignage.Components;
 using StationSignage.Enums;
+using StationSignage.Systems;
 using StationSignage.Utils;
 using System;
 using System.Collections.Generic;
@@ -146,7 +147,7 @@ namespace StationSignage.Formulas
         {
             bool isMetro = EntityManager.HasComponent<SubwayStop>(platformStop);
             return !EntityManager.TryGetBuffer<ConnectedRoute>(platformStop, true, out var buffer) || buffer.Length == 0
-                ? Mod.m_Setting.LineOperatorCityDropdown switch
+                ? SS_SettingSystem.Instance.LineOperatorCity switch
                 {
                     Settings.LineOperatorCityOptions.Generic => ServiceOperator.Default,
                     Settings.LineOperatorCityOptions.SaoPaulo => isMetro ? ServiceOperator.Operator01 : EntityManager.HasComponent<TrainStop>(platformStop) ? ServiceOperator.Operator05 : ServiceOperator.Default,
@@ -154,7 +155,7 @@ namespace StationSignage.Formulas
                     Settings.LineOperatorCityOptions.London => isMetro ? ServiceOperator.UndergroundOperator : ServiceOperator.Default,
                     _ => ServiceOperator.Default
                 }
-                : Mod.m_Setting.LineOperatorCityDropdown switch
+                : SS_SettingSystem.Instance.LineOperatorCity switch
                 {
                     Settings.LineOperatorCityOptions.Generic => ServiceOperator.Default,
                     Settings.LineOperatorCityOptions.SaoPaulo => EntityManager.GetComponentData<SS_LineStatus>(EntityManager.GetComponentData<Owner>(buffer[0].m_Waypoint).m_Owner).operatorSP,

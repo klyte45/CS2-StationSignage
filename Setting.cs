@@ -85,8 +85,8 @@ public class LocaleEn(Settings setting) : IDictionarySource
             { setting.GetOptionTabLocaleID(Settings.MainTab), "Settings" },
             { setting.GetOptionTabLocaleID(Settings.DeveloperTab), "Developer Settings" },
 
-            { setting.GetOptionLabelLocaleID(nameof(Settings.LineIndicatorShapeDropdown)), "Line Indicator Shape" },
-            { setting.GetOptionDescLocaleID(nameof(Settings.LineIndicatorShapeDropdown)), $"Choose what shape you want your lines to be displayed." },
+            { setting.GetOptionLabelLocaleID(nameof(Settings.LineIndicatorShapeDropdown)), "Line Indicator Shape (New cities)" },
+            { setting.GetOptionDescLocaleID(nameof(Settings.LineIndicatorShapeDropdown)), $"Choose what shape you want your lines to be displayed.\n\nThis is the default value when a city is created, after that the setting is stored per city and can be changed on Write Everywhere window, Prefab Templates Setup tab." },
 
             { setting.GetOptionLabelLocaleID(nameof(Settings.EnableLayoutValidation)), "Enable Layout Validation" },
             { setting.GetOptionDescLocaleID(nameof(Settings.EnableLayoutValidation)), $"Mock lines for every station to validate the layouts." },
@@ -103,16 +103,16 @@ public class LocaleEn(Settings setting) : IDictionarySource
             { setting.GetEnumValueLocaleID(Settings.LineIndicatorShapeOptions.Square), "Square Shape" },
             { setting.GetEnumValueLocaleID(Settings.LineIndicatorShapeOptions.Circle), "Circle Shape" },
 
-            { setting.GetOptionLabelLocaleID(nameof(Settings.LineOperatorCityDropdown)), "Line Operators" },
-            { setting.GetOptionDescLocaleID(nameof(Settings.LineOperatorCityDropdown)), $"Choose what should be the line operators. If you choose generic, you can replace the operator with a custom atlas on Write Everywhere settings. If you choose a specific city, it will always have the same atlas and logic for that city" },
+            { setting.GetOptionLabelLocaleID(nameof(Settings.LineOperatorCityDropdown)), "Line Operators (New cities)" },
+            { setting.GetOptionDescLocaleID(nameof(Settings.LineOperatorCityDropdown)), $"Choose what should be the line operators. If you choose generic, you can replace the operator with a custom atlas on Write Everywhere settings. If you choose a specific city, it will always have the same atlas and logic for that city.\n\nThis is the default value when a city is created, after that the setting is stored per city and can be changed on Write Everywhere window, Prefab Templates Setup tab." },
 
             { setting.GetEnumValueLocaleID(Settings.LineOperatorCityOptions.Generic), "Generic Operator" },
             { setting.GetEnumValueLocaleID(Settings.LineOperatorCityOptions.SaoPaulo), "Sao Paulo Operators" },
             { setting.GetEnumValueLocaleID(Settings.LineOperatorCityOptions.NewYork), "New York Operators" },
             { setting.GetEnumValueLocaleID(Settings.LineOperatorCityOptions.London), "London Operators" },
 
-            { setting.GetOptionLabelLocaleID(nameof(Settings.LineDisplayNameDropdown)), "Line Display Name" },
-            { setting.GetOptionDescLocaleID(nameof(Settings.LineDisplayNameDropdown)), $"Allows you to change what should be displayed as the line name" },
+            { setting.GetOptionLabelLocaleID(nameof(Settings.LineDisplayNameDropdown)), "Line Display Name (New cities)" },
+            { setting.GetOptionDescLocaleID(nameof(Settings.LineDisplayNameDropdown)), $"Allows you to change what should be displayed as the line name.\n\nThis is the default value when a city is created, after that the setting is stored per city and can be changed on Write Everywhere window, Prefab Templates Setup tab." },
 
             { setting.GetEnumValueLocaleID(Settings.LineDisplayNameOptions.Custom), "Custom (Based on the name of the line)" },
             { setting.GetEnumValueLocaleID(Settings.LineDisplayNameOptions.WriteEverywhere), "Write Everywhere (Based on the Write Everywhere name of the line)" },

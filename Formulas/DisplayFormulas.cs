@@ -61,7 +61,7 @@ public class DisplayFormulas
 
     public static string GetLineBackgroundShape(Entity buildingRef)
     {
-        return Mod.m_Setting.LineIndicatorShapeDropdown switch
+        return SS_SettingSystem.Instance.LineIndicatorShape switch
         {
             Settings.LineIndicatorShapeOptions.Square => Square,
             Settings.LineIndicatorShapeOptions.Circle => Circle,

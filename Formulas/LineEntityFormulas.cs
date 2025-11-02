@@ -37,7 +37,7 @@ namespace StationSignage.Formulas
                 return "?";
             }
             _nameSystem ??= World.DefaultGameObjectInjectionWorld.GetOrCreateSystemManaged<NameSystem>();
-            return (Mod.m_Setting.LineDisplayNameDropdown) switch
+            return (SS_SettingSystem.Instance.LineDisplayName) switch
             {
                 Settings.LineDisplayNameOptions.Custom => GetSmallLineName(_nameSystem.GetName(line).Translate(), line),
                 Settings.LineDisplayNameOptions.WriteEverywhere => WERouteFn.GetTransportLineNumber(line),
