@@ -129,7 +129,7 @@ public partial class SS_PlatformMappingSystem : SystemBase
         }
         if (shallReset)
         {
-            m_endFrameBarrier.CreateCommandBuffer().RemoveComponent<SS_WaypointDestinationConnections>(m_resetWaypointsQuery, EntityQueryCaptureMode.AtPlayback); 
+            m_endFrameBarrier.CreateCommandBuffer().RemoveComponent<SS_WaypointDestinationConnections>(m_resetWaypointsQuery, EntityQueryCaptureMode.AtPlayback);
             shallReset = false;
         }
         if (!m_connectableRoutesNotMapped.IsEmptyIgnoreFilter)
@@ -172,7 +172,7 @@ public partial class SS_PlatformMappingSystem : SystemBase
 
                 var sortedValues = valuesToAdd
                     .Select(routePlatformData => (routePlatformData, matrixTransform.MultiplyPoint(EntityManager.GetComponentData<Transform>(routePlatformData.platformData).m_Position), GetTransportType(routePlatformData.platformData)))
-                    .OrderByDescending(item => item.Item2.y)
+                    .OrderByDescending(item => Math.Round(item.Item2.y / 8))
                     .ThenByDescending(item => item.Item2.z)
                     .ThenBy(item => item.Item2.x)
                     .ToList();
