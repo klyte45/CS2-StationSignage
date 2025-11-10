@@ -120,6 +120,18 @@ public partial class SS_PlatformMappingSystem : SystemBase
     }
 
     private bool shallReset;
+
+    private readonly Dictionary<TransportType, int> TransportTypePriority = new()
+    {
+        [TransportType.Train] = 0,
+        [TransportType.Subway] = 0,
+        [TransportType.Ship] = 1,
+        [TransportType.Airplane] = 1,
+        [TransportType.Tram] = 2,
+        [TransportType.Bus] = 3,
+        [TransportType.Ferry] = 1,
+        [TransportType.Taxi] = 4
+    };
     protected override void OnUpdate()
     {
         if (GameManager.instance.isGameLoading) return;
@@ -172,7 +184,8 @@ public partial class SS_PlatformMappingSystem : SystemBase
 
                 var sortedValues = valuesToAdd
                     .Select(routePlatformData => (routePlatformData, matrixTransform.MultiplyPoint(EntityManager.GetComponentData<Transform>(routePlatformData.platformData).m_Position), GetTransportType(routePlatformData.platformData)))
-                    .OrderByDescending(item => Math.Round(item.Item2.y / 8))
+                    .OrderBy(item => TransportTypePriority.TryGetValue(item.Item3, out var priority) ? priority : 9999)
+                    .ThenByDescending(item => Math.Round(item.Item2.y / 8))
                     .ThenByDescending(item => item.Item2.z)
                     .ThenBy(item => item.Item2.x)
                     .ToList();
