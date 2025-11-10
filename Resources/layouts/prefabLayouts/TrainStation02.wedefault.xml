@@ -14,7 +14,7 @@
         <layout>StationSignage:GroundPlatformMarker</layout>
       </layoutMesh>
     </self>
-    <variable key="platform" value="1" />
+    <variable key="platform" value="2" />
     <variable key="lowPr" value="Subway" />
     <variable key="highPr" value="Ferry" />
   </children>
@@ -33,7 +33,7 @@
         <layout>StationSignage:GroundPlatformMarker</layout>
       </layoutMesh>
     </self>
-    <variable key="platform" value="2" />
+    <variable key="platform" value="1" />
     <variable key="lowPr" value="Subway" />
     <variable key="highPr" value="Ferry" />
   </children>
