@@ -154,7 +154,8 @@ public partial class SS_PlatformMappingSystem : SystemBase
                 m_ownerLookup = GetComponentLookup<Owner>(true),
                 m_EntityType = GetEntityTypeHandle(),
                 m_cmdBuffer = cmdBuffer.AsParallelWriter(),
-                m_hashSet = output.AsParallelWriter()
+                m_hashSet = output.AsParallelWriter(),
+                m_transformLkp = GetComponentLookup<Transform>(true)
             }.ScheduleParallel(m_connectableRoutesNotMapped, Dependency);
             Dependency.Complete();
             using var outputArray = output.ToNativeArray(Allocator.Temp);
@@ -183,11 +184,12 @@ public partial class SS_PlatformMappingSystem : SystemBase
                 var matrixTransform = Matrix4x4.TRS(buildingTransform.m_Position, buildingTransform.m_Rotation, Vector3.one).inverse;
 
                 var sortedValues = valuesToAdd
-                    .Select(routePlatformData => (routePlatformData, matrixTransform.MultiplyPoint(EntityManager.GetComponentData<Transform>(routePlatformData.platformData).m_Position), GetTransportType(routePlatformData.platformData)))
-                    .OrderBy(item => TransportTypePriority.TryGetValue(item.Item3, out var priority) ? priority : 9999)
-                    .ThenByDescending(item => Math.Round(item.Item2.y / 8))
-                    .ThenByDescending(item => item.Item2.z)
-                    .ThenBy(item => item.Item2.x)
+                    .Select(routePlatformData => (routePlatformData, routePlatformData.relativePosition, GetTransportType(routePlatformData.platformData), routePlatformData.isBasePlatform))
+                    .OrderBy(item => item.isBasePlatform ? 0 : 1)
+                    .ThenBy(item => TransportTypePriority.TryGetValue(item.Item3, out var priority) ? priority : 9999)
+                    .ThenByDescending(item => Math.Round(item.relativePosition.y / 8))
+                    .ThenByDescending(item => Math.Round(item.relativePosition.z / 4))
+                    .ThenBy(item => Math.Round(item.relativePosition.x / 4))
                     .ToList();
 
                 byte counterPlatform = 0;
@@ -390,6 +392,7 @@ public partial class SS_PlatformMappingSystem : SystemBase
         public EntityTypeHandle m_EntityType;
         public ComponentLookup<Owner> m_ownerLookup;
         public ComponentLookup<Attached> m_attachedLookup;
+        public ComponentLookup<Transform> m_transformLkp;
         public EntityCommandBuffer.ParallelWriter m_cmdBuffer;
         public NativeParallelHashSet<PairEntityRoute>.ParallelWriter m_hashSet;
 
@@ -399,22 +402,31 @@ public partial class SS_PlatformMappingSystem : SystemBase
 
             for (int i = 0; i < entities.Length; i++)
             {
+                var ownTransform = m_transformLkp[entities[i]];
                 if (m_ownerLookup.TryGetComponent(entities[i], out var owner) && owner.m_Owner != Entity.Null)
                 {
+                    var isBasePlatform = true;
                     while (m_ownerLookup.TryGetComponent(owner.m_Owner, out var parentOwner))
                     {
                         owner = parentOwner;
+                        isBasePlatform = false;
                     }
-                    m_hashSet.Add(new(owner.m_Owner, new SS_PlatformMappingLink(entities[i])));
+                    var parentTransform = m_transformLkp[owner.m_Owner];
+                    var parentMatrix = Matrix4x4.TRS(parentTransform.m_Position, parentTransform.m_Rotation, Vector3.one).inverse;
+                    m_hashSet.Add(new(owner.m_Owner, new SS_PlatformMappingLink(entities[i], ownTransform.m_Position, parentMatrix.MultiplyPoint(ownTransform.m_Position), isBasePlatform)));
                 }
                 if (m_attachedLookup.TryGetComponent(entities[i], out Attached parent) && parent.m_Parent != Entity.Null)
                 {
                     var target = parent.m_Parent;
+                    var isBasePlatform = true;
                     while (m_ownerLookup.TryGetComponent(target, out var parentOwner))
                     {
                         target = parentOwner.m_Owner;
+                        isBasePlatform = false;
                     }
-                    m_hashSet.Add(new(target, new SS_PlatformMappingLink(entities[i])));
+                    var parentTransform = m_transformLkp[target];
+                    var parentMatrix = Matrix4x4.TRS(parentTransform.m_Position, parentTransform.m_Rotation, Vector3.one).inverse;
+                    m_hashSet.Add(new(target, new SS_PlatformMappingLink(entities[i], ownTransform.m_Position, parentMatrix.MultiplyPoint(ownTransform.m_Position), isBasePlatform)));
                 }
             }
 

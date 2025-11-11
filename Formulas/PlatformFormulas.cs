@@ -129,7 +129,7 @@ namespace StationSignage.Formulas
                 for (int i = 0; i < connectionsBuffer.Length; i++)
                 {
                     var connection = connectionsBuffer[i];
-                    if (!excludedLines.Contains(connection.line) && connection.Importance <= lowestPriority && connection.Importance >= highestPriority)
+                    if (!excludedLines.Contains(connection.line) && connection.Importance <= lowestPriority && connection.Importance >= highestPriority && !connection.isCargo)
                     {
                         connections.Add(connection);
                     }

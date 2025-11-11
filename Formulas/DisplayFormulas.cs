@@ -82,7 +82,10 @@ public class DisplayFormulas
 
     public static string GetPlatformImage(Entity buildingRef, Dictionary<string, string> vars)
     {
-        vars.TryGetValue("platform", out var platformStr);
+        if (!vars.TryGetValue("vPlatform", out var platformStr))
+        {
+            vars.TryGetValue("platform", out platformStr);
+        }
         return "Circle" + platformStr;
     }
 
@@ -133,7 +136,7 @@ public class DisplayFormulas
             else if (timeSecs < 3600)
             {
                 var minutes = timeSecs / 60;
-                return $"{minutes}min{timeSecs%60:00}s";
+                return $"{minutes}min{timeSecs % 60:00}s";
             }
             else
             {
