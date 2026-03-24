@@ -72,11 +72,11 @@ public class DisplayFormulas
     public static string GetImage(Entity buildingRef, Dictionary<string, string> vars)
     {
         vars.TryGetValue("$idx", out var idxStr);
-        return vars.TryGetValue("img_" + idxStr, out var images) ? images : "";
+        return vars.TryGetValue("!img_" + idxStr, out var images) ? images : "";
     }
     public static int GetImageCount(Entity buildingRef, Dictionary<string, string> vars)
     {
-        vars.TryGetValue("img_ct", out var idxStr);
+        vars.TryGetValue("!img_ct", out var idxStr);
         return int.TryParse(idxStr, out var ct) ? ct : 0;
     }
 

@@ -34,7 +34,14 @@ namespace StationSignage.Formulas
         {
             if (EntityManager.HasComponent<SS_PlatformData>(building)) return building;
             building = EntityUtils.FindTopOwnership(building, EntityManager);
-            if (vars.TryGetValue(LinesFormulas.PLATFORM_VAR, out var platformStr) && byte.TryParse(platformStr, out var platform))
+            var targetPlatform = vars.TryGetValue(LinesFormulas.PLATFORM_VAR, out var platformStr);
+            if (!targetPlatform) return Entity.Null;
+            if (platformStr.StartsWith("#"))
+            {
+                vars.TryGetValue(platformStr[1..], out var newPlatVal);
+                platformStr = newPlatVal;
+            }
+            if (platformStr != null && byte.TryParse(platformStr, out var platform))
             {
 
                 if (EntityManager.TryGetBuffer<SS_PlatformMappingLink>(building, true, out var buffer) && platform <= buffer.Length)
@@ -44,7 +51,7 @@ namespace StationSignage.Formulas
             }
             return Entity.Null; // Return null if no matching platform is found
         }
-
+        //StationSignage:_Plat_StationNameSimple
         public static Entity GetIncomingTrainDestinationForPlatform(Entity platform)
         {
             if (EntityManager.TryGetComponent<SS_VehicleIncomingData>(platform, out var buffer))

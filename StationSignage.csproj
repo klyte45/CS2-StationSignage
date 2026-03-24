@@ -63,10 +63,6 @@
   <ItemGroup>
     <Reference Include="System">
       <HintPath>$(CSII_MANAGEDPATH)\System.dll</HintPath>
-		<Reference Include="Colossal.AssetPipeline">
-			<Private>false</Private>
-		</Reference>
-		<Reference Update="System">
       <Private>false</Private>
     </Reference>
     <Reference Update="System.Core">

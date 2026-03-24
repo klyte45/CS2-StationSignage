@@ -76,6 +76,17 @@ public partial class SS_PlatformMappingSystem : SystemBase
                         ComponentType.ReadOnly<Temp>(),
                         ComponentType.ReadOnly<Deleted>(),
                     ]
+                },
+                new() {
+                    All =
+                    [
+                        ComponentType.ReadOnly<SS_PlatformData>(),
+                        ComponentType.ReadOnly<Deleted>(),
+                    ],
+                    None =
+                    [
+                        ComponentType.ReadOnly<Temp>(),
+                    ]
                 }
             }
         );
@@ -198,6 +209,10 @@ public partial class SS_PlatformMappingSystem : SystemBase
 
                 foreach (var route in sortedValues)
                 {
+                    if(!EntityManager.Exists(route.routePlatformData.platformData) || EntityManager.HasComponent<Deleted>(route.routePlatformData.platformData))
+                    {
+                        continue;
+                    }
                     buffer.Add(route.routePlatformData);
                     transportTypeCounter.TryGetValue(route.Item3, out var counter);
                     var data = new SS_PlatformData
