@@ -14,7 +14,7 @@ namespace StationSignage.Systems
 
         private EntityQuery m_TempQuery;
 
-        protected override AllowedPhase UpdatePhase => AllowedPhase.PostTool;
+        protected override AllowedPhase UpdatePhase => AllowedPhase.ToolUpdate;
 
         protected override void OnCreateWithBarrier()
         {
@@ -61,11 +61,11 @@ namespace StationSignage.Systems
                     Entity entity = nativeArray2[i];
                     if (m_TempType.TryGetComponent(entity, out var temp))
                     {
-                        if (m_WaypointConnectionData.TryGetComponent(entity, out var connected))
+                        if (m_WaypointConnectionData.TryGetComponent(entity, out var connected) && m_WaypointIncomingData.HasComponent(connected.m_Connected))
                         {
                             m_cmdBuffer.RemoveComponent<SS_VehicleIncomingData>(unfilteredChunkIndex, connected.m_Connected);
                         }
-                        if (m_WaypointConnectionData.TryGetComponent(temp.m_Original, out var connected2))
+                        if (m_WaypointConnectionData.TryGetComponent(temp.m_Original, out var connected2) && m_WaypointIncomingData.HasComponent(connected2.m_Connected))
                         {
 
                             m_cmdBuffer.RemoveComponent<SS_VehicleIncomingData>(unfilteredChunkIndex, connected2.m_Connected);
@@ -80,6 +80,7 @@ namespace StationSignage.Systems
             [ReadOnly] public ComponentLookup<Temp> m_TempType;
             [ReadOnly] public ComponentTypeHandle<Waypoint> m_WaypointType;
             [ReadOnly] public ComponentLookup<Connected> m_WaypointConnectionData;
+            [ReadOnly] public ComponentLookup<SS_VehicleIncomingData> m_WaypointIncomingData;
         }
     }
 }

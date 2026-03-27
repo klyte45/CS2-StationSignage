@@ -21,7 +21,6 @@ namespace StationSignage.Formulas
     {
         public uint CurrentFrame => m_simulationSystem.frameIndex >> 2;
         private SimulationSystem m_simulationSystem;
-        private EndFrameBarrier Barrier;
         private EntityQuery m_dirtyTvInfoVehicles;
         public static SS_IncomingVehicleSystem Instance { get; private set; }
 
