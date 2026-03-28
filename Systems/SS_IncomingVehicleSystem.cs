@@ -38,7 +38,7 @@ namespace StationSignage.Formulas
             var found = EntityManager.TryGetComponent<SS_VehicleTvData>(vehicleData.nextVehicle0, out var data);
             if (!found || !data.IsValid())
             {
-                Barrier.CreateCommandBuffer().AddComponent<SS_VehicleTvDataDirty>(vehicleData.nextVehicle0);
+                EntityManager.AddComponent<SS_VehicleTvDataDirty>(vehicleData.nextVehicle0);
             }
             return !found ? GetDefaultPlatformData(platform) : data;
         }
@@ -75,11 +75,11 @@ namespace StationSignage.Formulas
                 }
                 if (!hasData)
                 {
-                    Barrier.CreateCommandBuffer().AddComponent(platform, tvData);
+                    EntityManager.AddComponentData(platform, tvData);
                 }
                 else
                 {
-                    Barrier.CreateCommandBuffer().SetComponent(platform, tvData);
+                    EntityManager.SetComponentData(platform, tvData);
                 }
             }
             return tvData;

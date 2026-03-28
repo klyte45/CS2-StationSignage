@@ -312,7 +312,7 @@ public partial class SS_PlatformMappingSystem : SS_BasicSystem
             public readonly SS_WaypointDestinationConnections connection = connection;
             private readonly int routeNumber = routeNumber;
 
-            private readonly ulong AsULong => ((uint)routeNumber) | ((ulong)connection.Importance << 32) | ((ulong)(connection.isPassenger ? 1 : 0) << 40) | ((ulong)(connection.isCargo ? 1 : 0) << 41);
+            private readonly ulong AsULong => ((uint)routeNumber) | ((ulong)connection.Importance.GetEffectiveImportance() << 32) | ((ulong)(connection.isPassenger ? 1 : 0) << 40) | ((ulong)(connection.isCargo ? 1 : 0) << 41);
 
             public int Compare(WaypointDestinationSortable x, WaypointDestinationSortable y)
             {
