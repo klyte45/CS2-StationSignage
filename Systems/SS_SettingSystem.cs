@@ -1,15 +1,16 @@
 ﻿using Colossal.Serialization.Entities;
+using Game;
 using static StationSignage.Settings;
 
 namespace StationSignage.Systems
 {
-    public partial class SS_SettingSystem : SS_BasicSystem
+    public partial class SS_SettingSystem : GameSystemBase, IDefaultSerializable
     {
         private const uint CURRENT_VERSION = 0;
 
         public static SS_SettingSystem Instance { get; private set; }
 
-        protected override void OnCreateWithBarrier()
+        protected override void OnCreate()
         {
             Instance = this;
         }
@@ -17,8 +18,6 @@ namespace StationSignage.Systems
         public LineIndicatorShapeOptions LineIndicatorShape { get; set; } = LineIndicatorShapeOptions.Square;
         public LineOperatorCityOptions LineOperatorCity { get; set; } = LineOperatorCityOptions.Generic;
         public LineDisplayNameOptions LineDisplayName { get; set; } = LineDisplayNameOptions.Custom;
-
-        protected override AllowedPhase UpdatePhase => AllowedPhase.Deserialize;
 
         public void Deserialize<TReader>(TReader reader) where TReader : IReader
         {
