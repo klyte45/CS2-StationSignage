@@ -13,6 +13,7 @@
 		<PublishConfigurationPath>Properties\PublishConfiguration.xml</PublishConfigurationPath>
 		<AdditionalFilesDirectory>Resources</AdditionalFilesDirectory>
 		<AllowUnsafeBlocks>true</AllowUnsafeBlocks>
+    <WarningsAsErrors>CS0618</WarningsAsErrors>
 	</PropertyGroup>
   <!--<Target Name="RunModPostProcessor" AfterTargets="AfterBuild" Condition="False" />-->
 
